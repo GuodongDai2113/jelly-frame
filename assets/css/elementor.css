@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/*
+  该文件用于覆盖 Elementor 默认样式
+*/
+.elementor-field-textual {
+  padding: 8px 16px;
+  border-radius: 3px;
+}
+
+.elementor-field-group .elementor-field-textual {
+  border: 1px solid #e5e7eb;
+  border-radius: 3px;
+}
+.elementor-field-group .elementor-field-textual:hover {
+  border-color: var(--e-global-color-accent);
+}
+.elementor-field-group .elementor-field-textual:focus {
+  border-color: var(--e-global-color-accent);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: 0;
+}
+
+.elementor-button {
+  background-color: var(--e-global-color-accent);
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 0.833rem;
+}
+
+.elementor-widget-search .e-search {
+  --e-search-submit-background-color: var(--e-global-color-accent);
+}
+.elementor-widget-search .e-search .e-search-submit {
+  cursor: pointer;
+}
+
+.elementor-widget-table-of-contents .elementor-toc__header-title {
+  color: var(--jelly-color-text);
+}
+
+.elementor-image-box-title,
+.elementor-icon-box-title {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.elementor-nav-menu a {
+  color: #141414;
+  font-size: 16px;
+}
+
+.elementor-nav-menu--dropdown {
+  font-size: 15px;
+}
+
+.elementor-nav-menu--dropdown .elementor-item.elementor-item-active,
+.elementor-nav-menu--dropdown .elementor-item.highlighted,
+.elementor-nav-menu--dropdown .elementor-item:focus,
+.elementor-nav-menu--dropdown .elementor-item:hover,
+.elementor-sub-item.elementor-item-active,
+.elementor-sub-item.highlighted,
+.elementor-sub-item:focus,
+.elementor-sub-item:hover {
+  background-color: var(--e-global-color-accent);
+  fill: #fff;
+}
+
+.e--pointer-double-line .elementor-item:after,
+.e--pointer-double-line .elementor-item:before,
+.e--pointer-overline .elementor-item:after,
+.e--pointer-overline .elementor-item:before,
+.e--pointer-underline .elementor-item:after,
+.e--pointer-underline .elementor-item:before {
+  background-color: var(--e-global-color-accent);
+}
+
+.elementor-nav-menu--main .elementor-nav-menu ul {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+nav.elementor-nav-menu--dropdown {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+a.elementor-nav-menu--dropdown.elementor-nav-menu__container .elementor-sub-item {
+  font-size: 1em;
+}
+
+div.elementor-menu-toggle {
+  background-color: transparent;
+}
+
+.elementor-nav-menu--dropdown .sub-arrow {
+  fill: inherit;
+}
+
+.elementor-posts article .elementor-post__title {
+  margin-bottom: 6px;
+}
+
+.elementor-post__title a {
+  color: #141414;
+}
+
+.elementor-pagination {
+  margin-top: 32px;
+}
+
+.elementor-pagination a.page-numbers {
+  color: #333333;
+}
+
+.elementor-pagination a.page-numbers:hover {
+  border-color: var(--e-global-color-accent);
+  color: var(--e-global-color-accent);
+}
+
+.elementor-widget-wp-widget-nav_menu ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.elementor-widget-wp-widget-nav_menu h5 {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1140px) {
+  .elementor-nav-menu--main .elementor-nav-menu ul {
+    box-shadow: none;
+  }
+}/*# sourceMappingURL=elementor.css.map */

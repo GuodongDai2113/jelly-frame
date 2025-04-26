@@ -1,0 +1,52 @@
+.jelly-404 {
+    width: 400px;
+    margin: 0 auto;
+    min-height: 600px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 16px;
+    .error-title {
+        font-size: 10rem;
+    }
+    .error-description {
+        margin-bottom: 1rem;
+    }
+    .jelly-search-form button#searchsubmit {
+        color: #fff;
+        background-color: var(--jelly-color-primary);
+        border-color: var(--jelly-color-primary);
+    }
+}
+.jelly-post article {
+    p {
+        color: #333333;
+        a {
+            text-decoration: underline;
+        }
+    }
+    p,
+    li {
+        line-height: 1.9;
+    }
+    ul,
+    ol {
+        margin: 24px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .jelly-404 {
+        width: 100%;
+        .error-title {
+            font-size: 8rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .jelly-404 {
+        .error-title {
+            font-size: 6rem;
+        }
+    }
+}

@@ -1,0 +1,161 @@
+#gt_float_wrapper {
+    position: relative !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    min-width: 96px;
+    min-height: 34px;
+}
+
+.gtranslate_wrapper {
+    position: relative !important;
+    min-width: 96px;
+    min-height: 34px;
+
+    .gt_float_wrapper {
+        position: relative !important;
+    }
+
+    .gt_float_switcher {
+        box-shadow: none;
+        position: relative !important;
+        border: 1px solid #e5e7eb;
+        border-radius: 99px;
+        overflow: visible;
+        background: transparent;
+        padding: 4px 12px;
+        min-width: 96px;
+        min-height: 34px;
+        box-sizing: border-box;
+        color: #333333;
+
+        .gt_options {
+            position: absolute;
+            top: 48px;
+            background: #fff;
+            right: 0;
+            min-width: 200px;
+            box-shadow: var(--jelly-box-shadow);
+        }
+
+        .gt-selected .gt-current-lang {
+            padding: 0;
+            font-size: 14px;
+        }
+
+        &,
+        .gt-selected {
+            background: 0 0;
+        }
+
+        img {
+            width: 18px;
+            height: 13.5px;
+            overflow: hidden;
+        }
+
+        .gt_options a {
+            font-size: 14px;
+
+            &:hover {
+                background-color: var(--jelly-color-primary);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #e5e7eb;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #8c8c8c;
+            }
+        }
+    }
+}
+
+html[dir="rtl"] .gtranslate_wrapper .gt_float_switcher .gt_options {
+    right: unset;
+    left: 0;
+}
+
+nav.rank-math-breadcrumb p {
+    margin: 0;
+}
+
+#rank-math-faq {
+    background-color: #f6f6f6;
+    padding: 16px;
+    border-radius: 6px;
+}
+
+.rank-math-list-item {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    box-shadow: var(--jelly-box-shadow);
+    .rank-math-question {
+        font-size: 1.44rem;
+        padding-bottom: 12px;
+        margin-top: 0;
+        border-bottom: 1px solid var(--jelly-color-border);
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.wp-block-rank-math-toc-block {
+    position: sticky;
+    top: 100px; 
+    max-height: calc(100% - 200px);
+    overflow-y: auto; 
+    margin: 24px 0;
+    h2 {
+        font-weight: 600;
+        font-size: 24px !important;
+        position: relative;
+        margin-top: 0;
+    }
+    nav {
+        padding-left: 8px;
+        > ul {
+            padding-left: 18px;
+            border-left: 1px solid var(--jelly-color-border);
+            > li {
+                padding-left: 16px;
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    background: #333333;
+                    position: absolute;
+                    left: -5px;
+                    top: 12px;
+                }
+            }
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        li {
+            margin: 0;
+            padding-left: 0;
+            position: relative;
+            margin: 12px 0;
+        }
+        a{
+            color: #555555;
+        }
+    }
+}
+
+@media screen and (max-width: 747px) {
+    #rank-math-faq {
+        padding: 0;
+        background-color: none;
+        border-radius: none;
+    }
+}

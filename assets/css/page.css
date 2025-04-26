@@ -1,0 +1,48 @@
+.jelly-404 {
+  width: 400px;
+  margin: 0 auto;
+  min-height: 600px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 16px;
+}
+.jelly-404 .error-title {
+  font-size: 10rem;
+}
+.jelly-404 .error-description {
+  margin-bottom: 1rem;
+}
+.jelly-404 .jelly-search-form button#searchsubmit {
+  color: #fff;
+  background-color: var(--jelly-color-primary);
+  border-color: var(--jelly-color-primary);
+}
+
+.jelly-post article p {
+  color: #333333;
+}
+.jelly-post article p a {
+  text-decoration: underline;
+}
+.jelly-post article p,
+.jelly-post article li {
+  line-height: 1.9;
+}
+.jelly-post article ul,
+.jelly-post article ol {
+  margin: 24px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .jelly-404 {
+    width: 100%;
+  }
+  .jelly-404 .error-title {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 480px) {
+  .jelly-404 .error-title {
+    font-size: 6rem;
+  }
+}/*# sourceMappingURL=page.css.map */

@@ -1,0 +1,47 @@
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+  border-bottom-color: var(--jelly-color-border);
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+  border: 0;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  border-radius: 0;
+  background: unset;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+  color: #818692;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before {
+  content: none;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after {
+  content: none;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+  background: unset;
+  border-bottom-color: #141414;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
+  color: #141414;
+}
+
+.woocommerce table.shop_attributes {
+  border-top: 0;
+}
+.woocommerce table.shop_attributes th {
+  border: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--jelly-color-border);
+}
+.woocommerce table.shop_attributes td {
+  font-style: normal;
+  border: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--jelly-color-border);
+}/*# sourceMappingURL=single-product.css.map */

@@ -1,0 +1,379 @@
+/*
+  Theme Name: Jelly Frame
+
+  Theme URI: https://jellydai.com/jelly-frame/
+
+  Author: JellyDai
+
+  Author URI: https://jellydai.com/
+
+  Description: 作为一款深度集成 Elementor 页面构建器 的主题，“Jelly Frame”充分发挥了拖放式编辑的强大优势，让您可以轻松自定义每一个细节，而无需编写任何代码。无论是调整布局、更改颜色，还是添加复杂的动画效果，只需点击几下即可完成。真正实现“所见即所得”，让您的创意瞬间变为现实。
+
+  Version: 1.2.0
+
+  Stable tag: 1.2.0
+
+  Requires at least: 6.8
+
+  Tested up to: 6.8
+
+  Requires PHP: 7.4
+
+	License: GNU General Public License v3 or later.
+  
+	License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+  Text Domain: jelly-frame
+
+  Tags: e-commerce, blog, grid-layout, right-sidebar, accessibility-ready, custom-menu, theme-options, rtl-language-support
+*/
+
+/*
+  字体大小总览：
+
+  PC端
+  H1:2.488rem/39.808px
+  H2:2.074rem/33.184px
+  H3:1.728rem/27.648px
+  H4:1.44rem/23.04px
+  H5:1.2rem/19.2px
+  H6:1rem/16px
+  P:1rem/16px
+
+  
+*/
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333333;
+}
+
+.wp-theme-jelly-frame{
+  --jelly-color-primary: var(--e-global-color-accent, #2271b1);
+  --jelly-color-border: #e5e5e5;
+  --jelly-color-item-bg: #f6f6f6;
+  --jelly-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --jelly-max-width: 1140px;
+  --jelly-side-width: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1A1A1A;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+h1 {
+  font-size: 2.488rem;
+}
+
+h2 {
+  font-size: 2.074rem;
+}
+
+h3 {
+  font-size: 1.728rem;
+}
+
+h4 {
+  font-size: 1.44rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  line-height: 1.5;
+  margin-block-start: 12px;
+  margin-block-end: 12px;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: #0069c2;
+  transition: color .3s, background-color .3s;
+}
+
+a:hover,
+a:active {
+  color: #003d80;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+
+a:focus-visible {
+  outline-color: #0069c2;
+}
+
+label {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: top;
+  margin-bottom: 6px;
+}
+
+input[type=text],
+input[type=date],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=url],
+select,
+textarea {
+  /* width: 100%; */
+  border: solid 1px var(--jelly-color-border);
+  border-radius: 0;
+  padding: 8px 16px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  min-height: 40px;
+}
+
+input[type=text]:focus,
+input[type=date]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--jelly-color-primary);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+button,
+.button,
+[type=submit],
+[type=button] {
+  display: inline-block;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: var(--jelly-color-primary);
+  border: 1px solid var(--jelly-color-primary);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0;
+  transition: all 0.3s;
+  min-height: 40px;
+}
+
+button:focus:not(:focus-visible),
+.button:focus:not(:focus-visible),
+[type=submit]:focus:not(:focus-visible),
+[type=button]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus,
+[type=submit]:hover,
+[type=submit]:focus,
+[type=button]:hover,
+[type=button]:focus {
+  color: #ffffff;
+  background-color: var(--jelly-color-primary);
+  text-decoration: none;
+}
+
+button:not(:disabled),
+[type=submit]:not(:disabled),
+[type=button]:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=submit]:disabled,
+[type=button]:disabled {
+  color: rgba(0, 0, 0, 0.25);
+  border-color: var(--jelly-color-border);
+  background-color: rgba(0, 0, 0, 0.04);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+select {
+  display: block;
+}
+
+table {
+  background-color: transparent;
+  width: 100%;
+  margin-block-end: 15px;
+  font-size: 0.9em;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-color: var(--jelly-color-border);
+}
+
+table th,
+table td {
+  padding: 15px;
+  line-height: 1.5;
+  vertical-align: middle;
+  border: 1px solid var(--jelly-color-border);
+}
+
+table th {
+  font-weight: bold;
+  text-align: left;
+}
+
+table thead th,
+table tfoot th {
+  font-size: 1em;
+}
+
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+  border-block-start: 1px solid var(--jelly-color-border);
+}
+
+table tbody tr:hover>td,
+table tbody tr:hover>th {
+  background-color: #f1f1f1;
+}
+
+table tbody+tbody {
+  border-block-start: 2px solid var(--jelly-color-border);
+}
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+  margin: 12px 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+hr {
+  border: none;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin: 12px 0;
+  border-color: var(--jelly-color-border);
+}
+
+@media (max-width: 767px) {
+  table table {
+    font-size: 0.8em;
+  }
+
+  table table th,
+  table table td {
+    padding: 7px;
+    line-height: 1.3;
+  }
+
+  table table th {
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h6 {
+    font-size: 0.9rem;
+  }
+}
