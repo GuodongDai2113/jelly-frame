@@ -31,8 +31,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                     <?php
 						get_search_form();
 						get_template_part('widgets/author-box');
-                        $sidebar_shortcode_id = get_theme_mod('jelly_frame_elementor_sidebar_shortcode_id');
-                        jelly_do_elementor_shortcode($sidebar_shortcode_id);
+                        the_jelly_global_form();
 						?>
                     </div>
                 </div>

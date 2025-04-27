@@ -5,32 +5,33 @@
 .wp-theme-jelly-frame .jelly-search-form {
   display: flex;
   flex-wrap: nowrap;
+  position: relative;
 }
 .wp-theme-jelly-frame .jelly-search-form button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 6px 6px 0;
   line-height: 1;
-  background-color: #fff;
-  border-color: var(--jelly-color-border);
-  border-left-width: 0;
-  color: #555;
+  background-color: transparent;
+  border: 0;
+  color: #555555;
   padding: 10px 14px 8px 14px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .wp-theme-jelly-frame .jelly-search-form button:hover {
-  border-color: var(--jelly-color-primary);
-  background-color: var(--jelly-color-primary);
-  color: #fff;
+  border-color: transparent;
+  background-color: transparent;
+  color: #141414;
 }
 .wp-theme-jelly-frame .jelly-search-form input {
   width: 100%;
   font-size: 14px;
-  min-width: 200px;
-  font-size: 14px;
-  border-radius: 6px 0 0 6px;
+  min-width: 240px;
+  border-radius: 6px;
   background-color: #fff;
   border-color: var(--jelly-color-border);
+  height: 40px;
+  padding: 8px 16px;
 }
 
 /*
@@ -243,17 +244,13 @@
 .jelly-post-card {
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 .jelly-post-card .jelly-card-content {
-  padding: 20px;
+  padding: 20px 0;
 }
 .jelly-post-card .jelly-card-content p {
   font-size: 1em;
-  color: #333;
+  color: #555555;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -264,6 +261,8 @@
   position: relative;
   width: 100%;
   padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 6px;
 }
 .jelly-post-card .jelly-card-thumbnail img {
   position: absolute;
@@ -273,6 +272,10 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.jelly-post-card .jelly-card-thumbnail img:hover {
+  transform: scale(1.1);
 }
 .jelly-post-card .jelly-card-title {
   font-size: 1.125rem;
@@ -320,44 +323,58 @@ nav.jelly-rank-math-breadcrumb a:hover {
 nav.jelly-rank-math-breadcrumb .separator {
   margin: 0 4px;
 }
+nav.jelly-rank-math-breadcrumb .last {
+  color: #555555;
+}
 
 /*
 * 分类列表
 */
-.jelly-post-categories {
+.jelly-archive-categories {
   margin: 24px 0;
 }
-.jelly-post-categories .categories-list {
+.jelly-archive-categories .categories-title {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+.jelly-archive-categories .categories-list {
   list-style: none;
   padding: 0;
-  margin-left: 8px;
-  border-left: 1px solid var(--jelly-color-border);
-  box-sizing: border-box;
+  font-size: 14px;
+  max-height: 400px;
+  overflow-y: auto;
 }
-.jelly-post-categories .categories-list li {
-  position: relative;
-  padding-left: 16px;
+.jelly-archive-categories .categories-list::-webkit-scrollbar {
+  width: 3px;
 }
-.jelly-post-categories .categories-list li::before {
-  content: "";
-  display: block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #333333;
-  position: absolute;
-  left: -5px;
-  top: 8px;
+.jelly-archive-categories .categories-list::-webkit-scrollbar-track {
+  background-color: var(--jelly-color-border);
 }
-.jelly-post-categories .categories-list li.active a {
-  color: var(--jelly-color-primary);
-  text-decoration: underline;
+.jelly-archive-categories .categories-list::-webkit-scrollbar-thumb {
+  background-color: #555555;
 }
-.jelly-post-categories .categories-list li.active::before {
-  background: var(--jelly-color-primary);
+.jelly-archive-categories .categories-list li {
+  margin: 0;
+  border-bottom: 1px solid var(--jelly-color-border);
+  padding: 12px 6px;
 }
-.jelly-post-categories .categories-list a {
+.jelly-archive-categories .categories-list li.active {
+  background: #fafafa;
+}
+.jelly-archive-categories .categories-list li.active a {
+  color: #141414;
+  font-weight: 600;
+}
+.jelly-archive-categories .categories-list a {
   color: #555555;
+}
+
+.jelly-global-form {
+  margin: 24px 0;
+}
+.jelly-global-form .form-title {
+  font-size: 16px;
+  margin-bottom: 18px;
 }
 
 @media screen and (max-width: 1140px) {

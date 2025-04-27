@@ -1,16 +1,16 @@
 <?php
 
 /**
- * widgets\post-categories.php
+ * widgets\product-categories.php
  * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
- * Created : 2025.04.26 13:50
+ * Created : 2025.04.27 14:44
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-
 $categories = get_categories(array(
+    'taxonomy' => 'product_cat',
     'hide_empty' => false, // 是否显示空分类
 ));
 ?>
@@ -20,6 +20,7 @@ $categories = get_categories(array(
         <ul class="categories-list">
             <?php
             $current_category = get_queried_object();
+            
             foreach ($categories as $category):
                 $term_id = isset($current_category->term_id) ? $current_category->term_id : 0;
                 $active_class = ($current_category && $term_id === $category->term_id) ? 'class="active"' : '';

@@ -29,9 +29,18 @@ The theme uses the Remix Icon library
 License: Apache-2.0
 Source: https://remixicon.com/license
 
+== Features ==
+
+1. 统一使用Rank Math的面包屑功能
+2. 使用 Elementor 完成全局询价表单功能
+3. 使用 Woocommerce 文件夹来完成修改，尽可能减少修改
+
 == Changelog ==
 
-= 1.2.0 - 2025-04-24 =
+= 1.2.0 - 2025-04-24 开始 =
+* 新增：产品分类内容字段，便与SEO内容的编写
+* 新增：增加Woocommerce的样式和修改模板
+* 新增：使用Elementor 完成全局表单功能
 * 新增：增加主题设置项，可以插入 Elementor Template 短代码
 * 新增：跳转到内容链接 template-parts\header.php:13
 * 新增：使用JS位移Rank Math目录小部件到侧边栏
@@ -41,3 +50,4 @@ Source: https://remixicon.com/license
 * 调整：使用searchform.php创建搜索表单，使用get_search_form()调用表单
 * 调整：移除wp默认的样式，但不移除 wp-block-library
 * 调整：修改前缀jf为jelly
+* 调整：统一使用Rank Math的面包屑功能

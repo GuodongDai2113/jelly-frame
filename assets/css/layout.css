@@ -12,8 +12,7 @@
 }
 
 .jelly-container-content {
-  flex: 0 0 auto;
-  width: 70%;
+  width: 80%;
 }
 .jelly-container-content h1 {
   margin-top: 0;
@@ -43,13 +42,14 @@
 }
 @media screen and (max-width: 768px) {
   .jelly-container-main {
-    flex-direction: column;
+    flex-direction: column !important;
   }
   .jelly-container-content {
     width: 100%;
   }
   .jelly-container-sidebar {
-    padding-left: 0px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
     margin-top: 32px;
   }
   .jelly-container-grid {

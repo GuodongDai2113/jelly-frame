@@ -17,6 +17,15 @@
         border-color: var(--jelly-color-primary);
     }
 }
+.jelly-archive{
+    .jelly-container-main{
+        flex-direction: row-reverse;
+    }
+    .jelly-container-sidebar{
+        padding-left: 0;
+        padding-right: 48px;
+    }
+}
 .jelly-post article {
     p {
         color: #333333;

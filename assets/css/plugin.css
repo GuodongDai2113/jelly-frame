@@ -108,9 +108,21 @@ nav.rank-math-breadcrumb p {
 }
 .wp-block-rank-math-toc-block nav {
   padding-left: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.wp-block-rank-math-toc-block nav::-webkit-scrollbar {
+  width: 3px;
+}
+.wp-block-rank-math-toc-block nav::-webkit-scrollbar-track {
+  background-color: var(--jelly-color-border);
+}
+.wp-block-rank-math-toc-block nav::-webkit-scrollbar-thumb {
+  background-color: #555555;
 }
 .wp-block-rank-math-toc-block nav > ul {
   padding-left: 18px;
+  padding-right: 8px;
   border-left: 1px solid var(--jelly-color-border);
 }
 .wp-block-rank-math-toc-block nav > ul > li {
@@ -136,10 +148,11 @@ nav.rank-math-breadcrumb p {
   margin: 0;
   padding-left: 0;
   position: relative;
-  margin: 12px 0;
+  margin: 6px 0;
 }
 .wp-block-rank-math-toc-block nav a {
   color: #555555;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 747px) {

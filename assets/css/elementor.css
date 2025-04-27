@@ -4,12 +4,11 @@
 */
 .elementor-field-textual {
   padding: 8px 16px;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 
 .elementor-field-group .elementor-field-textual {
   border: 1px solid #e5e7eb;
-  border-radius: 3px;
 }
 .elementor-field-group .elementor-field-textual:hover {
   border-color: var(--e-global-color-accent);
@@ -22,7 +21,7 @@
 
 .elementor-button {
   background-color: var(--e-global-color-accent);
-  border-radius: 3px;
+  border-radius: 0px;
   cursor: pointer;
   white-space: nowrap;
   font-weight: 600;

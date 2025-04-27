@@ -39,21 +39,72 @@ if (!function_exists('jelly_frame_register_woocommerce_style')) {
     }
 }
 
+function add_category_content_fields()
+{
+?>
+    <div class="form-field">
+        <label for="category_content"><?php _e('Category Content', 'jelly-frame'); ?></label>
+        <?php
+        wp_editor('', 'category_content', array(
+            'textarea_name' => 'category_content',
+            'media_buttons' => true,
+            'teeny' => false,
+            'quicktags' => true,
+            'tinymce' => true,
+        ));
+        ?>
+        <p class="description"><?php _e('Enter the content for this category.', 'jelly-frame'); ?></p>
+    </div>
+<?php
+}
+
+function edit_category_fields($term)
+{
+    $content = get_term_meta($term->term_id, 'category_content', true);
+?>
+    <tr class="form-field term-category-content-wrap">
+        <th scope="row" valign="top"><label><?php esc_html_e('Category Content', 'jelly-frame'); ?></label></th>
+        <td>
+            <?php
+            wp_editor($content, 'category_content', array(
+                'textarea_name' => 'category_content',
+                'media_buttons' => true,
+                'teeny' => false,
+                'quicktags' => true,
+                'tinymce' => true,
+            ));
+            ?>
+            <p class="description"><?php _e('Enter the content for this category.', 'jelly-frame'); ?></p>
+        </td>
+    </tr>
+<?php
+}
+
+add_action('product_cat_add_form_fields', 'add_category_content_fields');
+add_action('product_cat_edit_form_fields', 'edit_category_fields', 10, 1);
+// 保存自定义字段的值
+function save_category_content_fields($term_id, $tt_id = '', $taxonomy = '')
+{
+    if (isset($_POST['category_content']) && 'product_cat' === $taxonomy) {
+        update_term_meta($term_id, 'category_content', $_POST['category_content']);
+    }
+}
+
+add_action('created_term', 'save_category_content_fields', 10, 3);
+add_action('edit_term', 'save_category_content_fields', 10, 3);
+
 // 新增 WooCommerce 样式
 add_filter('woocommerce_enqueue_styles', 'jelly_frame_register_woocommerce_style');
 
-// 移除 产品归档模块 移除添加购物车按钮
-add_filter('woocommerce_loop_add_to_cart_link', '__return_empty_string');
 
 // 修改 产品图片 下方的缩略图列数
 add_filter('woocommerce_product_thumbnails_columns', function () {
     return 5;
 });
 
-// 移除 产品归档模块 排序筛选框
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-
-// 新增 产品归档模块 上方搜索框
-add_action('woocommerce_before_shop_loop', function () {
-    get_product_search_form();
-}, 30);
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10, 0);
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5, 0);
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10, 0);
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10, 0);

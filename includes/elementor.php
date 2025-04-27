@@ -52,7 +52,7 @@ if (!function_exists('jelly_frame_customize_register')) {
 
         // 添加设置
         $wp_customize->add_setting(
-            'jelly_frame_elementor_sidebar_shortcode_id',
+            'jelly_frame_elementor_global_form_id',
             array(
                 'default'   => '',
                 'transport' => 'refresh',
@@ -63,11 +63,11 @@ if (!function_exists('jelly_frame_customize_register')) {
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                'jelly_frame_elementor_sidebar_shortcode_id',
+                'jelly_frame_elementor_global_form_id',
                 array(
                     'label'       => __('Sidebar Shortcode ID', 'jelly-frame'),
                     'section'     => 'jelly_frame_elementor_section',
-                    'settings'    => 'jelly_frame_elementor_sidebar_shortcode_id',
+                    'settings'    => 'jelly_frame_elementor_global_form_id',
                     'type'        => 'text',
                 )
             )
@@ -79,16 +79,28 @@ function jelly_do_elementor_shortcode($template_id)
 {
     if (class_exists('Elementor\Plugin')) {
         if (empty($template_id)) {
-            return;
+            return '';
         }
 
         if ('publish' !== get_post_status($template_id)) {
-            return;
+            return '';
         }
         if (!empty(Elementor\Plugin::$instance)) {
-            echo Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
+            return Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
         }
     }
+}
+
+function the_jelly_global_form(){
+    $sidebar_shortcode_id = get_theme_mod('jelly_frame_elementor_global_form_id');
+    $content = jelly_do_elementor_shortcode($sidebar_shortcode_id);
+    if (!empty($content)) {
+        echo '<div class="jelly-global-form">';
+        echo '<h3 class="form-title">' . esc_html__('Get a Free Quote', 'jelly-frame') . '</h3>';
+        echo jelly_do_elementor_shortcode($sidebar_shortcode_id);
+        echo '</div>';
+    }
+
 }
 
 add_action('elementor/theme/register_locations', 'jelly_frame_register_elementor_locations');

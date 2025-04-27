@@ -1,0 +1,25 @@
+.woocommerce{
+    .content-area{
+        width: var(--jelly-max-width, 1140px);
+        margin: 0 auto;
+        padding: 0 var(--jelly-side-width, 16px);
+        box-sizing: border-box;
+        position: relative;
+    }
+    .page-description,
+    .woocommerce-result-count{
+        color: #555555;
+    }
+    .jelly-woocommerce{
+        .jelly-container-main{
+            flex-direction: row-reverse;
+        }
+        .jelly-container-sidebar{
+            padding-left: 0;
+            padding-right: 48px;
+        }
+    }
+    .woocommerce-result-count, .woocommerce-page .woocommerce-result-count{
+        float: right;
+    }
+}

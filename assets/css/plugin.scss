@@ -117,8 +117,20 @@ nav.rank-math-breadcrumb p {
     }
     nav {
         padding-left: 8px;
+        max-height: 400px;
+        overflow-y: auto;
+        &::-webkit-scrollbar{
+            width: 3px;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: var(--jelly-color-border)
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: #555555;
+        }
         > ul {
             padding-left: 18px;
+            padding-right: 8px;
             border-left: 1px solid var(--jelly-color-border);
             > li {
                 padding-left: 16px;
@@ -144,10 +156,11 @@ nav.rank-math-breadcrumb p {
             margin: 0;
             padding-left: 0;
             position: relative;
-            margin: 12px 0;
+            margin: 6px 0;
         }
         a{
             color: #555555;
+            font-size: 14px;
         }
     }
 }
