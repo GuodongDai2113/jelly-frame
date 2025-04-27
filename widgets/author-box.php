@@ -37,6 +37,7 @@ $avatar_url = get_avatar_url($author_id, array('size' => 100));
         <?php else : ?>
             <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($site_name); ?>" class="avatar-img" loading="lazy">
         <?php endif; ?>
+
     </div>
     <div class="author-info">
         <h3 class="author-name"><?php echo esc_html($author_name) ?></h3>

@@ -14,7 +14,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 define('JELLY_FRAME_VERSION', '1.2.0');
 
 // 定义主题调试模式
-define('JELLY_FRAME_DEBUG', true);
+define('JELLY_FRAME_DEBUG', false);
 
 // 定义主题URI
 define('JELLY_FRAME_URI', get_theme_file_uri());

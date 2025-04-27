@@ -1,5 +1,5 @@
 .jelly-container {
-    width: var(--jelly-max-width, 1140px);
+    width: var(--jelly-max-width, 1240px);
     margin: 0 auto;
     padding: 0 var(--jelly-side-width, 16px);
     box-sizing: border-box;
@@ -9,17 +9,18 @@
 .jelly-container-main {
     display: flex;
     margin: 32px 0;
+    gap: 48px;
 }
 
 .jelly-container-content {
-    // flex: 0 0 auto;
-    width: 80%;
+    flex: 0 0 auto;
+    width: 78%;
+    box-sizing: border-box;
     h1{
         margin-top: 0;
     }
 }
 .jelly-container-sidebar {
-    padding-left: 48px;
     flex: 1 0 0%;
 }
 
@@ -33,7 +34,7 @@
     // overflow: hidden;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1240px) {
     .jelly-container {
         width: 100%;
     }
@@ -44,15 +45,16 @@
 
 @media screen and (max-width: 768px) {
     .jelly-container-main {
+        gap: 16px;
         flex-direction: column !important;
     }
     .jelly-container-content{
         width: 100%;
     }
     .jelly-container-sidebar {
-        padding-left:0px !important;
-        padding-right:0px !important;
         margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--jelly-color-border);
     }
     .jelly-container-grid {
         grid-template-columns: repeat(1, 1fr);

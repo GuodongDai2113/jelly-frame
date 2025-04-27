@@ -125,7 +125,7 @@ div.elementor-menu-toggle {
   margin-top: 0;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1240px) {
   .elementor-nav-menu--main .elementor-nav-menu ul {
     box-shadow: none;
   }

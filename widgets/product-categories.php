@@ -23,9 +23,9 @@ $categories = get_categories(array(
             
             foreach ($categories as $category):
                 $term_id = isset($current_category->term_id) ? $current_category->term_id : 0;
-                $active_class = ($current_category && $term_id === $category->term_id) ? 'class="active"' : '';
+                $active_class = ($current_category && $term_id === $category->term_id) ? 'class=active' : '';
             ?>
-                <li <?php echo esc_attr($active_class); ?>>
+                <li <?php echo esc_html($active_class); ?>>
                     <a href="<?php echo esc_url(get_category_link($category->term_id)) ?>" rel="category tag">
                         <?php echo esc_html($category->name) ?>
                     </a>

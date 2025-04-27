@@ -51,10 +51,11 @@ body {
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* word-break: break-all; */
   color: #333333;
 }
 
-.wp-theme-jelly-frame{
+.wp-theme-jelly-frame {
   --jelly-color-primary: var(--e-global-color-accent, #2271b1);
   --jelly-color-border: #e5e5e5;
   --jelly-color-item-bg: #f6f6f6;
@@ -142,6 +143,11 @@ label {
   line-height: 1;
   vertical-align: top;
   margin-bottom: 6px;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
 }
 
 input[type=text],
@@ -296,7 +302,8 @@ dd,
 ol,
 ul,
 li {
-  margin: 12px 0;
+  margin-block-start: 12px;
+  margin-block-end: 12px;
   border: 0;
   outline: 0;
   font-size: 100%;
@@ -310,6 +317,52 @@ hr {
   border-top-style: solid;
   margin: 12px 0;
   border-color: var(--jelly-color-border);
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  white-space: pre-wrap;
+}
+
+code {
+  background-color: #eee;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+blockquote {
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--jelly-color-item-bg);
+}
+
+blockquote p::before {
+  content: "\201C";
+}
+
+blockquote p::after {
+  content: "\201D";
+}
+
+blockquote+p {
+  text-align: right;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+  font-style: italic;
+  font-weight: 400;
 }
 
 @media (max-width: 767px) {

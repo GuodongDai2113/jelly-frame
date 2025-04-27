@@ -7,6 +7,7 @@
       this.initScrollTopButton();
       this.initRankMathTocBlock();
       this.initShareButtons();
+      this.initCategoriesScroll();
     }
 
     initProgressBar() {
@@ -119,7 +120,18 @@
       });
     }
 
-
+    initCategoriesScroll() {
+      const categoriesList = $('.categories-list');
+      const activeItem = categoriesList.find('li.active');
+      if (activeItem.length) {
+        const listHeight = categoriesList.outerHeight();
+        const listScrollHeight = categoriesList.get(0).scrollHeight;
+        const itemOffset = activeItem.position().top - (activeItem.outerHeight() * 2) - 10;
+        if (listScrollHeight  > listHeight) {
+          categoriesList.animate({ scrollTop: itemOffset }, 500);
+        }
+      }
+    }
   }
 
   $(document).ready(() => {

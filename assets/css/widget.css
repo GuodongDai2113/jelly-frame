@@ -26,7 +26,6 @@
 .wp-theme-jelly-frame .jelly-search-form input {
   width: 100%;
   font-size: 14px;
-  min-width: 240px;
   border-radius: 6px;
   background-color: #fff;
   border-color: var(--jelly-color-border);
@@ -106,6 +105,12 @@
   padding: 20px;
   border-radius: 8px;
   margin: 32px 0;
+  gap: 24px;
+  display: flex;
+  align-items: center;
+}
+.jelly-author-box .author-avatar {
+  flex: 0 0 auto;
 }
 .jelly-author-box .avatar-img {
   width: 64px;
@@ -305,7 +310,7 @@ nav.jelly-rank-math-breadcrumb {
 }
 nav.jelly-rank-math-breadcrumb p {
   display: block;
-  width: var(--jelly-max-width, 1140px);
+  width: var(--jelly-max-width, 1240px);
   margin: 0 auto;
   padding: 12px var(--jelly-side-width, 16px);
   font-size: 14px;
@@ -377,9 +382,12 @@ nav.jelly-rank-math-breadcrumb .last {
   margin-bottom: 18px;
 }
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1240px) {
   nav.jelly-rank-math-breadcrumb p {
     width: 100%;
+  }
+  .jelly-archive-categories .categories-list {
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 747px) {

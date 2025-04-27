@@ -24,20 +24,23 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                         </header>
                         <?php the_content() ?>
                         <footer>
-                            <?php get_template_part('widgets/post-navigation') ?>
+                            <div class="post-tags">
+                                <?php the_tags('<span class="tag-links">' . esc_html__('Tagged ', 'jelly-frame'), ', ', '</span>'); ?>
+                            </div>
+                            <?php get_template_part('widgets/post-navigation');
+                            get_template_part('widgets/author-box'); ?>
                         </footer>
                     </div>
                     <div class="jelly-container-sidebar">
-                    <?php
-						get_search_form();
-						get_template_part('widgets/author-box');
+                        <?php
+                        get_search_form();
                         the_jelly_global_form();
-						?>
+                        ?>
                     </div>
                 </div>
             </article>
         </div>
-		<?php get_template_part('widgets/post-related'); ?>
+        <?php get_template_part('widgets/post-related'); ?>
 
     </main>
 <?php endwhile; ?>

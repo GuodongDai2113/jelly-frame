@@ -12,18 +12,9 @@
 .jelly-404 .error-description {
   margin-bottom: 1rem;
 }
-.jelly-404 .jelly-search-form button#searchsubmit {
-  color: #fff;
-  background-color: var(--jelly-color-primary);
-  border-color: var(--jelly-color-primary);
-}
 
 .jelly-archive .jelly-container-main {
   flex-direction: row-reverse;
-}
-.jelly-archive .jelly-container-sidebar {
-  padding-left: 0;
-  padding-right: 48px;
 }
 
 .jelly-post article p {
