@@ -43,9 +43,9 @@ if (!function_exists('jelly_frame_customize_register')) {
     {
         // 添加设置部分
         $wp_customize->add_section(
-            'jelly_frame_elementor_section',
+            'jelly_frame_elementor_form_section',
             array(
-                'title'    => __('Elementor Settings', 'jelly-frame'),
+                'title'    => __('表单设置', 'jelly-frame'),
                 'priority' => 30,
             )
         );
@@ -58,6 +58,13 @@ if (!function_exists('jelly_frame_customize_register')) {
                 'transport' => 'refresh',
             )
         );
+        $wp_customize->add_setting(
+            'jelly_frame_elementor_popup_button_id',
+            array(
+                'default'   => '',
+                'transport' => 'refresh',
+            )
+        );
 
         // 添加设置控件
         $wp_customize->add_control(
@@ -65,10 +72,23 @@ if (!function_exists('jelly_frame_customize_register')) {
                 $wp_customize,
                 'jelly_frame_elementor_global_form_id',
                 array(
-                    'label'       => __('Sidebar Shortcode ID', 'jelly-frame'),
-                    'section'     => 'jelly_frame_elementor_section',
+                    'label'       => __('全局表单 ID', 'jelly-frame'),
+                    'section'     => 'jelly_frame_elementor_form_section',
                     'settings'    => 'jelly_frame_elementor_global_form_id',
-                    'type'        => 'text',
+                    'type'        => 'number',
+                )
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'jelly_frame_elementor_popup_button_id',
+                array(
+                    'label'       => __('弹窗按钮 ID', 'jelly-frame'),
+                    'section'     => 'jelly_frame_elementor_form_section',
+                    'settings'    => 'jelly_frame_elementor_popup_button_id',
+                    'type'        => 'number',
                 )
             )
         );
@@ -88,19 +108,9 @@ function jelly_do_elementor_shortcode($template_id)
         if (!empty(Elementor\Plugin::$instance)) {
             return Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
         }
+    }else{
+        return '';
     }
-}
-
-function the_jelly_global_form(){
-    $sidebar_shortcode_id = get_theme_mod('jelly_frame_elementor_global_form_id');
-    $content = jelly_do_elementor_shortcode($sidebar_shortcode_id);
-    if (!empty($content)) {
-        echo '<div class="jelly-global-form">';
-        echo '<h3 class="form-title">' . esc_html__('Get a Free Quote', 'jelly-frame') . '</h3>';
-        echo jelly_do_elementor_shortcode($sidebar_shortcode_id);
-        echo '</div>';
-    }
-
 }
 
 add_action('elementor/theme/register_locations', 'jelly_frame_register_elementor_locations');

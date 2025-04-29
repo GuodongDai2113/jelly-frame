@@ -8,6 +8,8 @@
       this.initRankMathTocBlock();
       this.initShareButtons();
       this.initCategoriesScroll();
+      this.initTableWidthTrouble();
+      this.initWoocommerceContent();
     }
 
     initProgressBar() {
@@ -59,24 +61,28 @@
     initRankMathTocBlock() {
       const jellyPostSidebar = $(".jelly-container-sidebar");
       const toc = $("div.wp-block-rank-math-toc-block");
+
       if (jellyPostSidebar.length && toc.length) {
-        toc.appendTo(jellyPostSidebar);
-  
+        if (window.innerWidth > 768) {
+          toc.appendTo(jellyPostSidebar);
+        } else {
+          toc.css({ position: "relative", top: "unset" });
+        }
         // 为 toc 中的每个锚文本添加点击事件处理程序
         toc.on("click", "a", function (event) {
           event.preventDefault(); // 阻止默认的跳转行为
-  
+
           const targetId = $(this).attr("href"); // 获取锚点的目标 ID
           const targetElement = $(targetId); // 获取目标元素
-  
+
           if (targetElement.length) {
             // 计算滚动到目标元素的偏移量，留出 120px 的间距
             const offset = targetElement.offset().top - 120;
-  
+
             // 使用 animate 方法实现平滑滚动
             $("html, body").animate({ scrollTop: offset }, 500);
           }
-  
+
           // 手动更新 URL
           history.pushState({}, "", targetId);
         });
@@ -121,16 +127,65 @@
     }
 
     initCategoriesScroll() {
-      const categoriesList = $('.categories-list');
-      const activeItem = categoriesList.find('li.active');
+      const categoriesList = $(".categories-list");
+      const activeItem = categoriesList.find("li.active");
       if (activeItem.length) {
         const listHeight = categoriesList.outerHeight();
         const listScrollHeight = categoriesList.get(0).scrollHeight;
-        const itemOffset = activeItem.position().top - (activeItem.outerHeight() * 2) - 10;
-        if (listScrollHeight  > listHeight) {
+        const itemOffset =
+          activeItem.position().top - activeItem.outerHeight() * 2 - 10;
+        if (listScrollHeight > listHeight) {
           categoriesList.animate({ scrollTop: itemOffset }, 500);
         }
       }
+    }
+
+    initTableWidthTrouble() {
+      $(
+        ".woocommerce-Tabs-panel--description table, .jelly-container-content table"
+      ).each(function () {
+        if (!$(this).parent().hasClass("jelly-content-table")) {
+          $(this).wrap('<div class="jelly-content-table"></div>');
+        }
+      });
+    }
+
+    initWoocommerceContent() {
+      // 读取#tab-description中的所有<h2>元素
+
+      $(".jelly-product-content h2").each(function (index) {
+        // 获取<h2>的文本内容
+        let text = $(this).text().trim();
+
+        if (text.toLowerCase() === "description") {
+          return; // 跳过当前循环
+        }
+
+        // 将文本内容转换为小写，并将空格替换为连字符
+        let id = text.toLowerCase().replace(/\s+/g, "-");
+
+        // 为<h2>设置id
+        $(this).attr("id", id);
+
+        // 创建对应的<li>链接
+        let li = `
+            <li>
+                <a href="#${id}">
+                    ${text}
+                </a>
+            </li>
+        `;
+
+        // 将<li>链接添加到.woocommerce-tabs wc-tabs中
+        $(".jelly-product-toc").append(li);
+      });
+
+      // 设置第一个<li>为激活状态
+      // $(".woocommerce-tabs.wc-tabs li:first")
+      //   .addClass("active")
+      //   .find("a")
+      //   .attr("aria-selected", "true")
+      //   .attr("tabindex", "0");
     }
   }
 

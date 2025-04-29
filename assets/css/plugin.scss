@@ -166,10 +166,22 @@ nav.rank-math-breadcrumb p {
     }
 }
 
-@media screen and (max-width: 747px) {
+@media screen and (max-width: 767px) {
     #rank-math-faq {
         padding: 0;
         background-color: none;
         border-radius: none;
+    }
+    .wp-block-rank-math-toc-block{
+        position: relative;
+        top: unset;
+        nav{
+            max-height: 300px;
+        }
+        h2{
+            // text-align: center;
+            padding: 8px;
+            background: var(--jelly-color-item-bg);
+        }
     }
 }

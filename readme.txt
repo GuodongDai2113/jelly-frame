@@ -51,3 +51,5 @@ Source: https://remixicon.com/license
 * 调整：移除wp默认的样式，但不移除 wp-block-library
 * 调整：修改前缀jf为jelly
 * 调整：统一使用Rank Math的面包屑功能
+* 调整：产品单页相册布局
+* 调整：根据详情部分自动增加内容toc

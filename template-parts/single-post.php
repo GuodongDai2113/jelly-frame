@@ -34,7 +34,6 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                     <div class="jelly-container-sidebar">
                         <?php
                         get_search_form();
-                        the_jelly_global_form();
                         ?>
                     </div>
                 </div>

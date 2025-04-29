@@ -1,21 +1,14 @@
 <?php
+
 /**
- * The template for displaying product content within loops
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 9.4.0
+ * woocommerce\content-product.php
+ * 
+ * Author  : Jelly Dai
+ * Email   : d@jellydai.com
+ * Created : 2025.04.29 14:15
  */
 
-defined( 'ABSPATH' ) || exit;
+if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 global $product;
 
@@ -39,7 +32,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
+	echo '<div class="jelly-product-thumbnail">';
 	do_action( 'woocommerce_before_shop_loop_item_title' );
+	echo '</div>';
 
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.

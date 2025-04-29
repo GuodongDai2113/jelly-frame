@@ -174,11 +174,24 @@
   position: relative;
   top: 4px;
 }
-.jelly-post-meta .meta-right {
+.jelly-post-meta .jelly-share-buttons {
+  margin: 0;
+}
+
+/*
+* 分享按钮
+*/
+.jelly-share-buttons {
   display: flex;
   gap: 8px;
+  align-items: center;
+  margin: 16px 0;
 }
-.jelly-post-meta .share-toggle {
+.jelly-share-buttons .share-title {
+  font-size: 14px;
+  color: #555555;
+}
+.jelly-share-buttons .share-toggle {
   border-radius: 50%;
   width: 28px;
   height: 28px;
@@ -187,12 +200,12 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.jelly-post-meta .share-toggle:hover {
+.jelly-share-buttons .share-toggle:hover {
   border-color: var(--jelly-color-primary);
   background-color: var(--jelly-color-primary);
   color: #fff;
 }
-.jelly-post-meta .share-toggle svg {
+.jelly-share-buttons .share-toggle svg {
   padding-top: 5px;
 }
 
@@ -374,6 +387,9 @@ nav.jelly-rank-math-breadcrumb .last {
   color: #555555;
 }
 
+/*
+* 全局表单
+*/
 .jelly-global-form {
   margin: 24px 0;
 }
@@ -382,6 +398,18 @@ nav.jelly-rank-math-breadcrumb .last {
   margin-bottom: 18px;
 }
 
+@media (max-width: 1240px) {
+  .jelly-content-table {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+  .jelly-content-table table {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+  }
+}
 @media screen and (max-width: 1240px) {
   nav.jelly-rank-math-breadcrumb p {
     width: 100%;
@@ -390,7 +418,7 @@ nav.jelly-rank-math-breadcrumb .last {
     font-size: 16px;
   }
 }
-@media screen and (max-width: 747px) {
+@media screen and (max-width: 767px) {
   .jelly-totop {
     right: 48px;
     bottom: 48px;

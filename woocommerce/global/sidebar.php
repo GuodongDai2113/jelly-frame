@@ -13,4 +13,3 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 get_search_form();
 
 get_template_part('widgets/product-categories');
-the_jelly_global_form();

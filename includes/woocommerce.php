@@ -96,15 +96,33 @@ add_action('edit_term', 'save_category_content_fields', 10, 3);
 // 新增 WooCommerce 样式
 add_filter('woocommerce_enqueue_styles', 'jelly_frame_register_woocommerce_style');
 
-
-// 修改 产品图片 下方的缩略图列数
-add_filter('woocommerce_product_thumbnails_columns', function () {
-    return 5;
-});
-
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10, 0);
 remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5, 0);
 remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10, 0);
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10, 0);
+remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10, 0);
+remove_action('woocommerce_before_single_product', 'woocommerce_before_single_product', 10, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30, 0);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40, 0);
+// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10, 0);
+
+add_action('woocommerce_single_product_summary', function () {
+    global $product;
+    do_action('woocommerce_product_additional_information', $product);
+}, 30, 0);
+
+add_action('woocommerce_share', function () {
+    get_template_part('widgets/popup-button');
+    get_template_part('widgets/share');
+});
+
+add_filter('woocommerce_product_tabs', function ($tabs) {
+    if (isset($tabs['additional_information'])) {
+        unset($tabs['additional_information']);
+    }
+    return $tabs;
+});

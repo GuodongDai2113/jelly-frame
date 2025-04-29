@@ -10,6 +10,7 @@
     display: flex;
     margin: 32px 0;
     gap: 48px;
+    clear: both;
 }
 
 .jelly-container-content {
@@ -199,8 +200,8 @@
         padding: 10px 14px 8px 14px;
         height: 40px;
         &:hover {
-            border-color:transparent;
-            background-color:transparent;
+            border-color: transparent;
+            background-color: transparent;
             color: #141414;
         }
         position: absolute;
@@ -297,7 +298,7 @@
     gap: 24px;
     display: flex;
     align-items: center;
-    .author-avatar{
+    .author-avatar {
         flex: 0 0 auto;
     }
     .avatar-img {
@@ -307,7 +308,6 @@
         object-fit: contain;
         background-color: #ffffff;
         border: 1px solid var(--jelly-color-border);
-
     }
     .author-name {
         font-size: 24px;
@@ -338,12 +338,13 @@
 /*
 * 元信息
 */
-.jelly-single-post-categories{
+.jelly-single-post-categories {
     color: #555;
     a {
         font-size: 16px !important;
     }
 }
+
 .jelly-post-meta {
     margin: 20px 0;
     padding-bottom: 16px;
@@ -363,9 +364,23 @@
             top: 4px;
         }
     }
-    .meta-right {
-        display: flex;
-        gap: 8px;
+    .jelly-share-buttons {
+        margin: 0;
+    }
+}
+
+/*
+* 分享按钮
+*/
+
+.jelly-share-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 16px 0;
+    .share-title {
+        font-size: 14px;
+        color: #555555;
     }
     .share-toggle {
         border-radius: 50%;
@@ -472,7 +487,7 @@
             object-fit: cover; // 确保图片覆盖整个容器
 
             transition: transform 0.3s ease;
-            &:hover{
+            &:hover {
                 transform: scale(1.1);
             }
         }
@@ -523,7 +538,7 @@ nav.jelly-rank-math-breadcrumb {
     .separator {
         margin: 0 4px;
     }
-    .last{
+    .last {
         color: #555555;
     }
 }
@@ -531,65 +546,91 @@ nav.jelly-rank-math-breadcrumb {
 /*
 * 分类列表
 */
-.jelly-archive-categories{
+.jelly-archive-categories {
     margin: 24px 0;
-    .categories-title{
+    .categories-title {
         font-size: 16px;
         margin-bottom: 18px;
     }
-    .categories-list{
+    .categories-list {
         list-style: none;
         padding: 0;
         font-size: 14px;
         max-height: 400px;
         overflow-y: auto;
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             width: 3px;
         }
-        &::-webkit-scrollbar-track{
-            background-color: var(--jelly-color-border)
+        &::-webkit-scrollbar-track {
+            background-color: var(--jelly-color-border);
         }
-        &::-webkit-scrollbar-thumb{
+        &::-webkit-scrollbar-thumb {
             background-color: #555555;
         }
         li {
             margin: 0;
             border-bottom: 1px solid var(--jelly-color-border);
             padding: 12px 6px;
-            &.active{
+            &.active {
                 background: #fafafa;
-                a{
-                    color:#141414;
+                a {
+                    color: #141414;
                     font-weight: 600;
                 }
             }
         }
-        a{
+        a {
             color: #555555;
         }
     }
 }
 
-.jelly-global-form{
+/*
+* 全局表单
+*/
+.jelly-global-form {
     margin: 24px 0;
-    .form-title{
+    .form-title {
         font-size: 16px;
         margin-bottom: 18px;
     }
 }
 
+
+@media (max-width: 1240px) {
+    .jelly-content-table {
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+    
+    .jelly-content-table table {
+        width: 100%;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    // .jelly-content-table table th,
+    // .jelly-content-table table td {
+    //     word-break: break-all;
+    //     white-space: normal;
+    // }
+    
+}
+
+
 @media screen and (max-width: 1240px) {
     nav.jelly-rank-math-breadcrumb p {
         width: 100%;
     }
-    .jelly-archive-categories{
-        .categories-list{
+    .jelly-archive-categories {
+        .categories-list {
             font-size: 16px;
         }
     }
 }
 
-@media screen and (max-width: 747px) {
+@media screen and (max-width: 767px) {
     .jelly-totop {
         right: 48px;
         bottom: 48px;
@@ -605,7 +646,6 @@ nav.jelly-rank-math-breadcrumb {
             grid-template-columns: repeat(1, 1fr);
         }
     }
-
 }
 #gt_float_wrapper {
     position: relative !important;
@@ -775,10 +815,22 @@ nav.rank-math-breadcrumb p {
     }
 }
 
-@media screen and (max-width: 747px) {
+@media screen and (max-width: 767px) {
     #rank-math-faq {
         padding: 0;
         background-color: none;
         border-radius: none;
+    }
+    .wp-block-rank-math-toc-block{
+        position: relative;
+        top: unset;
+        nav{
+            max-height: 300px;
+        }
+        h2{
+            // text-align: center;
+            padding: 8px;
+            background: var(--jelly-color-item-bg);
+        }
     }
 }
