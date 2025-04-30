@@ -3,11 +3,13 @@ new = ""
 file = 'theme.scss'
 
 files = [
-    "./assets/css/layout.scss",
-    "./assets/css/wordpress.scss",
-    "./assets/css/page.scss",
-    "./assets/css/widget.scss",
-    "./assets/css/plugin.scss",
+    "./assets/dev/layout.scss",
+    "./assets/dev/header.scss",
+    "./assets/dev/footer.scss",
+    "./assets/dev/wordpress.scss",
+    "./assets/dev/page.scss",
+    "./assets/dev/widget.scss",
+    "./assets/dev/plugin.scss",
 ]
 
 def get_css(css_file):

@@ -36,14 +36,14 @@
 }
 .navigation.pagination .page-numbers,
 .navigation.pagination a.page-numbers {
-  border-radius: 3px;
+  border-radius: var(--jelly-border-radius-xs);
   border: 1px solid var(--jelly-color-border);
   min-width: 36px;
   height: 36px;
   text-align: center;
   line-height: 36px;
   display: inline-block;
-  color: #555555;
+  color: var(--jelly-color-description);
   font-size: 1em;
   transition: none;
   padding: 0 12px;
@@ -53,18 +53,18 @@
 .navigation.pagination .page-numbers:hover,
 .navigation.pagination a.page-numbers:hover {
   text-decoration: none;
-  background-color: #141414;
-  border-color: #141414;
-  color: #fff;
+  background-color: var(--jelly-color-primary);
+  border-color: var(--jelly-color-primary);
+  color: var(--jelly-color-white);
 }
 .navigation.pagination .page-numbers.current {
-  background: #141414;
-  border-color: #141414;
-  color: #fff;
+  background: var(--jelly-color-primary);
+  border-color: var(--jelly-color-primary);
+  color: var(--jelly-color-white);
 }
 
 .wp-block-image .aligncenter .wp-element-caption {
   text-align: center;
   font-size: 16px;
-  color: #555555;
+  color: var(--jelly-color-description);
 }/*# sourceMappingURL=wordpress.css.map */

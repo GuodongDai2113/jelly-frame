@@ -68,6 +68,10 @@ if (post_password_required()) {
 			<?php the_content() ?>
 		</div>
 		<div class="jelly-container-sidebar">
+			<?php
+			get_search_form();
+			get_template_part('widgets/global-form');
+			?>
 		</div>
 	</div>
 	<?php

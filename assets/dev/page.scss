@@ -19,7 +19,7 @@
 }
 .jelly-post article {
     p {
-        color: #333333;
+        color: var(--jelly-color-text);
         a {
             text-decoration: underline;
         }

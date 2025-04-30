@@ -16,25 +16,30 @@
     }
 
     .gt_float_switcher {
+        // transition:none;
         box-shadow: none;
         position: relative !important;
-        border: 1px solid #e5e7eb;
-        border-radius: 99px;
+        border: 1px solid var(--jelly-color-border);
+        border-radius: var(--jelly-border-radius-lg);
         overflow: visible;
         background: transparent;
         padding: 4px 12px;
         min-width: 96px;
         min-height: 34px;
         box-sizing: border-box;
-        color: #333333;
-
+        color: var(--jelly-color-title);
+        &:hover{
+            border-color: var(--jelly-color-border-secondary);
+        }
         .gt_options {
             position: absolute;
             top: 48px;
-            background: #fff;
+            background: var(--jelly-color-white);
             right: 0;
             min-width: 200px;
             box-shadow: var(--jelly-box-shadow);
+            max-height: 362px;
+            border: 1px solid var(--jelly-color-border);
         }
 
         .gt-selected .gt-current-lang {
@@ -53,19 +58,21 @@
             overflow: hidden;
         }
 
-        .gt_options a {
-            font-size: 14px;
-
-            &:hover {
-                background-color: var(--jelly-color-primary);
-            }
-
+        .gt_options {
             &::-webkit-scrollbar-track {
-                background-color: #e5e7eb;
+                background-color: var(--jelly-color-item-bg);
             }
 
             &::-webkit-scrollbar-thumb {
-                background-color: #8c8c8c;
+                background-color: var(--jelly-color-description);
+            }
+            a {
+                transition:none;
+                font-size: 14px;
+                &:hover {
+                    color: var(--jelly-color-title);
+                    background-color: var(--jelly-color-item-bg);
+                }
             }
         }
     }
@@ -81,15 +88,15 @@ nav.rank-math-breadcrumb p {
 }
 
 #rank-math-faq {
-    background-color: #f6f6f6;
+    background-color: var(--jelly-color-item-bg);
     padding: 16px;
-    border-radius: 6px;
+    border-radius: var(--jelly-border-radius-sm);
 }
 
 .rank-math-list-item {
-    background-color: #ffffff;
+    background-color: var(--jelly-color-white);
     padding: 16px;
-    border-radius: 6px;
+    border-radius: var(--jelly-border-radius-sm);
     margin-bottom: 12px;
     box-shadow: var(--jelly-box-shadow);
     .rank-math-question {
@@ -105,9 +112,9 @@ nav.rank-math-breadcrumb p {
 
 .wp-block-rank-math-toc-block {
     position: sticky;
-    top: 100px; 
+    top: 100px;
     max-height: calc(100% - 200px);
-    overflow-y: auto; 
+    overflow-y: auto;
     margin: 24px 0;
     h2 {
         font-weight: 600;
@@ -120,14 +127,14 @@ nav.rank-math-breadcrumb p {
         padding-left: 8px;
         max-height: 400px;
         overflow-y: auto;
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             width: 3px;
         }
-        &::-webkit-scrollbar-track{
-            background-color: var(--jelly-color-border)
+        &::-webkit-scrollbar-track {
+            background-color: var(--jelly-color-border);
         }
-        &::-webkit-scrollbar-thumb{
-            background-color: #555555;
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--jelly-color-description);
         }
         > ul {
             padding-left: 18px;
@@ -141,7 +148,7 @@ nav.rank-math-breadcrumb p {
                     width: 9px;
                     height: 9px;
                     border-radius: 50%;
-                    background: #333333;
+                    background: var(--jelly-color-text);
                     position: absolute;
                     left: -5px;
                     top: 12px;
@@ -159,8 +166,8 @@ nav.rank-math-breadcrumb p {
             position: relative;
             margin: 6px 0;
         }
-        a{
-            color: #555555;
+        a {
+            color: var(--jelly-color-text);
             font-size: 14px;
         }
     }
@@ -172,13 +179,13 @@ nav.rank-math-breadcrumb p {
         background-color: none;
         border-radius: none;
     }
-    .wp-block-rank-math-toc-block{
+    .wp-block-rank-math-toc-block {
         position: relative;
         top: unset;
-        nav{
+        nav {
             max-height: 300px;
         }
-        h2{
+        h2 {
             // text-align: center;
             padding: 8px;
             background: var(--jelly-color-item-bg);

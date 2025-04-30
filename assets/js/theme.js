@@ -80,7 +80,14 @@
             const offset = targetElement.offset().top - 120;
 
             // 使用 animate 方法实现平滑滚动
-            $("html, body").animate({ scrollTop: offset }, 500);
+            $("html, body").animate({ scrollTop: offset }, 0, function () {
+              // 滚动完成后执行闪烁动画
+              for (let i = 0; i < 3; i++) {
+                targetElement
+                  .animate({ opacity: 0.5 }, 200)
+                  .animate({ opacity: 1 }, 200);
+              }
+            });
           }
 
           // 手动更新 URL
@@ -179,7 +186,23 @@
         // 将<li>链接添加到.woocommerce-tabs wc-tabs中
         $(".jelly-product-toc").append(li);
       });
+      $(".jelly-product-toc").on("click", "a", function (event) {
+        event.preventDefault(); // 阻止默认的跳转行为
 
+        const targetId = $(this).attr("href"); // 获取锚点的目标 ID
+        const targetElement = $(targetId); // 获取目标元素
+
+        if (targetElement.length) {
+          // 计算滚动到目标元素的偏移量，留出 120px 的间距
+          const offset = targetElement.offset().top - 120;
+
+          // 使用 animate 方法实现平滑滚动
+          $("html, body").animate({ scrollTop: offset }, 500);
+        }
+
+        // 手动更新 URL
+        history.pushState({}, "", targetId);
+      });
       // 设置第一个<li>为激活状态
       // $(".woocommerce-tabs.wc-tabs li:first")
       //   .addClass("active")

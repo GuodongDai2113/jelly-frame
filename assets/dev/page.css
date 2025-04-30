@@ -18,7 +18,7 @@
 }
 
 .jelly-post article p {
-  color: #333333;
+  color: var(--jelly-color-text);
 }
 .jelly-post article p a {
   text-decoration: underline;

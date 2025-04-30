@@ -40,8 +40,27 @@
   H6:1rem/16px
   P:1rem/16px
 
-  
 */
+
+.wp-theme-jelly-frame {
+  --jelly-color-white: #ffffff;
+  --jelly-color-primary: var(--e-global-color-accent, #2271b1);
+  --jelly-color-border: #e5e5e5;
+  --jelly-color-border-secondary: #adadad;
+
+  --jelly-color-item-bg: #f6f6f6;
+  --jelly-color-title: #141414;
+  --jelly-color-text: #333333;
+  --jelly-color-description: #555555;
+
+  --jelly-border-radius-xs: 3px;
+  --jelly-border-radius-sm: 6px;
+  --jelly-border-radius-lg: 9px;
+
+  --jelly-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --jelly-max-width: 1240px;
+  --jelly-side-width: 16px;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -51,18 +70,10 @@ body {
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* word-break: break-all; */
-  color: #333333;
+  color: var(--jelly-color-text);
 }
 
-.wp-theme-jelly-frame {
-  --jelly-color-primary: var(--e-global-color-accent, #2271b1);
-  --jelly-color-border: #e5e5e5;
-  --jelly-color-item-bg: #f6f6f6;
-  --jelly-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  --jelly-max-width: 1240px;
-  --jelly-side-width: 16px;
-}
+
 
 h1,
 h2,
@@ -160,6 +171,7 @@ input[type=tel],
 input[type=url],
 select,
 textarea {
+  font-family: inherit;
   width: 100%;
   border: solid 1px var(--jelly-color-border);
   border-radius: 0;

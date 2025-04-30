@@ -108,7 +108,7 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10, 0);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30, 0);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40, 0);
-// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10, 0);
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10, 0);
 
 add_action('woocommerce_single_product_summary', function () {
     global $product;

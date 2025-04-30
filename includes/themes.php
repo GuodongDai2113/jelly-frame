@@ -79,11 +79,13 @@ if (!function_exists('jelly_frame_style')) {
         wp_enqueue_style('jelly-frame', JELLY_FRAME_URI . '/style' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
         if (JELLY_FRAME_DEBUG) {
             // wp_enqueue_style('jelly-frame-kit', JELLY_FRAME_ASSETS_URI . 'test/kit.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-layout', JELLY_FRAME_ASSETS_URI . 'css/layout.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-page', JELLY_FRAME_ASSETS_URI . 'css/page.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-wordpress', JELLY_FRAME_ASSETS_URI . 'css/wordpress.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-widget', JELLY_FRAME_ASSETS_URI . 'css/widget.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-plugin', JELLY_FRAME_ASSETS_URI . 'css/plugin.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-layout', JELLY_FRAME_ASSETS_URI . 'dev/layout.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-header', JELLY_FRAME_ASSETS_URI . 'dev/header.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-footer', JELLY_FRAME_ASSETS_URI . 'dev/footer.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-page', JELLY_FRAME_ASSETS_URI . 'dev/page.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-wordpress', JELLY_FRAME_ASSETS_URI . 'dev/wordpress.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-widget', JELLY_FRAME_ASSETS_URI . 'dev/widget.css', [], JELLY_FRAME_VERSION);
+            wp_enqueue_style('jelly-frame-theme-plugin', JELLY_FRAME_ASSETS_URI . 'dev/plugin.css', [], JELLY_FRAME_VERSION);
 
         }else{
             wp_enqueue_style('jelly-frame-theme', JELLY_FRAME_ASSETS_URI . 'css/theme' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
@@ -115,15 +117,15 @@ if (!function_exists('jelly_frame_remove_wp_css')) {
     function jelly_frame_remove_wp_css()
     {
         // 判断当前页面类型是否为 post
-        // if (!is_singular('post') && !is_singular('news')) {
+        if (!is_singular('post') && !is_singular('news')) {
             // 移除 WordPress 块库 CSS
-            // wp_dequeue_style('wp-block-library');
+            wp_dequeue_style('wp-block-library');
             // 移除 WordPress 块库主题 CSS
             wp_dequeue_style('wp-block-library-theme');
             wp_dequeue_style('global-styles');
             wp_deregister_style('classic-theme-styles');
             wp_dequeue_style('classic-theme-styles');
-        // }
+        }
     }
 }
 

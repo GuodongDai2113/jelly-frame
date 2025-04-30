@@ -100,14 +100,14 @@
 }
 .navigation.pagination .page-numbers,
 .navigation.pagination a.page-numbers {
-  border-radius: 3px;
+  border-radius: var(--jelly-border-radius-xs);
   border: 1px solid var(--jelly-color-border);
   min-width: 36px;
   height: 36px;
   text-align: center;
   line-height: 36px;
   display: inline-block;
-  color: #555555;
+  color: var(--jelly-color-description);
   font-size: 1em;
   transition: none;
   padding: 0 12px;
@@ -117,20 +117,20 @@
 .navigation.pagination .page-numbers:hover,
 .navigation.pagination a.page-numbers:hover {
   text-decoration: none;
-  background-color: #141414;
-  border-color: #141414;
-  color: #fff;
+  background-color: var(--jelly-color-primary);
+  border-color: var(--jelly-color-primary);
+  color: var(--jelly-color-white);
 }
 .navigation.pagination .page-numbers.current {
-  background: #141414;
-  border-color: #141414;
-  color: #fff;
+  background: var(--jelly-color-primary);
+  border-color: var(--jelly-color-primary);
+  color: var(--jelly-color-white);
 }
 
 .wp-block-image .aligncenter .wp-element-caption {
   text-align: center;
   font-size: 16px;
-  color: #555555;
+  color: var(--jelly-color-description);
 }
 
 .jelly-404 {
@@ -153,7 +153,7 @@
 }
 
 .jelly-post article p {
-  color: #333333;
+  color: var(--jelly-color-text);
 }
 .jelly-post article p a {
   text-decoration: underline;
@@ -192,7 +192,7 @@
   line-height: 1;
   background-color: transparent;
   border: 0;
-  color: #555555;
+  color: var(--jelly-color-description);
   padding: 10px 14px 8px 14px;
   height: 40px;
   position: absolute;
@@ -202,12 +202,12 @@
 .wp-theme-jelly-frame .jelly-search-form button:hover {
   border-color: transparent;
   background-color: transparent;
-  color: #141414;
+  color: var(--jelly-color-title);
 }
 .wp-theme-jelly-frame .jelly-search-form input {
   width: 100%;
   font-size: 14px;
-  border-radius: 6px;
+  border-radius: var(--jelly-border-radius-sm);
   background-color: #fff;
   border-color: var(--jelly-color-border);
   height: 40px;
@@ -243,7 +243,7 @@
   text-align: center;
   line-height: 46px;
   font-size: 20px;
-  color: #333333;
+  color: var(--jelly-color-text);
   left: 11px;
   top: 11px;
   height: 24px;
@@ -284,7 +284,7 @@
 .jelly-author-box {
   background-color: var(--jelly-color-item-bg);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--jelly-border-radius-lg);
   margin: 32px 0;
   gap: 24px;
   display: flex;
@@ -304,11 +304,11 @@
 }
 .jelly-author-box .author-name {
   font-size: 24px;
-  color: #141414;
+  color: var(--jelly-color-title);
 }
 .jelly-author-box .author-description {
   font-size: 14px;
-  color: #555555;
+  color: var(--jelly-color-text);
   line-height: 1.5;
 }
 
@@ -323,6 +323,9 @@
   border-top: 1px solid var(--jelly-color-border);
   border-bottom: 1px solid var(--jelly-color-border);
 }
+.jelly-post-navigation a {
+  color: var(--jelly-color-primary);
+}
 .jelly-post-navigation .nav-next {
   text-align: right;
 }
@@ -331,16 +334,17 @@
 * 元信息
 */
 .jelly-single-post-categories {
-  color: #555;
+  color: var(--jelly-color-description);
 }
 .jelly-single-post-categories a {
   font-size: 16px !important;
+  color: var(--jelly-color-primary);
 }
 
 .jelly-post-meta {
   margin: 20px 0;
   padding-bottom: 16px;
-  color: #555555;
+  color: var(--jelly-color-description);
   font-size: 16px;
   border-bottom: 1px solid var(--jelly-color-border);
   display: flex;
@@ -370,7 +374,7 @@
 }
 .jelly-share-buttons .share-title {
   font-size: 14px;
-  color: #555555;
+  color: var(--jelly-color-description);
 }
 .jelly-share-buttons .share-toggle {
   border-radius: 50%;
@@ -384,7 +388,7 @@
 .jelly-share-buttons .share-toggle:hover {
   border-color: var(--jelly-color-primary);
   background-color: var(--jelly-color-primary);
-  color: #fff;
+  color: var(--jelly-color-white);
 }
 .jelly-share-buttons .share-toggle svg {
   padding-top: 5px;
@@ -423,18 +427,16 @@
 .jelly-related-posts .jelly-related-post-thumbnail {
   width: 100%;
   height: 150px;
-  /* 固定高度 */
   -o-object-fit: cover;
      object-fit: cover;
   background-size: cover;
   background-position: center;
   display: block;
-  background-color: #fff;
+  background-color: var(--jelly-color-white);
   border-radius: 6px;
 }
 .jelly-related-posts .jelly-related-post-thumbnail.placeholder {
-  background-color: #e5e5e5;
-  /* 浅灰色背景 */
+  background-color: var(--jelly-color-description);
 }
 
 /*
@@ -449,7 +451,7 @@
 }
 .jelly-post-card .jelly-card-content p {
   font-size: 1em;
-  color: #555555;
+  color: var(--jelly-color-description);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -482,11 +484,14 @@
   margin-bottom: 10px;
 }
 .jelly-post-card .jelly-card-title a {
-  color: #333;
+  color: var(--jelly-color-title);
+}
+.jelly-post-card .jelly-card-title a:hover {
+  color: var(--jelly-color-primary);
 }
 .jelly-post-card .jelly-card-meta {
   font-size: 0.9em;
-  color: #555;
+  color: var(--jelly-color-description);
   margin: 0;
 }
 .jelly-post-card .jelly-card-meta span {
@@ -509,21 +514,21 @@ nav.jelly-rank-math-breadcrumb p {
   padding: 12px var(--jelly-side-width, 16px);
   font-size: 14px;
   line-height: 1.4;
-  color: #1e1e1e;
+  color: var(--jelly-color-text);
   box-sizing: border-box;
 }
 nav.jelly-rank-math-breadcrumb a {
-  color: #0a2240;
+  color: var(--jelly-color-title);
   text-decoration: underline;
 }
 nav.jelly-rank-math-breadcrumb a:hover {
-  color: #003d80;
+  color: var(--jelly-color-title);
 }
 nav.jelly-rank-math-breadcrumb .separator {
   margin: 0 4px;
 }
 nav.jelly-rank-math-breadcrumb .last {
-  color: #555555;
+  color: var(--jelly-color-description);
 }
 
 /*
@@ -550,22 +555,22 @@ nav.jelly-rank-math-breadcrumb .last {
   background-color: var(--jelly-color-border);
 }
 .jelly-archive-categories .categories-list::-webkit-scrollbar-thumb {
-  background-color: #555555;
+  background-color: var(--jelly-color-description);
 }
 .jelly-archive-categories .categories-list li {
   margin: 0;
   border-bottom: 1px solid var(--jelly-color-border);
-  padding: 12px 6px;
+  padding: 12px;
 }
 .jelly-archive-categories .categories-list li.active {
-  background: #fafafa;
+  background: var(--jelly-color-item-bg);
 }
 .jelly-archive-categories .categories-list li.active a {
-  color: #141414;
+  color: var(--jelly-color-primary);
   font-weight: 600;
 }
 .jelly-archive-categories .categories-list a {
-  color: #555555;
+  color: var(--jelly-color-description);
 }
 
 /*
@@ -631,23 +636,28 @@ nav.jelly-rank-math-breadcrumb .last {
 .gtranslate_wrapper .gt_float_switcher {
   box-shadow: none;
   position: relative !important;
-  border: 1px solid #e5e7eb;
-  border-radius: 99px;
+  border: 1px solid var(--jelly-color-border);
+  border-radius: var(--jelly-border-radius-lg);
   overflow: visible;
   background: transparent;
   padding: 4px 12px;
   min-width: 96px;
   min-height: 34px;
   box-sizing: border-box;
-  color: #333333;
+  color: var(--jelly-color-title);
+}
+.gtranslate_wrapper .gt_float_switcher:hover {
+  border-color: var(--jelly-color-border-secondary);
 }
 .gtranslate_wrapper .gt_float_switcher .gt_options {
   position: absolute;
   top: 48px;
-  background: #fff;
+  background: var(--jelly-color-white);
   right: 0;
   min-width: 200px;
   box-shadow: var(--jelly-box-shadow);
+  max-height: 362px;
+  border: 1px solid var(--jelly-color-border);
 }
 .gtranslate_wrapper .gt_float_switcher .gt-selected .gt-current-lang {
   padding: 0;
@@ -662,17 +672,19 @@ nav.jelly-rank-math-breadcrumb .last {
   height: 13.5px;
   overflow: hidden;
 }
+.gtranslate_wrapper .gt_float_switcher .gt_options::-webkit-scrollbar-track {
+  background-color: var(--jelly-color-item-bg);
+}
+.gtranslate_wrapper .gt_float_switcher .gt_options::-webkit-scrollbar-thumb {
+  background-color: var(--jelly-color-description);
+}
 .gtranslate_wrapper .gt_float_switcher .gt_options a {
+  transition: none;
   font-size: 14px;
 }
 .gtranslate_wrapper .gt_float_switcher .gt_options a:hover {
-  background-color: var(--jelly-color-primary);
-}
-.gtranslate_wrapper .gt_float_switcher .gt_options a::-webkit-scrollbar-track {
-  background-color: #e5e7eb;
-}
-.gtranslate_wrapper .gt_float_switcher .gt_options a::-webkit-scrollbar-thumb {
-  background-color: #8c8c8c;
+  color: var(--jelly-color-title);
+  background-color: var(--jelly-color-item-bg);
 }
 
 html[dir=rtl] .gtranslate_wrapper .gt_float_switcher .gt_options {
@@ -685,15 +697,15 @@ nav.rank-math-breadcrumb p {
 }
 
 #rank-math-faq {
-  background-color: #f6f6f6;
+  background-color: var(--jelly-color-item-bg);
   padding: 16px;
-  border-radius: 6px;
+  border-radius: var(--jelly-border-radius-sm);
 }
 
 .rank-math-list-item {
-  background-color: #ffffff;
+  background-color: var(--jelly-color-white);
   padding: 16px;
-  border-radius: 6px;
+  border-radius: var(--jelly-border-radius-sm);
   margin-bottom: 12px;
   box-shadow: var(--jelly-box-shadow);
 }
@@ -733,7 +745,7 @@ nav.rank-math-breadcrumb p {
   background-color: var(--jelly-color-border);
 }
 .wp-block-rank-math-toc-block nav::-webkit-scrollbar-thumb {
-  background-color: #555555;
+  background-color: var(--jelly-color-description);
 }
 .wp-block-rank-math-toc-block nav > ul {
   padding-left: 18px;
@@ -749,7 +761,7 @@ nav.rank-math-breadcrumb p {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #333333;
+  background: var(--jelly-color-text);
   position: absolute;
   left: -5px;
   top: 12px;
@@ -766,7 +778,7 @@ nav.rank-math-breadcrumb p {
   margin: 6px 0;
 }
 .wp-block-rank-math-toc-block nav a {
-  color: #555555;
+  color: var(--jelly-color-text);
   font-size: 14px;
 }
 

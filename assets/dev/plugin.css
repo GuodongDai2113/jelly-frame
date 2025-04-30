@@ -17,23 +17,28 @@
 .gtranslate_wrapper .gt_float_switcher {
   box-shadow: none;
   position: relative !important;
-  border: 1px solid #e5e7eb;
-  border-radius: 99px;
+  border: 1px solid var(--jelly-color-border);
+  border-radius: var(--jelly-border-radius-lg);
   overflow: visible;
   background: transparent;
   padding: 4px 12px;
   min-width: 96px;
   min-height: 34px;
   box-sizing: border-box;
-  color: #333333;
+  color: var(--jelly-color-title);
+}
+.gtranslate_wrapper .gt_float_switcher:hover {
+  border-color: var(--jelly-color-border-secondary);
 }
 .gtranslate_wrapper .gt_float_switcher .gt_options {
   position: absolute;
   top: 48px;
-  background: #fff;
+  background: var(--jelly-color-white);
   right: 0;
   min-width: 200px;
   box-shadow: var(--jelly-box-shadow);
+  max-height: 362px;
+  border: 1px solid var(--jelly-color-border);
 }
 .gtranslate_wrapper .gt_float_switcher .gt-selected .gt-current-lang {
   padding: 0;
@@ -48,17 +53,19 @@
   height: 13.5px;
   overflow: hidden;
 }
+.gtranslate_wrapper .gt_float_switcher .gt_options::-webkit-scrollbar-track {
+  background-color: var(--jelly-color-item-bg);
+}
+.gtranslate_wrapper .gt_float_switcher .gt_options::-webkit-scrollbar-thumb {
+  background-color: var(--jelly-color-description);
+}
 .gtranslate_wrapper .gt_float_switcher .gt_options a {
+  transition: none;
   font-size: 14px;
 }
 .gtranslate_wrapper .gt_float_switcher .gt_options a:hover {
-  background-color: var(--jelly-color-primary);
-}
-.gtranslate_wrapper .gt_float_switcher .gt_options a::-webkit-scrollbar-track {
-  background-color: #e5e7eb;
-}
-.gtranslate_wrapper .gt_float_switcher .gt_options a::-webkit-scrollbar-thumb {
-  background-color: #8c8c8c;
+  color: var(--jelly-color-title);
+  background-color: var(--jelly-color-item-bg);
 }
 
 html[dir=rtl] .gtranslate_wrapper .gt_float_switcher .gt_options {
@@ -71,15 +78,15 @@ nav.rank-math-breadcrumb p {
 }
 
 #rank-math-faq {
-  background-color: #f6f6f6;
+  background-color: var(--jelly-color-item-bg);
   padding: 16px;
-  border-radius: 6px;
+  border-radius: var(--jelly-border-radius-sm);
 }
 
 .rank-math-list-item {
-  background-color: #ffffff;
+  background-color: var(--jelly-color-white);
   padding: 16px;
-  border-radius: 6px;
+  border-radius: var(--jelly-border-radius-sm);
   margin-bottom: 12px;
   box-shadow: var(--jelly-box-shadow);
 }
@@ -119,7 +126,7 @@ nav.rank-math-breadcrumb p {
   background-color: var(--jelly-color-border);
 }
 .wp-block-rank-math-toc-block nav::-webkit-scrollbar-thumb {
-  background-color: #555555;
+  background-color: var(--jelly-color-description);
 }
 .wp-block-rank-math-toc-block nav > ul {
   padding-left: 18px;
@@ -135,7 +142,7 @@ nav.rank-math-breadcrumb p {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #333333;
+  background: var(--jelly-color-text);
   position: absolute;
   left: -5px;
   top: 12px;
@@ -152,7 +159,7 @@ nav.rank-math-breadcrumb p {
   margin: 6px 0;
 }
 .wp-block-rank-math-toc-block nav a {
-  color: #555555;
+  color: var(--jelly-color-text);
   font-size: 14px;
 }
 

@@ -16,6 +16,6 @@ if (!empty($content)) {
     echo $content;
 }else{
     ?>
-    <a class="button" href="<?php echo esc_url(home_url('/contact-us/')) ?>" rel="nofollow">Request A Quote Now</a>
+    <a class="elementor-button" href="<?php echo esc_url(home_url('/contact-us/')) ?>" rel="nofollow">Request A Quote Now</a>
     <?php
 }
