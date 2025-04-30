@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 $categories = get_categories(array(
-    'hide_empty' => false, // 是否显示空分类
+    'hide_empty' => true, // 是否显示空分类
 ));
 ?>
 <?php if (!empty($categories)): ?>
