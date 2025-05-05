@@ -33,6 +33,8 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
 }
 
+require get_template_directory() .'/includes/common.php';
+require get_template_directory() .'/includes/customize.php';
 require get_template_directory() .'/includes/themes.php';
 require get_template_directory() .'/includes/elementor.php';
 require get_template_directory() .'/includes/rank-math.php';

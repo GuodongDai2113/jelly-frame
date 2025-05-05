@@ -11,35 +11,30 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <?php while (have_posts()) : the_post(); ?>
-    <main id="content" role="main" class="jelly-post">
-        <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(['wrap_before' => '<nav aria-label="breadcrumbs" class="jelly-rank-math-breadcrumb"><p>']); ?>
-        <div class="jelly-container">
-            <?php get_template_part('widgets/post-thumbnail'); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <div class="jelly-container-main">
-                    <div class="jelly-container-content">
-                        <header>
-                            <h1><?php the_title(); ?></h1>
-                            <?php get_template_part('widgets/post-meta'); ?>
-                        </header>
-                        <?php the_content() ?>
-                        <footer>
-                            <div class="post-tags">
-                                <?php the_tags('<span class="tag-links">' . esc_html__('Tagged ', 'jelly-frame'), ', ', '</span>'); ?>
-                            </div>
-                            <?php get_template_part('widgets/post-navigation');
-                            get_template_part('widgets/author-box'); ?>
-                        </footer>
-                    </div>
-                    <div class="jelly-container-sidebar">
-                        <?php
-                        get_search_form();
-                        ?>
-                    </div>
-                </div>
-            </article>
+    <main id="main" role="main" class="post-page">
+        <?php the_breadcrumbs() ?>
+        <div class="container">
+            <?php the_theme_widget('article/post-thumbnail'); ?>
         </div>
-        <?php get_template_part('widgets/post-related'); ?>
-
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <div class="container primary">
+                <div class="content">
+                    <header>
+                        <h1 class="entry-title"><?php the_title(); ?></h1>
+                        <?php the_theme_widget('article/post-meta'); ?>
+                    </header>
+                    <?php the_content() ?>
+                    <footer>
+                        <?php
+                        the_theme_widget('article/post-tags');
+                        the_theme_widget('article/post-author');
+                        the_theme_widget('article/post-navigation');
+                        ?>
+                    </footer>
+                </div>
+                <?php get_sidebar() ?>
+            </div>
+        </article>
+        <?php the_theme_widget('article/post-related'); ?>
     </main>
 <?php endwhile; ?>

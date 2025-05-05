@@ -14,7 +14,7 @@
 
     initProgressBar() {
       const progressPath = document.querySelector(
-        ".jelly-totop .progress-circle path"
+        ".totop-button .progress-circle path"
       );
       if (!progressPath) return;
 
@@ -42,7 +42,7 @@
     initScrollTopButton() {
       const offset = 50;
       const duration = 550;
-      const $totopButton = $(".jelly-totop");
+      const $totopButton = $(".totop-button");
 
       $(window).on("scroll", () => {
         if ($(window).scrollTop() > offset) {
@@ -59,7 +59,7 @@
       });
     }
     initRankMathTocBlock() {
-      const jellyPostSidebar = $(".jelly-container-sidebar");
+      const jellyPostSidebar = $(".sidebar");
       const toc = $("div.wp-block-rank-math-toc-block");
 
       if (jellyPostSidebar.length && toc.length) {

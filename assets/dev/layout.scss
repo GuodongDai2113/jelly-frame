@@ -1,32 +1,32 @@
-.jelly-container {
+.container {
     width: var(--jelly-max-width, 1240px);
     margin: 0 auto;
     padding: 0 var(--jelly-side-width, 16px);
     box-sizing: border-box;
     position: relative;
-}
-
-.jelly-container-main {
-    display: flex;
-    margin: 32px 0;
-    gap: 48px;
-    clear: both;
-}
-
-.jelly-container-content {
-    flex: 0 0 auto;
-    width: 78%;
-    box-sizing: border-box;
-    h1 {
-        margin-top: 0;
+    &.primary {
+        display: flex;
+        margin: 32px auto;
+        gap: 48px;
+        clear: both;
+    }
+    .content {
+        flex-grow: 1; /* 自动扩展以填充可用空间 */
+        // width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        .entry-title {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+    }
+    .sidebar {
+        min-width: 200px;
+        // flex: 0 0 auto; /* 不扩展，宽度由内容或设定的宽度决定 */
     }
 }
 
-.jelly-container-sidebar {
-    flex: 1 0 0%;
-}
-
-.jelly-container-grid {
+.loop-gird {
     box-sizing: border-box;
     width: 100%;
     display: grid;
@@ -36,28 +36,29 @@
 }
 
 @media screen and (max-width: 1240px) {
-    .jelly-container {
+    .container {
         width: 100%;
     }
-    .jelly-container-grid {
+    .loop-gird {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
-    .jelly-container-main {
+    .container.primary {
         gap: 16px;
         flex-direction: column !important;
+        .content {
+            width: 100%;
+        }
+        .sidebar {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--jelly-color-border);
+        }
     }
-    .jelly-container-content {
-        width: 100%;
-    }
-    .jelly-container-sidebar {
-        margin-top: 32px;
-        padding-top: 32px;
-        border-top: 1px solid var(--jelly-color-border);
-    }
-    .jelly-container-grid {
+
+    .loop-gird {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(1, 1fr);
     }

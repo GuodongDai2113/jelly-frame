@@ -10,17 +10,19 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-if (!function_exists('jelly_frame_rank_math_setting')) {
+if (!function_exists('theme_rank_math_setting')) {
     /**
      * 在使用块编辑器时，为标题增加 id 锚文本
      * 
      * @param array $settings block_editor_settings
      * @return array $settings block_editor_settings
      */
-    function jelly_frame_rank_math_setting($settings) {
+    function theme_rank_math_setting($settings) {
         $settings['generateAnchors'] = true;
         return $settings;
     }
 }
 
-add_filter('block_editor_settings_all','jelly_frame_rank_math_setting');
+
+
+add_filter('block_editor_settings_all','theme_rank_math_setting');

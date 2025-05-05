@@ -1,6 +1,21 @@
 .site-header {
-  min-height: 60px;
   position: relative;
+}
+.site-header .container {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .site-name {
+  font-weight: 600;
+  font-size: 24px;
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.site-header .site-name:hover {
+  text-decoration: none;
 }
 .site-header .header-logo a {
   display: block;

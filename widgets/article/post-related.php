@@ -58,7 +58,7 @@ if ($tags || $categories) {
 
     if ($related_posts->have_posts()) {
         echo '<div class="jelly-related-posts">';
-        echo '<div class="jelly-container">';
+        echo '<div class="container">';
         echo '<h2>Related Posts</h2>';
         echo '<ul class="jelly-related-posts-list">';
         while ($related_posts->have_posts()) {
@@ -89,7 +89,7 @@ if ($tags || $categories) {
 
         if ($random_posts->have_posts()) {
             echo '<div class="jelly-related-posts">';
-            echo '<div class="jelly-container">';
+            echo '<div class="container">';
             echo '<h2>You Might Also Like</h2>';
             echo '<ul class="jelly-related-posts-list">';
             while ($random_posts->have_posts()) {

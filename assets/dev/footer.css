@@ -3,9 +3,18 @@
   background-color: #0a0d14;
   color: #cccccc;
 }
+.site-footer .site-name {
+  font-weight: 600;
+  font-size: 2.5em;
+  color: inherit;
+}
+.site-footer .site-name:hover {
+  text-decoration: none;
+}
 .site-footer .footer-logo {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   padding: 48px 0 24px 0;
   border-bottom: 1px solid #2d323f;
 }
@@ -35,9 +44,8 @@
   list-style: none;
 }
 .site-footer .footer-content ul .current-menu-item a {
-  color: #fff;
+  color: var(--jelly-color-primary);
   font-weight: 600;
-  text-decoration: underline;
 }
 .site-footer .footer-content ul a {
   color: inherit;

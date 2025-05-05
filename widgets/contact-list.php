@@ -10,45 +10,41 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 $organization = "Versailles Network";
-$email = "daiguo1003@gmail.com";
-$phone = "+86-13567773805";
-$address = "Daizhai Village, Liushi Town, Yueqing City, Wenzhou City, Zhejiang Province, China";
+
+$emails = explode('|', get_theme_mod('jelly_frame_emails', ''));
+$phones = explode('|', get_theme_mod('jelly_frame_phones', ''));
+$address = explode("\n", get_theme_mod('jelly_frame_address', ''));
+
 ?>
-<address class="jelly-contact-list">
-    <?php if ($email): ?>
+<address class="contact-list">
+    <?php foreach ($emails as $index => $email): ?>
         <div class="contact-item">
             <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M21 3C21.5523 3 22 3.44772 22 4V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V19H20V7.3L12 14.5L2 5.5V4C2 3.44772 2.44772 3 3 3H21ZM8 15V17H0V15H8ZM5 10V12H0V10H5ZM19.5659 5H4.43414L12 11.8093L19.5659 5Z"></path>
-                </svg>
+                <i class="ri-mail-send-line ri-icon" aria-hidden="true"></i>
             </div>
             <a class="contact-link" href="mailto:<?php echo esc_attr($email) ?>" aria-label="Email To <?php echo esc_attr($email)  ?>" title="Email To <?php echo esc_attr($email)  ?>">
                 <?php echo esc_html($email) ?>
             </a>
         </div>
-    <?php endif; ?>
-    <?php if ($phone): ?>
+    <?php endforeach; ?>
+    <?php foreach ($phones as $index => $phone): ?>
         <div class="contact-item">
             <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M9.36556 10.6821C10.302 12.3288 11.6712 13.698 13.3179 14.6344L14.2024 13.3961C14.4965 12.9845 15.0516 12.8573 15.4956 13.0998C16.9024 13.8683 18.4571 14.3353 20.0789 14.4637C20.599 14.5049 21 14.9389 21 15.4606V19.9234C21 20.4361 20.6122 20.8657 20.1022 20.9181C19.5723 20.9726 19.0377 21 18.5 21C9.93959 21 3 14.0604 3 5.5C3 4.96227 3.02742 4.42771 3.08189 3.89776C3.1343 3.38775 3.56394 3 4.07665 3H8.53942C9.0611 3 9.49513 3.40104 9.5363 3.92109C9.66467 5.54288 10.1317 7.09764 10.9002 8.50444C11.1427 8.9484 11.0155 9.50354 10.6039 9.79757L9.36556 10.6821ZM6.84425 10.0252L8.7442 8.66809C8.20547 7.50514 7.83628 6.27183 7.64727 5H5.00907C5.00303 5.16632 5 5.333 5 5.5C5 12.9558 11.0442 19 18.5 19C18.667 19 18.8337 18.997 19 18.9909V16.3527C17.7282 16.1637 16.4949 15.7945 15.3319 15.2558L13.9748 17.1558C13.4258 16.9425 12.8956 16.6915 12.3874 16.4061L12.3293 16.373C10.3697 15.2587 8.74134 13.6303 7.627 11.6707L7.59394 11.6126C7.30849 11.1044 7.05754 10.5742 6.84425 10.0252Z"></path>
-                </svg>
+                <i class="ri-phone-line ri-icon" aria-hidden="true"></i>
             </div>
             <a class="contact-link" href="tel:<?php echo esc_attr($phone) ?>" aria-label="Call To <?php echo esc_attr($phone)  ?>" title="Call To <?php echo esc_attr($phone)  ?>">
                 <?php echo esc_html($phone) ?>
             </a>
         </div>
-    <?php endif; ?>
-    <?php if ($address): ?>
+    <?php endforeach; ?>
+    <?php foreach ($address as $index => $address_text): ?>
         <div class="contact-item">
             <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.0043 12.8777C15.6589 12.3533 15.4097 11.9746 14.4622 12.1248C12.6717 12.409 12.4732 12.7224 12.3877 13.2375L12.3636 13.3943L12.3393 13.5597C12.2416 14.2428 12.2453 14.5012 12.5589 14.8308C13.8241 16.1582 14.582 17.115 14.8116 17.6746C14.9237 17.9484 15.2119 18.7751 15.0136 19.5927C16.2372 19.1066 17.3156 18.3332 18.1653 17.3559C18.2755 16.9821 18.3551 16.5166 18.3551 15.9518V15.8472C18.3551 14.9247 18.3551 14.504 17.7031 14.1314C17.428 13.9751 17.2227 13.881 17.0582 13.8064C16.691 13.6394 16.4479 13.5297 16.1198 13.0499C16.0807 12.9928 16.0425 12.9358 16.0043 12.8777ZM12 3.83333C9.68259 3.83333 7.59062 4.79858 6.1042 6.34896C6.28116 6.47186 6.43537 6.64453 6.54129 6.88256C6.74529 7.34029 6.74529 7.8112 6.74529 8.22764C6.74488 8.55621 6.74442 8.8672 6.84992 9.09302C6.99443 9.40134 7.6164 9.53227 8.16548 9.64736C8.36166 9.68867 8.56395 9.73083 8.74797 9.78176C9.25405 9.92233 9.64554 10.3765 9.95938 10.7412C10.0896 10.8931 10.2819 11.1163 10.3783 11.1717C10.4286 11.1356 10.59 10.9608 10.6699 10.6735C10.7307 10.4547 10.7134 10.2597 10.6239 10.1543C10.0648 9.49445 10.0952 8.2232 10.268 7.75495C10.5402 7.01606 11.3905 7.07058 12.012 7.11097C12.2438 7.12589 12.4626 7.14023 12.6257 7.11976C13.2482 7.04166 13.4396 6.09538 13.575 5.91C13.8671 5.50981 14.7607 4.9071 15.3158 4.53454C14.3025 4.08382 13.1805 3.83333 12 3.83333Z"></path>
-                </svg>
+                <i class="ri-earth-fill  ri-icon"></i>
             </div>
-            <span class="contact-link">
-                <?php echo esc_html($address) ?>
-            </span>
+            <p class="contact-text">
+                <?php echo esc_html($address_text) ?>
+            </p>
         </div>
-    <?php endif; ?>
+    <?php endforeach; ?>
 </address>

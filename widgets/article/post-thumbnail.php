@@ -10,5 +10,5 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 if (has_post_thumbnail()) {
-    the_post_thumbnail('large', ['class' => 'jelly-post-thumbnail', 'loading' => 'lazy', 'alt' => esc_attr(get_the_title())]);
+    the_post_thumbnail('large', ['class' => 'post-thumbnail', 'loading' => 'lazy', 'alt' => esc_attr(get_the_title())]);
 }

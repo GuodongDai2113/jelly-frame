@@ -12,13 +12,13 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <a class="skip-link screen-reader-text" href="#content"><?php echo esc_html__('Skip to content', 'jelly-frame'); ?></a>
 <header class="site-header">
-    <div class="jelly-container">
+    <div class="container">
         <div class="header-logo">
-            <?php get_template_part('widgets/site-logo') ?>
+            <?php the_theme_widget('site-logo') ?>
         </div>
         <div class="header-content">
             <?php
-            // get_template_part('widgets/menu');
+            the_theme_widget('primary-menu');
             echo do_shortcode('[gtranslate]');
             ?>
         </div>

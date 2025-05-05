@@ -36,7 +36,7 @@
 /*
 * 回到顶部按钮
 */
-.jelly-totop {
+.totop-button {
   position: fixed;
   right: 48px;
   bottom: 32px;
@@ -52,12 +52,12 @@
   transform: translateY(15px);
   transition: all 200ms linear;
 }
-.jelly-totop.active-progress {
+.totop-button.active-progress {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-.jelly-totop .arrow-up {
+.totop-button .arrow-up {
   position: absolute;
   text-align: center;
   line-height: 46px;
@@ -72,7 +72,7 @@
   z-index: 1;
   transition: all 200ms linear;
 }
-.jelly-totop .progress-circle path {
+.totop-button .progress-circle path {
   fill: #fff;
   stroke: var(--jelly-color-primary);
   stroke-width: 4;
@@ -83,7 +83,7 @@
 /*
 * 文章页 顶部 特色图片
 */
-.jelly-post-thumbnail {
+.post-thumbnail {
   width: 100%;
   max-width: unset;
   height: auto;
@@ -100,7 +100,7 @@
 /*
 * 作者框
 */
-.jelly-author-box {
+.author-box {
   background-color: var(--jelly-color-item-bg);
   padding: 20px;
   border-radius: var(--jelly-border-radius-lg);
@@ -109,10 +109,10 @@
   display: flex;
   align-items: center;
 }
-.jelly-author-box .author-avatar {
+.author-box .author-avatar {
   flex: 0 0 auto;
 }
-.jelly-author-box .avatar-img {
+.author-box .avatar-img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -121,11 +121,11 @@
   background-color: #ffffff;
   border: 1px solid var(--jelly-color-border);
 }
-.jelly-author-box .author-name {
+.author-box .author-name {
   font-size: 24px;
   color: var(--jelly-color-title);
 }
-.jelly-author-box .author-description {
+.author-box .author-description {
   font-size: 14px;
   color: var(--jelly-color-text);
   line-height: 1.5;
@@ -134,33 +134,53 @@
 /*
 * 翻页按钮
 */
-.jelly-post-navigation {
+.post-navigation {
   display: flex;
   justify-content: space-between;
   margin: 24px 0;
-  padding: 24px 0;
-  border-top: 1px solid var(--jelly-color-border);
-  border-bottom: 1px solid var(--jelly-color-border);
 }
-.jelly-post-navigation a {
+.post-navigation p {
+  margin: 0;
+  color: inherit;
+}
+.post-navigation .navigation-arrow {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.post-navigation svg {
+  padding-right: 8px;
+}
+.post-navigation a {
+  color: var(--jelly-color-text);
+}
+.post-navigation a:hover {
+  text-decoration: none;
   color: var(--jelly-color-primary);
 }
-.jelly-post-navigation .nav-next {
+.post-navigation .nav-next {
   text-align: right;
+}
+.post-navigation .nav-next svg {
+  padding-right: 0;
+  padding-left: 8px;
+}
+.post-navigation .nav-next .navigation-arrow {
+  justify-content: flex-end;
 }
 
 /*
 * 元信息
 */
-.jelly-single-post-categories {
+.post-category-list {
   color: var(--jelly-color-description);
 }
-.jelly-single-post-categories a {
-  font-size: 16px !important;
+.post-category-list a {
+  font-size: 16px;
   color: var(--jelly-color-primary);
 }
 
-.jelly-post-meta {
+.post-meta {
   margin: 20px 0;
   padding-bottom: 16px;
   color: var(--jelly-color-description);
@@ -170,32 +190,30 @@
   justify-content: space-between;
   align-items: center;
 }
-.jelly-post-meta .meta-left .release-date {
+.post-meta .meta-left .release-date {
   margin-right: 8px;
 }
-.jelly-post-meta .meta-left svg {
-  margin-right: 4px;
-  position: relative;
-  top: 4px;
+.post-meta .ri-icon {
+  font-size: 18px;
 }
-.jelly-post-meta .jelly-share-buttons {
+.post-meta .share-buttons {
   margin: 0;
 }
 
 /*
 * 分享按钮
 */
-.jelly-share-buttons {
+.share-buttons {
   display: flex;
   gap: 8px;
   align-items: center;
   margin: 16px 0;
 }
-.jelly-share-buttons .share-title {
+.share-buttons .share-title {
   font-size: 14px;
   color: var(--jelly-color-description);
 }
-.jelly-share-buttons .share-toggle {
+.share-buttons .share-toggle {
   border-radius: 50%;
   width: 28px;
   height: 28px;
@@ -204,12 +222,12 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.jelly-share-buttons .share-toggle:hover {
+.share-buttons .share-toggle:hover {
   border-color: var(--jelly-color-primary);
   background-color: var(--jelly-color-primary);
   color: var(--jelly-color-white);
 }
-.jelly-share-buttons .share-toggle svg {
+.share-buttons .share-toggle svg {
   padding-top: 5px;
 }
 
@@ -321,12 +339,12 @@
 /*
 * 面包屑
 */
-nav.jelly-rank-math-breadcrumb {
+nav.breadcrumb {
   width: 100%;
   border-top: 1px solid var(--jelly-color-border);
   border-bottom: 1px solid var(--jelly-color-border);
 }
-nav.jelly-rank-math-breadcrumb p {
+nav.breadcrumb p {
   display: block;
   width: var(--jelly-max-width, 1240px);
   margin: 0 auto;
@@ -336,17 +354,17 @@ nav.jelly-rank-math-breadcrumb p {
   color: var(--jelly-color-text);
   box-sizing: border-box;
 }
-nav.jelly-rank-math-breadcrumb a {
+nav.breadcrumb a {
   color: var(--jelly-color-title);
   text-decoration: underline;
 }
-nav.jelly-rank-math-breadcrumb a:hover {
+nav.breadcrumb a:hover {
   color: var(--jelly-color-title);
 }
-nav.jelly-rank-math-breadcrumb .separator {
+nav.breadcrumb .separator {
   margin: 0 4px;
 }
-nav.jelly-rank-math-breadcrumb .last {
+nav.breadcrumb .last {
   color: var(--jelly-color-description);
 }
 
@@ -403,12 +421,15 @@ nav.jelly-rank-math-breadcrumb .last {
   margin-bottom: 18px;
 }
 
-.jelly-contact-list .contact-item {
+.contact-list {
+  font-style: normal;
+}
+.contact-list .contact-item {
   display: flex;
   align-items: center;
   margin: 12px 0;
 }
-.jelly-contact-list .contact-icon {
+.contact-list .contact-icon {
   padding: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--jelly-border-radius-lg);
@@ -416,26 +437,38 @@ nav.jelly-rank-math-breadcrumb .last {
   line-height: 1;
   margin-right: 12px;
 }
-.jelly-contact-list .contact-link {
-  font-style: normal;
+.contact-list .ri-icon {
+  font-size: 24px;
+}
+.contact-list .contact-link {
   color: inherit;
 }
-
-.jelly-menu {
-  z-index: 999;
+.contact-list .contact-link:hover {
+  color: var(--jelly-color-primary);
 }
-.jelly-menu ul {
+.contact-list .contact-text {
+  margin: 0;
+}
+
+.primary-menu {
+  z-index: 99;
+}
+.primary-menu ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.jelly-menu .menu-list {
   display: flex;
 }
-.jelly-menu li {
+.primary-menu .menu-list {
+  display: flex;
+}
+.primary-menu li {
   margin: 0;
 }
-.jelly-menu a {
+.primary-menu li.current_page_item a {
+  color: var(--jelly-color-primary);
+}
+.primary-menu a {
   display: block;
   box-sizing: border-box;
   background-color: #fff;
@@ -443,11 +476,11 @@ nav.jelly-rank-math-breadcrumb .last {
   font-weight: 600;
   color: var(--jelly-color-title);
 }
-.jelly-menu a:hover {
+.primary-menu a:hover {
   text-decoration: none;
   color: var(--jelly-color-primary);
 }
-.jelly-menu .menu-toggle {
+.primary-menu .menu-toggle {
   box-sizing: border-box;
   padding: 6px;
   border-radius: 0;
@@ -458,6 +491,25 @@ nav.jelly-rank-math-breadcrumb .last {
   min-height: unset;
   display: none;
   text-align: center;
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+}
+.social-media .social-item {
+  display: block;
+  padding: 8px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--jelly-border-radius-lg);
+  color: inherit;
+  line-height: 1;
+  margin-left: 12px;
+}
+.social-media .social-item:hover {
+  text-decoration: none;
+  background-color: var(--jelly-color-primary);
 }
 
 @media (max-width: 1240px) {
@@ -507,11 +559,11 @@ nav.jelly-rank-math-breadcrumb .last {
   }
 }
 @media screen and (max-width: 767px) {
-  .jelly-totop {
+  .totop-button {
     right: 48px;
     bottom: 48px;
   }
-  .jelly-totop.active-progress {
+  .totop-button.active-progress {
     transform: scale(1.1) translateY(0);
   }
   .jelly-related-posts .jelly-related-posts-list {

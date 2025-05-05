@@ -9,19 +9,20 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$site_organization = get_option('site_organization', []);
+$organization_name = get_theme_mod('jelly_frame_organization_name', '');
 
 ?>
 <footer class="site-footer">
-    <div class="jelly-container">
+    <div class="container">
         <div class="footer-logo">
-            <?php get_template_part('widgets/site-logo')?>
+            <?php the_theme_widget('site-logo') ?>
+            <?php the_theme_widget('social-media') ?>
         </div>
         <div class="footer-content">
             <div class="footer-item">
                 <span class="footer-item-title">Contact</span>
                 <span class="footer-item-hr"></span>
-                <?php get_template_part('widgets/contact-list') ?>
+                <?php the_theme_widget('contact-list') ?>
             </div>
             <div class="footer-item">
                 <span class="footer-item-title">Product</span>
@@ -44,14 +45,12 @@ $site_organization = get_option('site_organization', []);
 
         </div>
     </div>
-    <div class="jelly-container">
+    <div class="container">
         <p class="copyright">
             <?php
-            if (isset($site_organization['name_en'])) {
-                echo 'Copyright © ' . date('Y') . ' ' . $site_organization['name_en'];
-            } else {
-                echo '';
-            }
+            esc_html_e('Copyright © ', 'jelly-frame');
+            echo date('Y') . ' ';
+            echo esc_html($organization_name);
             ?>
         </p>
     </div>

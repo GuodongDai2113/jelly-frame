@@ -76,7 +76,9 @@ if (!function_exists('jelly_frame_style')) {
     function jelly_frame_style()
     {
         wp_enqueue_style('normalize', JELLY_FRAME_ASSETS_URI . 'css/normalize' . JELLY_FRAME_SUFFIX . '.css', [], '8.0.1');
+        wp_enqueue_style('remixicon', JELLY_FRAME_ASSETS_URI . 'fonts/remixicon/remixicon' . JELLY_FRAME_SUFFIX . '.css', [], '2.0.0');
         wp_enqueue_style('jelly-frame', JELLY_FRAME_URI . '/style' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
+
         if (JELLY_FRAME_DEBUG) {
             // wp_enqueue_style('jelly-frame-kit', JELLY_FRAME_ASSETS_URI . 'test/kit.css', [], JELLY_FRAME_VERSION);
             wp_enqueue_style('jelly-frame-theme-layout', JELLY_FRAME_ASSETS_URI . 'dev/layout.css', [], JELLY_FRAME_VERSION);
@@ -86,8 +88,7 @@ if (!function_exists('jelly_frame_style')) {
             wp_enqueue_style('jelly-frame-theme-wordpress', JELLY_FRAME_ASSETS_URI . 'dev/wordpress.css', [], JELLY_FRAME_VERSION);
             wp_enqueue_style('jelly-frame-theme-widget', JELLY_FRAME_ASSETS_URI . 'dev/widget.css', [], JELLY_FRAME_VERSION);
             wp_enqueue_style('jelly-frame-theme-plugin', JELLY_FRAME_ASSETS_URI . 'dev/plugin.css', [], JELLY_FRAME_VERSION);
-
-        }else{
+        } else {
             wp_enqueue_style('jelly-frame-theme', JELLY_FRAME_ASSETS_URI . 'css/theme' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
         }
     }
@@ -119,31 +120,13 @@ if (!function_exists('jelly_frame_remove_wp_css')) {
         // 判断当前页面类型是否为 post
         if (!is_singular('post') && !is_singular('news')) {
             // 移除 WordPress 块库 CSS
-            wp_dequeue_style('wp-block-library');
+            // wp_dequeue_style('wp-block-library');
             // 移除 WordPress 块库主题 CSS
             wp_dequeue_style('wp-block-library-theme');
             wp_dequeue_style('global-styles');
             wp_deregister_style('classic-theme-styles');
             wp_dequeue_style('classic-theme-styles');
         }
-    }
-}
-
-if (!function_exists('jelly_frame_reading_time')) {
-
-    /**
-     * 计算阅读时间
-     * 
-     * @since  1.0.0
-     * @return int 阅读时间（分钟）
-     */
-    function jelly_frame_reading_time()
-    {
-        global $post;
-        $content = get_post_field('post_content', $post->ID);
-        $word_count = str_word_count(strip_tags($content));
-        $reading_time = ceil($word_count / 250); // 假设每分钟阅读250字
-        return $reading_time;
     }
 }
 
@@ -173,8 +156,30 @@ if (!function_exists('jelly_frame_replace_menu')) {
     }
 }
 
+if (!function_exists('jelly_frame_customize')) {
+    function jelly_frame_customize($wp_customize)
+    {
+        $wp_customize->add_setting(
+            'jelly_frame_fixed_avatar',
+            array(
+                'default'   => 0,
+            )
+        );
+        $wp_customize->add_control(
+            new WP_Customize_Media_Control(
+            $wp_customize, 
+            'jelly_frame_fixed_avatar', 
+            array(
+            'label' => __('Fixed Avatar', 'jelly-frame'),
+            'section' => 'jelly_frame_section',
+            'mime_type' => 'image',
+        )));
+    }
+}
+
 add_action('after_setup_theme', 'jelly_frame_setup');
 add_action('wp_enqueue_scripts', 'jelly_frame_remove_wp_css');
 add_action('wp_enqueue_scripts', 'jelly_frame_style');
 add_action('wp_enqueue_scripts', 'jelly_frame_script');
 add_action('admin_menu', 'jelly_frame_replace_menu');
+// add_action('customize_register', 'jelly_frame_customize');

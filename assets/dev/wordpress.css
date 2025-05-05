@@ -33,6 +33,7 @@
 .navigation.pagination {
   margin: 32px 0;
   text-align: center;
+  position: relative;
 }
 .navigation.pagination .page-numbers,
 .navigation.pagination a.page-numbers {
@@ -56,6 +57,18 @@
   background-color: var(--jelly-color-primary);
   border-color: var(--jelly-color-primary);
   color: var(--jelly-color-white);
+}
+.navigation.pagination .page-numbers.prev,
+.navigation.pagination a.page-numbers.prev {
+  position: absolute;
+  margin: 0;
+  left: 0;
+}
+.navigation.pagination .page-numbers.next,
+.navigation.pagination a.page-numbers.next {
+  position: absolute;
+  margin: 0;
+  right: 0;
 }
 .navigation.pagination .page-numbers.current {
   background: var(--jelly-color-primary);

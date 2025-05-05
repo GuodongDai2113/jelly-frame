@@ -1,7 +1,7 @@
 <?php
 
 /**
- * widgets\post-card.php
+ * widgets\loop-card.php
  * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com

@@ -28,7 +28,7 @@
         min-height: 34px;
         box-sizing: border-box;
         color: var(--jelly-color-title);
-        &:hover{
+        &:hover {
             border-color: var(--jelly-color-border-secondary);
         }
         .gt_options {
@@ -67,7 +67,7 @@
                 background-color: var(--jelly-color-description);
             }
             a {
-                transition:none;
+                transition: none;
                 font-size: 14px;
                 &:hover {
                     color: var(--jelly-color-title);
@@ -109,10 +109,11 @@ nav.rank-math-breadcrumb p {
         margin-bottom: 0;
     }
 }
-
-.wp-block-rank-math-toc-block {
+.sidebar .wp-block-rank-math-toc-block {
     position: sticky;
     top: 100px;
+}
+.wp-block-rank-math-toc-block {
     max-height: calc(100% - 200px);
     overflow-y: auto;
     margin: 24px 0;
