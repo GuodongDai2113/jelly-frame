@@ -6,31 +6,39 @@
   box-sizing: border-box;
   position: relative;
 }
-.container.primary {
+.container.flex {
   display: flex;
   margin: 32px auto;
   gap: 48px;
   clear: both;
+}
+.container.full {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.container.reverse {
+  flex-direction: row-reverse;
 }
 .container .content {
   flex-grow: 1; /* 自动扩展以填充可用空间 */
   min-width: 0;
   box-sizing: border-box;
 }
-.container .content .entry-title, .container .content .page-title {
-  margin-top: 0;
-  margin-bottom: 24px;
-}
 .container .sidebar {
   width: 240px;
   flex: 0 0 auto; /* 不扩展，宽度由内容或设定的宽度决定 */
 }
-.container .sidebar h2, .container .sidebar h3, .container .sidebar h4 {
+.container .sidebar h2,
+.container .sidebar h3,
+.container .sidebar h4 {
   font-size: 20px !important;
   text-transform: capitalize;
   box-sizing: border-box;
 }
-.container .sidebar h2::after, .container .sidebar h3::after, .container .sidebar h4::after {
+.container .sidebar h2::after,
+.container .sidebar h3::after,
+.container .sidebar h4::after {
   content: "";
   display: block;
   height: 3px;
@@ -57,14 +65,14 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .container.primary {
+  .container.flex {
     gap: 16px;
     flex-direction: column !important;
   }
-  .container.primary .content {
+  .container.flex .content {
     width: 100%;
   }
-  .container.primary .sidebar {
+  .container.flex .sidebar {
     width: 100%;
     margin-top: 32px;
     padding-top: 32px;

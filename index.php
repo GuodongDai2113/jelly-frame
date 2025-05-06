@@ -3,12 +3,14 @@
 /**
  * index.php
  * 
+ * 该文件，属于是原封不动的搬了Hello Elementor
+ * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
  * Created : 2025.04.26 09:46
  */
 
-if (! defined('ABSPATH')) exit; // 禁止直接访问
+if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
 
 get_header();
 

@@ -17,10 +17,9 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
     the_widget(
         'WC_Widget_Product_Categories',
         [
-            'hide_empty' => 1,
+            'hide_empty' => '1',
             'orderby' => 'order',
         ]
     );
-    // echo do_shortcode('[product_category]')
     ?>
 </aside>

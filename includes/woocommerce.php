@@ -116,7 +116,7 @@ add_action('woocommerce_single_product_summary', function () {
 }, 30, 0);
 
 add_action('woocommerce_share', function () {
-    get_template_part('widgets/popup-button');
+    // get_template_part('widgets/popup-button');
     get_template_part('widgets/share');
 });
 

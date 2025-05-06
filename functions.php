@@ -8,7 +8,7 @@
  * Created : 2025.01.31 20:47
  */
 
-if (! defined('ABSPATH')) exit; // 禁止直接访问
+if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 更加合理的引用其他文件
 
 // 定义主题版本号
 define('JELLY_FRAME_VERSION', '1.2.2');
@@ -33,9 +33,12 @@ if (! isset($content_width)) {
     $content_width = 800; // Pixels.
 }
 
+
 require get_template_directory() . '/includes/common.php';
 require get_template_directory() . '/includes/customize.php';
 require get_template_directory() . '/includes/themes.php';
+require get_template_directory() . '/includes/widgets.php';
 require get_template_directory() . '/includes/elementor.php';
 require get_template_directory() . '/includes/rank-math.php';
 require get_template_directory() . '/includes/woocommerce.php';
+require get_template_directory() . '/includes/hook-list.php';

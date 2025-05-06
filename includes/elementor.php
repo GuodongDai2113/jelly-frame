@@ -10,71 +10,138 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-if (!function_exists('jelly_frame_elementor_style')) {
+/**
+ * Elementor 主题兼容与增强
+ * 
+ * @since  1.2.2
+ */
+class Jelly_Frame_Elementor
+{
+
+    /**
+     * 实例接口变量
+     * 
+     * @since  1.2.2
+     * @return void
+     */
+    public static $instance;
+
+    /**
+     * 构造函数
+     * 
+     * @since  1.2.2
+     */
+    private function __construct()
+    {
+        add_action('elementor/frontend/after_enqueue_styles', array($this, 'elementor_style'));
+        add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
+        add_action('customize_register', array($this, 'customize_register'));
+        add_action('jelly_frame_elementor_header', array($this, 'elementor_header'));
+        add_action('jelly_frame_elementor_footer', array($this, 'elementor_footer'));
+    }
+
+    /**
+     * 防止克隆
+     * 
+     * @since  1.2.2
+     */
+    private function __clone() {}
+
+    /**
+     * 防止反序列化
+     * 
+     * @since  1.2.2
+     */
+    public function __wakeup() {}
+
+    /**
+     * 实例接口
+     * 
+     * @since  1.2.2
+     */
+    public static function instance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+
     /**
      * 加载Elementor主题样式
+     * @return void
      * 
      * @since  1.0.0
-     * @return void
      */
-    function jelly_frame_elementor_style()
+    public function enqueue_style()
     {
-        wp_enqueue_style('jelly-frame-elementor', JELLY_FRAME_ASSETS_URI . 'css/elementor' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
+        wp_enqueue_style('jelly-frame-elementor', JELLY_FRAME_ASSETS_URI . 'css/elementor' . JELLY_FRAME_SUFFIX . '.css', array(), JELLY_FRAME_VERSION);
     }
-}
 
-
-if (!function_exists('jelly_frame_register_elementor_locations')) {
     /**
      * 注册 Elementor 主题位置
+     * @return void
      * 
      * @since  1.0.0
-     * @return void
      */
-    function jelly_frame_register_elementor_locations($elementor_theme_manager)
+    public function register_elementor_locations($elementor_theme_manager)
     {
         $elementor_theme_manager->register_all_core_location();
     }
-}
 
-// 添加自定义设置到自定义器
-if (!function_exists('jelly_frame_customize_register')) {
-    function jelly_frame_customize_register($wp_customize)
+    /**
+     * Elementor 主题位置
+     * 
+     * 在主题编辑器未设定的情况下显示默认模板部件
+     * @return void
+     * 
+     * @since  1.2.2
+     */
+    public function the_elementor_theme_do_location($template_type)
     {
-        // 添加设置部分
+        if (! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location($template_type)) {
+            get_template_part('template-parts/' . $template_type);
+        }
+    }
+
+    /**
+     * 注册自定义设置
+     * 
+     * 选项如下：
+     * 
+     * jelly_frame_elementor_global_form_id
+     * 
+     * jelly_frame_elementor_popup_button_id
+     * 
+     * @param  WP_Customize_Manager $wp_customize
+     * @return void
+     * 
+     * @since  1.2.2
+     */
+    public function customize_register($wp_customize)
+    {
+        $prefix = 'jelly_frame_elementor_';
+        $section = $prefix . 'section';
+
         $wp_customize->add_section(
-            'jelly_frame_elementor_form_section',
+            $section,
             array(
-                'title'    => __('表单设置', 'jelly-frame'),
-                'priority' => 30,
+                'title'    => __('Elementor Settings', 'jelly-frame'),
             )
         );
 
-        // 添加设置
-        $wp_customize->add_setting(
-            'jelly_frame_elementor_global_form_id',
-            array(
-                'default'   => '',
-                'transport' => 'refresh',
-            )
-        );
-        $wp_customize->add_setting(
-            'jelly_frame_elementor_popup_button_id',
-            array(
-                'default'   => '',
-                'transport' => 'refresh',
-            )
-        );
+        $wp_customize->add_setting($prefix . 'global_form_id');
+        $wp_customize->add_setting($prefix . 'popup_button_id');
 
-        // 添加设置控件
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                'jelly_frame_elementor_global_form_id',
+                $prefix . 'global_form_id',
                 array(
-                    'label'       => __('全局表单 ID', 'jelly-frame'),
-                    'section'     => 'jelly_frame_elementor_form_section',
-                    'settings'    => 'jelly_frame_elementor_global_form_id',
+                    'label'       => __('Global Form ID', 'jelly-frame'),
+                    'section'     => $section,
+                    'settings'    => $prefix . 'global_form_id',
                     'type'        => 'number',
                 )
             )
@@ -83,36 +150,63 @@ if (!function_exists('jelly_frame_customize_register')) {
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                'jelly_frame_elementor_popup_button_id',
+                $prefix . 'popup_button_id',
                 array(
-                    'label'       => __('弹窗按钮 ID', 'jelly-frame'),
-                    'section'     => 'jelly_frame_elementor_form_section',
-                    'settings'    => 'jelly_frame_elementor_popup_button_id',
+                    'label'       => __('Popup Button ID', 'jelly-frame'),
+                    'section'     => $section,
+                    'settings'    => $prefix . 'popup_button_id',
                     'type'        => 'number',
                 )
             )
         );
     }
-}
 
-function jelly_do_elementor_shortcode($template_id)
-{
-    if (class_exists('Elementor\Plugin')) {
-        if (empty($template_id)) {
+    /**
+     * 输出 Elementor 模板
+     * 
+     * @param  int $template_id Elementor 模板ID
+     * @return string
+     * 
+     * @since  1.2.2
+     */
+    public function do_elementor_shortcode($template_id)
+    {
+        if (class_exists('Elementor\Plugin')) {
+            if (empty($template_id)) {
+                return '';
+            }
+
+            if ('publish' !== get_post_status($template_id)) {
+                return '';
+            }
+            if (!empty(Elementor\Plugin::$instance)) {
+                return Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
+            }
+        } else {
             return '';
         }
+    }
 
-        if ('publish' !== get_post_status($template_id)) {
-            return '';
-        }
-        if (!empty(Elementor\Plugin::$instance)) {
-            return Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
-        }
-    }else{
-        return '';
+    /**
+     * 输出 Elementor 页眉模板 或 默认页眉模板
+     * 
+     * @return void
+     * 
+     * @since  1.2.2
+     */
+    public function elementor_header(){
+        $this->the_elementor_theme_do_location('header');
+    }
+
+    /**
+     * 输出 Elementor 页尾模板 或 默认页眉模板
+     * 
+     * @return void
+     * 
+     * @since  1.2.2
+     */
+    public function elementor_footer(){
+        $this->the_elementor_theme_do_location('footer');
     }
 }
-
-add_action('elementor/theme/register_locations', 'jelly_frame_register_elementor_locations');
-add_action('elementor/frontend/after_enqueue_styles', 'jelly_frame_elementor_style');
-add_action('customize_register', 'jelly_frame_customize_register');
+Jelly_Frame_Elementor::instance();

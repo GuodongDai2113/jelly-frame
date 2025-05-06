@@ -4,32 +4,43 @@
     padding: 0 var(--jelly-side-width, 16px);
     box-sizing: border-box;
     position: relative;
-    &.primary {
+    &.flex {
         display: flex;
         margin: 32px auto;
         gap: 48px;
         clear: both;
+    }
+    &.full {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    &.reverse {
+        flex-direction: row-reverse;
     }
     .content {
         flex-grow: 1; /* 自动扩展以填充可用空间 */
         // width: 100%;
         min-width: 0;
         box-sizing: border-box;
-        .entry-title,.page-title{
-            margin-top: 0;
-            margin-bottom: 24px;
-        }
+        // .entry-title,
+        // .page-title {
+        //     margin-top: 0;
+        //     margin-bottom: 24px;
+        // }
     }
     .sidebar {
         width: 240px;
         flex: 0 0 auto; /* 不扩展，宽度由内容或设定的宽度决定 */
-        h2,h3,h4{
+        h2,
+        h3,
+        h4 {
             font-size: 20px !important;
             text-transform: capitalize;
             // padding: 8px 12px;
             box-sizing: border-box;
-            &::after{
-                content: '';
+            &::after {
+                content: "";
                 display: block;
                 height: 3px;
                 width: 30%;
@@ -56,17 +67,15 @@
     .loop-gird {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 @media screen and (max-width: 768px) {
-    .container.primary {
+    .container.flex {
         gap: 16px;
         flex-direction: column !important;
         .content {
             width: 100%;
         }
-        
         .sidebar {
             width: 100%;
             margin-top: 32px;

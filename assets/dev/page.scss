@@ -1,3 +1,4 @@
+/* 404 页面 */
 .error-page {
     width: 400px;
     margin: 32px auto;
@@ -13,18 +14,12 @@
     }
 }
 
-.archive-page {
-    .container.primary {
-        flex-direction: row-reverse;
-    }
-    .archive-description {
-        margin-bottom: 16px;
-    }
-}
-
+/* 文章页面 */
 .post-page .post {
+    h1{
+        margin-top: 24px;
+    }
     p {
-        // color: var(--jelly-color-text);
         a {
             text-decoration: underline;
         }
@@ -39,6 +34,7 @@
     }
 }
 
+/* 移动端 */
 @media screen and (max-width: 767px) {
     .error-page {
         width: 100%;
@@ -48,6 +44,7 @@
     }
 }
 
+/* 更小的移动端 */
 @media (max-width: 480px) {
     .error-page {
         .error-title {

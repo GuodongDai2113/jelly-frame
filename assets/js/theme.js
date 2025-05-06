@@ -140,7 +140,7 @@
         const listHeight = categoriesList.outerHeight();
         const listScrollHeight = categoriesList.get(0).scrollHeight;
         const itemOffset =
-          activeItem.position().top - activeItem.outerHeight() * 3 +3;
+          activeItem.position().top - activeItem.outerHeight() * 3 + 3;
         if (listScrollHeight > listHeight) {
           categoriesList.animate({ scrollTop: itemOffset }, 500);
         }
@@ -149,7 +149,7 @@
 
     initTableWidthTrouble() {
       $(
-        ".woocommerce-Tabs-panel--description table, .jelly-container-content table"
+        ".woocommerce-Tabs-panel--description table,.product-content table"
       ).each(function () {
         if (!$(this).parent().hasClass("jelly-content-table")) {
           $(this).wrap('<div class="jelly-content-table"></div>');
@@ -187,28 +187,24 @@
         $(".jelly-product-toc").append(li);
       });
       $(".jelly-product-toc").on("click", "a", function (event) {
-        event.preventDefault(); // 阻止默认的跳转行为
+        event.preventDefault(); // 阻止默认跳转行为
 
-        const targetId = $(this).attr("href"); // 获取锚点的目标 ID
+        const targetId = $(this).attr("href"); // 获取锚点 ID
         const targetElement = $(targetId); // 获取目标元素
 
+        // 移除当前列表中所有 active 类
+        $(this).parent().siblings().removeClass("active");
+        // 为当前点击项的父元素添加 active 类
+        $(this).parent().addClass("active");
+
         if (targetElement.length) {
-          // 计算滚动到目标元素的偏移量，留出 120px 的间距
           const offset = targetElement.offset().top - 120;
 
-          // 使用 animate 方法实现平滑滚动
           $("html, body").animate({ scrollTop: offset }, 500);
         }
 
-        // 手动更新 URL
-        history.pushState({}, "", targetId);
+        history.pushState({}, "", targetId); // 手动更新 URL
       });
-      // 设置第一个<li>为激活状态
-      // $(".woocommerce-tabs.wc-tabs li:first")
-      //   .addClass("active")
-      //   .find("a")
-      //   .attr("aria-selected", "true")
-      //   .attr("tabindex", "0");
     }
   }
 

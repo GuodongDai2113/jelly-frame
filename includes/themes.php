@@ -10,8 +10,64 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-if (!function_exists('jelly_frame_setup')) {
-    function jelly_frame_setup()
+class Jelly_Frame
+{
+
+    /**
+     * 实例接口变量
+     * 
+     * @since  1.2.2
+     * @return void
+     */
+    public static $instance;
+
+    /**
+     * 构造函数
+     * 
+     * @since  1.2.2
+     */
+    private function __construct()
+    {
+        add_action('after_setup_theme', array($this, 'setup'));
+        add_action('wp_enqueue_scripts', array($this, 'remove_wp_css'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+        add_action('admin_menu', array($this, 'replace_menu'));
+    }
+
+    /**
+     * 防止克隆
+     * 
+     * @since  1.2.2
+     */
+    private function __clone() {}
+
+    /**
+     * 防止反序列化
+     * 
+     * @since  1.2.2
+     */
+    public function __wakeup() {}
+
+    /**
+     * 实例接口
+     * 
+     * @since  1.2.2
+     */
+    public static function instance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    /**
+     * 初始化主题支持项
+     * 
+     * @since   1.0.0
+     */
+    public function setup()
     {
         // 为页面添加摘要支持
         add_post_type_support('page', 'excerpt');
@@ -64,88 +120,72 @@ if (!function_exists('jelly_frame_setup')) {
         // 移除核心块模式
         remove_theme_support('core-block-patterns');
     }
-}
 
-if (!function_exists('jelly_frame_style')) {
     /**
-     * 加载主题样式
+     * 入队主题样式
      * 
-     * @since  1.0.0
-     * @return void
+     * @since 1.0.0
      */
-    function jelly_frame_style()
+    public function enqueue_styles()
     {
+        // 加载基础样式
         wp_enqueue_style('normalize', JELLY_FRAME_ASSETS_URI . 'css/normalize' . JELLY_FRAME_SUFFIX . '.css', [], '8.0.1');
         wp_enqueue_style('remixicon', JELLY_FRAME_ASSETS_URI . 'fonts/remixicon/remixicon' . JELLY_FRAME_SUFFIX . '.css', [], '2.0.0');
         wp_enqueue_style('jelly-frame', JELLY_FRAME_URI . '/style' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
 
         if (JELLY_FRAME_DEBUG) {
-            // wp_enqueue_style('jelly-frame-kit', JELLY_FRAME_ASSETS_URI . 'test/kit.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-layout', JELLY_FRAME_ASSETS_URI . 'dev/layout.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-header', JELLY_FRAME_ASSETS_URI . 'dev/header.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-footer', JELLY_FRAME_ASSETS_URI . 'dev/footer.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-page', JELLY_FRAME_ASSETS_URI . 'dev/page.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-wordpress', JELLY_FRAME_ASSETS_URI . 'dev/wordpress.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-widget', JELLY_FRAME_ASSETS_URI . 'dev/widget.css', [], JELLY_FRAME_VERSION);
-            wp_enqueue_style('jelly-frame-theme-plugin', JELLY_FRAME_ASSETS_URI . 'dev/plugin.css', [], JELLY_FRAME_VERSION);
+            // 开发模式，直接加载源文件
+            $styles = ['layout', 'header', 'footer', 'page', 'wordpress', 'widget', 'plugin'];
+            foreach ($styles as $style) {
+                wp_enqueue_style('jelly-frame-' . $style, JELLY_FRAME_ASSETS_URI . 'dev/' . $style . '.css', [], JELLY_FRAME_VERSION);
+            }
         } else {
+            // 加载主题样式，单文件
             wp_enqueue_style('jelly-frame-theme', JELLY_FRAME_ASSETS_URI . 'css/theme' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
         }
     }
-}
 
-if (!function_exists('jelly_frame_script')) {
     /**
-     * 加载主题脚本
+     * 入队主题脚本
      * 
-     * @since  1.0.0
-     * @return void
+     * @since 1.0.0
      */
-    function jelly_frame_script()
+    public function enqueue_scripts()
     {
         wp_enqueue_script('jelly-frame', JELLY_FRAME_ASSETS_URI . 'js/theme' . JELLY_FRAME_SUFFIX . '.js', ['jquery'], JELLY_FRAME_VERSION, true);
     }
-}
-
-if (!function_exists('jelly_frame_remove_wp_css')) {
 
     /**
-     * 在不相关的页面 移除 WordPress 块库 CSS
+     * 移除 WordPress 默认样式
      * 
-     * @since  1.0.0
-     * @return void
+     * @since 1.0.0
      */
-    function jelly_frame_remove_wp_css()
+    public function remove_wp_css()
     {
-        // 判断当前页面类型是否为 post
         if (!is_singular('post') && !is_singular('news')) {
-            // 移除 WordPress 块库 CSS
+            // 移除 WordPress 块 CSS
             // wp_dequeue_style('wp-block-library');
-            // 移除 WordPress 块库主题 CSS
             wp_dequeue_style('wp-block-library-theme');
+
             wp_dequeue_style('global-styles');
             wp_deregister_style('classic-theme-styles');
             wp_dequeue_style('classic-theme-styles');
         }
     }
-}
-
-if (!function_exists('jelly_frame_replace_menu')) {
 
     /**
      * 替换后台菜单
      * 
      * @since  1.0.0
-     * @return void
      */
-    function jelly_frame_replace_menu()
+    public function replace_menu()
     {
         remove_submenu_page('themes.php', 'site-editor.php?p=/pattern');
         $menus = remove_submenu_page('themes.php', 'nav-menus.php');
         if (!empty($menus)) {
             add_menu_page(
-                __('菜单', 'jelly-frame'),
-                __('菜单', 'jelly-frame'),
+                __('Menus', 'jelly-frame'),
+                __('Menus', 'jelly-frame'),
                 'edit_theme_options',
                 'nav-menus.php',
                 '',
@@ -155,31 +195,4 @@ if (!function_exists('jelly_frame_replace_menu')) {
         }
     }
 }
-
-if (!function_exists('jelly_frame_customize')) {
-    function jelly_frame_customize($wp_customize)
-    {
-        $wp_customize->add_setting(
-            'jelly_frame_fixed_avatar',
-            array(
-                'default'   => 0,
-            )
-        );
-        $wp_customize->add_control(
-            new WP_Customize_Media_Control(
-            $wp_customize, 
-            'jelly_frame_fixed_avatar', 
-            array(
-            'label' => __('Fixed Avatar', 'jelly-frame'),
-            'section' => 'jelly_frame_section',
-            'mime_type' => 'image',
-        )));
-    }
-}
-
-add_action('after_setup_theme', 'jelly_frame_setup');
-add_action('wp_enqueue_scripts', 'jelly_frame_remove_wp_css');
-add_action('wp_enqueue_scripts', 'jelly_frame_style');
-add_action('wp_enqueue_scripts', 'jelly_frame_script');
-add_action('admin_menu', 'jelly_frame_replace_menu');
-// add_action('customize_register', 'jelly_frame_customize');
+Jelly_Frame::instance();

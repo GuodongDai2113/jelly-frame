@@ -6,9 +6,11 @@
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
  * Created : 2025.04.26 10:49
+ *
  */
-
+// FINISH
 if (! defined('ABSPATH')) exit; // 禁止直接访问
+
 ?>
 <main id="content" role="main" class="error-page">
     <h1 class="error-title"><?php echo esc_html__('404', 'jelly-frame') ?></h1>

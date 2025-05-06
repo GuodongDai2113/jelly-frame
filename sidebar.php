@@ -10,7 +10,7 @@
  * Created : 2025.04.26 09:54
  */
 
-if (! defined('ABSPATH')) exit; // 禁止直接访问
+if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 增加 CTA 或 表单
 ?>
 <aside class="sidebar">
     <?php

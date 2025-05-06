@@ -11,8 +11,8 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
-    <?php the_breadcrumbs() ?>
-    <div class="container primary">
+    <?php jelly_frame_breadcrumbs() ?>
+    <div class="container flex reverse">
         <div class="content">
             <h1 class="entry-title">
                 <?php dynamic_archive_page_title() ?>

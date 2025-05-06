@@ -9,7 +9,7 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-
+// TODO 修改为使用option来完成，同时考虑与Jelly Engine 插件的兼容性
 function jelly_frame_contact_settings_init($wp_customize)
 {
     $wp_customize->add_section(
@@ -96,6 +96,24 @@ function jelly_frame_contact_settings_init($wp_customize)
             )
         );
     }
+
+    $wp_customize->add_setting(
+        'jelly_frame_fixed_avatar',
+        array(
+            'default'   => 0,
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Media_Control(
+            $wp_customize,
+            'jelly_frame_fixed_avatar',
+            array(
+                'label' => __('Fixed Avatar', 'jelly-frame'),
+                'section' => 'jelly_frame_contact_section',
+                'mime_type' => 'image',
+            )
+        )
+    );
 }
 
 add_action('customize_register', 'jelly_frame_contact_settings_init');

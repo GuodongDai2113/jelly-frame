@@ -62,7 +62,7 @@ if (post_password_required()) {
 			</li>
 		</ul>
 	</div>
-	<div class="product-content">
+	<div class="container flex full">
 		<div class="content">
 			<h2 id="description">Description</h2>
 			<?php the_content() ?>
@@ -70,7 +70,7 @@ if (post_password_required()) {
 		<div class="sidebar">
 			<?php
 			get_search_form();
-			get_template_part('widgets/global-form');
+			// get_template_part('widgets/global-form');
 			?>
 		</div>
 	</div>

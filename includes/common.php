@@ -26,12 +26,21 @@ function get_post_reading_time($per_minute = 250)
     return $reading_time;
 }
 
+// TODO 逐渐替换，并且后续删除该函数
 function the_theme_widget($name)
 {
     get_template_part('widgets/' . $name);
 }
 
-
+/**
+ * 动态归档页标题
+ * 
+ * 没内容可以输出时，输出Blog
+ * 
+ * @since 1.1.0
+ * 
+ * @return void
+ */
 function dynamic_archive_page_title()
 {
     if (is_archive()) {
@@ -39,17 +48,7 @@ function dynamic_archive_page_title()
     } elseif (is_search()) {
         printf(esc_html__('Search Results for: %s', 'jelly-frame'), get_search_query());
     } else {
-        echo esc_html__('Blog', 'jelly-frame');
-    }
-}
-
-/**
- * 显示面包屑
- */
-function the_breadcrumbs()
-{
-    if (function_exists('rank_math_the_breadcrumbs')) {
-        rank_math_the_breadcrumbs(['wrap_before' => '<nav aria-label="breadcrumbs" class="breadcrumb"><p>']);
+        esc_html_e('Blog', 'jelly-frame');
     }
 }
 
@@ -88,6 +87,14 @@ function get_author_avatar_url()
     return $avatar_url;
 }
 
+/**
+ * 获取相关文章
+ *
+ * @param int $post_id 文章ID
+ * @return WP_Query|false
+ * 
+ * @since 1.2.0
+ */
 function get_related_posts($post_id){
     $tags = wp_get_post_tags($post_id);
     $categories = wp_get_post_categories($post_id);
@@ -133,6 +140,15 @@ function get_related_posts($post_id){
     return false;
 }
 
+/**
+ * 获取随机文章
+ * 
+ * @param  int     $post_id     文章ID
+ * @param  string  $post_type   文章类型
+ * @return WP_Query
+ * 
+ * @since 1.2.0
+ */
 function get_random_posts($post_id,$post_type="post"){
     $random_args = array(
         'post__not_in' => array($post_id),
@@ -141,18 +157,4 @@ function get_random_posts($post_id,$post_type="post"){
         'post_type' => $post_type
     );
     return new WP_Query($random_args);
-}
-
-function build_category_tree($categories, $parent_id = 0) {
-    $tree = array();
-    foreach ($categories as $category) {
-        if ($category->parent == $parent_id) {
-            $children = build_category_tree($categories, $category->term_id);
-            if (!empty($children)) {
-                $category->children = $children;
-            }
-            $tree[] = $category;
-        }
-    }
-    return $tree;
 }

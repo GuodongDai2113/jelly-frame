@@ -8,7 +8,7 @@
  * Created : 2025.04.25 09:17
  */
 
-if (! defined('ABSPATH')) exit; // 禁止直接访问
+if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
 
 /**
  * 搜索规则：

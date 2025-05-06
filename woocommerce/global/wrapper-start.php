@@ -11,5 +11,5 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="content" role="main" class="jelly-woocommerce">
-<?php the_breadcrumbs() ?>
-<div class="container primary">
+<?php jelly_frame_breadcrumbs() ?>
+<div class="container flex reverse">

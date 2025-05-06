@@ -8,7 +8,7 @@
  * Created : 2025.04.26 09:51
  */
 
-if (! defined('ABSPATH')) exit; // 禁止直接访问
+if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -21,8 +21,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 </head>
 
 <body <?php body_class(); ?>>
-	<?php wp_body_open();
-	if (! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header')) {
-		get_template_part('template-parts/header');
-	}
-	?>
+
+	<?php wp_body_open(); ?>
+
+	<?php jelly_frame_elementor_header() ?>
