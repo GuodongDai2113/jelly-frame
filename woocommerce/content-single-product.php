@@ -19,7 +19,7 @@ global $product;
  *
  * @hooked woocommerce_output_all_notices - 10
  */
-do_action('woocommerce_before_single_product');
+// do_action('woocommerce_before_single_product');
 
 if (post_password_required()) {
 	echo get_the_password_form(); // WPCS: XSS ok.
@@ -62,12 +62,12 @@ if (post_password_required()) {
 			</li>
 		</ul>
 	</div>
-	<div class="jelly-container-main jelly-product-content">
-		<div class="jelly-container-content">
-			<h1 id="description">Description</h1>
+	<div class="product-content">
+		<div class="content">
+			<h2 id="description">Description</h2>
 			<?php the_content() ?>
 		</div>
-		<div class="jelly-container-sidebar">
+		<div class="sidebar">
 			<?php
 			get_search_form();
 			get_template_part('widgets/global-form');

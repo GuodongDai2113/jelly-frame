@@ -1,7 +1,7 @@
 === Jelly Frame ===
 
-Version: 1.2.0
-Stable tag: 1.2.0
+Version: 1.2.2
+Stable tag: 1.2.2
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -49,7 +49,10 @@ Source: https://remixicon.com/license
 
 == Changelog ==
 
-= 1.2.1-1.2.2 - 2025-04-30 =
+= 1.2.1-开发 - 2025-05-06 =
+* 调整：调整类名，使用更加语义化的类名
+
+= 1.2.1-开发 - 2025-04-30 =
 * 调整：重新生成theme.min.css文件
 * 调整：将大部分固定颜色，圆角修改为变量
 * 调整：将css文件放置在dev文件中，然后使用css.py文件合并为theme

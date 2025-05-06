@@ -17,12 +17,26 @@
   min-width: 0;
   box-sizing: border-box;
 }
-.container .content .entry-title {
+.container .content .entry-title, .container .content .page-title {
   margin-top: 0;
   margin-bottom: 24px;
 }
 .container .sidebar {
-  min-width: 200px;
+  width: 240px;
+  flex: 0 0 auto; /* 不扩展，宽度由内容或设定的宽度决定 */
+}
+.container .sidebar h2, .container .sidebar h3, .container .sidebar h4 {
+  font-size: 20px !important;
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+.container .sidebar h2::after, .container .sidebar h3::after, .container .sidebar h4::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 30%;
+  margin-top: 12px;
+  background-color: var(--jelly-color-primary);
 }
 
 .loop-gird {
@@ -51,6 +65,7 @@
     width: 100%;
   }
   .container.primary .sidebar {
+    width: 100%;
     margin-top: 32px;
     padding-top: 32px;
     border-top: 1px solid var(--jelly-color-border);

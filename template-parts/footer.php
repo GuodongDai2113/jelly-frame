@@ -51,6 +51,7 @@ $organization_name = get_theme_mod('jelly_frame_organization_name', '');
             esc_html_e('Copyright © ', 'jelly-frame');
             echo date('Y') . ' ';
             echo esc_html($organization_name);
+            echo esc_html__(' All Rights Reserved.', 'jelly-frame');
             ?>
         </p>
     </div>

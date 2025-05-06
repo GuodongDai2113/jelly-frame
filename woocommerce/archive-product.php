@@ -24,8 +24,8 @@ get_header('shop');
 
 do_action('woocommerce_before_main_content');
 
-echo '<div class="jelly-container-main">';
-echo '<div class="jelly-container-content">';
+
+echo '<div class="content">';
 
 /**
  * Hook: woocommerce_shop_loop_header.
@@ -80,7 +80,7 @@ if (woocommerce_product_loop()) {
 }
 
 echo '</div>';
-echo '<div class="jelly-container-sidebar">';
+
 /**
  * Hook: woocommerce_sidebar.
  *
@@ -88,8 +88,6 @@ echo '<div class="jelly-container-sidebar">';
  */
 do_action('woocommerce_sidebar');
 
-echo '</div>';
-echo '</div>';
 
 /**
  * Hook: woocommerce_after_main_content.

@@ -147,6 +147,7 @@
   line-height: 1;
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 .post-navigation svg {
   padding-right: 8px;
@@ -155,7 +156,6 @@
   color: var(--jelly-color-text);
 }
 .post-navigation a:hover {
-  text-decoration: none;
   color: var(--jelly-color-primary);
 }
 .post-navigation .nav-next {
@@ -234,14 +234,14 @@
 /*
 * 相关文章
 */
-.jelly-related-posts {
+.related-posts {
   width: 100%;
   background-color: var(--jelly-color-item-bg);
   text-align: center;
   margin: 32px 0 0 0;
   padding: 32px 0;
 }
-.jelly-related-posts .jelly-related-posts-list {
+.related-posts .related-posts-list {
   list-style: none;
   padding: 0;
   display: grid;
@@ -249,19 +249,16 @@
   grid-template-rows: repeat(1, 1fr);
   gap: 24px;
 }
-.jelly-related-posts .jelly-related-posts-list li {
+.related-posts .related-posts-list li {
   flex: 1;
   width: 100%;
   box-sizing: border-box;
 }
-.jelly-related-posts .jelly-related-posts-list li h3 {
+.related-posts .related-posts-list li h3 {
   margin: 10px 0 0;
   font-size: 16px;
 }
-.jelly-related-posts .jelly-related-posts-list a {
-  text-decoration: none;
-}
-.jelly-related-posts .jelly-related-post-thumbnail {
+.related-posts .jelly-related-post-thumbnail {
   width: 100%;
   height: 150px;
   -o-object-fit: cover;
@@ -272,7 +269,7 @@
   background-color: var(--jelly-color-white);
   border-radius: 6px;
 }
-.jelly-related-posts .jelly-related-post-thumbnail.placeholder {
+.related-posts .jelly-related-post-thumbnail.placeholder {
   background-color: var(--jelly-color-description);
 }
 
@@ -340,7 +337,6 @@
 * 面包屑
 */
 nav.breadcrumb {
-  width: 100%;
   border-top: 1px solid var(--jelly-color-border);
   border-bottom: 1px solid var(--jelly-color-border);
 }
@@ -368,46 +364,54 @@ nav.breadcrumb .last {
   color: var(--jelly-color-description);
 }
 
-/*
-* 分类列表
-*/
-.jelly-archive-categories {
-  margin: 24px 0;
-}
-.jelly-archive-categories .categories-title {
-  font-size: 16px;
+.categories-widget .categories-title {
   margin-bottom: 18px;
 }
-.jelly-archive-categories .categories-list {
+.categories-widget ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+.categories-widget li {
+  margin: 0;
+  padding: 0;
+}
+
+.post-categories:hover .categories-list::-webkit-scrollbar-thumb {
+  background-color: var(--jelly-color-primary);
+}
+.post-categories .categories-list {
   font-size: 14px;
   max-height: 400px;
   overflow-y: auto;
 }
-.jelly-archive-categories .categories-list::-webkit-scrollbar {
+.post-categories .categories-list::-webkit-scrollbar {
   width: 3px;
 }
-.jelly-archive-categories .categories-list::-webkit-scrollbar-track {
-  background-color: var(--jelly-color-border);
+.post-categories .categories-list::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
 }
-.jelly-archive-categories .categories-list::-webkit-scrollbar-thumb {
-  background-color: var(--jelly-color-description);
+.post-categories .categories-list::-webkit-scrollbar-thumb {
+  background-color: #999;
 }
-.jelly-archive-categories .categories-list li {
+.post-categories .categories-list li {
   margin: 0;
   border-bottom: 1px solid var(--jelly-color-border);
-  padding: 12px;
 }
-.jelly-archive-categories .categories-list li.active {
+.post-categories .categories-list li.active {
   background: var(--jelly-color-primary);
 }
-.jelly-archive-categories .categories-list li.active a {
+.post-categories .categories-list li.active a {
   color: var(--jelly-color-white);
   font-weight: 600;
 }
-.jelly-archive-categories .categories-list a {
+.post-categories .categories-list a {
+  display: block;
+  padding: 8px 12px;
   color: var(--jelly-color-description);
+}
+.post-categories .categories-list a:hover {
+  color: var(--jelly-color-primary);
 }
 
 /*
@@ -477,7 +481,6 @@ nav.breadcrumb .last {
   color: var(--jelly-color-title);
 }
 .primary-menu a:hover {
-  text-decoration: none;
   color: var(--jelly-color-primary);
 }
 .primary-menu .menu-toggle {
@@ -508,7 +511,6 @@ nav.breadcrumb .last {
   margin-left: 12px;
 }
 .social-media .social-item:hover {
-  text-decoration: none;
   background-color: var(--jelly-color-primary);
 }
 
@@ -525,37 +527,14 @@ nav.breadcrumb .last {
   }
 }
 @media screen and (max-width: 1240px) {
-  nav.jelly-rank-math-breadcrumb p {
+  nav.breadcrumb p {
     width: 100%;
   }
-  .jelly-archive-categories .categories-list {
-    font-size: 16px;
+  .primary-menu .menu-list {
+    display: none;
   }
-  .jelly-menu {
-    width: 100%;
-    background-color: #fff;
-  }
-  .jelly-menu .menu-toggle {
+  .primary-menu .menu-toggle {
     display: block;
-  }
-  .jelly-menu .menu-list {
-    width: 100%;
-    height: 100%;
-    display: block;
-    margin-left: 20%;
-    background-color: #fff;
-    box-shadow: var(--jelly-box-shadow);
-  }
-  .jelly-menu .menu-list a {
-    width: 100%;
-  }
-  .jelly-menu .menu-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
   }
 }
 @media screen and (max-width: 767px) {

@@ -11,7 +11,7 @@
         color: var(--jelly-color-description);
     }
     .jelly-woocommerce {
-        .jelly-container-main:not(.jelly-product-content) {
+        .container.primary {
             flex-direction: row-reverse;
         }
     }
@@ -62,7 +62,9 @@
         }
     }
     div.product {
-        margin-top: 32px;
+        .container.primary{
+            margin-top: 32px;
+        }
         .product_meta {
             display: flex;
             flex-direction: column;
@@ -78,7 +80,7 @@
             .flex-viewport,
             .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper {
                 border: 1px solid var(--jelly-color-border);
-                border-radius: var(--jelly-border-radius-lg);
+                // border-radius: var(--jelly-border-radius-lg);
                 overflow: hidden;
                 margin-bottom: 12px;
             }
@@ -93,7 +95,7 @@
                 }
                 img {
                     border: 1px solid var(--jelly-color-border);
-                    border-radius: var(--jelly-border-radius-xs);
+                    // border-radius: var(--jelly-border-radius-xs);
                 }
             }
         }
@@ -161,6 +163,112 @@
     .woocommerce-Tabs-panel--description table {
         overflow-x: auto;
     }
+}
+
+.product-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        color: var(--jelly-color-description);
+        &:hover {
+            color: var(--jelly-color-primary);
+        }
+    }
+    a {
+        font-size: 14px;
+        display: block;
+        padding: 8px 12px;
+        color: inherit !important;
+    }
+    &:hover .children::-webkit-scrollbar-thumb {
+        background-color: var(--jelly-color-primary);
+    }
+    // 子分类
+    .children {
+        display: none;
+        padding-left: 24px;
+        max-height: 400px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: #e5e5e5;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #999;
+        }
+        > .current-cat > a {
+            color: var(--jelly-color-primary);
+            text-decoration: underline;
+        }
+        li::before {
+            content: "\F309";
+            font-family: "remixicon" !important;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            left: -16px;
+            top: 5px;
+            color: var(--jelly-color-description);
+            opacity: 0.5;
+        }
+        .current-cat::before {
+            color: var(--jelly-color-primary);
+            opacity: 1;
+        }
+    }
+
+    .current-cat,
+    .current-cat-parent {
+        .children {
+            display: block;
+        }
+    }
+    > li {
+        border-bottom: 1px solid var(--jelly-color-border);
+        &.cat-parent::before {
+            content: "\EA78";
+            font-family: "remixicon" !important;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            right: 3px;
+            top: 5px;
+            color: inherit;
+            transform: rotate(180deg);
+        }
+    }
+    // 一级分类选中或子分类被选中时的一级分类
+    > .cat-item.current-cat,
+    > .cat-item.current-cat-parent {
+        color: var(--jelly-color-white);
+        > a {
+            color: var(--jelly-color-white);
+            background: var(--jelly-color-primary);
+        }
+    }
+}
+
+.product-content{
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
 }
 
 @media (min-width: 1240px) {

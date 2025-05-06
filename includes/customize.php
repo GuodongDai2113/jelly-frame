@@ -91,6 +91,7 @@ function jelly_frame_contact_settings_init($wp_customize)
                     'settings'    => 'jelly_frame_' . $setting['id'],
                     'type'        => $setting['type'],
                     'description'  => __($setting['desc'], 'jelly-frame'),
+                    
                 )
             )
         );

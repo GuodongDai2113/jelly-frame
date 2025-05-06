@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 // 定义主题版本号
-define('JELLY_FRAME_VERSION', '1.2.1');
+define('JELLY_FRAME_VERSION', '1.2.2');
 
 // 定义主题调试模式
 define('JELLY_FRAME_DEBUG', true);
@@ -29,13 +29,13 @@ if (JELLY_FRAME_DEBUG) {
     define('JELLY_FRAME_SUFFIX', '.min');
 }
 
-if ( ! isset( $content_width ) ) {
-	$content_width = 800; // Pixels.
+if (! isset($content_width)) {
+    $content_width = 800; // Pixels.
 }
 
-require get_template_directory() .'/includes/common.php';
-require get_template_directory() .'/includes/customize.php';
-require get_template_directory() .'/includes/themes.php';
-require get_template_directory() .'/includes/elementor.php';
-require get_template_directory() .'/includes/rank-math.php';
-require get_template_directory() .'/includes/woocommerce.php';
+require get_template_directory() . '/includes/common.php';
+require get_template_directory() . '/includes/customize.php';
+require get_template_directory() . '/includes/themes.php';
+require get_template_directory() . '/includes/elementor.php';
+require get_template_directory() . '/includes/rank-math.php';
+require get_template_directory() . '/includes/woocommerce.php';

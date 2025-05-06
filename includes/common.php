@@ -87,3 +87,72 @@ function get_author_avatar_url()
 
     return $avatar_url;
 }
+
+function get_related_posts($post_id){
+    $tags = wp_get_post_tags($post_id);
+    $categories = wp_get_post_categories($post_id);
+    $tag_ids = array();
+    $category_ids = array();
+    if ($tags || $categories) {
+
+        // 获取所有标签ID
+        if ($tags) {
+            foreach ($tags as $tag) {
+                $tag_ids[] = $tag->term_id;
+            }
+        }
+
+        // 获取所有分类ID
+        if ($categories) {
+            foreach ($categories as $category) {
+                $category_ids[] = $category;
+            }
+        }
+
+        $args = array(
+            'post__not_in' => array($post_id), // 排除当前文章
+            'posts_per_page' => 3, // 显示3篇相关文章
+            'orderby' => 'rand', // 随机排序
+            'tax_query' => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'post_tag',
+                    'field' => 'id',
+                    'terms' => $tag_ids,
+                ),
+                array(
+                    'taxonomy' => 'category',
+                    'field' => 'id',
+                    'terms' => $category_ids,
+                ),
+            ),
+        );
+    
+        return new WP_Query($args);
+    }
+    return false;
+}
+
+function get_random_posts($post_id,$post_type="post"){
+    $random_args = array(
+        'post__not_in' => array($post_id),
+        'posts_per_page' => 3,
+        'orderby' => 'rand',
+        'post_type' => $post_type
+    );
+    return new WP_Query($random_args);
+}
+
+function build_category_tree($categories, $parent_id = 0) {
+    $tree = array();
+    foreach ($categories as $category) {
+        if ($category->parent == $parent_id) {
+            $children = build_category_tree($categories, $category->term_id);
+            if (!empty($children)) {
+                $category->children = $children;
+            }
+            $tree[] = $category;
+        }
+    }
+    return $tree;
+}

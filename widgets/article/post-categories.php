@@ -15,7 +15,7 @@ $categories = get_categories(array(
 ));
 ?>
 <?php if (!empty($categories)): ?>
-    <div class="jelly-archive-categories">
+    <div class="categories-widget post-categories">
         <h3 class="categories-title"><?php echo esc_html__('Categories', 'jelly-frame') ?></h3>
         <ul class="categories-list">
             <?php

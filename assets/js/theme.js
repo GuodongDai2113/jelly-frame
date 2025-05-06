@@ -80,7 +80,7 @@
             const offset = targetElement.offset().top - 120;
 
             // 使用 animate 方法实现平滑滚动
-            $("html, body").animate({ scrollTop: offset }, 0, function () {
+            $("html, body").animate({ scrollTop: offset }, 500, function () {
               // 滚动完成后执行闪烁动画
               for (let i = 0; i < 3; i++) {
                 targetElement
@@ -140,7 +140,7 @@
         const listHeight = categoriesList.outerHeight();
         const listScrollHeight = categoriesList.get(0).scrollHeight;
         const itemOffset =
-          activeItem.position().top - activeItem.outerHeight() * 2 - 10;
+          activeItem.position().top - activeItem.outerHeight() * 3 +3;
         if (listScrollHeight > listHeight) {
           categoriesList.animate({ scrollTop: itemOffset }, 500);
         }
@@ -160,7 +160,7 @@
     initWoocommerceContent() {
       // 读取#tab-description中的所有<h2>元素
 
-      $(".jelly-product-content h2").each(function (index) {
+      $(".product-content h2").each(function (index) {
         // 获取<h2>的文本内容
         let text = $(this).text().trim();
 

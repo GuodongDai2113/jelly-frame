@@ -25,7 +25,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             <span class="screen-reader-text"><?php echo esc_html__('Reading time', 'jelly-frame') ?>:</span>
             <?php
             echo get_post_reading_time();
-            echo esc_html__('minutes', 'jelly-frame')
+            echo esc_html__(' minutes', 'jelly-frame')
             ?>
         </span>
     </div>

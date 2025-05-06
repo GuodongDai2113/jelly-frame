@@ -13,7 +13,7 @@ while (have_posts()) :
 	the_post();
 ?>
 
-<main id="content" role="main" class="jelly-single jelly-container">
+<main id="content" role="main" class="jelly-single container">
 <h1><?php the_title(); ?></h1>
 <?php the_content() ?>
 <?php wp_link_pages(); ?>

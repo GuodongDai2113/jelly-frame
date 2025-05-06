@@ -24,6 +24,8 @@
 .site-header .header-logo img {
   height: 60px;
   width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .site-header .jelly-container {
   display: flex;
