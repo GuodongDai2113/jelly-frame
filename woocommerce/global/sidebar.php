@@ -13,7 +13,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 <aside class="sidebar">
     <?php
     get_search_form();
-
+    // TODO 解决排序或出现异常的问题
     the_widget(
         'WC_Widget_Product_Categories',
         [

@@ -3,6 +3,8 @@
 /**
  * includes\common.php
  * 
+ * 通用全局函数
+ * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
  * Created : 2025.05.05 14:51
