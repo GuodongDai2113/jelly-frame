@@ -6,31 +6,39 @@
   box-sizing: border-box;
   position: relative;
 }
-.container.primary {
+.container.flex {
   display: flex;
   margin: 32px auto;
   gap: 48px;
   clear: both;
+}
+.container.full {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.container.reverse {
+  flex-direction: row-reverse;
 }
 .container .content {
   flex-grow: 1; /* 自动扩展以填充可用空间 */
   min-width: 0;
   box-sizing: border-box;
 }
-.container .content .entry-title, .container .content .page-title {
-  margin-top: 0;
-  margin-bottom: 24px;
-}
 .container .sidebar {
   width: 240px;
   flex: 0 0 auto; /* 不扩展，宽度由内容或设定的宽度决定 */
 }
-.container .sidebar h2, .container .sidebar h3, .container .sidebar h4 {
+.container .sidebar h2,
+.container .sidebar h3,
+.container .sidebar h4 {
   font-size: 20px !important;
   text-transform: capitalize;
   box-sizing: border-box;
 }
-.container .sidebar h2::after, .container .sidebar h3::after, .container .sidebar h4::after {
+.container .sidebar h2::after,
+.container .sidebar h3::after,
+.container .sidebar h4::after {
   content: "";
   display: block;
   height: 3px;
@@ -57,14 +65,14 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .container.primary {
+  .container.flex {
     gap: 16px;
     flex-direction: column !important;
   }
-  .container.primary .content {
+  .container.flex .content {
     width: 100%;
   }
-  .container.primary .sidebar {
+  .container.flex .sidebar {
     width: 100%;
     margin-top: 32px;
     padding-top: 32px;
@@ -101,6 +109,8 @@
 .site-header .header-logo img {
   height: 60px;
   width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .site-header .jelly-container {
   display: flex;
@@ -276,6 +286,7 @@
   color: var(--jelly-color-description);
 }
 
+/* 404 页面 */
 .error-page {
   width: 400px;
   margin: 32px auto;
@@ -291,13 +302,10 @@
   margin-bottom: 1rem;
 }
 
-.archive-page .container.primary {
-  flex-direction: row-reverse;
+/* 文章页面 */
+.post-page .post h1 {
+  margin-top: 24px;
 }
-.archive-page .archive-description {
-  margin-bottom: 16px;
-}
-
 .post-page .post p a {
   text-decoration: underline;
 }
@@ -310,6 +318,7 @@
   margin: 24px 0;
 }
 
+/* 移动端 */
 @media screen and (max-width: 767px) {
   .error-page {
     width: 100%;
@@ -318,6 +327,7 @@
     font-size: 8rem;
   }
 }
+/* 更小的移动端 */
 @media (max-width: 480px) {
   .error-page .error-title {
     font-size: 6rem;
@@ -854,31 +864,11 @@ nav.breadcrumb .last {
   nav.breadcrumb p {
     width: 100%;
   }
-  .jelly-menu {
-    width: 100%;
-    background-color: #fff;
+  .primary-menu .menu-list {
+    display: none;
   }
-  .jelly-menu .menu-toggle {
+  .primary-menu .menu-toggle {
     display: block;
-  }
-  .jelly-menu .menu-list {
-    width: 100%;
-    height: 100%;
-    display: block;
-    margin-left: 20%;
-    background-color: #fff;
-    box-shadow: var(--jelly-box-shadow);
-  }
-  .jelly-menu .menu-list a {
-    width: 100%;
-  }
-  .jelly-menu .menu-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
   }
 }
 @media screen and (max-width: 767px) {

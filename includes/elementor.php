@@ -33,7 +33,7 @@ class Jelly_Frame_Elementor
      */
     private function __construct()
     {
-        add_action('elementor/frontend/after_enqueue_styles', array($this, 'elementor_style'));
+        add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
         add_action('customize_register', array($this, 'customize_register'));
         add_action('jelly_frame_elementor_header', array($this, 'elementor_header'));

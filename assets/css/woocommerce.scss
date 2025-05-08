@@ -1,4 +1,4 @@
-.woocommerce {
+.jelly-woocommerce {
     .content-area {
         width: var(--jelly-max-width, 1240px);
         margin: 0 auto;
@@ -278,11 +278,11 @@
 
 @media (min-width: 1240px) {
     .jelly-woocommerce {
-        .product-content{
+        .product-content {
             flex-direction: row;
         }
     }
-    .woocommerce div.product div.images {
+    .woocommerce main.jelly-woocommerce div.images {
         &.woocommerce-product-gallery {
             display: flex;
             flex-direction: row-reverse;

@@ -26,15 +26,15 @@ if (!function_exists('jelly_frame_register_woocommerce_style')) {
             'media'   => 'all',
             // 'has_rtl' => true,
         );
-        if (is_singular('product')) {
-            $styles['jelly-frame-single-product'] = array(
-                'src'     => JELLY_FRAME_ASSETS_URI . 'css/single-product' . JELLY_FRAME_SUFFIX . '.css',
-                'deps'    => [], // 依赖项
-                'version' => JELLY_FRAME_VERSION,
-                'media'   => 'all',
-                // 'has_rtl' => true,
-            );
-        }
+        // if (is_singular('product')) {
+        //     $styles['jelly-frame-single-product'] = array(
+        //         'src'     => JELLY_FRAME_ASSETS_URI . 'css/single-product' . JELLY_FRAME_SUFFIX . '.css',
+        //         'deps'    => [], // 依赖项
+        //         'version' => JELLY_FRAME_VERSION,
+        //         'media'   => 'all',
+        //         // 'has_rtl' => true,
+        //     );
+        // }
         return $styles;
     }
 }
