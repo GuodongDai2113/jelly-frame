@@ -9,12 +9,12 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$organization = "Versailles Network";
 
-$emails = explode('|', get_theme_mod('jelly_frame_emails', ''));
-$phones = explode('|', get_theme_mod('jelly_frame_phones', ''));
-$address = explode("\n", get_theme_mod('jelly_frame_address', ''));
+$site_organization = get_option('site_organization', []);
 
+$emails = explode('|', isset($site_organization['email']) ? $site_organization['email'] : '');
+$phones = explode('|', isset($site_organization['phone']) ? $site_organization['phone'] : '');
+$address = explode("\n", isset($site_organization['address']) ? $site_organization['address'] : '');
 ?>
 <address class="contact-list">
     <?php foreach ($emails as $index => $email): ?>

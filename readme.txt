@@ -1,7 +1,7 @@
 === Jelly Frame ===
 
-Version: 1.2.2
-Stable tag: 1.2.2
+Version: 1.2.3
+Stable tag: 1.2.3
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -12,12 +12,11 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 兼容 Woocommerce、Elementor、Rank Math
 
-主题采用了Elementor的主题位置功能，当使用Elementor的主题编辑时，会覆盖主题原有的模板。
-例如:编辑器设定了Header后，template-parts\header.php文件就不会被执行
-因此，该主题只是提供一个默认的样式，用于减少工作量，批量的制作网站。
-主题中编写了一些css来覆盖wp与一些插件原有的css，让他们更好看些。
-同时设定了一些Elementor小部件的默认样式，减少了后台配置的项目，减轻编辑器的冗余。
-一般有颜色的区块均使用--e-global-color-accent变量，按钮，搜索框等。
+适用于第三方外包网站，减轻页面编辑工作，固定产品分类页，产品单页，文章分类页，文章页。
+
+更加专注于其他页面的优化工作。
+
+继续优化，代码可复用性，尽可能多的兼容，更好的CSS名称。
 
 == Copyright ==
 
@@ -29,13 +28,7 @@ The theme uses the Remix Icon library
 License: Apache-2.0
 Source: https://remixicon.com/license
 
-== Features ==
-
-1. 统一使用Rank Math的面包屑功能
-2. 使用 Elementor 完成全局询价表单功能
-3. 使用 Woocommerce 文件夹来完成修改，尽可能减少修改
-
-== ToDo ==
+== TODO ==
 
 1. 无障碍
 2. RTL适配
@@ -48,6 +41,10 @@ Source: https://remixicon.com/license
 9. 避免臃肿
 
 == Changelog ==
+
+= 1.2.3 - 2025-05-06 =
+* 新增：4个 Elementor 小部件
+* 调整：面包屑小部件显示顺序Rank Math->Yoast->Woocommerce
 
 = 1.2.1-开发 - 2025-05-06 =
 * 调整：调整类名，使用更加语义化的类名

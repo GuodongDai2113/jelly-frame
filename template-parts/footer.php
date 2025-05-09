@@ -16,7 +16,6 @@ $organization_name = get_theme_mod('jelly_frame_organization_name', '');
     <div class="container">
         <div class="footer-logo">
             <?php the_theme_widget('site-logo') ?>
-            <?php the_theme_widget('social-media') ?>
         </div>
         <div class="footer-content">
             <div class="footer-item">

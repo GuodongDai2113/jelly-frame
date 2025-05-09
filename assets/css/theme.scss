@@ -641,13 +641,13 @@
 /*
 * 文章卡片
 */
-.jelly-post-card {
+.loop-card{
     width: 100%;
     box-sizing: border-box;
-    .jelly-card-content {
+    .card-content {
         padding: 20px 0;
         p {
-            font-size: 1em;
+            font-size: 16px;
             color: var(--jelly-color-description);
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -656,7 +656,7 @@
             text-overflow: ellipsis;
         }
     }
-    .jelly-card-thumbnail {
+    .card-thumbnail {
         position: relative;
         width: 100%;
         padding-top: 56.25%; // 16:9 比例 (9 / 16 * 100%)
@@ -676,7 +676,7 @@
             }
         }
     }
-    .jelly-card-title {
+    .card-title {
         font-size: 1.125rem;
         margin-top: 0;
         margin-bottom: 10px;
@@ -687,7 +687,7 @@
             }
         }
     }
-    .jelly-card-meta {
+    .card-meta {
         font-size: 0.9em;
         color: var(--jelly-color-description);
         margin: 0;

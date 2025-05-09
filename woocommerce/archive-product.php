@@ -96,4 +96,13 @@ do_action('woocommerce_sidebar');
  */
 do_action('woocommerce_after_main_content');
 
+$category_content = get_term_meta(get_queried_object_id(), 'category_content', true);
+if ($category_content) {
+	echo '<div class="category-content">';
+	echo '<div class="container">';
+	echo $category_content;
+	echo '</div>';
+	echo '</div>';
+}
+
 get_footer('shop');

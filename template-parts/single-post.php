@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <?php while (have_posts()) : the_post(); ?>
     <main id="main" role="main" class="post-page">
-        <?php jelly_frame_breadcrumbs() ?>
+        <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
         <div class="container">
             <?php the_theme_widget('article/post-thumbnail'); ?>
         </div>

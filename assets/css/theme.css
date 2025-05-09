@@ -610,15 +610,15 @@
 /*
 * 文章卡片
 */
-.jelly-post-card {
+.loop-card {
   width: 100%;
   box-sizing: border-box;
 }
-.jelly-post-card .jelly-card-content {
+.loop-card .card-content {
   padding: 20px 0;
 }
-.jelly-post-card .jelly-card-content p {
-  font-size: 1em;
+.loop-card .card-content p {
+  font-size: 16px;
   color: var(--jelly-color-description);
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -626,14 +626,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.jelly-post-card .jelly-card-thumbnail {
+.loop-card .card-thumbnail {
   position: relative;
   width: 100%;
   padding-top: 56.25%;
   overflow: hidden;
   border-radius: 6px;
 }
-.jelly-post-card .jelly-card-thumbnail img {
+.loop-card .card-thumbnail img {
   position: absolute;
   top: 0;
   left: 0;
@@ -643,26 +643,26 @@
      object-fit: cover;
   transition: transform 0.3s ease;
 }
-.jelly-post-card .jelly-card-thumbnail img:hover {
+.loop-card .card-thumbnail img:hover {
   transform: scale(1.1);
 }
-.jelly-post-card .jelly-card-title {
+.loop-card .card-title {
   font-size: 1.125rem;
   margin-top: 0;
   margin-bottom: 10px;
 }
-.jelly-post-card .jelly-card-title a {
+.loop-card .card-title a {
   color: var(--jelly-color-title);
 }
-.jelly-post-card .jelly-card-title a:hover {
+.loop-card .card-title a:hover {
   color: var(--jelly-color-primary);
 }
-.jelly-post-card .jelly-card-meta {
+.loop-card .card-meta {
   font-size: 0.9em;
   color: var(--jelly-color-description);
   margin: 0;
 }
-.jelly-post-card .jelly-card-meta span {
+.loop-card .card-meta span {
   display: inline-block;
   margin-right: 10px;
 }

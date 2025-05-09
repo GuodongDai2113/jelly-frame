@@ -56,6 +56,17 @@
   grid-template-rows: repeat(1, 1fr);
 }
 
+.content-table {
+  overflow-x: auto;
+  display: block;
+  width: 100%;
+}
+.content-table table {
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 1240px) {
   .container {
     width: 100%;
@@ -64,7 +75,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .container.flex {
     gap: 16px;
     flex-direction: column !important;

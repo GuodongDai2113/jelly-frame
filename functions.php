@@ -35,7 +35,6 @@ if (! isset($content_width)) {
 
 
 require get_template_directory() . '/includes/common.php';
-require get_template_directory() . '/includes/customize.php';
 require get_template_directory() . '/includes/themes.php';
 require get_template_directory() . '/includes/widgets.php';
 require get_template_directory() . '/includes/elementor.php';
