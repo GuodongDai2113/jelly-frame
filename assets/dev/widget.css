@@ -491,6 +491,52 @@ nav.breadcrumb .last {
 }
 
 /*
+* 页面Banner
+*/
+.page-banner {
+  padding: 32px var(--jelly-side-width, 16px);
+  box-sizing: border-box;
+  background-color: #313131;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+.page-banner h1 {
+  margin: 0;
+  color: #fff;
+}
+.page-banner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.page-banner nav.breadcrumb {
+  border: 0;
+}
+.page-banner nav.breadcrumb p {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+.page-banner nav.breadcrumb a {
+  color: #fff;
+}
+.page-banner nav.breadcrumb .last {
+  color: #fff;
+}
+
+/*
 * 全局表单
 */
 .inquiry-form {
@@ -507,6 +553,14 @@ nav.breadcrumb .last {
     top: 140px;
   }
 }
+@media screen and (min-width: 1240px) {
+  .page-banner {
+    min-height: 300px;
+  }
+  .page-banner h1 {
+    font-size: 72px;
+  }
+}
 @media screen and (max-width: 1240px) {
   nav.breadcrumb p {
     width: 100%;
@@ -517,6 +571,9 @@ nav.breadcrumb .last {
   .primary-menu .menu-toggle {
     display: block;
   }
+  .page-banner {
+    min-height: 200px;
+  }
 }
 @media screen and (max-width: 767px) {
   .totop-button {
@@ -525,6 +582,9 @@ nav.breadcrumb .last {
   }
   .totop-button.active-progress {
     transform: scale(1.1) translateY(0);
+  }
+  .page-banner {
+    min-height: 150px;
   }
   .jelly-related-posts .jelly-related-posts-list {
     flex-direction: column;

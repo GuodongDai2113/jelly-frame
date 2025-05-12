@@ -1,6 +1,11 @@
 (function ($) {
   "use strict";
 
+  /**
+   * 主题类
+   * 
+   * @author JellyDai <d@jellydai.com>
+   */
   class Theme {
     constructor() {
       this.initProgressBar();
@@ -12,6 +17,11 @@
       this.initWoocommerceContent();
     }
 
+    /**
+     * 初始化回到顶部进度条
+     * 
+     * @since 1.0.0
+     */
     initProgressBar() {
       const progressPath = document.querySelector(
         ".totop-button .progress-circle path"
@@ -39,6 +49,11 @@
       $(window).on("scroll", updateProgress);
     }
 
+    /**
+     * 初始化回到顶部按钮
+     * 
+     * @since 1.0.0
+     */
     initScrollTopButton() {
       const offset = 50;
       const duration = 550;
@@ -58,6 +73,12 @@
         return false;
       });
     }
+
+    /**
+     * 初始化 Rank Math TOC
+     * 
+     * @since 1.1.0
+     */
     initRankMathTocBlock() {
       const jellyPostSidebar = $(".sidebar");
       const toc = $("div.wp-block-rank-math-toc-block");
@@ -96,6 +117,11 @@
       }
     }
 
+    /**
+     * 初始化分享按钮
+     * 
+     * @since 1.1.0
+     */
     initShareButtons() {
       const shareButtons = {
         twitter: {
@@ -133,6 +159,11 @@
       });
     }
 
+    /**
+     * 初始化分类滚动
+     * 
+     * @since 1.1.0
+     */
     initCategoriesScroll() {
       const categoriesList = $(".categories-list");
       const activeItem = categoriesList.find("li.active");
@@ -147,6 +178,11 @@
       }
     }
 
+    /**
+     * 初始化表格宽度问题
+     * 
+     * @since 1.1.0
+     */
     initTableWidthTrouble() {
       $(
         ".content table"
@@ -210,8 +246,10 @@
 
   $(document).ready(() => {
     new Theme();
+    console.log("Document Ready!");
+    console.log("Developer:JellyDai");
+    console.log("Email:d@jellydai.com");
   });
 
-  console.log("Theme Developer:JellyDai");
-  console.log("Email:d@jellydai.com");
+
 })(jQuery);
