@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 更加合理的引用其他文件
 
 // 定义主题版本号
-define('JELLY_FRAME_VERSION', '1.2.2');
+define('JELLY_FRAME_VERSION', '1.2.3');
 
 // 定义主题调试模式
 define('JELLY_FRAME_DEBUG', false);
@@ -35,7 +35,6 @@ if (! isset($content_width)) {
 
 
 require get_template_directory() . '/includes/common.php';
-require get_template_directory() . '/includes/customize.php';
 require get_template_directory() . '/includes/themes.php';
 require get_template_directory() . '/includes/widgets.php';
 require get_template_directory() . '/includes/elementor.php';

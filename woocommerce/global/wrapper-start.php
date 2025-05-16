@@ -10,6 +10,6 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
-<main id="content" role="main" class="jelly-woocommerce">
-<?php jelly_frame_breadcrumbs() ?>
+<main id="content" role="main" class="product-page">
+<?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
 <div class="container flex reverse">

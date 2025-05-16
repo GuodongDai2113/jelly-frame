@@ -56,7 +56,7 @@ if (post_password_required()) {
 		?>
 	</div>
 	<div class="woocommerce-tabs wc-tabs-wrapper">
-		<ul class="jelly-product-toc">
+		<ul class="product-table-of-content">
 			<li class="active">
 				<a href="#description">Description</a>
 			</li>
@@ -67,12 +67,15 @@ if (post_password_required()) {
 			<h2 id="description">Description</h2>
 			<?php the_content() ?>
 		</div>
-		<div class="sidebar">
-			<?php
-			get_search_form();
-			// get_template_part('widgets/global-form');
-			?>
-		</div>
+		<?php
+		/**
+		 * Hook: woocommerce_sidebar.
+		 *
+		 * @hooked woocommerce_get_sidebar - 10
+		 */
+		do_action('woocommerce_sidebar');
+
+		?>
 	</div>
 	<?php
 	/**

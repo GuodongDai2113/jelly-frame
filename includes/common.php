@@ -3,6 +3,8 @@
 /**
  * includes\common.php
  * 
+ * 通用全局函数
+ * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
  * Created : 2025.05.05 14:51
@@ -35,9 +37,8 @@ function the_theme_widget($name)
 /**
  * 动态归档页标题
  * 
- * 没内容可以输出时，输出Blog
- * 
  * @since 1.1.0
+ * @since 1.2.3 增加 is_home 判断
  * 
  * @return void
  */
@@ -47,6 +48,15 @@ function dynamic_archive_page_title()
         the_archive_title();
     } elseif (is_search()) {
         printf(esc_html__('Search Results for: %s', 'jelly-frame'), get_search_query());
+    } elseif (is_home()) {
+        // 输出绑定页面的标题
+        $blog_id = get_option('page_for_posts');
+        if ($blog_id) {
+            $blog_title = get_the_title($blog_id);
+            echo esc_html($blog_title);
+        } else {
+            esc_html_e('Blog', 'jelly-frame');
+        }
     } else {
         esc_html_e('Blog', 'jelly-frame');
     }
@@ -71,7 +81,7 @@ function get_author_avatar_url()
         $avatar_url =  get_avatar_url($author_id, array('size' => 100));
     } else {
         // 是否存在固定头像
-        $fixed_avatar = get_theme_mod('jelly_frame_fixed_avatar',0);
+        $fixed_avatar = get_theme_mod('jelly_frame_fixed_avatar', 0);
         if ($fixed_avatar) {
             return wp_get_attachment_image_url($fixed_avatar, 'full');
         }
@@ -95,7 +105,8 @@ function get_author_avatar_url()
  * 
  * @since 1.2.0
  */
-function get_related_posts($post_id){
+function get_related_posts($post_id)
+{
     $tags = wp_get_post_tags($post_id);
     $categories = wp_get_post_categories($post_id);
     $tag_ids = array();
@@ -134,7 +145,7 @@ function get_related_posts($post_id){
                 ),
             ),
         );
-    
+
         return new WP_Query($args);
     }
     return false;
@@ -149,7 +160,8 @@ function get_related_posts($post_id){
  * 
  * @since 1.2.0
  */
-function get_random_posts($post_id,$post_type="post"){
+function get_random_posts($post_id, $post_type = "post")
+{
     $random_args = array(
         'post__not_in' => array($post_id),
         'posts_per_page' => 3,

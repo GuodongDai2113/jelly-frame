@@ -9,13 +9,11 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$button_id = get_theme_mod('jelly_frame_elementor_popup_button_id');
-$content = jelly_do_elementor_shortcode($button_id);
 
-if (!empty($content)) {
-    echo $content;
-}else{
-    ?>
-    <a class="elementor-button" href="<?php echo esc_url(home_url('/contact-us/')) ?>" rel="nofollow">Request A Quote Now</a>
-    <?php
+$popup_button = Jelly_Frame_Elementor::$instance->get_popup_button();
+
+if (!empty($popup_button)) {
+    echo $popup_button;
+} else {
+    echo '<a class="elementor-button" href="' . esc_url(home_url('/contact-us/')) . '" rel="nofollow">' . esc_html('Request A Quote Now', 'jelly-frame') . '</a>';
 }

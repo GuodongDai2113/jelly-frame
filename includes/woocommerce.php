@@ -20,7 +20,7 @@ if (!function_exists('jelly_frame_register_woocommerce_style')) {
     function jelly_frame_register_woocommerce_style($styles)
     {
         $styles['jelly-frame-woocommerce'] = array(
-            'src'     => JELLY_FRAME_ASSETS_URI . 'css/woocommerce' . JELLY_FRAME_SUFFIX . '.css',
+            'src'     => JELLY_FRAME_URI . '/woocommerce/css/w-front-end' . JELLY_FRAME_SUFFIX . '.css',
             'deps'    => [], // 依赖项
             'version' => JELLY_FRAME_VERSION,
             'media'   => 'all',
@@ -117,7 +117,7 @@ add_action('woocommerce_single_product_summary', function () {
 
 add_action('woocommerce_share', function () {
     // get_template_part('widgets/popup-button');
-    get_template_part('widgets/share');
+    // get_template_part('widgets/share');
 });
 
 add_filter('woocommerce_product_tabs', function ($tabs) {

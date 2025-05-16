@@ -1,6 +1,11 @@
 (function ($) {
   "use strict";
 
+  /**
+   * 主题类
+   * 
+   * @author JellyDai <d@jellydai.com>
+   */
   class Theme {
     constructor() {
       this.initProgressBar();
@@ -12,6 +17,11 @@
       this.initWoocommerceContent();
     }
 
+    /**
+     * 初始化回到顶部进度条
+     * 
+     * @since 1.0.0
+     */
     initProgressBar() {
       const progressPath = document.querySelector(
         ".totop-button .progress-circle path"
@@ -39,6 +49,11 @@
       $(window).on("scroll", updateProgress);
     }
 
+    /**
+     * 初始化回到顶部按钮
+     * 
+     * @since 1.0.0
+     */
     initScrollTopButton() {
       const offset = 50;
       const duration = 550;
@@ -58,6 +73,12 @@
         return false;
       });
     }
+
+    /**
+     * 初始化 Rank Math TOC
+     * 
+     * @since 1.1.0
+     */
     initRankMathTocBlock() {
       const jellyPostSidebar = $(".sidebar");
       const toc = $("div.wp-block-rank-math-toc-block");
@@ -96,6 +117,11 @@
       }
     }
 
+    /**
+     * 初始化分享按钮
+     * 
+     * @since 1.1.0
+     */
     initShareButtons() {
       const shareButtons = {
         twitter: {
@@ -133,6 +159,11 @@
       });
     }
 
+    /**
+     * 初始化分类滚动
+     * 
+     * @since 1.1.0
+     */
     initCategoriesScroll() {
       const categoriesList = $(".categories-list");
       const activeItem = categoriesList.find("li.active");
@@ -147,12 +178,17 @@
       }
     }
 
+    /**
+     * 初始化表格宽度问题
+     * 
+     * @since 1.1.0
+     */
     initTableWidthTrouble() {
       $(
-        ".woocommerce-Tabs-panel--description table,.product-content table"
+        ".content table"
       ).each(function () {
-        if (!$(this).parent().hasClass("jelly-content-table")) {
-          $(this).wrap('<div class="jelly-content-table"></div>');
+        if (!$(this).parent().hasClass("content-table")) {
+          $(this).wrap('<div class="content-table"></div>');
         }
       });
     }
@@ -160,7 +196,7 @@
     initWoocommerceContent() {
       // 读取#tab-description中的所有<h2>元素
 
-      $(".product-content h2").each(function (index) {
+      $(".product .content h2").each(function (index) {
         // 获取<h2>的文本内容
         let text = $(this).text().trim();
 
@@ -184,9 +220,9 @@
         `;
 
         // 将<li>链接添加到.woocommerce-tabs wc-tabs中
-        $(".jelly-product-toc").append(li);
+        $(".product-table-of-content").append(li);
       });
-      $(".jelly-product-toc").on("click", "a", function (event) {
+      $(".product-table-of-content").on("click", "a", function (event) {
         event.preventDefault(); // 阻止默认跳转行为
 
         const targetId = $(this).attr("href"); // 获取锚点 ID
@@ -210,8 +246,10 @@
 
   $(document).ready(() => {
     new Theme();
+    console.log("Document Ready!");
+    console.log("Developer:JellyDai");
+    console.log("Email:d@jellydai.com");
   });
 
-  console.log("Theme Developer:JellyDai");
-  console.log("Email:d@jellydai.com");
+
 })(jQuery);

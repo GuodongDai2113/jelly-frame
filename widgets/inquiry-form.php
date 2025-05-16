@@ -1,7 +1,7 @@
 <?php
 
 /**
- * widgets\global-form.php
+ * widgets\inquiry-form.php
  * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
@@ -9,12 +9,12 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$global_form_id = get_theme_mod('jelly_frame_elementor_global_form_id');
-$content = jelly_do_elementor_shortcode($global_form_id);
+
+$form = Jelly_Frame_Elementor::$instance->get_global_form();
 ?>
-<?php if (!empty($content)): ?>
-    <div class="jelly-global-form">
+<?php if (!empty($form)): ?>
+    <div class="inquiry-form">
         <h3 class="form-title"><?php echo esc_html__('Get a Free Quote', 'jelly-frame') ?></h3>
-        <?php echo $content; ?>
+        <?php echo $form; ?>
     </div>
 <?php endif; ?>

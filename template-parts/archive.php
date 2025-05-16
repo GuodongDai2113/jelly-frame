@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
-    <?php jelly_frame_breadcrumbs() ?>
+    <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
     <div class="container flex reverse">
         <div class="content">
             <h1 class="entry-title">

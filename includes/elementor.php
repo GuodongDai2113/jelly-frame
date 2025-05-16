@@ -34,10 +34,12 @@ class Jelly_Frame_Elementor
     private function __construct()
     {
         add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_style'));
+        add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
         add_action('customize_register', array($this, 'customize_register'));
         add_action('jelly_frame_elementor_header', array($this, 'elementor_header'));
         add_action('jelly_frame_elementor_footer', array($this, 'elementor_footer'));
+        add_action('elementor/elements/categories_registered', array($this, 'add_elementor_widget_categories'));
     }
 
     /**
@@ -70,17 +72,32 @@ class Jelly_Frame_Elementor
 
     /**
      * 加载Elementor主题样式
+     * 
      * @return void
      * 
      * @since  1.0.0
      */
     public function enqueue_style()
     {
-        wp_enqueue_style('jelly-frame-elementor', JELLY_FRAME_ASSETS_URI . 'css/elementor' . JELLY_FRAME_SUFFIX . '.css', array(), JELLY_FRAME_VERSION);
+        wp_enqueue_style('jelly-frame-elementor-front-end', JELLY_FRAME_URI . '/elementor/css/e-front-end' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
+    }
+
+    /**
+     * 加载Elementor 后台编辑器样式
+     * 
+     * @return void
+     * 
+     * @since  1.2.3
+     */
+    public function enqueue_editor_style()
+    {
+        wp_enqueue_style('remixicon', JELLY_FRAME_ASSETS_URI . 'fonts/remixicon/remixicon' . JELLY_FRAME_SUFFIX . '.css', [], '2.0.0');
+        wp_enqueue_style('jelly-frame-elementor-editor', JELLY_FRAME_URI . '/elementor/css/editor' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
     }
 
     /**
      * 注册 Elementor 主题位置
+     * 
      * @return void
      * 
      * @since  1.0.0
@@ -94,6 +111,7 @@ class Jelly_Frame_Elementor
      * Elementor 主题位置
      * 
      * 在主题编辑器未设定的情况下显示默认模板部件
+     * 
      * @return void
      * 
      * @since  1.2.2
@@ -121,8 +139,7 @@ class Jelly_Frame_Elementor
      */
     public function customize_register($wp_customize)
     {
-        $prefix = 'jelly_frame_elementor_';
-        $section = $prefix . 'section';
+        $section = 'jelly_frame_elementor_section';
 
         $wp_customize->add_section(
             $section,
@@ -131,17 +148,21 @@ class Jelly_Frame_Elementor
             )
         );
 
-        $wp_customize->add_setting($prefix . 'global_form_id');
-        $wp_customize->add_setting($prefix . 'popup_button_id');
+        $wp_customize->add_setting('jelly_frame_elementor_global_form_id', array(
+            'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
+        ));
+        $wp_customize->add_setting('jelly_frame_elementor_popup_button_id', array(
+            'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
+        ));
 
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                $prefix . 'global_form_id',
+                'jelly_frame_elementor_global_form_id',
                 array(
                     'label'       => __('Global Form ID', 'jelly-frame'),
                     'section'     => $section,
-                    'settings'    => $prefix . 'global_form_id',
+                    'settings'    => 'jelly_frame_elementor_global_form_id',
                     'type'        => 'number',
                 )
             )
@@ -150,11 +171,11 @@ class Jelly_Frame_Elementor
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                $prefix . 'popup_button_id',
+                'jelly_frame_elementor_popup_button_id',
                 array(
                     'label'       => __('Popup Button ID', 'jelly-frame'),
                     'section'     => $section,
-                    'settings'    => $prefix . 'popup_button_id',
+                    'settings'    => 'jelly_frame_elementor_popup_button_id',
                     'type'        => 'number',
                 )
             )
@@ -194,7 +215,8 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.2
      */
-    public function elementor_header(){
+    public function elementor_header()
+    {
         $this->the_elementor_theme_do_location('header');
     }
 
@@ -205,8 +227,54 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.2
      */
-    public function elementor_footer(){
+    public function elementor_footer()
+    {
         $this->the_elementor_theme_do_location('footer');
+    }
+
+    /**
+     * 输出 Elementor 弹窗按钮
+     * 
+     * @return void
+     * 
+     * @since  1.2.3
+     */
+    public function get_popup_button()
+    {
+        $button_id = get_theme_mod('jelly_frame_elementor_popup_button_id');
+        return $this->do_elementor_shortcode($button_id);
+    }
+
+    /**
+     * 输出 Elementor 弹窗按钮
+     * 
+     * @return void
+     * 
+     * @since  1.2.3
+     */
+    public function get_global_form()
+    {
+        $button_id = get_theme_mod('jelly_frame_elementor_global_form_id');
+        return $this->do_elementor_shortcode($button_id);
+    }
+
+    /**
+     * 添加 Elementor 插件分类
+     * 
+     * @param  Elementor\Elements_Manager $elements_manager
+     * @return void
+     * 
+     * @since  1.2.3
+     */
+    public function add_elementor_widget_categories($elements_manager)
+    {
+        $elements_manager->add_category(
+            'jelly-frame',
+            [
+                'title' => esc_html__('Jelly Frame', 'jelly-frame'),
+                'icon' => 'fa fa-plug',
+            ]
+        );
     }
 }
 Jelly_Frame_Elementor::instance();
