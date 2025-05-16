@@ -11,10 +11,10 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 更加合理的引用其他文件
 
 // 定义主题版本号
-define('JELLY_FRAME_VERSION', '1.2.9');
+define('JELLY_FRAME_VERSION', '1.2.4');
 
 // 定义主题调试模式
-define('JELLY_FRAME_DEBUG', false);
+define('JELLY_FRAME_DEBUG', true);
 
 // 定义主题URI
 define('JELLY_FRAME_URI', get_theme_file_uri());
@@ -34,9 +34,16 @@ if (! isset($content_width)) {
 }
 
 
+// 加载全局通用函数
 require get_template_directory() . '/includes/common.php';
+
+// 加载主题初始化
 require get_template_directory() . '/includes/themes.php';
+
+// 加载小部件
 require get_template_directory() . '/includes/widgets.php';
+
+// 加载 Elementor 支持
 require get_template_directory() . '/includes/elementor.php';
 require get_template_directory() . '/includes/rank-math.php';
 require get_template_directory() . '/includes/woocommerce.php';

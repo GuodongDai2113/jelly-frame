@@ -248,6 +248,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-y: auto;
+  }
+  .woocommerce main.product-page div.images .flex-control-nav::-webkit-scrollbar {
+    width: 0;
   }
   .woocommerce main.product-page div.images .flex-control-thumbs li {
     width: 100%;

@@ -279,6 +279,10 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
         }
         .flex-control-thumbs li {
             width: 100%;
