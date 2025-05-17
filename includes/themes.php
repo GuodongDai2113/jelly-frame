@@ -35,6 +35,7 @@ class Jelly_Frame
         add_action('admin_menu', array($this, 'replace_menu'));
         add_action('customize_register', array($this, 'customize_register'));
         add_action('wp_head', array($this, 'add_page_banner_style'));
+        add_filter('nav_menu_css_class', array($this, 'clean_nav_menu_classes'), 10, 4);
     }
 
     /**
@@ -137,7 +138,7 @@ class Jelly_Frame
 
         if (JELLY_FRAME_DEBUG) {
             // 开发模式，直接加载源文件
-            $styles = ['layout', 'header', 'footer', 'page', 'wordpress', 'widget', 'plugin'];
+            $styles = ['layout', 'footer', 'page', 'wordpress', 'widget', 'plugin'];
             foreach ($styles as $style) {
                 wp_enqueue_style('jelly-frame-' . $style, JELLY_FRAME_ASSETS_URI . 'dev/' . $style . '.css', [], JELLY_FRAME_VERSION);
             }
@@ -239,6 +240,14 @@ class Jelly_Frame
             return true;
         }
         return false;
+    }
+
+    function clean_nav_menu_classes($classes, $item, $args, $depth)
+    {
+        // 保留你需要的 class，例如：current-menu-item、menu-item-has-children
+        $allowed_classes = array('current-menu-item', 'menu-item-has-children');
+
+        return array_intersect($classes, $allowed_classes);
     }
 }
 Jelly_Frame::instance();

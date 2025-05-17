@@ -207,8 +207,9 @@ button,
 [type=submit],
 [type=button] {
   display: inline-block;
-  font-weight: 400;
-  color: #ffffff;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--jelly-color-white);
   text-align: center;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -216,12 +217,13 @@ button,
   user-select: none;
   background-color: var(--jelly-color-primary);
   border: 1px solid var(--jelly-color-primary);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  border-radius: var(--jelly-border-radius-sm);
   transition: all 0.3s;
-  min-height: 40px;
+  /* min-height: 40px; */
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 button:focus:not(:focus-visible),

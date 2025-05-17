@@ -44,6 +44,12 @@
   padding: 0;
   font-size: 14px;
 }
+.gtranslate_wrapper .gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow {
+  transform: rotate(0deg);
+}
+.gtranslate_wrapper .gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow.gt_arrow_rotate {
+  transform: rotate(180deg);
+}
 .gtranslate_wrapper .gt_float_switcher,
 .gtranslate_wrapper .gt_float_switcher .gt-selected {
   background: 0 0;

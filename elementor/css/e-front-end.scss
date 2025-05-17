@@ -23,12 +23,14 @@
 }
 
 .elementor-button {
+    border: 1px solid var(--jelly-color-primary);
     background-color: var(--jelly-color-primary);
-    border-radius: var(--jelly-border-radius-xs);
+    border-radius: var(--jelly-border-radius-sm);
     cursor: pointer;
     white-space: nowrap;
     font-weight: 600;
-    font-size: 0.833rem;
+    font-size: 0.875rem;
+    padding: 12px 24px;
 }
 
 .elementor-widget-search {

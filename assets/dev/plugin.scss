@@ -45,6 +45,13 @@
         .gt-selected .gt-current-lang {
             padding: 0;
             font-size: 14px;
+            span.gt_float_switcher-arrow
+            {
+                transform: rotate(0deg);
+            }
+            span.gt_float_switcher-arrow.gt_arrow_rotate{
+                transform: rotate(180deg);
+            }
         }
 
         &,

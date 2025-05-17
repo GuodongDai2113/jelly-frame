@@ -11,10 +11,10 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 $logo = get_custom_logo();
 ?>
-<?php if (!empty($logo)): ?>
-    <div class="site-logo">
+<div class="site-logo">
+    <?php if (!empty($logo)): ?>
         <?php echo $logo ?>
-    </div>
-<?php else: ?>
-    <a href="<?php echo esc_url(home_url('/')) ?>" class="site-name" rel="home"><?php echo esc_html(get_bloginfo('name')) ?></a>
-<?php endif ?>
+    <?php else: ?>
+        <a href="<?php echo esc_url(home_url('/')) ?>" class="custom-logo-link" rel="home"><?php echo esc_html(get_bloginfo('name')) ?></a>
+    <?php endif ?>
+</div>

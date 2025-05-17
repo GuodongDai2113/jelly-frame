@@ -172,21 +172,6 @@
             clear: left;
         }
 
-        a.button {
-            padding: 0.5rem 1rem;
-            background-color: var(--jelly-color-primary);
-            border: 1px solid var(--jelly-color-primary);
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: 0;
-            color: var(--jelly-color-white);
-            font-weight: 400;
-            &:hover {
-                background-color: var(--jelly-color-primary);
-                color: var(--jelly-color-white);
-            }
-        }
-
         table.shop_attributes {
             border-top: 0;
             tr {
@@ -288,5 +273,38 @@
             width: 100%;
             float: none;
         }
+    }
+}
+
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor))
+    .woocommerce
+    #respond
+    input#submit,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor))
+    .woocommerce
+    a.button,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor))
+    .woocommerce
+    button.button,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor))
+    .woocommerce
+    input.button {
+    border: 1px solid var(--jelly-color-primary);
+    color: var(--jelly-color-white);
+    background-color: var(--jelly-color-primary);
+    border-radius: var(--jelly-border-radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 12px 24px;
+    &:hover {
+        color: #ffffff;
+        background-color: var(--jelly-color-primary);
+        text-decoration: none;
     }
 }

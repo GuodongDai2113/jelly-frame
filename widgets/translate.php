@@ -9,5 +9,7 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-?>
-<?php echo do_shortcode('[gtranslate]'); ?>
+
+if (shortcode_exists('gtranslate')) {
+    echo do_shortcode('[gtranslate]');
+}

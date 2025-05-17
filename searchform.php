@@ -42,7 +42,7 @@ if (is_page()) {
     $post_type = 'product';
 }
 ?>
-<form role="search" method="get" id="searchform" class="jelly-search-form" action="<?php echo esc_url(home_url('/')) ?>">
+<form role="search" method="get" id="searchform" class="search-form" action="<?php echo esc_url(home_url('/')) ?>">
     <label class="screen-reader-text" for="s"><?php echo __('Search for:', 'jelly-frame') ?></label>
     <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" aria-label="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" />
     <input type="hidden" name="post_type" value="<?php echo esc_attr($post_type) ?>" />

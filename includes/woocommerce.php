@@ -26,15 +26,15 @@ if (!function_exists('jelly_frame_register_woocommerce_style')) {
             'media'   => 'all',
             // 'has_rtl' => true,
         );
-        // if (is_singular('product')) {
-        //     $styles['jelly-frame-single-product'] = array(
-        //         'src'     => JELLY_FRAME_ASSETS_URI . 'css/single-product' . JELLY_FRAME_SUFFIX . '.css',
-        //         'deps'    => [], // 依赖项
-        //         'version' => JELLY_FRAME_VERSION,
-        //         'media'   => 'all',
-        //         // 'has_rtl' => true,
-        //     );
-        // }
+
+        $styles['jelly-frame-woo'] = array(
+            'src'     => JELLY_FRAME_ASSETS_URI . 'css/woo' . JELLY_FRAME_SUFFIX . '.css',
+            'deps'    => [], // 依赖项
+            'version' => JELLY_FRAME_VERSION,
+            'media'   => 'all',
+            // 'has_rtl' => true,
+        );
+        
         return $styles;
     }
 }
@@ -126,3 +126,15 @@ add_filter('woocommerce_product_tabs', function ($tabs) {
     }
     return $tabs;
 });
+
+
+// add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
+function jk_dequeue_styles( $enqueue_styles ) {
+	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
+	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
+	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+	return $enqueue_styles;
+}
+
+// Or just remove them all in one line
+// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );

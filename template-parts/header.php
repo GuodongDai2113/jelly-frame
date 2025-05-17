@@ -21,7 +21,6 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
         <div class="header-content">
             <?php
             Jelly_Frame_Widgets::$instance->render('primary-menu');
-            // echo do_shortcode('[gtranslate]');
             ?>
         </div>
     </div>

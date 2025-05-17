@@ -10,10 +10,16 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-$popup_button = Jelly_Frame_Elementor::$instance->get_popup_button();
+$popup_id = Jelly_Frame_Elementor::$instance->get_popup_id();
 
-if (!empty($popup_button)) {
-    echo $popup_button;
-} else {
-    echo '<a class="elementor-button" href="' . esc_url(home_url('/contact-us/')) . '" rel="nofollow">' . esc_html('Request A Quote Now', 'jelly-frame') . '</a>';
+
+if (!empty($popup_id)) {
+    $link = Jelly_Frame_Elementor::$instance->create_action_hash('popup:open', ['id' => $popup_id, 'toggle' => false,]);
+    echo '<a class="button elementor-button" href="' . esc_attr($link) . '"  rel="nofollow">';
+    echo '<i class="ri-question-answer-line ri-icon"></i>';
+    esc_html_e('Get A Quote', 'jelly-frame');
+    echo '</a>';
+    if (class_exists('ElementorPro\Modules\Popup\Module')) {
+        ElementorPro\Modules\Popup\Module::add_popup_to_location($popup_id);
+    }
 }

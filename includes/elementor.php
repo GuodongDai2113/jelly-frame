@@ -130,7 +130,7 @@ class Jelly_Frame_Elementor
      * 
      * jelly_frame_elementor_global_form_id
      * 
-     * jelly_frame_elementor_popup_button_id
+     * jelly_frame_elementor_popup_id
      * 
      * @param  WP_Customize_Manager $wp_customize
      * @return void
@@ -151,7 +151,7 @@ class Jelly_Frame_Elementor
         $wp_customize->add_setting('jelly_frame_elementor_global_form_id', array(
             'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
         ));
-        $wp_customize->add_setting('jelly_frame_elementor_popup_button_id', array(
+        $wp_customize->add_setting('jelly_frame_elementor_popup_id', array(
             'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
         ));
 
@@ -171,11 +171,11 @@ class Jelly_Frame_Elementor
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                'jelly_frame_elementor_popup_button_id',
+                'jelly_frame_elementor_popup_id',
                 array(
-                    'label'       => __('Popup Button ID', 'jelly-frame'),
+                    'label'       => __('Popup ID', 'jelly-frame'),
                     'section'     => $section,
-                    'settings'    => 'jelly_frame_elementor_popup_button_id',
+                    'settings'    => 'jelly_frame_elementor_popup_id',
                     'type'        => 'number',
                 )
             )
@@ -239,10 +239,11 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.3
      */
-    public function get_popup_button()
+    public function get_popup_id()
     {
-        $button_id = get_theme_mod('jelly_frame_elementor_popup_button_id');
-        return $this->do_elementor_shortcode($button_id);
+        $button_id = get_theme_mod('jelly_frame_elementor_popup_id');
+        return $button_id;
+        // return $this->do_elementor_shortcode($button_id);
     }
 
     /**
@@ -275,6 +276,15 @@ class Jelly_Frame_Elementor
                 'icon' => 'fa fa-plug',
             ]
         );
+    }
+
+
+    /** 
+     * 搬运自elementor\Forntend::1351
+     * 
+    */
+    function create_action_hash( $action, array $settings = [] ) {
+        return '#' . rawurlencode( sprintf( 'elementor-action:action=%1$s&settings=%2$s', $action, base64_encode( wp_json_encode( $settings ) ) ) );
     }
 }
 Jelly_Frame_Elementor::instance();
