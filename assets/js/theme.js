@@ -3,7 +3,7 @@
 
   /**
    * 主题类
-   * 
+   *
    * @author JellyDai <d@jellydai.com>
    */
   class Theme {
@@ -15,11 +15,12 @@
       this.initCategoriesScroll();
       this.initTableWidthTrouble();
       this.initWoocommerceContent();
+      this.initPrimaryMenu();
     }
 
     /**
      * 初始化回到顶部进度条
-     * 
+     *
      * @since 1.0.0
      */
     initProgressBar() {
@@ -51,7 +52,7 @@
 
     /**
      * 初始化回到顶部按钮
-     * 
+     *
      * @since 1.0.0
      */
     initScrollTopButton() {
@@ -76,7 +77,7 @@
 
     /**
      * 初始化 Rank Math TOC
-     * 
+     *
      * @since 1.1.0
      */
     initRankMathTocBlock() {
@@ -119,7 +120,7 @@
 
     /**
      * 初始化分享按钮
-     * 
+     *
      * @since 1.1.0
      */
     initShareButtons() {
@@ -161,7 +162,7 @@
 
     /**
      * 初始化分类滚动
-     * 
+     *
      * @since 1.1.0
      */
     initCategoriesScroll() {
@@ -180,13 +181,11 @@
 
     /**
      * 初始化表格宽度问题
-     * 
+     *
      * @since 1.1.0
      */
     initTableWidthTrouble() {
-      $(
-        ".content table"
-      ).each(function () {
+      $(".content table").each(function () {
         if (!$(this).parent().hasClass("content-table")) {
           $(this).wrap('<div class="content-table"></div>');
         }
@@ -242,6 +241,77 @@
         history.pushState({}, "", targetId); // 手动更新 URL
       });
     }
+
+    initPrimaryMenu() {
+      // 桌面端：检测子菜单是否超出右边界，如果是则向左展开
+      $(".primary-menu li").hover(function () {
+        const $submenu = $(this).children(".sub-menu");
+        if ($submenu.length && $(window).width() > 1240) {
+          $submenu.removeClass("open-left").css({
+            visibility: "hidden",
+            display: "block",
+          });
+
+          const rect = $submenu[0].getBoundingClientRect();
+          const overflowRight = rect.right > $(window).width();
+
+          if (overflowRight) {
+            $submenu.addClass("open-left");
+          }
+
+          $submenu.css({ visibility: "", display: "" });
+        }
+      });
+
+      // 打开移动端菜单
+      $(".menu-toggle").on("click", function () {
+        $(".primary-menu").addClass("active");
+        $(".menu-overlay").addClass("active");
+      });
+
+      // 关闭移动端菜单
+      $(".menu-close, .menu-overlay").on("click", function () {
+        $(".primary-menu").removeClass("active");
+        $(".menu-overlay").removeClass("active");
+        $(".primary-menu li").removeClass("submenu-open");
+      });
+
+      // 移动端：点击菜单项展开子菜单（阻止默认跳转）
+      $(".primary-menu li.menu-item-has-children > a").on(
+        "click",
+        function (e) {
+          const $parentLi = $(this).parent("li");
+
+          if ($(window).width() <= 1240) {
+            if (!$parentLi.hasClass("submenu-open")) {
+              e.preventDefault();
+
+              // 关闭其他子菜单
+              $parentLi
+                .siblings(".menu-item-has-children")
+                .removeClass("submenu-open");
+
+              // 打开当前子菜单
+              $parentLi.addClass("submenu-open");
+            } else {
+              // 第二次点击允许跳转
+              return true;
+            }
+          }
+        }
+      );
+
+      // 窗口尺寸变化时清理移动端状态
+      $(window).on("resize", function () {
+        if ($(window).width() > 1240) {
+          $(".primary-menu").removeClass("active");
+          $(".menu-overlay").removeClass("active");
+          $(".primary-menu li.menu-item-has-children").removeClass(
+            "submenu-open"
+          );
+        }
+      });
+    }
   }
 
   $(document).ready(() => {
@@ -250,6 +320,4 @@
     console.log("Developer:JellyDai");
     console.log("Email:d@jellydai.com");
   });
-
-
 })(jQuery);

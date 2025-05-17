@@ -246,7 +246,11 @@
 }
 
 .primary-menu {
-  z-index: 99;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
 }
 .primary-menu ul {
   margin: 0;
@@ -254,37 +258,66 @@
   list-style: none;
   display: flex;
 }
-.primary-menu .menu-list {
-  display: flex;
-}
 .primary-menu li {
   margin: 0;
+  position: relative;
 }
-.primary-menu li.current_page_item a {
+.primary-menu li:hover > .sub-menu {
+  display: block;
+}
+.primary-menu li.current_page_item > a {
   color: var(--jelly-color-primary);
+}
+.primary-menu li.menu-item-has-children > a::after {
+  content: "\ea78";
+  font-size: 16px;
+  font-family: "remixicon" !important;
+  font-style: normal;
+  display: inline-block;
+  margin-left: 8px;
+  transform: rotate(90deg);
+  transition: all 0.3s ease-in-out;
+}
+.primary-menu li.menu-item-has-children > a:hover::after {
+  transform: rotate(180deg);
 }
 .primary-menu a {
   display: block;
-  box-sizing: border-box;
-  background-color: #fff;
   padding: 8px 16px;
   font-weight: 600;
   color: var(--jelly-color-title);
+  background-color: #fff;
+  box-sizing: border-box;
 }
 .primary-menu a:hover {
   color: var(--jelly-color-primary);
 }
-.primary-menu .menu-toggle {
-  box-sizing: border-box;
-  padding: 6px;
-  border-radius: 0;
-  border: 0;
-  background-color: transparent;
-  color: var(--jelly-color-title);
-  line-height: 1;
-  min-height: unset;
+.primary-menu .sub-menu {
   display: none;
-  text-align: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.primary-menu .sub-menu a {
+  font-weight: 400;
+}
+.primary-menu .sub-menu .sub-menu {
+  top: 0;
+  left: 100%;
+}
+.primary-menu .sub-menu .sub-menu.open-left {
+  left: auto;
+  right: 100%;
+}
+.primary-menu .menu-close {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
 }
 
 /*
@@ -565,10 +598,100 @@ nav.breadcrumb .last {
   nav.breadcrumb p {
     width: 100%;
   }
-  .primary-menu .menu-list {
+  .menu-toggle {
+    display: block;
+    box-sizing: border-box;
+    padding: 6px;
+    border: none;
+    background: transparent;
+    color: var(--jelly-color-title);
+    line-height: 1;
+    text-align: center;
+  }
+  .menu-toggle:hover {
+    background: none;
+    border: 0;
+    color: var(--jelly-color-title);
+  }
+  .menu-toggle .ri-menu-line {
+    font-size: 20px;
+  }
+  .primary-menu {
+    position: fixed;
+    top: 0;
+    right: -360px;
+    width: 300px;
+    height: 100%;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    display: block;
+  }
+  .primary-menu.active {
+    right: 0;
+  }
+  .primary-menu ul {
+    display: block;
+  }
+  .primary-menu ul > li {
+    border-bottom: 1px solid var(--jelly-color-border);
+  }
+  .primary-menu .sub-menu {
+    display: block;
+    position: relative !important;
+    top: unset !important;
+    left: unset !important;
+    width: 100%;
+    box-shadow: none;
+    overflow: hidden;
+    height: auto;
+    max-height: 0;
+    transition: max-height 1s ease-in-out;
+    padding-left: 12px;
+    overflow: hidden;
+  }
+  .primary-menu .sub-menu > li {
+    border-bottom: 0;
+  }
+  .primary-menu .submenu-open > .sub-menu {
+    max-height: 999px;
+  }
+  .primary-menu .menu-actions {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    left: 0;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  .primary-menu .menu-close {
+    display: block;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: var(--jelly-color-title);
+    cursor: pointer;
+  }
+  .primary-menu .menu-container {
+    margin: 64px 0;
+  }
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
     display: none;
   }
-  .primary-menu .menu-toggle {
+  .menu-overlay.active {
     display: block;
   }
   .page-banner {

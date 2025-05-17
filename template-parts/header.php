@@ -14,12 +14,14 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 <header class="site-header">
     <div class="container">
         <div class="header-logo">
-            <?php the_theme_widget('site-logo') ?>
+            <?php
+            Jelly_Frame_Widgets::$instance->render('site-logo');
+            ?>
         </div>
         <div class="header-content">
             <?php
-            the_theme_widget('primary-menu');
-            echo do_shortcode('[gtranslate]');
+            Jelly_Frame_Widgets::$instance->render('primary-menu');
+            // echo do_shortcode('[gtranslate]');
             ?>
         </div>
     </div>
