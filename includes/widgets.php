@@ -73,6 +73,8 @@ class Jelly_Frame_Widgets
             'search' => 'Jelly_Frame_Search_Widget',
             'contact-list' => 'Jelly_Frame_Contact_List_Widget',
             'page-banner' => 'Jelly_Frame_Page_Banner_Widget',
+            'primary-menu' => 'Jelly_Frame_Primary_Menu_Widget',
+            'loop-card' => 'Jelly_Frame_Loop_Card_Widget',
         );
     }
 

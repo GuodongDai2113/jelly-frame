@@ -26,6 +26,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 <?php
                 if (have_posts()) {
                     while (have_posts()) {
+                        the_post();
                         the_theme_widget('loop-card');
                     }
                 } else {

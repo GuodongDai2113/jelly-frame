@@ -1,30 +1,30 @@
 <?php
 
 /**
- * elementor\widgets\share.php
+ * elementor\widgets\primary-menu.php
  * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
- * Created : 2025.05.09 11:33
+ * Created : 2025.05.19 16:00
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame_Share_Widget extends \Elementor\Widget_Base
+class Jelly_Frame_Primary_Menu_Widget extends \Elementor\Widget_Base
 {
     public function get_name(): string
     {
-        return 'jelluy_frame_share';
+        return 'jelluy_frame_primary_menu';
     }
 
     public function get_title(): string
     {
-        return esc_html__('Share', 'jelly-frame');
+        return esc_html__('Primary Menu', 'jelly-frame');
     }
 
     public function get_icon(): string
     {
-        return 'ri-twitter-line';
+        return 'ri-menu-line';
     }
 
     public function get_categories(): array
@@ -34,7 +34,7 @@ class Jelly_Frame_Share_Widget extends \Elementor\Widget_Base
 
     public function get_keywords(): array
     {
-        return ['share'];
+        return ['menu'];
     }
 
     public function get_custom_help_url(): string {
@@ -67,6 +67,6 @@ class Jelly_Frame_Share_Widget extends \Elementor\Widget_Base
 	}
 
     protected function render(): void {
-        get_template_part('widgets/share-buttons');
+        get_template_part('widgets/primary-menu');
     }
 }

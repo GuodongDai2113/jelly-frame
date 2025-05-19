@@ -490,6 +490,7 @@ nav.breadcrumb .separator {
   padding-top: 56.25%;
   overflow: hidden;
   border-radius: 6px;
+  background-color: #e5e5e5;
 }
 .loop-card .card-thumbnail img {
   position: absolute;

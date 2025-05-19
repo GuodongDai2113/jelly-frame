@@ -20,25 +20,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             }
             ?>
         </div>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="container flex">
-                <div class="content">
-                    <header>
-                        <h1 class="entry-title"><?php the_title(); ?></h1>
-                        <?php Jelly_Frame_Widgets::$instance->render('article/post-meta'); ?>
-                    </header>
-                    <?php the_content() ?>
-                    <footer>
-                        <?php
-                        Jelly_Frame_Widgets::$instance->render('article/post-tags');
-                        Jelly_Frame_Widgets::$instance->render('article/post-author');
-                        Jelly_Frame_Widgets::$instance->render('article/post-navigation');
-                        ?>
-                    </footer>
-                </div>
-                <?php get_sidebar() ?>
-            </div>
-        </article>
+        <?php Jelly_Frame_Widgets::$instance->render('article/content-article'); ?>
         <?php Jelly_Frame_Widgets::$instance->render('article/post-related'); ?>
     </main>
 <?php endwhile; ?>
