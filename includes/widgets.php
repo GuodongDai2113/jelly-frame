@@ -32,6 +32,7 @@ class Jelly_Frame_Widgets
     {
         $this->init_widget_list();
         add_action('elementor/widgets/register', array($this, 'register_elementor_widgets'));
+        add_action('init', array($this, 'register_block_widgets'));
     }
 
     /**
@@ -61,7 +62,7 @@ class Jelly_Frame_Widgets
         return self::$instance;
     }
 
-    
+
     /**
      * 初始化小部件列表
      * 
@@ -123,6 +124,19 @@ class Jelly_Frame_Widgets
     public static function render($widget_name)
     {
         get_template_part('widgets/' . $widget_name);
+    }
+    function register_block_widgets()
+    {
+        wp_register_script(
+            'wp-block-cta-js',
+            get_template_directory_uri() . '/blocks/cta/index.js',
+            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-block-editor'],
+            JELLY_FRAME_VERSION,
+            true
+        );
+        register_block_type(get_template_directory() . '/blocks/cta', [
+            'editor_script' => 'wp-block-cta-js',
+        ]);
     }
 }
 Jelly_Frame_Widgets::instance();
