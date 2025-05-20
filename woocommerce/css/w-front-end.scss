@@ -101,7 +101,8 @@
     }
 }
 
-.product-page {
+.product-page,
+.elementor-widget-jelluy_frame_content_single_product {
     // 描述文本
     .page-description,
     .woocommerce-result-count {
@@ -248,7 +249,8 @@
 }
 
 @media (min-width: 1240px) {
-    .woocommerce main.product-page div.images {
+    .woocommerce main.product-page div.images,
+    .woocommerce div.elementor-widget-jelluy_frame_content_single_product div.images {
         &.woocommerce-product-gallery {
             display: flex;
             flex-direction: row-reverse;

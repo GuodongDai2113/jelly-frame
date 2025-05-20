@@ -15,13 +15,13 @@ $organization_name = get_theme_mod('jelly_frame_organization_name', '');
 <footer class="site-footer">
     <div class="container">
         <div class="footer-logo">
-            <?php the_theme_widget('site-logo') ?>
+            <?php Jelly_Frame_Widgets::render('site-logo') ?>
         </div>
         <div class="footer-content">
             <div class="footer-item">
                 <span class="footer-item-title">Contact</span>
                 <span class="footer-item-hr"></span>
-                <?php the_theme_widget('contact-list') ?>
+                <?php Jelly_Frame_Widgets::render('contact-list') ?>
             </div>
             <div class="footer-item">
                 <span class="footer-item-title">Product</span>

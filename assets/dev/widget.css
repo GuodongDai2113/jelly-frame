@@ -316,15 +316,19 @@ nav.breadcrumb .separator {
   justify-content: space-between;
   margin: 24px 0;
 }
-.post-navigation p {
+.post-navigation .navigation-title {
   margin: 0;
   color: inherit;
+  font-size: 14px;
 }
 .post-navigation .navigation-arrow {
   line-height: 1;
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  gap: 4px;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 .post-navigation svg {
   padding-right: 8px;

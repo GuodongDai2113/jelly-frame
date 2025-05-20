@@ -24,7 +24,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             ]
         );
     }
-    Jelly_Frame_Widgets::$instance->render('inquiry-form');
+    Jelly_Frame_Widgets::render('inquiry-form');
     ?>
 
 </aside>

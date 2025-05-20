@@ -26,11 +26,11 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             <i class="ri-search-line" aria-hidden="true"></i>
         </button>
         <?php
-        Jelly_Frame_Widgets::$instance->render('translate');
+        Jelly_Frame_Widgets::render('translate');
         ?>
     </div>
     <?php
-    Jelly_Frame_Widgets::$instance->render('popup-button');
+    Jelly_Frame_Widgets::render('popup-button');
     ?>
 </div>
 <button class="menu-toggle" aria-label="<?php esc_attr_e('Toggle menu', 'jelly-frame'); ?>" aria-expanded="false">

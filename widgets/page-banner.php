@@ -20,7 +20,7 @@ if (is_front_page()) {
         <?php else: ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
         <?php endif; ?>
-        <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); 
+        <?php Jelly_Frame_Widgets::render('breadcrumb'); 
         ?>
     </div>
 </div>

@@ -151,7 +151,7 @@ nav.rank-math-breadcrumb p {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--jelly-color-text);
+  background: var(--jelly-color-primary);
   position: absolute;
   left: -5px;
   top: 12px;
@@ -170,6 +170,10 @@ nav.rank-math-breadcrumb p {
 .wp-block-rank-math-toc-block nav a {
   color: var(--jelly-color-text);
   font-size: 14px;
+}
+.wp-block-rank-math-toc-block nav a:hover {
+  color: var(--jelly-color-primary);
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 767px) {

@@ -24,7 +24,7 @@ class Jelly_Frame_Loop_Card_Widget extends \Elementor\Widget_Base
 
     public function get_icon(): string
     {
-        return 'ri-corner-down-right-line';
+        return 'ri-infinity-line';
     }
 
     public function get_categories(): array

@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
-    <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
+    <?php Jelly_Frame_Widgets::render('breadcrumb'); ?>
     <div class="container flex reverse">
         <div class="content">
             <h1 class="entry-title">
@@ -27,7 +27,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post();
-                        the_theme_widget('loop-card');
+                        Jelly_Frame_Widgets::render('loop-card');
                     }
                 } else {
                 ?>

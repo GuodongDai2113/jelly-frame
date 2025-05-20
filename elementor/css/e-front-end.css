@@ -161,6 +161,17 @@ div.elementor-menu-toggle {
   color: var(--jelly-color-white);
 }
 
+.elementor-widget-container .container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.elementor-widget-container .breadcrumb {
+  border: 0;
+  padding: 0;
+}
+
 @media screen and (max-width: 1240px) {
   .elementor-nav-menu--main .elementor-nav-menu ul {
     box-shadow: none;

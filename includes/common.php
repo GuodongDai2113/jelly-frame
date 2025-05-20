@@ -28,12 +28,6 @@ function get_post_reading_time($per_minute = 250)
     return $reading_time;
 }
 
-// TODO 逐渐替换，并且后续删除该函数
-function the_theme_widget($name)
-{
-    get_template_part('widgets/' . $name);
-}
-
 /**
  * 动态归档页标题
  * 
@@ -45,6 +39,7 @@ function the_theme_widget($name)
 function dynamic_archive_page_title()
 {
     if (is_archive()) {
+        add_filter('get_the_archive_title_prefix',function (){return '';});
         the_archive_title();
     } elseif (is_search()) {
         printf(esc_html__('Search Results for: %s', 'jelly-frame'), get_search_query());

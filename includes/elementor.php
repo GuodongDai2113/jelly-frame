@@ -272,7 +272,7 @@ class Jelly_Frame_Elementor
         $elements_manager->add_category(
             'jelly-frame',
             [
-                'title' => esc_html__('Jelly Frame', 'jelly-frame'),
+                'title' => esc_html__('Jelly Frame (Theme)', 'jelly-frame'),
                 'icon' => 'fa fa-plug',
             ]
         );
@@ -282,9 +282,14 @@ class Jelly_Frame_Elementor
     /** 
      * 搬运自elementor\Forntend::1351
      * 
-    */
-    function create_action_hash( $action, array $settings = [] ) {
-        return '#' . rawurlencode( sprintf( 'elementor-action:action=%1$s&settings=%2$s', $action, base64_encode( wp_json_encode( $settings ) ) ) );
+     * 创建 action 链接
+     * @return string
+     * 
+     * @since 1.2.4
+     */
+    function create_action_hash($action, array $settings = [])
+    {
+        return '#' . rawurlencode(sprintf('elementor-action:action=%1$s&settings=%2$s', $action, base64_encode(wp_json_encode($settings))));
     }
 }
 Jelly_Frame_Elementor::instance();

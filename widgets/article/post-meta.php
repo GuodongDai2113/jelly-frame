@@ -29,5 +29,5 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             ?>
         </span>
     </div>
-    <?php Jelly_Frame_Widgets::$instance->render('share-buttons') ?>
+    <?php Jelly_Frame_Widgets::render('share-buttons') ?>
 </div>

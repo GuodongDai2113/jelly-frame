@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <?php while (have_posts()) : the_post(); ?>
     <main id="main" role="main" class="post-page">
-        <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
+        <?php Jelly_Frame_Widgets::render('breadcrumb'); ?>
         <div class="container">
             <?php
             if (has_post_thumbnail()) {
@@ -20,7 +20,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             }
             ?>
         </div>
-        <?php Jelly_Frame_Widgets::$instance->render('article/content-article'); ?>
-        <?php Jelly_Frame_Widgets::$instance->render('article/post-related'); ?>
+        <?php Jelly_Frame_Widgets::render('article/content-article'); ?>
+        <?php Jelly_Frame_Widgets::render('article/post-related'); ?>
     </main>
 <?php endwhile; ?>

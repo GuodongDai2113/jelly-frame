@@ -331,9 +331,9 @@
         vertical-align: top;
     }
     .post {
-        h1 {
-            margin-top: 0;
-        }
+        // h1 {
+        //     margin-top: 0;
+        // }
         p {
             a {
                 text-decoration: underline;
@@ -708,15 +708,19 @@ nav.breadcrumb {
     display: flex;
     justify-content: space-between;
     margin: 24px 0;
-    p {
+    .navigation-title{
         margin: 0;
         color: inherit;
+        font-size: 14px;
     }
     .navigation-arrow {
         line-height: 1;
         display: flex;
         align-items: center;
         text-transform: uppercase;
+        gap: 4px;
+        font-weight: 600;
+        margin-bottom: 4px;
     }
     svg {
         padding-right: 8px;
@@ -883,6 +887,7 @@ nav.breadcrumb {
         padding-top: 56.25%; // 16:9 比例 (9 / 16 * 100%)
         overflow: hidden;
         border-radius: 6px;
+        background-color: #e5e5e5;
         img {
             position: absolute;
             top: 0;
@@ -890,7 +895,6 @@ nav.breadcrumb {
             width: 100%;
             height: 100%;
             object-fit: cover; // 确保图片覆盖整个容器
-
             transition: transform 0.3s ease;
             &:hover {
                 transform: scale(1.1);
@@ -1339,7 +1343,7 @@ nav.rank-math-breadcrumb p {
                     width: 9px;
                     height: 9px;
                     border-radius: 50%;
-                    background: var(--jelly-color-text);
+                    background: var(--jelly-color-primary);
                     position: absolute;
                     left: -5px;
                     top: 12px;
@@ -1360,6 +1364,10 @@ nav.rank-math-breadcrumb p {
         a {
             color: var(--jelly-color-text);
             font-size: 14px;
+            &:hover {
+                color: var(--jelly-color-primary);
+                text-decoration: underline;
+            }
         }
     }
 }

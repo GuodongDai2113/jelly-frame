@@ -13,7 +13,7 @@ while (have_posts()) :
     the_post();
 ?>
     <main id="content" role="main" class="jelly-single">
-        <?php Jelly_Frame_Widgets::$instance->render('page-banner'); ?>
+        <?php Jelly_Frame_Widgets::render('page-banner'); ?>
         <?php the_content() ?>
         <?php wp_link_pages(); ?>
     </main>
