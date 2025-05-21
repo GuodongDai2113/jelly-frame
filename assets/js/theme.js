@@ -16,6 +16,8 @@
       this.initTableWidthTrouble();
       this.initWoocommerceContent();
       this.initPrimaryMenu();
+      this.initFloatButtons();
+      this.initCookieBanner();
     }
 
     /**
@@ -57,7 +59,7 @@
      */
     initScrollTopButton() {
       const offset = 50;
-      const duration = 550;
+      const duration = 100;
       const $totopButton = $(".totop-button");
 
       $(window).on("scroll", () => {
@@ -68,11 +70,13 @@
         }
       });
 
-      $totopButton.on("click", (event) => {
-        event.preventDefault();
-        $("html, body").animate({ scrollTop: 0 }, duration);
-        return false;
-      });
+      $totopButton.on(
+        "click",
+        debounce((event) => {
+          event.preventDefault();
+          $("html, body").animate({ scrollTop: 0 }, duration);
+        }, 300)
+      ); // 设置 300ms 的防抖延迟
     }
 
     /**
@@ -101,15 +105,8 @@
             // 计算滚动到目标元素的偏移量，留出 120px 的间距
             const offset = targetElement.offset().top - 120;
 
-            // 使用 animate 方法实现平滑滚动
-            $("html, body").animate({ scrollTop: offset }, 500, function () {
-              // 滚动完成后执行闪烁动画
-              for (let i = 0; i < 3; i++) {
-                targetElement
-                  .animate({ opacity: 0.5 }, 200)
-                  .animate({ opacity: 1 }, 200);
-              }
-            });
+            // 使用 scrollTop 滚动到目标位置，并在完成后执行动画
+            $("html, body").animate({ scrollTop: offset }, 500);
           }
 
           // 手动更新 URL
@@ -312,6 +309,65 @@
         }
       });
     }
+
+    initFloatButtons() {
+      const $floatButtons = $("#floatButtons");
+      if ($floatButtons.length > 0) {
+        if ($floatButtons.children().length === 1) {
+          $floatButtons.remove();
+        } else {
+          const closeButton = $("#floatButtonClose");
+
+          // 检查 sessionStorage 状态
+          if (sessionStorage.getItem("floatButtonsClosed") === "true") {
+            $floatButtons.addClass("buttons-close");
+          }
+
+          closeButton.on("click", function () {
+            $floatButtons.toggleClass("buttons-close");
+
+            // 更新 sessionStorage 状态
+            sessionStorage.setItem(
+              "floatButtonsClosed",
+              $floatButtons.hasClass("buttons-close")
+            );
+          });
+        }
+      }
+    }
+
+    initCookieBanner() {
+      // 如果用户已经接受或拒绝过，保持隐藏
+      if (
+        localStorage.getItem("cookie-consent") === "accepted" ||
+        localStorage.getItem("cookie-consent") === "rejected"
+      ) {
+        return;
+      }
+
+      const $banner = $(".cookie-banner");
+      // 否则显示 banner
+      $banner.css("display", "flex").hide().slideDown(300);
+
+      // 监听按钮点击事件
+      $(".cookie-banner .accept-button").on("click", () => {
+        localStorage.setItem("cookie-consent", "accepted");
+        $banner.slideUp(); // 滑动隐藏
+      });
+
+      $(".cookie-banner .reject-button").on("click", () => {
+        localStorage.setItem("cookie-consent", "rejected");
+        $banner.slideUp();
+      });
+    }
+  }
+
+  function debounce(func, delay) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
   }
 
   $(document).ready(() => {
@@ -320,4 +376,5 @@
     console.log("Developer:JellyDai");
     console.log("Email:d@jellydai.com");
   });
+  
 })(jQuery);

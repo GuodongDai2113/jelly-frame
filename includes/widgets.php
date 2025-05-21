@@ -123,8 +123,17 @@ class Jelly_Frame_Widgets
      */
     public static function render($widget_name)
     {
+        ob_start(); // 开启输出缓冲
         get_template_part('widgets/' . $widget_name);
+        $output = ob_get_clean(); // 获取并清空缓冲内容
+    
+        // 去除 HTML 中多余的空白和换行
+        $output = preg_replace('/\s+/', ' ', $output);
+        $output = preg_replace('/>\s+</', '><', $output);
+    
+        echo $output; // 输出压缩后的 HTML
     }
+    
     function register_block_widgets()
     {
         wp_register_script(

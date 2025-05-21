@@ -4,9 +4,9 @@ file = 'theme.scss'
 
 files = [
     "./assets/dev/layout.scss",
+    "./assets/dev/wordpress.scss",
     # "./assets/dev/header.scss",
     "./assets/dev/footer.scss",
-    "./assets/dev/wordpress.scss",
     "./assets/dev/page.scss",
     "./assets/dev/widget.scss",
     "./assets/dev/plugin.scss",

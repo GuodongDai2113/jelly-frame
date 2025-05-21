@@ -36,6 +36,7 @@ class Jelly_Frame
         add_action('customize_register', array($this, 'customize_register'));
         add_action('wp_head', array($this, 'add_page_banner_style'));
         add_filter('nav_menu_css_class', array($this, 'clean_nav_menu_classes'), 10, 4);
+        add_filter('jelly_site_organization', array($this, 'get_site_organization'));
     }
 
     /**
@@ -249,5 +250,23 @@ class Jelly_Frame
 
         return array_intersect($classes, $allowed_classes);
     }
+
+    function get_site_organization($site_organization)
+    {
+        $site_organization = get_option('site_organization', []);
+
+        $emails = explode('|', isset($site_organization['email']) ? $site_organization['email'] : '');
+        $phones = explode('|', isset($site_organization['phone']) ? $site_organization['phone'] : '');
+        $address = explode("\n", isset($site_organization['address']) ? $site_organization['address'] : '');
+        $whatsapp = isset($site_organization['whatsapp']) ? $site_organization['whatsapp'] : '';
+
+        return [
+            'emails' => $emails,
+            'phones' => $phones,
+            'address' => $address,
+            'whatsapp' => $whatsapp
+        ];
+    }
+
 }
 Jelly_Frame::instance();

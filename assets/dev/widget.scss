@@ -188,7 +188,7 @@ form.search-form {
     display: block;
     border-radius: 50px;
     box-shadow: inset 0 0 0 2px var(--jelly-color-border);
-    z-index: 10000;
+    z-index: 999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(15px);
@@ -696,6 +696,111 @@ nav.breadcrumb {
 }
 
 /**************************************************/
+/* 浮动按钮 */
+/**************************************************/
+.float-buttons {
+    position: fixed;
+    right: 10px;
+    bottom: 15%;
+    z-index: 999;
+    .float-button {
+        position: relative;
+        border: 1px solid #0000000d;
+        background-color: var(--e-global-color-accent, #2271b1);
+        border-radius: 99px;
+        padding: 10px;
+        display: flex;
+        color: #141414;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 8px;
+        font-size: 20px;
+        line-height: 1;
+        color: #fff;
+        &:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        &.whatsapp {
+            background-color: #25d366;
+            &:hover {
+                background-color: #103928;
+            }
+        }
+        &.close {
+            cursor: pointer;
+            border: 1px solid #e1e6f0;
+            background-color: #ffffff;
+            color: #141414;
+            .ri-icon {
+                transform: rotate(90deg);
+            }
+            &:hover {
+                color: #141414;
+                border-color: #e1e6f0;
+                background-color: #f5f7fc;
+            }
+        }
+    }
+    &.buttons-close {
+        .float-button {
+            transform: translateX(70px);
+            border-color: var(--jelly-color-primary);
+            background: var(--jelly-color-primary);
+            color: #fff;
+        }
+        .close {
+            transform: translateX(30px);
+            padding-right: 22px;
+            box-shadow: var(--jelly-box-shadow);
+            .ri-icon {
+                transform: rotate(270deg);
+            }
+        }
+    }
+}
+
+/**************************************************/
+/* 饼干海报 */
+/**************************************************/
+.cookie-banner {
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 12px 32px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: var(--jelly-box-shadow);
+    box-sizing: border-box;
+    .cookie-caption {
+        width: 70%;
+        .cookie-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+        .cookie-description {
+            font-size: 14px;
+            color: var(--jelly-color-description);
+            margin: 0;
+        }
+    }
+    .button-group {
+        display: flex;
+        gap: 8px;
+        .reject-button {
+            background-color: #fff;
+            border: 1px solid var(--jelly-color-primary);
+            color: var(--jelly-color-primary);
+        }
+    }
+}
+
+/**************************************************/
 /* 平板端适配 */
 /**************************************************/
 @media screen and (max-width: 1240px) {
@@ -851,6 +956,23 @@ nav.breadcrumb {
         }
         .wp-block-cta__button {
             align-items: flex-start;
+        }
+    }
+
+    .cookie-banner {
+        flex-direction: column;
+        padding: 12px 16px;
+        .cookie-caption {
+            width: 100%;
+            align-items: flex-start;
+            .cookie-description {
+                margin-bottom: 24px;
+            }
+        }
+
+        .button-group {
+            width: 100%;
+            justify-content: flex-end;
         }
     }
 }

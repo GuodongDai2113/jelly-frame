@@ -24,9 +24,4 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
 
 	<?php wp_body_open(); ?>
 
-	<?php
-	/**
-	 * Jelly_Frame_Elementor::elementor_header
-	 */
-	jelly_frame_elementor_header()
-	?>
+	<?php jelly_frame_elementor_header() ?>
