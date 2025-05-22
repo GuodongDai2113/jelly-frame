@@ -32,7 +32,7 @@ class Jelly_Frame_Widgets
     {
         $this->init_widget_list();
         add_action('elementor/widgets/register', array($this, 'register_elementor_widgets'));
-        add_action('init', array($this, 'register_block_widgets'));
+        add_action('wp_footer', array($this, 'set_float_widget'), 9);
     }
 
     /**
@@ -123,29 +123,14 @@ class Jelly_Frame_Widgets
      */
     public static function render($widget_name)
     {
-        ob_start(); // 开启输出缓冲
         get_template_part('widgets/' . $widget_name);
-        $output = ob_get_clean(); // 获取并清空缓冲内容
-    
-        // 去除 HTML 中多余的空白和换行
-        $output = preg_replace('/\s+/', ' ', $output);
-        $output = preg_replace('/>\s+</', '><', $output);
-    
-        echo $output; // 输出压缩后的 HTML
     }
-    
-    function register_block_widgets()
+
+    public function set_float_widget()
     {
-        wp_register_script(
-            'wp-block-cta-js',
-            get_template_directory_uri() . '/blocks/cta/index.js',
-            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-block-editor'],
-            JELLY_FRAME_VERSION,
-            true
-        );
-        register_block_type(get_template_directory() . '/blocks/cta', [
-            'editor_script' => 'wp-block-cta-js',
-        ]);
+        self::render('totop');
+        self::render('float-buttons');
+        self::render('cookie-banner');
     }
 }
 Jelly_Frame_Widgets::instance();

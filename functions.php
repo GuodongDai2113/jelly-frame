@@ -47,4 +47,3 @@ require get_template_directory() . '/includes/widgets.php';
 require get_template_directory() . '/includes/elementor.php';
 require get_template_directory() . '/includes/rank-math.php';
 require get_template_directory() . '/includes/woocommerce.php';
-require get_template_directory() . '/includes/hook-list.php';

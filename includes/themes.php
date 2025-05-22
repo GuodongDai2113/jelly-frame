@@ -36,7 +36,9 @@ class Jelly_Frame
         add_action('customize_register', array($this, 'customize_register'));
         add_action('wp_head', array($this, 'add_page_banner_style'));
         add_filter('nav_menu_css_class', array($this, 'clean_nav_menu_classes'), 10, 4);
-        add_filter('jelly_site_organization', array($this, 'get_site_organization'));
+        add_action('wp_head', array($this, 'insert_ga_gtm_code'), 9);
+        add_action('wp_body_open', array($this, 'insert_gtm_body'));
+        add_filter('wp_img_tag_add_auto_sizes', '__return_false');
     }
 
     /**
@@ -243,6 +245,18 @@ class Jelly_Frame
         return false;
     }
 
+    /**
+     * 清除菜单项类名
+     * 
+     * @param array $classes
+     * @param object $item
+     * @param int $depth
+     * @param array $args
+     * 
+     * @return array
+     * 
+     * @since 1.2.3
+     */
     function clean_nav_menu_classes($classes, $item, $args, $depth)
     {
         // 保留你需要的 class，例如：current-menu-item、menu-item-has-children
@@ -251,22 +265,46 @@ class Jelly_Frame
         return array_intersect($classes, $allowed_classes);
     }
 
-    function get_site_organization($site_organization)
+
+    /**
+     * 插入 GA 与 GTM 代码
+     * 
+     * @since 1.2.4
+     * 
+     * @return void
+     */
+    function insert_ga_gtm_code()
     {
-        $site_organization = get_option('site_organization', []);
+        if (!is_user_logged_in()) {
+            $ga_code  = apply_filters('jelly_google_code', '', 'ga');
+            $gtm_code = apply_filters('jelly_google_code', '', 'gtm');
 
-        $emails = explode('|', isset($site_organization['email']) ? $site_organization['email'] : '');
-        $phones = explode('|', isset($site_organization['phone']) ? $site_organization['phone'] : '');
-        $address = explode("\n", isset($site_organization['address']) ? $site_organization['address'] : '');
-        $whatsapp = isset($site_organization['whatsapp']) ? $site_organization['whatsapp'] : '';
+            if (!empty($ga_code)) {
+                echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_attr($ga_code) . '"></script>';
+                echo "<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '" . esc_attr($ga_code) . "');</script>";
+            }
 
-        return [
-            'emails' => $emails,
-            'phones' => $phones,
-            'address' => $address,
-            'whatsapp' => $whatsapp
-        ];
+            if (!empty($gtm_code)) {
+                echo "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" . esc_attr($gtm_code) . "');</script>";
+            }
+        }
     }
 
+    /**
+     * 插入 GTM 代码 noscript 部分
+     * 
+     * @since 1.2.4
+     * 
+     * @return void
+     */
+    function insert_gtm_body()
+    {
+        if (!is_user_logged_in()) {
+            $gtm_code = apply_filters('jelly_google_code', '', 'gtm');
+            if (!empty($gtm_code)) {
+                echo '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' . esc_attr($gtm_code) . '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
+            }
+        }
+    }
 }
 Jelly_Frame::instance();

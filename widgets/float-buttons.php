@@ -10,7 +10,7 @@
 
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$contact = apply_filters('jelly_site_organization', array());
+$contact = apply_filters('jelly_organization', array());
 $popup_id = Jelly_Frame_Elementor::$instance->get_popup_id();
 
 ?>

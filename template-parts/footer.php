@@ -9,7 +9,6 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-$organization_name = get_theme_mod('jelly_frame_organization_name', '');
 
 ?>
 <footer class="site-footer">
@@ -20,12 +19,10 @@ $organization_name = get_theme_mod('jelly_frame_organization_name', '');
         <div class="footer-content">
             <div class="footer-item">
                 <span class="footer-item-title">Contact</span>
-                <span class="footer-item-hr"></span>
                 <?php Jelly_Frame_Widgets::render('contact-list') ?>
             </div>
             <div class="footer-item">
                 <span class="footer-item-title">Product</span>
-                <span class="footer-item-hr"></span>
                 <?php wp_nav_menu(
                     [
                         'theme_location' => 'footer_product'
@@ -34,22 +31,20 @@ $organization_name = get_theme_mod('jelly_frame_organization_name', '');
             </div>
             <div class="footer-item">
                 <span class="footer-item-title">Company</span>
-                <span class="footer-item-hr"></span>
                 <?php wp_nav_menu(
                     [
                         'theme_location' => 'footer_about'
                     ]
                 ) ?>
             </div>
-
         </div>
     </div>
-    <div class="container">
-        <p class="copyright">
+    <div class="container copyright">
+        <p class="copyright-text">
             <?php
             esc_html_e('Copyright © ', 'jelly-frame');
             echo date('Y') . ' ';
-            echo esc_html($organization_name);
+            echo bloginfo('name');
             echo esc_html__(' All Rights Reserved.', 'jelly-frame');
             ?>
         </p>

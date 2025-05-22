@@ -23,6 +23,4 @@ if (!function_exists('theme_rank_math_setting')) {
     }
 }
 
-
-
 add_filter('block_editor_settings_all','theme_rank_math_setting');

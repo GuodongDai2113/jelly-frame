@@ -9,18 +9,6 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
-?>
-<?php 
-jelly_frame_elementor_footer();
-
-Jelly_Frame_Widgets::render('totop');
-
-Jelly_Frame_Widgets::render('float-buttons');
-
-Jelly_Frame_Widgets::render('cookie-banner');
-
-wp_footer(); 
-?>
+wp_footer(); ?>
 </body>
-
 </html>

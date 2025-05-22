@@ -10,7 +10,7 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
-<a class="skip-link screen-reader-text" href="#content"><?php echo esc_html__('Skip to content', 'jelly-frame'); ?></a>
+<a class="skip-link screen-reader-text" href="#main"><?php echo esc_html__('Skip to content', 'jelly-frame'); ?></a>
 <header class="site-header">
     <div class="container">
         <div class="header-logo">

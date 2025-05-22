@@ -2,19 +2,19 @@
   background-color: #0a0d14;
   color: #cccccc;
 }
-.site-footer .site-name {
+.site-footer pad .site-name {
   font-weight: 600;
   font-size: 2.5em;
   color: inherit;
 }
-.site-footer .site-name:hover {
+.site-footer pad .site-name:hover {
   text-decoration: none;
 }
 .site-footer .footer-logo {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 48px 0 24px 0;
+  padding: 64px 0 24px 0;
   border-bottom: 1px solid #2d323f;
 }
 .site-footer .footer-logo a {
@@ -35,6 +35,7 @@
 }
 .site-footer .footer-content .footer-item-title {
   font-size: 22px;
+  color: #fff;
   font-weight: 600;
 }
 .site-footer .footer-content ul {
@@ -52,18 +53,15 @@
 .site-footer .footer-content ul a:hover {
   color: var(--jelly-color-primary);
 }
-.site-footer .footer-content .footer-item-hr {
-  width: 50px;
-  height: 3px;
-  display: block;
-  background: var(--jelly-color-primary);
-  margin: 12px 0;
-}
 .site-footer .copyright {
+  background-color: #141414;
+  border-radius: 6px;
+}
+.site-footer .copyright .copyright-text {
+  color: #fff;
+  font-size: 14px;
   margin: 0;
-  border-top: 1px solid #2d323f;
-  padding: 16px 0;
-  width: 100%;
+  padding: 16px;
 }
 
 @media screen and (max-width: 767px) {
