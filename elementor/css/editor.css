@@ -1,4 +1,4 @@
-#elementor-panel-category-jelly-frame .elementor-element-wrapper{
+#elementor-panel-category-jelly-frame .elementor-element-wrapper .icon{
     position: relative;
 }
 
@@ -6,19 +6,15 @@
     padding-block-start: 24px;
 }
 
-
-#elementor-panel-category-jelly-frame .elementor-element-wrapper::before {
-    content: 'Jelly Frame';
-    display: block;
+#elementor-panel-category-jelly-frame .elementor-element-wrapper .icon::before {
+    content: "\eafd";
+    font-family: remixicon;
+    display: inline-block;
+    color: var(--e-a-color-txt);
     position: absolute;
-    right: 4px;
-    top: 4px;
-    padding: 4px 6px;
-    font-size: 10px;
-    color: #2271b1;
-    border-radius: 4px;
-    background-color: #e1ecf0;
-    border: 1px solid #67a4c9;
-    z-index: 1;
+    right: 5px;
+    top: 5px;
+    font-size: 14px;
+    font-style: normal;
 }
 

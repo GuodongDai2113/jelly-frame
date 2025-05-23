@@ -16,8 +16,18 @@
 }
 
 /* 文章页面 */
-.post-page .post h1 {
-  margin-top: 24px;
+.post-page .post-thumbnail {
+  width: 100%;
+  max-width: unset;
+  height: auto;
+  max-height: 400px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  font-size: 0px;
+  line-height: 0;
+  vertical-align: top;
 }
 .post-page .post p a {
   text-decoration: underline;

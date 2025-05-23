@@ -76,6 +76,14 @@
   color: var(--jelly-color-white);
 }
 
+@media screen and (max-width: 767px) {
+  .navigation.pagination .page-numbers.prev, .navigation.pagination .page-numbers.next,
+  .navigation.pagination a.page-numbers.prev,
+  .navigation.pagination a.page-numbers.next {
+    border: 1px solid var(--jelly-color-border);
+    position: unset;
+  }
+}
 .wp-block-image .aligncenter .wp-element-caption {
   text-align: center;
   font-size: 16px;

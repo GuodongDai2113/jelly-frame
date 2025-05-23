@@ -10,14 +10,84 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-if (!function_exists('jelly_frame_register_woocommerce_style')) {
+class Jelly_Frame_Woocommerce
+{
+
     /**
-     * 注册 WooCommerce 主题样式
+     * 实例接口变量
      * 
-     * @param array $styles
-     * @return array $styles
+     * @since  1.2.2
+     * @return void
      */
-    function jelly_frame_register_woocommerce_style($styles)
+    public static $instance;
+
+    public $is_active = false;
+
+    private function __construct()
+    {
+        add_filter('woocommerce_enqueue_styles', array($this, 'enqueue_style'));
+
+        add_filter('wp_enqueue_scripts', array($this, 'remove_woo_inline_css_head_ac'),11);
+
+        add_action('template_redirect', array($this, 'disable_woocommerce_assets_except_shop'),99);
+        add_action('wp_head', array($this, 'remove_noscript'),9);
+
+        add_action('product_cat_add_form_fields', array($this, 'add_category_content_fields'));
+        add_action('product_cat_edit_form_fields', array($this, 'edit_category_fields'), 10, 1);
+        add_action('created_term', array($this, 'save_category_content_fields'), 10, 3);
+        add_action('edit_term', array($this, 'save_category_content_fields'), 10, 3);
+
+
+        remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+        remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+        remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10, 0);
+        remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5, 0);
+        remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10, 0);
+        remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10, 0);
+        remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10, 0);
+        remove_action('woocommerce_before_single_product', 'woocommerce_before_single_product', 10, 0);
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10, 0);
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10, 0);
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30, 0);
+        remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10, 0);
+    }
+
+    /**
+     * 防止克隆
+     * 
+     * @since  1.2.2
+     */
+    private function __clone() {}
+
+    /**
+     * 防止反序列化
+     * 
+     * @since  1.2.2
+     */
+    public function __wakeup() {}
+
+    /**
+     * 实例接口
+     * 
+     * @since  1.2.2
+     */
+    public static function instance()
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+
+    /**
+     * 加载 自定义的 Woocommerce 样式
+     * 
+     * @return void
+     * 
+     * @since  1.0.0
+     */
+    public function enqueue_style($styles)
     {
         $styles['jelly-frame-woocommerce'] = array(
             'src'     => JELLY_FRAME_URI . '/woocommerce/css/w-front-end' . JELLY_FRAME_SUFFIX . '.css',
@@ -26,47 +96,17 @@ if (!function_exists('jelly_frame_register_woocommerce_style')) {
             'media'   => 'all',
             // 'has_rtl' => true,
         );
-        // if (is_singular('product')) {
-        //     $styles['jelly-frame-single-product'] = array(
-        //         'src'     => JELLY_FRAME_ASSETS_URI . 'css/single-product' . JELLY_FRAME_SUFFIX . '.css',
-        //         'deps'    => [], // 依赖项
-        //         'version' => JELLY_FRAME_VERSION,
-        //         'media'   => 'all',
-        //         // 'has_rtl' => true,
-        //     );
-        // }
+        wp_deregister_style('woocommerce-inline');
         return $styles;
     }
-}
 
-function add_category_content_fields()
-{
+    function add_category_content_fields()
+    {
 ?>
-    <div class="form-field">
-        <label for="category_content"><?php _e('Category Content', 'jelly-frame'); ?></label>
-        <?php
-        wp_editor('', 'category_content', array(
-            'textarea_name' => 'category_content',
-            'media_buttons' => true,
-            'teeny' => false,
-            'quicktags' => true,
-            'tinymce' => true,
-        ));
-        ?>
-        <p class="description"><?php _e('Enter the content for this category.', 'jelly-frame'); ?></p>
-    </div>
-<?php
-}
-
-function edit_category_fields($term)
-{
-    $content = get_term_meta($term->term_id, 'category_content', true);
-?>
-    <tr class="form-field term-category-content-wrap">
-        <th scope="row" valign="top"><label><?php esc_html_e('Category Content', 'jelly-frame'); ?></label></th>
-        <td>
+        <div class="form-field">
+            <label for="category_content"><?php _e('Category Content', 'jelly-frame'); ?></label>
             <?php
-            wp_editor($content, 'category_content', array(
+            wp_editor('', 'category_content', array(
                 'textarea_name' => 'category_content',
                 'media_buttons' => true,
                 'teeny' => false,
@@ -75,54 +115,70 @@ function edit_category_fields($term)
             ));
             ?>
             <p class="description"><?php _e('Enter the content for this category.', 'jelly-frame'); ?></p>
-        </td>
-    </tr>
+        </div>
+    <?php
+    }
+
+    function edit_category_fields($term)
+    {
+        $content = get_term_meta($term->term_id, 'category_content', true);
+    ?>
+        <tr class="form-field term-category-content-wrap">
+            <th scope="row" valign="top"><label><?php esc_html_e('Category Content', 'jelly-frame'); ?></label></th>
+            <td>
+                <?php
+                wp_editor($content, 'category_content', array(
+                    'textarea_name' => 'category_content',
+                    'media_buttons' => true,
+                    'teeny' => false,
+                    'quicktags' => true,
+                    'tinymce' => true,
+                ));
+                ?>
+                <p class="description"><?php _e('Enter the content for this category.', 'jelly-frame'); ?></p>
+            </td>
+        </tr>
 <?php
-}
+    }
 
-add_action('product_cat_add_form_fields', 'add_category_content_fields');
-add_action('product_cat_edit_form_fields', 'edit_category_fields', 10, 1);
-// 保存自定义字段的值
-function save_category_content_fields($term_id, $tt_id = '', $taxonomy = '')
-{
-    if (isset($_POST['category_content']) && 'product_cat' === $taxonomy) {
-        update_term_meta($term_id, 'category_content', $_POST['category_content']);
+    function save_category_content_fields($term_id, $tt_id = '', $taxonomy = '')
+    {
+        if (isset($_POST['category_content']) && 'product_cat' === $taxonomy) {
+            update_term_meta($term_id, 'category_content', $_POST['category_content']);
+        }
+    }
+
+    function remove_woo_inline_css_head_ac() {
+        wp_deregister_style( 'woocommerce-inline' );
+
+    }
+    
+    function disable_woocommerce_assets_except_shop() {
+        // 如果是 WooCommerce 或相关页面，直接返回
+        if (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout() || is_account_page())) {
+            return;
+        }
+    
+        // 移除 WooCommerce 样式和脚本
+        remove_action('wp_enqueue_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_print_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_print_footer_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_enqueue_scripts', 'wc_enqueue_styles', 99);
+    
+        // 移除 WooCommerce 相关的头部元信息
+        remove_action('wp_head', [WC_Template_Loader::class, 'generator'], 1);
+    
+        // 移除 WooCommerce 的 body class
+        remove_filter('body_class', 'wc_body_class');
+    
+        // 如果你还使用了WooCommerce小工具等，可以考虑也注销这些widget
+        remove_action('widgets_init', 'woocommerce_register_widgets', 10);
+    }
+
+    function remove_noscript() {
+        remove_action( 'wp_head', 'wc_gallery_noscript' );
+
     }
 }
 
-add_action('created_term', 'save_category_content_fields', 10, 3);
-add_action('edit_term', 'save_category_content_fields', 10, 3);
-
-// 新增 WooCommerce 样式
-add_filter('woocommerce_enqueue_styles', 'jelly_frame_register_woocommerce_style');
-
-remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
-remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10, 0);
-remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5, 0);
-remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10, 0);
-remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10, 0);
-remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10, 0);
-remove_action('woocommerce_before_single_product', 'woocommerce_before_single_product', 10, 0);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10, 0);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10, 0);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30, 0);
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40, 0);
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10, 0);
-
-add_action('woocommerce_single_product_summary', function () {
-    global $product;
-    do_action('woocommerce_product_additional_information', $product);
-}, 30, 0);
-
-add_action('woocommerce_share', function () {
-    // get_template_part('widgets/popup-button');
-    // get_template_part('widgets/share');
-});
-
-add_filter('woocommerce_product_tabs', function ($tabs) {
-    if (isset($tabs['additional_information'])) {
-        unset($tabs['additional_information']);
-    }
-    return $tabs;
-});
+Jelly_Frame_Woocommerce::instance();

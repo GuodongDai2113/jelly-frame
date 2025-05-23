@@ -12,8 +12,8 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 while (have_posts()) :
     the_post();
 ?>
-    <main id="content" role="main" class="jelly-single">
-        <?php Jelly_Frame_Widgets::$instance->render('page-banner'); ?>
+    <main id="main" role="main" class="jelly-single">
+        <?php Jelly_Frame_Widgets::render('page-banner'); ?>
         <?php the_content() ?>
         <?php wp_link_pages(); ?>
     </main>

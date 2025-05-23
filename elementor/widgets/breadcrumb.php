@@ -24,7 +24,7 @@ class Jelly_Frame_Breadcrumb_Widget extends \Elementor\Widget_Base
 
     public function get_icon(): string
     {
-        return 'ri-corner-down-right-line';
+        return 'ri-navigation-line';
     }
 
     public function get_categories(): array

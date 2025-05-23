@@ -24,7 +24,7 @@ class Jelly_Frame_Page_Banner_Widget extends \Elementor\Widget_Base
 
     public function get_icon(): string
     {
-        return 'ri-globe-fill';
+        return 'ri-window-line';
     }
 
     public function get_categories(): array

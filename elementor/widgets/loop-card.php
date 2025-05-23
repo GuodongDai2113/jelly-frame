@@ -1,30 +1,30 @@
 <?php
 
 /**
- * elementor\widgets\contact-list.php
+ * elementor\widgets\loop-card.php
  * 
  * Author  : Jelly Dai
  * Email   : d@jellydai.com
- * Created : 2025.05.09 13:09
+ * Created : 2025.05.19 16:00
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame_Contact_List_Widget extends \Elementor\Widget_Base
+class Jelly_Frame_Loop_Card_Widget extends \Elementor\Widget_Base
 {
     public function get_name(): string
     {
-        return 'jelluy_frame_contact_list';
+        return 'jelluy_frame_loop_card';
     }
 
     public function get_title(): string
     {
-        return esc_html__('Contact List', 'jelly-frame');
+        return esc_html__('Loop Card', 'jelly-frame');
     }
 
     public function get_icon(): string
     {
-        return 'ri-contacts-line';
+        return 'ri-infinity-line';
     }
 
     public function get_categories(): array
@@ -34,7 +34,7 @@ class Jelly_Frame_Contact_List_Widget extends \Elementor\Widget_Base
 
     public function get_keywords(): array
     {
-        return ['contact'];
+        return ['loop','card'];
     }
 
     public function get_custom_help_url(): string {
@@ -67,6 +67,6 @@ class Jelly_Frame_Contact_List_Widget extends \Elementor\Widget_Base
 	}
 
     protected function render(): void {
-        get_template_part('widgets/contact-list');
+        get_template_part('widgets/loop-card');
     }
 }

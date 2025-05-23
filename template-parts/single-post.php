@@ -12,29 +12,15 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <?php while (have_posts()) : the_post(); ?>
     <main id="main" role="main" class="post-page">
-        <?php Jelly_Frame_Widgets::$instance->render('breadcrumb'); ?>
+        <?php Jelly_Frame_Widgets::render('breadcrumb'); ?>
         <div class="container">
-            <?php the_theme_widget('article/post-thumbnail'); ?>
+            <?php
+            if (has_post_thumbnail()) {
+                the_post_thumbnail('large', ['class' => 'post-thumbnail', 'loading' => 'lazy', 'alt' => esc_attr(get_the_title())]);
+            }
+            ?>
         </div>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="container flex">
-                <div class="content">
-                    <header>
-                        <h1 class="entry-title"><?php the_title(); ?></h1>
-                        <?php the_theme_widget('article/post-meta'); ?>
-                    </header>
-                    <?php the_content() ?>
-                    <footer>
-                        <?php
-                        the_theme_widget('article/post-tags');
-                        the_theme_widget('article/post-author');
-                        the_theme_widget('article/post-navigation');
-                        ?>
-                    </footer>
-                </div>
-                <?php get_sidebar() ?>
-            </div>
-        </article>
-        <?php the_theme_widget('article/post-related'); ?>
+        <?php Jelly_Frame_Widgets::render('article/content-article'); ?>
+        <?php Jelly_Frame_Widgets::render('article/post-related'); ?>
     </main>
 <?php endwhile; ?>

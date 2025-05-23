@@ -3,7 +3,7 @@
 
   /**
    * 主题类
-   * 
+   *
    * @author JellyDai <d@jellydai.com>
    */
   class Theme {
@@ -15,11 +15,14 @@
       this.initCategoriesScroll();
       this.initTableWidthTrouble();
       this.initWoocommerceContent();
+      this.initPrimaryMenu();
+      this.initFloatButtons();
+      this.initCookieBanner();
     }
 
     /**
      * 初始化回到顶部进度条
-     * 
+     *
      * @since 1.0.0
      */
     initProgressBar() {
@@ -51,12 +54,12 @@
 
     /**
      * 初始化回到顶部按钮
-     * 
+     *
      * @since 1.0.0
      */
     initScrollTopButton() {
       const offset = 50;
-      const duration = 550;
+      const duration = 100;
       const $totopButton = $(".totop-button");
 
       $(window).on("scroll", () => {
@@ -67,16 +70,18 @@
         }
       });
 
-      $totopButton.on("click", (event) => {
-        event.preventDefault();
-        $("html, body").animate({ scrollTop: 0 }, duration);
-        return false;
-      });
+      $totopButton.on(
+        "click",
+        debounce((event) => {
+          event.preventDefault();
+          $("html, body").animate({ scrollTop: 0 }, duration);
+        }, 300)
+      ); // 设置 300ms 的防抖延迟
     }
 
     /**
      * 初始化 Rank Math TOC
-     * 
+     *
      * @since 1.1.0
      */
     initRankMathTocBlock() {
@@ -100,15 +105,8 @@
             // 计算滚动到目标元素的偏移量，留出 120px 的间距
             const offset = targetElement.offset().top - 120;
 
-            // 使用 animate 方法实现平滑滚动
-            $("html, body").animate({ scrollTop: offset }, 500, function () {
-              // 滚动完成后执行闪烁动画
-              for (let i = 0; i < 3; i++) {
-                targetElement
-                  .animate({ opacity: 0.5 }, 200)
-                  .animate({ opacity: 1 }, 200);
-              }
-            });
+            // 使用 scrollTop 滚动到目标位置，并在完成后执行动画
+            $("html, body").animate({ scrollTop: offset }, 500);
           }
 
           // 手动更新 URL
@@ -119,7 +117,7 @@
 
     /**
      * 初始化分享按钮
-     * 
+     *
      * @since 1.1.0
      */
     initShareButtons() {
@@ -161,7 +159,7 @@
 
     /**
      * 初始化分类滚动
-     * 
+     *
      * @since 1.1.0
      */
     initCategoriesScroll() {
@@ -180,13 +178,11 @@
 
     /**
      * 初始化表格宽度问题
-     * 
+     *
      * @since 1.1.0
      */
     initTableWidthTrouble() {
-      $(
-        ".content table"
-      ).each(function () {
+      $(".content table").each(function () {
         if (!$(this).parent().hasClass("content-table")) {
           $(this).wrap('<div class="content-table"></div>');
         }
@@ -242,6 +238,136 @@
         history.pushState({}, "", targetId); // 手动更新 URL
       });
     }
+
+    initPrimaryMenu() {
+      // 桌面端：检测子菜单是否超出右边界，如果是则向左展开
+      $(".primary-menu li").hover(function () {
+        const $submenu = $(this).children(".sub-menu");
+        if ($submenu.length && $(window).width() > 1240) {
+          $submenu.removeClass("open-left").css({
+            visibility: "hidden",
+            display: "block",
+          });
+
+          const rect = $submenu[0].getBoundingClientRect();
+          const overflowRight = rect.right > $(window).width();
+
+          if (overflowRight) {
+            $submenu.addClass("open-left");
+          }
+
+          $submenu.css({ visibility: "", display: "" });
+        }
+      });
+
+      // 打开移动端菜单
+      $(".menu-toggle").on("click", function () {
+        $(".primary-menu").addClass("active");
+        $(".menu-overlay").addClass("active");
+      });
+
+      // 关闭移动端菜单
+      $(".menu-close, .menu-overlay").on("click", function () {
+        $(".primary-menu").removeClass("active");
+        $(".menu-overlay").removeClass("active");
+        $(".primary-menu li").removeClass("submenu-open");
+      });
+
+      // 移动端：点击菜单项展开子菜单（阻止默认跳转）
+      $(".primary-menu li.menu-item-has-children > a").on(
+        "click",
+        function (e) {
+          const $parentLi = $(this).parent("li");
+
+          if ($(window).width() <= 1240) {
+            if (!$parentLi.hasClass("submenu-open")) {
+              e.preventDefault();
+
+              // 关闭其他子菜单
+              $parentLi
+                .siblings(".menu-item-has-children")
+                .removeClass("submenu-open");
+
+              // 打开当前子菜单
+              $parentLi.addClass("submenu-open");
+            } else {
+              // 第二次点击允许跳转
+              return true;
+            }
+          }
+        }
+      );
+
+      // 窗口尺寸变化时清理移动端状态
+      $(window).on("resize", function () {
+        if ($(window).width() > 1240) {
+          $(".primary-menu").removeClass("active");
+          $(".menu-overlay").removeClass("active");
+          $(".primary-menu li.menu-item-has-children").removeClass(
+            "submenu-open"
+          );
+        }
+      });
+    }
+
+    initFloatButtons() {
+      const $floatButtons = $("#floatButtons");
+      if ($floatButtons.length > 0) {
+        if ($floatButtons.children().length === 1) {
+          $floatButtons.remove();
+        } else {
+          const closeButton = $("#floatButtonClose");
+
+          // 检查 sessionStorage 状态
+          if (sessionStorage.getItem("floatButtonsClosed") === "true") {
+            $floatButtons.addClass("buttons-close");
+          }
+
+          closeButton.on("click", function () {
+            $floatButtons.toggleClass("buttons-close");
+
+            // 更新 sessionStorage 状态
+            sessionStorage.setItem(
+              "floatButtonsClosed",
+              $floatButtons.hasClass("buttons-close")
+            );
+          });
+        }
+      }
+    }
+
+    initCookieBanner() {
+      // 如果用户已经接受或拒绝过，保持隐藏
+      if (
+        localStorage.getItem("cookie-consent") === "accepted" ||
+        localStorage.getItem("cookie-consent") === "rejected"
+      ) {
+        return;
+      }
+
+      const $banner = $(".cookie-banner");
+      // 否则显示 banner
+      $banner.css("display", "flex").hide().slideDown(300);
+
+      // 监听按钮点击事件
+      $(".cookie-banner .accept-button").on("click", () => {
+        localStorage.setItem("cookie-consent", "accepted");
+        $banner.slideUp(); // 滑动隐藏
+      });
+
+      $(".cookie-banner .reject-button").on("click", () => {
+        localStorage.setItem("cookie-consent", "rejected");
+        $banner.slideUp();
+      });
+    }
+  }
+
+  function debounce(func, delay) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
   }
 
   $(document).ready(() => {
@@ -250,6 +376,5 @@
     console.log("Developer:JellyDai");
     console.log("Email:d@jellydai.com");
   });
-
-
+  
 })(jQuery);

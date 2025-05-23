@@ -28,9 +28,9 @@ $related_posts = get_related_posts($post->ID);
                     <li>
                         <a href="<?php echo esc_url(get_permalink()) ?>" title="<?php echo esc_attr(get_the_title()) ?>">
                             <?php if ($thumbnail_url): ?>
-                                <img src="<?php echo esc_url($thumbnail_url) ?>" alt="<?php echo esc_attr(get_the_title()) ?>" class="jelly-related-post-thumbnail">
+                                <img src="<?php echo esc_url($thumbnail_url) ?>" alt="<?php echo esc_attr(get_the_title()) ?>" class="related-post-thumbnail">
                             <?php else: ?>
-                                <div class="jelly-related-post-thumbnail placeholder"></div>
+                                <div class="related-post-thumbnail placeholder"></div>
                             <?php endif; ?>
                             <h3><?php the_title() ?></h3>
                         </a>
@@ -49,9 +49,9 @@ $related_posts = get_related_posts($post->ID);
                     <li>
                         <a href="<?php echo esc_url(get_permalink()) ?>" title="<?php echo esc_attr(get_the_title()) ?>">
                             <?php if ($thumbnail_url): ?>
-                                <img src="<?php echo esc_url($thumbnail_url) ?>" alt="<?php echo esc_attr(get_the_title()) ?>" class="jelly-related-post-thumbnail">
+                                <img src="<?php echo esc_url($thumbnail_url) ?>" alt="<?php echo esc_attr(get_the_title()) ?>" class="related-post-thumbnail">
                             <?php else: ?>
-                                <div class="jelly-related-post-thumbnail placeholder"></div>
+                                <div class="related-post-thumbnail placeholder"></div>
                             <?php endif; ?>
                             <h3><?php the_title() ?></h3>
                         </a>

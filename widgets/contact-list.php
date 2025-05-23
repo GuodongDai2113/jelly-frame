@@ -10,41 +10,45 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-$site_organization = get_option('site_organization', []);
-
-$emails = explode('|', isset($site_organization['email']) ? $site_organization['email'] : '');
-$phones = explode('|', isset($site_organization['phone']) ? $site_organization['phone'] : '');
-$address = explode("\n", isset($site_organization['address']) ? $site_organization['address'] : '');
+$contact  = apply_filters('jelly_organization', array());
 ?>
-<address class="contact-list">
-    <?php foreach ($emails as $index => $email): ?>
-        <div class="contact-item">
-            <div class="contact-icon">
-                <i class="ri-mail-send-line ri-icon" aria-hidden="true"></i>
-            </div>
-            <a class="contact-link" href="mailto:<?php echo esc_attr($email) ?>" aria-label="Email To <?php echo esc_attr($email)  ?>" title="Email To <?php echo esc_attr($email)  ?>">
-                <?php echo esc_html($email) ?>
-            </a>
-        </div>
-    <?php endforeach; ?>
-    <?php foreach ($phones as $index => $phone): ?>
-        <div class="contact-item">
-            <div class="contact-icon">
-                <i class="ri-phone-line ri-icon" aria-hidden="true"></i>
-            </div>
-            <a class="contact-link" href="tel:<?php echo esc_attr($phone) ?>" aria-label="Call To <?php echo esc_attr($phone)  ?>" title="Call To <?php echo esc_attr($phone)  ?>">
-                <?php echo esc_html($phone) ?>
-            </a>
-        </div>
-    <?php endforeach; ?>
-    <?php foreach ($address as $index => $address_text): ?>
-        <div class="contact-item">
-            <div class="contact-icon">
-                <i class="ri-earth-fill  ri-icon"></i>
-            </div>
-            <p class="contact-text">
-                <?php echo esc_html($address_text) ?>
-            </p>
-        </div>
-    <?php endforeach; ?>
-</address>
+<?php if (!empty($contact)): ?>
+    <address class="contact-list">
+        <?php if (!empty($contact['emails'])): ?>
+            <?php foreach ($contact['emails'] as $index => $email): ?>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="ri-mail-send-line ri-icon" aria-hidden="true"></i>
+                    </div>
+                    <a class="contact-link" href="mailto:<?php echo esc_attr($email) ?>" aria-label="Email To <?php echo esc_attr($email)  ?>" title="Email To <?php echo esc_attr($email)  ?>">
+                        <?php echo esc_html($email) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if (!empty($contact['phones'])): ?>
+            <?php foreach ($contact['phones'] as $index => $phone): ?>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="ri-phone-line ri-icon" aria-hidden="true"></i>
+                    </div>
+                    <a class="contact-link" href="tel:<?php echo esc_attr($phone) ?>" aria-label="Call To <?php echo esc_attr($phone)  ?>" title="Call To <?php echo esc_attr($phone)  ?>">
+                        <?php echo esc_html($phone) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if (!empty($contact['address'])): ?>
+            <?php foreach ($contact['address'] as $index => $address_text): ?>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="ri-earth-fill  ri-icon"></i>
+                    </div>
+                    <p class="contact-text">
+                        <?php echo esc_html($address_text) ?>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </address>
+<?php endif; ?>

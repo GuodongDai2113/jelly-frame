@@ -8,12 +8,12 @@
 
 @font-face {
     font-family: "remixicon";
-    src: url('remixicon.eot?t=1746762414760'); /* IE9*/
-    src: url('remixicon.eot?t=1746762414760#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url("remixicon.woff2?t=1746762414760") format("woff2"),
-    url("remixicon.woff?t=1746762414760") format("woff"),
-    url('remixicon.ttf?t=1746762414760') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('remixicon.svg?t=1746762414760#remixicon') format('svg'); /* iOS 4.1- */
+    src: url('remixicon.eot?t=1747797762769'); /* IE9*/
+    src: url('remixicon.eot?t=1747797762769#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("remixicon.woff2?t=1747797762769") format("woff2"),
+    url("remixicon.woff?t=1747797762769") format("woff"),
+    url('remixicon.ttf?t=1747797762769') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('remixicon.svg?t=1747797762769#remixicon') format('svg'); /* iOS 4.1- */
     font-display: swap;
 }
 
@@ -62,3 +62,17 @@
 .ri-corner-down-right-line:before { content: "\f309"; }
 .ri-tiktok-line:before { content: "\f373"; }
 .ri-facebook-circle-fill:before { content: "\ecba"; }
+.ri-arrow-down-s-line:before { content: "\ea4e"; }
+.ri-home-4-line:before { content: "\ee1d"; }
+.ri-close-line:before { content: "\eb99"; }
+.ri-question-answer-line:before { content: "\f043"; }
+.ri-plug-line:before { content: "\f019"; }
+.ri-landscape-line:before { content: "\ee7d"; }
+.ri-brush-3-line:before { content: "\eafd"; }
+.ri-navigation-line:before { content: "\ef89"; }
+.ri-infinity-line:before { content: "\f3b9"; }
+.ri-article-line:before { content: "\ea7e"; }
+.ri-contacts-line:before { content: "\ebd2"; }
+.ri-window-line:before { content: "\f2c6"; }
+.ri-customer-service-2-line:before { content: "\ec0c"; }
+.ri-mail-line:before { content: "\eef6"; }

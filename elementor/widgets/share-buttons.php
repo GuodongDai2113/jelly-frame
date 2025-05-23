@@ -10,16 +10,16 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame_Share_Widget extends \Elementor\Widget_Base
+class Jelly_Frame_Share_Buttons_Widget extends \Elementor\Widget_Base
 {
     public function get_name(): string
     {
-        return 'jelluy_frame_share';
+        return 'jelluy_frame_share_buttons';
     }
 
     public function get_title(): string
     {
-        return esc_html__('Share', 'jelly-frame');
+        return esc_html__('Share Buttons', 'jelly-frame');
     }
 
     public function get_icon(): string
@@ -67,6 +67,6 @@ class Jelly_Frame_Share_Widget extends \Elementor\Widget_Base
 	}
 
     protected function render(): void {
-        get_template_part('widgets/share');
+        get_template_part('widgets/share-buttons');
     }
 }

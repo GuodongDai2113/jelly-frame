@@ -9,7 +9,7 @@
 
   Description: 作为一款深度集成 Elementor 页面构建器 的主题，“Jelly Frame”充分发挥了拖放式编辑的强大优势，让您可以轻松自定义每一个细节，而无需编写任何代码。无论是调整布局、更改颜色，还是添加复杂的动画效果，只需点击几下即可完成。真正实现“所见即所得”，让您的创意瞬间变为现实。
 
-  Version: 1.2.3
+  Version: 1.2.4
 
   Stable tag: 1.2.2
 
@@ -207,8 +207,9 @@ button,
 [type=submit],
 [type=button] {
   display: inline-block;
-  font-weight: 400;
-  color: #ffffff;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--jelly-color-white);
   text-align: center;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -216,12 +217,13 @@ button,
   user-select: none;
   background-color: var(--jelly-color-primary);
   border: 1px solid var(--jelly-color-primary);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  border-radius: var(--jelly-border-radius-sm);
   transition: all 0.3s;
-  min-height: 40px;
+  /* min-height: 40px; */
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 button:focus:not(:focus-visible),

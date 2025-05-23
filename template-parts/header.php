@@ -10,16 +10,17 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
-<a class="skip-link screen-reader-text" href="#content"><?php echo esc_html__('Skip to content', 'jelly-frame'); ?></a>
+<a class="skip-link screen-reader-text" href="#main"><?php echo esc_html__('Skip to content', 'jelly-frame'); ?></a>
 <header class="site-header">
     <div class="container">
         <div class="header-logo">
-            <?php the_theme_widget('site-logo') ?>
+            <?php
+            Jelly_Frame_Widgets::render('site-logo');
+            ?>
         </div>
         <div class="header-content">
             <?php
-            the_theme_widget('primary-menu');
-            echo do_shortcode('[gtranslate]');
+            Jelly_Frame_Widgets::render('primary-menu');
             ?>
         </div>
     </div>

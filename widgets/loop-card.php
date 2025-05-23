@@ -9,7 +9,7 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
-the_post();
+
 $post_link = get_permalink();
 $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
 $author_name = get_the_author();
@@ -17,13 +17,13 @@ $post_date = get_the_date('F j, Y');
 ?>
 
 <article class="loop-card" id="post-<?php the_ID(); ?>">
-    <?php if ($thumbnail_url) : ?>
-        <div class="card-thumbnail">
+    <div class="card-thumbnail">
+        <?php if ($thumbnail_url) : ?>
             <a href="<?php echo esc_url($post_link); ?>">
                 <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
             </a>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
     <div class="card-content">
         <h2 class="card-title">
             <a href="<?php echo esc_url($post_link); ?>"><?php echo wp_kses_post(get_the_title()); ?></a>

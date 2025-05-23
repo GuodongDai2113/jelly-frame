@@ -26,6 +26,8 @@ class Jelly_Frame_Elementor
      */
     public static $instance;
 
+    public $is_active = false;
+
     /**
      * 构造函数
      * 
@@ -33,13 +35,16 @@ class Jelly_Frame_Elementor
      */
     private function __construct()
     {
+        if (class_exists('Elementor\Plugin')) {
+            $this->is_active = true;
+        }
         add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_style'));
         add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
-        add_action('customize_register', array($this, 'customize_register'));
-        add_action('jelly_frame_elementor_header', array($this, 'elementor_header'));
-        add_action('jelly_frame_elementor_footer', array($this, 'elementor_footer'));
         add_action('elementor/elements/categories_registered', array($this, 'add_elementor_widget_categories'));
+        add_action('customize_register', array($this, 'customize_register'));
+        add_action('wp_body_open', array($this, 'site_header'));
+        add_action('wp_footer', array($this, 'site_footer'), 8);
     }
 
     /**
@@ -130,7 +135,7 @@ class Jelly_Frame_Elementor
      * 
      * jelly_frame_elementor_global_form_id
      * 
-     * jelly_frame_elementor_popup_button_id
+     * jelly_frame_elementor_popup_id
      * 
      * @param  WP_Customize_Manager $wp_customize
      * @return void
@@ -139,6 +144,9 @@ class Jelly_Frame_Elementor
      */
     public function customize_register($wp_customize)
     {
+        if (!$this->is_active) {
+            return;
+        }
         $section = 'jelly_frame_elementor_section';
 
         $wp_customize->add_section(
@@ -149,10 +157,10 @@ class Jelly_Frame_Elementor
         );
 
         $wp_customize->add_setting('jelly_frame_elementor_global_form_id', array(
-            'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
+            'sanitize_callback' => 'absint',
         ));
-        $wp_customize->add_setting('jelly_frame_elementor_popup_button_id', array(
-            'sanitize_callback' => 'absint', // assuming it's an integer (form ID)
+        $wp_customize->add_setting('jelly_frame_elementor_popup_id', array(
+            'sanitize_callback' => 'absint',
         ));
 
         $wp_customize->add_control(
@@ -171,11 +179,11 @@ class Jelly_Frame_Elementor
         $wp_customize->add_control(
             new WP_Customize_Control(
                 $wp_customize,
-                'jelly_frame_elementor_popup_button_id',
+                'jelly_frame_elementor_popup_id',
                 array(
-                    'label'       => __('Popup Button ID', 'jelly-frame'),
+                    'label'       => __('Popup ID', 'jelly-frame'),
                     'section'     => $section,
-                    'settings'    => 'jelly_frame_elementor_popup_button_id',
+                    'settings'    => 'jelly_frame_elementor_popup_id',
                     'type'        => 'number',
                 )
             )
@@ -192,7 +200,7 @@ class Jelly_Frame_Elementor
      */
     public function do_elementor_shortcode($template_id)
     {
-        if (class_exists('Elementor\Plugin')) {
+        if ($this->is_active) {
             if (empty($template_id)) {
                 return '';
             }
@@ -215,7 +223,7 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.2
      */
-    public function elementor_header()
+    public function site_header()
     {
         $this->the_elementor_theme_do_location('header');
     }
@@ -227,7 +235,7 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.2
      */
-    public function elementor_footer()
+    public function site_footer()
     {
         $this->the_elementor_theme_do_location('footer');
     }
@@ -239,10 +247,11 @@ class Jelly_Frame_Elementor
      * 
      * @since  1.2.3
      */
-    public function get_popup_button()
+    public function get_popup_id()
     {
-        $button_id = get_theme_mod('jelly_frame_elementor_popup_button_id');
-        return $this->do_elementor_shortcode($button_id);
+        $button_id = get_theme_mod('jelly_frame_elementor_popup_id');
+        return $button_id;
+        // return $this->do_elementor_shortcode($button_id);
     }
 
     /**
@@ -271,10 +280,26 @@ class Jelly_Frame_Elementor
         $elements_manager->add_category(
             'jelly-frame',
             [
-                'title' => esc_html__('Jelly Frame', 'jelly-frame'),
+                'title' => esc_html__('Jelly Frame (Theme)', 'jelly-frame'),
                 'icon' => 'fa fa-plug',
             ]
         );
+    }
+
+
+    /** 
+     * 创建 action 链接
+     * 
+     * @return string
+     * 
+     * @since 1.2.4
+     */
+    function create_action_hash($action, array $settings = [])
+    {
+        if ($this->is_active) {
+            return Elementor\Plugin::$instance->frontend->create_action_hash($action, $settings);
+        }
+        return 'contact-us/';
     }
 }
 Jelly_Frame_Elementor::instance();

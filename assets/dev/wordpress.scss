@@ -60,13 +60,11 @@
         }
         &.prev {
             position: absolute;
-            // margin: 0;
             left: 0;
             border: 0;
         }
         &.next {
             position: absolute;
-            // margin: 0;
             right: 0;
             border: 0;
         }
@@ -75,6 +73,19 @@
         background: var(--jelly-color-primary);
         border-color: var(--jelly-color-primary);
         color: var(--jelly-color-white);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .navigation.pagination {
+        .page-numbers,
+        a.page-numbers {
+            &.prev,&.next {
+                border: 1px solid var(--jelly-color-border);
+                position: unset;
+            }
+
+        }
     }
 }
 
