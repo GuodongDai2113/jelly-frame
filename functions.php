@@ -11,10 +11,10 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 更加合理的引用其他文件
 
 // 定义主题版本号
-define('JELLY_FRAME_VERSION', '1.2.4');
+define('JELLY_FRAME_VERSION', '1.2.5');
 
 // 定义主题调试模式
-define('JELLY_FRAME_DEBUG', false);
+define('JELLY_FRAME_DEBUG', true);
 
 // 定义主题URI
 define('JELLY_FRAME_URI', get_theme_file_uri());
