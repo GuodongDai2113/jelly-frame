@@ -1,4 +1,8 @@
 @charset "UTF-8";
+#main {
+  padding: 0 var(--jelly-side-width, 16px);
+}
+
 /* 404 页面 */
 .error-page {
   width: 400px;

@@ -439,6 +439,7 @@ nav.breadcrumb .separator {
   align-items: center;
   position: relative;
   text-align: center;
+  margin: 0 calc(-1 * var(--jelly-side-width));
 }
 .page-banner h1 {
   margin: 0;

@@ -1,8 +1,7 @@
 @charset "UTF-8";
 .container {
-  width: var(--jelly-max-width, 1240px);
+  max-width: min(100%, var(--jelly-max-width, 1240px));
   margin: 0 auto;
-  padding: 0 var(--jelly-side-width, 16px);
   box-sizing: border-box;
   position: relative;
 }
@@ -69,7 +68,8 @@
 
 .site-header {
   position: relative;
-  padding: 8px 0;
+  padding: 8px var(--jelly-side-width, 16px);
+  width: 100%;
   box-sizing: border-box;
 }
 .site-header .container {
