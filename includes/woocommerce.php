@@ -25,12 +25,18 @@ class Jelly_Frame_Woocommerce
 
     private function __construct()
     {
+
+        if (class_exists('Woocommerce')) {
+            $this->is_active = true;
+        } else {
+            return;
+        }
         add_filter('woocommerce_enqueue_styles', array($this, 'enqueue_style'));
 
-        add_filter('wp_enqueue_scripts', array($this, 'remove_woo_inline_css_head_ac'),11);
+        add_filter('wp_enqueue_scripts', array($this, 'remove_woo_inline_css_head_ac'), 11);
 
-        add_action('template_redirect', array($this, 'disable_woocommerce_assets_except_shop'),99);
-        add_action('wp_head', array($this, 'remove_noscript'),9);
+        add_action('template_redirect', array($this, 'disable_woocommerce_assets_except_shop'), 99);
+        add_action('wp_head', array($this, 'remove_noscript'), 9);
 
         add_action('product_cat_add_form_fields', array($this, 'add_category_content_fields'));
         add_action('product_cat_edit_form_fields', array($this, 'edit_category_fields'), 10, 1);
@@ -124,7 +130,7 @@ class Jelly_Frame_Woocommerce
         $content = get_term_meta($term->term_id, 'category_content', true);
     ?>
         <tr class="form-field term-category-content-wrap">
-            <th scope="row" valign="top"><label><?php esc_html_e('Category Content', 'jelly-frame'); ?></label></th>
+            <th scope="row"><label><?php esc_html_e('Category Content', 'jelly-frame'); ?></label></th>
             <td>
                 <?php
                 wp_editor($content, 'category_content', array(
@@ -148,36 +154,37 @@ class Jelly_Frame_Woocommerce
         }
     }
 
-    function remove_woo_inline_css_head_ac() {
-        wp_deregister_style( 'woocommerce-inline' );
-
+    function remove_woo_inline_css_head_ac()
+    {
+        wp_deregister_style('woocommerce-inline');
     }
-    
-    function disable_woocommerce_assets_except_shop() {
+
+    function disable_woocommerce_assets_except_shop()
+    {
         // 如果是 WooCommerce 或相关页面，直接返回
         if (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout() || is_account_page())) {
             return;
         }
-    
+
         // 移除 WooCommerce 样式和脚本
         remove_action('wp_enqueue_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
         remove_action('wp_print_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
         remove_action('wp_print_footer_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
         remove_action('wp_enqueue_scripts', 'wc_enqueue_styles', 99);
-    
+
         // 移除 WooCommerce 相关的头部元信息
         remove_action('wp_head', [WC_Template_Loader::class, 'generator'], 1);
-    
+
         // 移除 WooCommerce 的 body class
         remove_filter('body_class', 'wc_body_class');
-    
+
         // 如果你还使用了WooCommerce小工具等，可以考虑也注销这些widget
         remove_action('widgets_init', 'woocommerce_register_widgets', 10);
     }
 
-    function remove_noscript() {
-        remove_action( 'wp_head', 'wc_gallery_noscript' );
-
+    function remove_noscript()
+    {
+        remove_action('wp_head', 'wc_gallery_noscript');
     }
 }
 

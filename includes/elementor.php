@@ -37,6 +37,8 @@ class Jelly_Frame_Elementor
     {
         if (class_exists('Elementor\Plugin')) {
             $this->is_active = true;
+        } else {
+            return;
         }
         add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_style'));
         add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
