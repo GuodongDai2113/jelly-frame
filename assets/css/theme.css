@@ -1,8 +1,7 @@
 @charset "UTF-8";
 .container {
-  width: var(--jelly-max-width, 1240px);
+  max-width: min(100%, var(--jelly-max-width, 1240px));
   margin: 0 auto;
-  padding: 0 var(--jelly-side-width, 16px);
   box-sizing: border-box;
   position: relative;
 }
@@ -69,7 +68,8 @@
 
 .site-header {
   position: relative;
-  padding: 8px 0;
+  padding: 8px var(--jelly-side-width, 16px);
+  width: 100%;
   box-sizing: border-box;
 }
 .site-header .container {
@@ -207,13 +207,14 @@
 .site-footer {
   background-color: #0a0d14;
   color: #cccccc;
+  padding: 0 var(--jelly-side-width, 16px);
 }
-.site-footer pad .site-name {
+.site-footer .site-name {
   font-weight: 600;
   font-size: 2.5em;
   color: inherit;
 }
-.site-footer pad .site-name:hover {
+.site-footer .site-name:hover {
   text-decoration: none;
 }
 .site-footer .footer-logo {
@@ -233,7 +234,7 @@
 .site-footer .footer-content {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 48px;
 }
 .site-footer .footer-content .footer-item {
   width: 100%;
@@ -279,6 +280,10 @@
     margin: 8px 0;
   }
 }
+#main {
+  padding: 0 var(--jelly-side-width, 16px);
+}
+
 /* 404 页面 */
 .error-page {
   width: 400px;
@@ -776,6 +781,7 @@ nav.breadcrumb .separator {
   align-items: center;
   position: relative;
   text-align: center;
+  margin: 0 calc(-1 * var(--jelly-side-width));
 }
 .page-banner h1 {
   margin: 0;
