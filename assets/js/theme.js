@@ -273,6 +273,26 @@
         $(".primary-menu li").removeClass("submenu-open");
       });
 
+      let isSearchClick = true;
+
+      // 搜索按钮
+      $(".menu-actions #searchsubmit").on("click", function (e) {
+        const $form = $(this).closest('form');
+        const $input = $form.find('.search-input');
+    
+        if (isSearchClick) {
+            e.preventDefault(); // 阻止第一次提交
+            $input.addClass('active'); // 添加 active 类
+            isSearchClick = false; // 更新状态
+        } else {
+            // 第二次点击：移除类并允许提交
+            // $input.removeClass('active');
+            // isSearchClick = true;
+            // 可选：手动触发提交
+            // $form.get(0).submit();
+        }
+      });
+
       // 移动端：点击菜单项展开子菜单（阻止默认跳转）
       $(".primary-menu li.menu-item-has-children > a").on(
         "click",

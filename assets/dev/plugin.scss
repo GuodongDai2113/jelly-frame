@@ -116,10 +116,12 @@ nav.rank-math-breadcrumb p {
         margin-bottom: 0;
     }
 }
+
 .sidebar .wp-block-rank-math-toc-block {
     position: sticky;
     top: 100px;
 }
+
 .wp-block-rank-math-toc-block {
     max-height: calc(100% - 200px);
     overflow-y: auto;

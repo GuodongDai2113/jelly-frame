@@ -20,3 +20,20 @@
 - 过滤器:`jelly_google_code` 参数：ga、gtm
 
 - 过滤器:`jelly_organization`
+
+## 一些规划
+
+后续增加区块的模板，header，footer等，多样性更加丰富。
+
+增加类似于预设一样的功能，需要更加多的css来完成样式
+
+默认调用template-parts中的header，footer
+
+如果有设定则调用对应的php文件与css文件
+
+
+## 固定类名
+
+.site-header
+
+.site-footer

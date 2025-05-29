@@ -22,9 +22,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
         <button class="menu-close" aria-label="<?php esc_attr_e('Close menu', 'jelly-frame'); ?>">
             <i class="ri-close-line" aria-hidden="true"></i>
         </button>
-        <button class="open-search" aria-label="<?php esc_attr_e('Open Search', 'jelly-frame'); ?>">
-            <i class="ri-search-line" aria-hidden="true"></i>
-        </button>
+        <?php get_search_form()?>
         <?php
         Jelly_Frame_Widgets::render('translate');
         ?>

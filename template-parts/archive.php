@@ -11,12 +11,9 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
-    <?php Jelly_Frame_Widgets::render('breadcrumb'); ?>
+    <?php Jelly_Frame_Widgets::render('page-banner'); ?>
     <div class="container flex reverse">
         <div class="content">
-            <h1 class="entry-title">
-                <?php dynamic_archive_page_title() ?>
-            </h1>
             <div class="archive-description">
                 <?php if (is_category() && category_description()) {
                     echo category_description();

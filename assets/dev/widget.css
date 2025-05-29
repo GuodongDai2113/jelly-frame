@@ -36,7 +36,6 @@ a.button .ri-icon {
   align-items: center;
   justify-content: flex-end;
   gap: 24px;
-  /* 搜索按钮 */
 }
 .primary-menu ul {
   margin: 0;
@@ -111,16 +110,37 @@ a.button .ri-icon {
   padding: 6px;
   display: none;
 }
-.primary-menu .open-search {
-  background: none;
-  border: 0;
-  color: var(--jelly-color-title);
-  padding: 6px;
-}
 .primary-menu .menu-actions {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+.primary-menu .menu-actions .search-input {
+  width: 0;
+  padding: 0;
+  border-width: 0;
+  transition: width 0.3s ease-in-out;
+  float: right;
+}
+.primary-menu .menu-actions .search-input.active {
+  width: 100%;
+  padding: 8px 16px;
+  border-width: 1px;
+}
+.primary-menu .menu-actions .search-input.active + button {
+  border-width: 1px;
+}
+.primary-menu .menu-actions button {
+  border-width: 0;
+  transition: none;
+}
+.primary-menu .menu-actions button:focus {
+  color: inherit;
+  background: #fff;
+  border-color: var(--jelly-color-border);
+}
+.primary-menu .menu-actions .search-form {
+  min-width: 40px;
 }
 
 /* 菜单切换按钮 widgets/primary-menu.php */
@@ -133,31 +153,36 @@ a.button .ri-icon {
 /**************************************************/
 form.search-form {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 form.search-form button {
   line-height: 1;
-  background-color: transparent;
-  border: 0;
+  background-color: #fff;
+  border: 1px solid var(--jelly-color-border);
   color: var(--jelly-color-description);
   padding: 10px 14px 10px 14px;
   height: 40px;
-  position: absolute;
-  right: 0;
-  top: 0;
+  border-left: 0;
+  border-radius: 0 var(--jelly-border-radius-sm) var(--jelly-border-radius-sm) 0;
 }
 form.search-form button:hover {
-  border-color: transparent;
-  background-color: transparent;
+  border-color: var(--jelly-color-border);
+  background-color: #fff;
   color: var(--jelly-color-title);
 }
 form.search-form input {
   width: 100%;
   font-size: 14px;
-  border-radius: var(--jelly-border-radius-sm);
+  border-radius: var(--jelly-border-radius-sm) 0 0 var(--jelly-border-radius-sm);
   background-color: #fff;
   border-color: var(--jelly-color-border);
   height: 40px;
   padding: 8px 16px;
+  border-right: 0;
+}
+form.search-form input:focus + button {
+  border-color: var(--jelly-color-primary);
 }
 
 /**************************************************/
@@ -213,8 +238,9 @@ form.search-form input {
 nav.breadcrumb {
   border-top: 1px solid var(--jelly-color-border);
   border-bottom: 1px solid var(--jelly-color-border);
-  padding: 12px 0;
+  padding: 12px var(--jelly-side-width);
   font-size: 14px;
+  margin: 0 calc(-1 * var(--jelly-side-width));
 }
 nav.breadcrumb p {
   margin: 0 auto !important;
@@ -453,7 +479,7 @@ nav.breadcrumb .separator {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .page-banner nav.breadcrumb {
   border: 0;

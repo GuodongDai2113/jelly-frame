@@ -55,6 +55,9 @@ function dynamic_archive_page_title()
     } else {
         esc_html_e('Blog', 'jelly-frame');
     }
+    // if (is_search()) {
+    //     printf(esc_html__('Search Results for: %s', 'jelly-frame'), get_search_query());
+    // }
 }
 
 /** 

@@ -44,8 +44,8 @@ if (is_page()) {
 ?>
 <form role="search" method="get" id="searchform" class="search-form" action="<?php echo esc_url(home_url('/')) ?>">
     <label class="screen-reader-text" for="s"><?php echo __('Search for:', 'jelly-frame') ?></label>
-    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" aria-label="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" />
     <input type="hidden" name="post_type" value="<?php echo esc_attr($post_type) ?>" />
+    <input type="text" class="search-input" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" aria-label="<?php echo esc_attr__('Search …', 'jelly-frame') ?>" />
     <button type="submit" id="searchsubmit" aria-label="<?php echo esc_attr__('Submit search', 'jelly-frame') ?>" title="<?php echo esc_attr__('Submit search', 'jelly-frame') ?>">
         <i class="ri-search-line ri-icon" aria-hidden="true"></i>
     </button>

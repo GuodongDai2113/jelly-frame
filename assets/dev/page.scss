@@ -53,6 +53,11 @@
     }
 }
 
+.archive-page >.container{
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
 /* 移动端 */
 @media screen and (max-width: 767px) {
     .error-page {
