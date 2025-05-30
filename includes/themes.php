@@ -39,8 +39,7 @@ class Jelly_Frame
         add_action('wp_head', array($this, 'insert_ga_gtm_code'), 9);
         add_action('wp_body_open', array($this, 'insert_gtm_body'));
         add_filter('wp_img_tag_add_auto_sizes', '__return_false');
-        add_filter('template_include', array($this, 'custom_page_template_by_slug'), 99);
-        add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
+
     }
 
     /**
@@ -309,28 +308,5 @@ class Jelly_Frame
         }
     }
 
-    function custom_page_template_by_slug($template)
-    {
-        if (is_page()) {
-            global $post;
-            $page_template_slug = get_page_template_slug($post->ID);
-            if ($page_template_slug === 'jelly-frame') {
-                $page_slug = $post->post_name;
-                $custom_template_path = get_template_directory() . '/pages/' . $page_slug . '.php';
-                if (file_exists($custom_template_path)) {
-                    return $custom_template_path;
-                }
-            }
-        }
-        return $template;
-    }
-
-    function add_page_templates($page_templates, $wp_theme, $post)
-    {
-        $page_templates = [
-            'jelly-frame' => esc_html__('Jelly Frame', 'jelly-frame'),
-        ] + $page_templates;
-        return $page_templates;
-    }
 }
 Jelly_Frame::instance();

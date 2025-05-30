@@ -21,7 +21,7 @@ a.button .ri-icon {
   line-height: 1;
 }
 .site-logo .custom-logo {
-  height: 60px;
+  height: 50px;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -55,7 +55,7 @@ a.button .ri-icon {
   color: var(--jelly-color-primary);
 }
 .primary-menu li.current-menu-item > a:hover {
-  color: var(--jelly-color-white);
+  color: var(--jelly-color-primary);
 }
 .primary-menu li.menu-item-has-children > a::after {
   content: "\ea78";
@@ -77,10 +77,10 @@ a.button .ri-icon {
   color: var(--jelly-color-title);
   background-color: #fff;
   box-sizing: border-box;
+  font-size: 14px;
 }
 .primary-menu a:hover {
-  background-color: var(--jelly-color-primary);
-  color: var(--jelly-color-white);
+  color: var(--jelly-color-primary);
 }
 .primary-menu a.button {
   background-color: var(--jelly-color-primary);
@@ -93,10 +93,13 @@ a.button .ri-icon {
   left: 0;
   background-color: #fff;
   white-space: nowrap;
-  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .primary-menu .sub-menu a {
   font-weight: 400;
+}
+.primary-menu .sub-menu a:hover {
+  background-color: var(--jelly-color-item-bg);
 }
 .primary-menu .sub-menu .sub-menu {
   top: 0;
@@ -413,7 +416,6 @@ nav.breadcrumb .separator {
 /**************************************************/
 .related-posts {
   width: 100%;
-  background-color: var(--jelly-color-item-bg);
   text-align: center;
   margin: 32px 0 0 0;
   padding: 32px 0;

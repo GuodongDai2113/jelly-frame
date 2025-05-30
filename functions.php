@@ -42,7 +42,7 @@ require get_template_directory() . '/includes/themes.php';
 // 加载小部件
 require get_template_directory() . '/includes/widgets.php';
 
-// 加载 Elementor 支持
+// 加载插件支持
 require get_template_directory() . '/includes/elementor.php';
 require get_template_directory() . '/includes/rank-math.php';
 require get_template_directory() . '/includes/woocommerce.php';

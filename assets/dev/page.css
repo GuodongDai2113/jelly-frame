@@ -1,6 +1,7 @@
 @charset "UTF-8";
 #main {
   padding: 0 var(--jelly-side-width, 16px);
+  min-height: 480px;
 }
 
 /* 404 页面 */

@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
  * @param  int $per_minute 每分钟阅读字数
  * @return int 阅读时间（分钟）
  */
-function get_post_reading_time($per_minute = 250)
+function jelly_get_post_reading_time($per_minute = 250)
 {
     global $post;
     $content = get_post_field('post_content', $post->ID);
@@ -36,10 +36,12 @@ function get_post_reading_time($per_minute = 250)
  * 
  * @return void
  */
-function dynamic_archive_page_title()
+function jelly_dynamic_archive_page_title()
 {
     if (is_archive()) {
-        add_filter('get_the_archive_title_prefix',function (){return '';});
+        add_filter('get_the_archive_title_prefix', function () {
+            return '';
+        });
         the_archive_title();
     } elseif (is_search()) {
         printf(esc_html__('Search Results for: %s', 'jelly-frame'), get_search_query());
@@ -67,7 +69,7 @@ function dynamic_archive_page_title()
  * 
  * @return string
  */
-function get_author_avatar_url()
+function jelly_get_author_avatar_url()
 {
     // 检查站点是否开启头像
     $show_avatar = get_option('show_avatars', true);
@@ -103,7 +105,7 @@ function get_author_avatar_url()
  * 
  * @since 1.2.0
  */
-function get_related_posts($post_id)
+function jelly_get_related_posts($post_id)
 {
     $tags = wp_get_post_tags($post_id);
     $categories = wp_get_post_categories($post_id);
@@ -158,7 +160,7 @@ function get_related_posts($post_id)
  * 
  * @since 1.2.0
  */
-function get_random_posts($post_id, $post_type = "post")
+function jelly_get_random_posts($post_id, $post_type = "post")
 {
     $random_args = array(
         'post__not_in' => array($post_id),

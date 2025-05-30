@@ -26,6 +26,10 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 ?>
             </footer>
         </div>
-        <?php get_sidebar() ?>
+        <aside class="sidebar">
+            <?php
+            get_search_form();
+            ?>
+        </aside>
     </div>
 </article>

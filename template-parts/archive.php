@@ -37,6 +37,11 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             the_posts_pagination(['mid_size' => 2]);
             ?>
         </div>
-        <?php get_sidebar(); ?>
+        <aside class="sidebar">
+            <?php
+            get_search_form();
+            Jelly_Frame_Widgets::render('article/post-categories');
+            ?>
+        </aside>
     </div>
 </main>
