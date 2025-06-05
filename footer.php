@@ -9,6 +9,7 @@
  */
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
+Jelly_Frame_Elementor::$instance->site_footer();
 wp_footer(); ?>
 </body>
 </html>

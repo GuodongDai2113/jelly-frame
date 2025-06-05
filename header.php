@@ -19,4 +19,5 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问 // FINISH
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php Jelly_Frame_Elementor::$instance->site_header();?>
 <?php wp_body_open(); ?>

@@ -35,8 +35,8 @@ class Jelly_Frame_Elementor
      */
     private function __construct()
     {
-        add_action('wp_body_open', array($this, 'site_header'));
-        add_action('wp_footer', array($this, 'site_footer'), 8);
+        // add_action('wp_body_open', array($this, 'site_header'));
+        // add_action('wp_footer', array($this, 'site_footer'), 8);
 
         if (class_exists('Elementor\Plugin')) {
             $this->is_active = true;
