@@ -23,7 +23,7 @@ $contact  = apply_filters('jelly_organization', array());
                     <a class="contact-link" href="mailto:<?php echo esc_attr($email) ?>" aria-label="Email To <?php echo esc_attr($email)  ?>" title="Email To <?php echo esc_attr($email)  ?>">
                         <?php echo esc_html($email) ?>
                     </a>
-                </div>
+                </div> 
             <?php endforeach; ?>
         <?php endif; ?>
         <?php if (!empty($contact['phones'])): ?>
