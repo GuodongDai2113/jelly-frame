@@ -13,7 +13,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 global $post;
 
 // 获取当前文章的标签和分类
-$related_posts = jelly_get_related_posts($post->ID);
+$related_posts = jelly_frame_get_related_posts($post->ID);
 ?>
 <div class="related-posts">
     <div class="container">
@@ -40,7 +40,7 @@ $related_posts = jelly_get_related_posts($post->ID);
         <?php else: ?>
             <h2><?php esc_html_e('You Might Also Like', 'jelly-frame') ?></h2>
             <ul class="related-posts-list">
-                <?php $random_posts = jelly_get_random_posts($post->ID); ?>
+                <?php $random_posts = jelly_frame_get_random_posts($post->ID); ?>
                 <?php while ($random_posts->have_posts()): ?>
                     <?php
                     $random_posts->the_post();

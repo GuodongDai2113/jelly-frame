@@ -13,7 +13,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 // 获取作者信息
-$avatar_url =  jelly_get_author_avatar_url();
+$avatar_url =  jelly_frame_get_author_avatar_url();
 $author_name = get_the_author();
 $author_description = get_the_author_meta('description');
 ?>

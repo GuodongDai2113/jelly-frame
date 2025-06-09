@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
  * @param  int $per_minute 每分钟阅读字数
  * @return int 阅读时间（分钟）
  */
-function jelly_get_post_reading_time($per_minute = 250)
+function jelly_frame_get_post_reading_time($per_minute = 250)
 {
     global $post;
     $content = get_post_field('post_content', $post->ID);
@@ -36,7 +36,7 @@ function jelly_get_post_reading_time($per_minute = 250)
  * 
  * @return void
  */
-function jelly_dynamic_archive_page_title()
+function jelly_frame_dynamic_archive_page_title()
 {
     if (is_archive()) {
         add_filter('get_the_archive_title_prefix', function () {
@@ -69,7 +69,7 @@ function jelly_dynamic_archive_page_title()
  * 
  * @return string
  */
-function jelly_get_author_avatar_url()
+function jelly_frame_get_author_avatar_url()
 {
     // 检查站点是否开启头像
     $show_avatar = get_option('show_avatars', true);
@@ -105,7 +105,7 @@ function jelly_get_author_avatar_url()
  * 
  * @since 1.2.0
  */
-function jelly_get_related_posts($post_id)
+function jelly_frame_get_related_posts($post_id)
 {
     $tags = wp_get_post_tags($post_id);
     $categories = wp_get_post_categories($post_id);
@@ -160,7 +160,7 @@ function jelly_get_related_posts($post_id)
  * 
  * @since 1.2.0
  */
-function jelly_get_random_posts($post_id, $post_type = "post")
+function jelly_frame_get_random_posts($post_id, $post_type = "post")
 {
     $random_args = array(
         'post__not_in' => array($post_id),
@@ -169,4 +169,99 @@ function jelly_get_random_posts($post_id, $post_type = "post")
         'post_type' => $post_type
     );
     return new WP_Query($random_args);
+}
+
+/**
+ * 获取所有联系信息（缓存）
+ */
+function jelly_frame_get_contact_options() {
+    static $cached = null;
+    if ($cached === null) {
+        $cached = get_option('jelly_frame_contact', []);
+    }
+    return $cached;
+}
+
+/**
+ * 获取单个字段的联系信息
+ * @param string $key 字段名，如 email、phone、whatsapp 等
+ * @param mixed $default 默认值（可选）
+ */
+function jelly_frame_get_contact_field($key, $default = null) {
+    $contact = jelly_frame_get_contact_options();
+    return isset($contact[$key]) ? $contact[$key] : $default;
+}
+
+
+/** 输出面包屑导航
+*
+* 支持 Rank Math、Yoast、WooCommerce 或原生方式
+*/
+function jelly_frame_the_breadcrumbs() {
+   echo '<nav aria-label="breadcrumb" class="breadcrumb"><p class="container">';
+
+   if (function_exists('rank_math_the_breadcrumbs')) {
+       rank_math_the_breadcrumbs(['wrap_before' => '', 'wrap_after' => '']);
+   } elseif (function_exists('yoast_breadcrumb')) {
+       yoast_breadcrumb('', '');
+   } elseif (function_exists('woocommerce_breadcrumb')) {
+       woocommerce_breadcrumb([
+           'wrap_before' => '',
+           'wrap_after' => '',
+       ]);
+   } else {
+       echo jelly_frame_build_breadcrumbs();
+   }
+   echo '</p></nav>';
+}
+
+/**
+* 原生方式构建面包屑
+* @return string HTML
+*/
+function jelly_frame_build_breadcrumbs() {
+   global $post;
+
+   $separator = ' &raquo; ';
+   $home_title = esc_html__('Home','jelly-frame');
+   $breadcrumbs = [];
+
+   // 首页链接
+   $breadcrumbs[] = '<a href="' . esc_url(home_url('/')) . '">' . esc_html($home_title) . '</a>';
+
+   if (is_home()) {
+       $breadcrumbs[] = get_the_title(get_option('page_for_posts', true));
+   } elseif (is_single()) {
+       $categories = get_the_category();
+       if ($categories) {
+           $cat = $categories[0];
+           $parents = get_category_parents($cat, true, $separator);
+           $breadcrumbs[] = rtrim($parents, $separator);
+       }
+       $breadcrumbs[] = get_the_title();
+   } elseif (is_page() && !is_front_page()) {
+       if ($post->post_parent) {
+           $ancestors = array_reverse(get_post_ancestors($post->ID));
+           foreach ($ancestors as $ancestor_id) {
+               $breadcrumbs[] = '<a href="' . get_permalink($ancestor_id) . '">' . get_the_title($ancestor_id) . '</a>';
+           }
+       }
+       $breadcrumbs[] = get_the_title();
+   } elseif (is_category()) {
+       $breadcrumbs[] = single_cat_title('', false);
+   } elseif (is_tag()) {
+       $breadcrumbs[] = single_tag_title('', false);
+   } elseif (is_search()) {
+       $breadcrumbs[] = esc_html__('Search Results:','jelly-frame') . get_search_query();
+   } elseif (is_404()) {
+       $breadcrumbs[] = esc_html__('Page Not Found','jelly-frame');
+   } elseif (is_archive()) {
+       $breadcrumbs[] = post_type_archive_title('', false);
+   }
+
+   return implode($separator, $breadcrumbs);
+}
+
+function jelly_frame_render_widget($widget_name){
+    Jelly_Frame::$instance->widgets->render($widget_name);
 }

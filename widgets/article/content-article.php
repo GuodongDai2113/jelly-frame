@@ -15,14 +15,14 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
         <div class="content">
             <header>
                 <h1 class="entry-title"><?php the_title(); ?></h1>
-                <?php Jelly_Frame_Widgets::render('article/post-meta'); ?>
+                <?php jelly_frame_render_widget('article/post-meta'); ?>
             </header>
             <?php the_content() ?>
             <footer>
                 <?php
-                Jelly_Frame_Widgets::render('article/post-tags');
-                Jelly_Frame_Widgets::render('author-box');
-                Jelly_Frame_Widgets::render('article/post-navigation');
+                jelly_frame_render_widget('article/post-tags');
+                jelly_frame_render_widget('article/author-box');
+                jelly_frame_render_widget('article/post-navigation');
                 ?>
             </footer>
         </div>

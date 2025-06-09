@@ -11,5 +11,5 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="product-page">
-<?php Jelly_Frame_Widgets::render('breadcrumb'); ?>
+<?php jelly_frame_render_widget('global\breadcrumb'); ?>
 <div class="container flex reverse">

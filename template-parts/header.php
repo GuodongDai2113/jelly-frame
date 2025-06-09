@@ -15,12 +15,12 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
     <div class="container">
         <div class="header-logo">
             <?php
-            Jelly_Frame_Widgets::render('site-logo');
+            jelly_frame_render_widget('site-logo');
             ?>
         </div>
         <div class="header-content">
             <?php
-            Jelly_Frame_Widgets::render('primary-menu');
+            jelly_frame_render_widget('primary-menu');
             ?>
         </div>
     </div>

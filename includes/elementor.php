@@ -47,7 +47,9 @@ class Jelly_Frame_Elementor
         add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
         add_action('elementor/elements/categories_registered', array($this, 'add_elementor_widget_categories'));
-        add_action('customize_register', array($this, 'customize_register'));
+        // add_action('customize_register', array($this, 'customize_register'));
+        add_filter('jelly_frame_register_fields', array($this, 'add_theme_fields'));
+        add_filter('jelly_frame_register_tabs', array($this, 'add_theme_tabs'));
 
         // add_filter('the_content', array($this, 'custom_page_template_by_slug'));
         // add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
@@ -158,7 +160,7 @@ class Jelly_Frame_Elementor
         $wp_customize->add_section(
             $section,
             array(
-                'title'    => __('Elementor Settings', 'jelly-frame'),
+                'title'    => esc_html__('Elementor Settings', 'jelly-frame'),
             )
         );
 
@@ -255,8 +257,8 @@ class Jelly_Frame_Elementor
      */
     public function get_popup_id()
     {
-        $button_id = get_theme_mod('jelly_frame_elementor_popup_id');
-        return $button_id;
+        $option = get_option('jelly_frame_elementor', []);
+        return $option['popup_id'] ?? '';
         // return $this->do_elementor_shortcode($button_id);
     }
 
@@ -269,8 +271,9 @@ class Jelly_Frame_Elementor
      */
     public function get_global_form()
     {
-        $button_id = get_theme_mod('jelly_frame_elementor_global_form_id');
-        return $this->do_elementor_shortcode($button_id);
+        $option = get_option('jelly_frame_elementor', []);
+        $form_id = $option['global_form_id'] ?? '';
+        return $this->do_elementor_shortcode($form_id);
     }
 
     /**
@@ -330,6 +333,20 @@ class Jelly_Frame_Elementor
             'jelly-frame' => esc_html__('Jelly Frame', 'jelly-frame'),
         ] + $page_templates;
         return $page_templates;
+    }
+
+    function add_theme_fields($fields)
+    {
+        $fields['elementor'] = [
+            ['id' => 'global_form_id', 'label' => esc_html__('Global Form ID', 'jelly-frame'), 'type' => 'number'],
+            ['id' => 'popup_id', 'label' => esc_html__('Popup ID', 'jelly-frame'), 'type' => 'number']
+        ];
+        return $fields;
+    }
+    function add_theme_tabs($tabs)
+    {
+        $tabs['elementor'] = esc_html__('Elementor', 'jelly-frame');
+        return $tabs;
     }
 }
 

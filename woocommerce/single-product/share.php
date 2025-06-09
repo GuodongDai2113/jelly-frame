@@ -21,8 +21,8 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 do_action('woocommerce_share'); // 共享插件可以挂载到这里。
 
-Jelly_Frame_Widgets::render('popup-button');
+jelly_frame_render_widget('popup-button');
 
-Jelly_Frame_Widgets::render('share-buttons');
+jelly_frame_render_widget('share-buttons');
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

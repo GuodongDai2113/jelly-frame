@@ -24,10 +24,10 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             <i class="ri-timer-line ri-icon" aria-hidden="true"></i>
             <span class="screen-reader-text"><?php echo esc_html__('Reading time', 'jelly-frame') ?>:</span>
             <?php
-            echo jelly_get_post_reading_time();
+            echo jelly_frame_get_post_reading_time();
             echo esc_html__(' minutes', 'jelly-frame')
             ?>
         </span>
     </div>
-    <?php Jelly_Frame_Widgets::render('share-buttons') ?>
+    <?php jelly_frame_render_widget('share-buttons') ?>
 </div>
