@@ -21,7 +21,10 @@
   font-size: 14px;
   display: block;
   padding: 8px 12px;
-  color: inherit !important;
+  color: var(--jelly-color-description);
+}
+.product-categories a:hover {
+  color: var(--jelly-color-primary);
 }
 .product-categories:hover .children::-webkit-scrollbar-thumb {
   background-color: var(--jelly-color-primary);
@@ -249,7 +252,7 @@
 
 .category-content {
   margin-top: 32px;
-  padding: 32px 0;
+  padding: 32px var(--jelly-side-width, 16px);
   background-color: var(--jelly-color-item-bg);
 }
 

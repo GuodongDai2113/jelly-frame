@@ -15,8 +15,8 @@ if (is_front_page()) {
 ?>
 <div class="page-banner">
     <div class="container">
-        <?php if (is_archive() || is_home()): ?>
-            <h1 class="entry-title"><?php dynamic_archive_page_title(); ?></h1>
+        <?php if (is_archive() || is_home() || is_search()): ?>
+            <h1 class="entry-title"><?php jelly_dynamic_archive_page_title(); ?></h1>
         <?php else: ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
         <?php endif; ?>

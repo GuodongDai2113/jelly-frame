@@ -12,11 +12,3 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问 // TODO 增加 CTA 或 表单
 ?>
-<aside class="sidebar">
-    <?php
-    get_search_form();
-    if (is_archive() || is_home()|| is_search()) {
-        Jelly_Frame_Widgets::render('article/post-categories');
-    }
-    ?>
-</aside>

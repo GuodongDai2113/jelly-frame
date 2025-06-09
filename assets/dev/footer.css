@@ -1,13 +1,14 @@
 .site-footer {
   background-color: #0a0d14;
   color: #cccccc;
+  padding: 0 var(--jelly-side-width, 16px);
 }
-.site-footer pad .site-name {
+.site-footer .site-name {
   font-weight: 600;
   font-size: 2.5em;
   color: inherit;
 }
-.site-footer pad .site-name:hover {
+.site-footer .site-name:hover {
   text-decoration: none;
 }
 .site-footer .footer-logo {
@@ -27,7 +28,7 @@
 .site-footer .footer-content {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 48px;
 }
 .site-footer .footer-content .footer-item {
   width: 100%;

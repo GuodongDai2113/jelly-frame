@@ -2,7 +2,7 @@
     // margin-top: 36px;
     background-color: #0a0d14;
     color: #cccccc;
-    pad
+    padding: 0 var(--jelly-side-width, 16px);
     .site-name {
         font-weight: 600;
         font-size: 2.5em;
@@ -29,7 +29,7 @@
         display: flex;
         // padding: 48px 0;
         justify-content: space-between;
-        gap: 24px;
+        gap: 48px;
 
         .footer-item {
             width: 100%;

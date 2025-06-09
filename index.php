@@ -20,7 +20,7 @@ if (is_singular()) {
     if (!$is_elementor_theme_exist || !elementor_theme_do_location('single')) {
         if (is_singular('post')) {
             get_template_part('template-parts/single-post');
-        } elseif(is_singular('page')) {
+        } elseif (is_singular('page')) {
             get_template_part('template-parts/single-page');
         } else {
             get_template_part('template-parts/single');

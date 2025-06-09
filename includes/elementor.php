@@ -35,16 +35,22 @@ class Jelly_Frame_Elementor
      */
     private function __construct()
     {
+        // add_action('wp_body_open', array($this, 'site_header'));
+        // add_action('wp_footer', array($this, 'site_footer'), 8);
+
         if (class_exists('Elementor\Plugin')) {
             $this->is_active = true;
+        } else {
+            return;
         }
         add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_style'));
         add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
         add_action('elementor/elements/categories_registered', array($this, 'add_elementor_widget_categories'));
         add_action('customize_register', array($this, 'customize_register'));
-        add_action('wp_body_open', array($this, 'site_header'));
-        add_action('wp_footer', array($this, 'site_footer'), 8);
+
+        // add_filter('the_content', array($this, 'custom_page_template_by_slug'));
+        // add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
     }
 
     /**
@@ -301,5 +307,30 @@ class Jelly_Frame_Elementor
         }
         return 'contact-us/';
     }
+
+
+    function custom_page_template_by_slug($template)
+    {
+        if (is_page()) {
+            global $post;
+            $page_template_slug = get_page_template_slug($post->ID);
+            if ($page_template_slug === 'jelly-frame') {
+                $page_slug = $post->post_name;
+                if (!empty(Elementor\Plugin::$instance)) {
+                    return Elementor\Plugin::$instance->frontend->get_builder_content(18277);
+                }
+            }
+        }
+        return $template;
+    }
+
+    function add_page_templates($page_templates, $wp_theme, $post)
+    {
+        $page_templates = [
+            'jelly-frame' => esc_html__('Jelly Frame', 'jelly-frame'),
+        ] + $page_templates;
+        return $page_templates;
+    }
 }
+
 Jelly_Frame_Elementor::instance();

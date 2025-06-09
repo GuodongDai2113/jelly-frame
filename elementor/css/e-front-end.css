@@ -172,6 +172,13 @@ div.elementor-menu-toggle {
   padding: 0;
 }
 
+.elementor-page #main {
+  padding: 0;
+}
+.elementor-page .page-banner {
+  margin: 0;
+}
+
 @media screen and (max-width: 1240px) {
   .elementor-nav-menu--main .elementor-nav-menu ul {
     box-shadow: none;
