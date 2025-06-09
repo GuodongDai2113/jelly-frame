@@ -8,18 +8,12 @@
  * Created : 2025.05.06 22:01
  */
 
+namespace Jelly_Frame;
+
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame_Widgets
+class Widgets
 {
-
-    /**
-     * 实例接口变量
-     * 
-     * @since  1.2.2
-     * @return void
-     */
-    public static $instance;
 
     private $widget_list = array();
 
@@ -28,38 +22,11 @@ class Jelly_Frame_Widgets
      * 
      * @since  1.2.2
      */
-    private function __construct()
+    public function __construct()
     {
         $this->init_widget_list();
         add_action('elementor/widgets/register', array($this, 'register_elementor_widgets'));
         add_action('wp_footer', array($this, 'set_float_widget'), 9);
-    }
-
-    /**
-     * 防止克隆
-     * 
-     * @since  1.2.2
-     */
-    private function __clone() {}
-
-    /**
-     * 防止反序列化
-     * 
-     * @since  1.2.2
-     */
-    public function __wakeup() {}
-
-    /**
-     * 实例接口
-     * 
-     * @since  1.2.2
-     */
-    public static function instance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
     }
 
 
@@ -75,15 +42,15 @@ class Jelly_Frame_Widgets
          * 值：小部件完整类名
          */
         $this->widget_list = array(
-            'share-buttons'         => 'Jelly_Frame_Share_Buttons_Widget',
-            'breadcrumb'    => 'Jelly_Frame_Breadcrumb_Widget',
-            'search'        => 'Jelly_Frame_Search_Widget',
-            'contact-list'  => 'Jelly_Frame_Contact_List_Widget',
-            'page-banner'   => 'Jelly_Frame_Page_Banner_Widget',
-            'primary-menu'  => 'Jelly_Frame_Primary_Menu_Widget',
-            'loop-card'     => 'Jelly_Frame_Loop_Card_Widget',
-            'content-article'     => 'Jelly_Frame_Content_Article_Widget',
-            'content-single-product'     => 'Jelly_Frame_Content_Single_Product_Widget',
+            'share-buttons'             => 'Jelly_Frame_Share_Buttons_Widget',
+            'breadcrumb'                => 'Jelly_Frame_Breadcrumb_Widget',
+            'search'                    => 'Jelly_Frame_Search_Widget',
+            'contact-list'              => 'Jelly_Frame_Contact_List_Widget',
+            'page-banner'               => 'Jelly_Frame_Page_Banner_Widget',
+            'primary-menu'              => 'Jelly_Frame_Primary_Menu_Widget',
+            'loop-card'                 => 'Jelly_Frame_Loop_Card_Widget',
+            'content-article'           => 'Jelly_Frame_Content_Article_Widget',
+            'content-single-product'    => 'Jelly_Frame_Content_Single_Product_Widget',
         );
     }
 
@@ -121,16 +88,28 @@ class Jelly_Frame_Widgets
      * 
      * @since 1.2.3
      */
-    public static function render($widget_name)
+    public function render($widget_name)
     {
         get_template_part('widgets/' . $widget_name);
     }
 
+    /**
+     * 设置浮动小部件   
+     * 
+     * @since 1.2.4
+     * @since 1.2.6 在 Elementor 维护模式 不显示浮动元素
+     */
     public function set_float_widget()
     {
-        self::render('totop');
-        self::render('float-buttons');
-        self::render('cookie-banner');
+
+        // 如果存在 'elementor-maintenance-mode' 类，则退出函数
+        if (in_array('elementor-maintenance-mode', get_body_class())) {
+            return;
+        }
+    
+        $this->render('float\totop');
+        $this->render('float\contact-buttons');
+        $this->render('float\cookie-banner');
     }
 }
-Jelly_Frame_Widgets::instance();
+

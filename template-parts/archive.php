@@ -11,7 +11,7 @@
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
-    <?php Jelly_Frame_Widgets::render('page-banner'); ?>
+    <?php jelly_frame_render_widget('page-banner'); ?>
     <div class="container flex reverse">
         <div class="content">
             <div class="archive-description">
@@ -24,7 +24,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post();
-                        Jelly_Frame_Widgets::render('loop-card');
+                        jelly_frame_render_widget('loop-card');
                     }
                 } else {
                 ?>
@@ -40,7 +40,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
         <aside class="sidebar">
             <?php
             get_search_form();
-            Jelly_Frame_Widgets::render('article/post-categories');
+            jelly_frame_render_widget('article/post-categories');
             ?>
         </aside>
     </div>

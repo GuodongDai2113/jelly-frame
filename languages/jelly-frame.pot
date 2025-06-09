@@ -1,0 +1,483 @@
+# Copyright (C) 2025 JellyDai
+# This file is distributed under the GNU General Public License v3 or later..
+msgid ""
+msgstr ""
+"Project-Id-Version: Jelly Frame 1.2.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/jelly-frame\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-06-09T10:34:10+08:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: jelly-frame\n"
+
+#. Theme Name of the theme
+#: style.css
+#: includes/elementor.php:333
+msgid "Jelly Frame"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://jellydai.com/jelly-frame/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "As a theme deeply integrated with the Elementor page builder, \"Jelly Frame\" takes full advantage of the powerful drag-and-drop editing, allowing you to easily customize every detail without writing any code."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "JellyDai"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://jellydai.com/"
+msgstr ""
+
+#: elementor/widgets/breadcrumb.php:22
+msgid "breadcrumb"
+msgstr ""
+
+#: elementor/widgets/breadcrumb.php:49
+#: elementor/widgets/contact-list.php:49
+#: elementor/widgets/content-article.php:48
+#: elementor/widgets/content-single-product.php:49
+#: elementor/widgets/loop-card.php:49
+#: elementor/widgets/page-banner.php:75
+#: elementor/widgets/primary-menu.php:49
+#: elementor/widgets/search.php:49
+#: elementor/widgets/share-buttons.php:49
+msgid "Style"
+msgstr ""
+
+#: elementor/widgets/breadcrumb.php:60
+#: elementor/widgets/contact-list.php:60
+#: elementor/widgets/content-article.php:59
+#: elementor/widgets/content-single-product.php:60
+#: elementor/widgets/loop-card.php:60
+#: elementor/widgets/page-banner.php:86
+#: elementor/widgets/primary-menu.php:60
+#: elementor/widgets/search.php:60
+#: elementor/widgets/share-buttons.php:60
+msgid "Custom Notice"
+msgstr ""
+
+#: elementor/widgets/breadcrumb.php:61
+#: elementor/widgets/contact-list.php:61
+#: elementor/widgets/content-article.php:60
+#: elementor/widgets/content-single-product.php:61
+#: elementor/widgets/loop-card.php:61
+#: elementor/widgets/page-banner.php:87
+#: elementor/widgets/primary-menu.php:61
+#: elementor/widgets/search.php:61
+#: elementor/widgets/share-buttons.php:61
+msgid "This widget belongs to the Jelly Frame theme."
+msgstr ""
+
+#: elementor/widgets/contact-list.php:22
+msgid "Contact List"
+msgstr ""
+
+#: elementor/widgets/content-article.php:21
+msgid "Article Content"
+msgstr ""
+
+#: elementor/widgets/content-single-product.php:22
+msgid "Single Product Content"
+msgstr ""
+
+#: elementor/widgets/loop-card.php:22
+msgid "Loop Card"
+msgstr ""
+
+#: elementor/widgets/page-banner.php:22
+msgid "Page Banner"
+msgstr ""
+
+#: elementor/widgets/page-banner.php:51
+msgid "Content"
+msgstr ""
+
+#: elementor/widgets/page-banner.php:59
+msgid "Backgorun Image"
+msgstr ""
+
+#: elementor/widgets/primary-menu.php:22
+msgid "Primary Menu"
+msgstr ""
+
+#: elementor/widgets/search.php:22
+msgid "Search"
+msgstr ""
+
+#: elementor/widgets/share-buttons.php:22
+msgid "Share Buttons"
+msgstr ""
+
+#: includes/common.php:47
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: includes/common.php:55
+#: includes/common.php:58
+msgid "Blog"
+msgstr ""
+
+#: includes/common.php:226
+msgid "Home"
+msgstr ""
+
+#: includes/common.php:255
+msgid "Search Results:"
+msgstr ""
+
+#: includes/common.php:257
+msgid "Page Not Found"
+msgstr ""
+
+#: includes/elementor.php:163
+msgid "Elementor Settings"
+msgstr ""
+
+#: includes/elementor.php:179
+#: includes/elementor.php:341
+msgid "Global Form ID"
+msgstr ""
+
+#: includes/elementor.php:192
+#: includes/elementor.php:342
+msgid "Popup ID"
+msgstr ""
+
+#: includes/elementor.php:292
+msgid "Jelly Frame (Theme)"
+msgstr ""
+
+#: includes/elementor.php:348
+msgid "Elementor"
+msgstr ""
+
+#: includes/settings.php:30
+#: includes/settings.php:31
+msgid "Theme"
+msgstr ""
+
+#: includes/settings.php:43
+msgid "General"
+msgstr ""
+
+#: includes/settings.php:44
+msgid "Contact"
+msgstr ""
+
+#: includes/settings.php:45
+msgid "SEO"
+msgstr ""
+
+#: includes/settings.php:50
+msgid "Site Title"
+msgstr ""
+
+#: includes/settings.php:51
+msgid "Posts per page"
+msgstr ""
+
+#: includes/settings.php:54
+msgid "Organization Name"
+msgstr ""
+
+#: includes/settings.php:55
+msgid "Phone Number"
+msgstr ""
+
+#: includes/settings.php:56
+msgid "Email Address"
+msgstr ""
+
+#: includes/settings.php:57
+msgid "Mailing Address"
+msgstr ""
+
+#: includes/settings.php:59
+msgid "WhatsApp"
+msgstr ""
+
+#: includes/settings.php:60
+msgid "Instagram"
+msgstr ""
+
+#: includes/settings.php:61
+msgid "Facebook"
+msgstr ""
+
+#: includes/settings.php:62
+msgid "Twitter/X"
+msgstr ""
+
+#: includes/settings.php:63
+msgid "LinkedIn"
+msgstr ""
+
+#: includes/settings.php:64
+msgid "YouTube Channel"
+msgstr ""
+
+#: includes/settings.php:65
+msgid "TikTok"
+msgstr ""
+
+#: includes/settings.php:66
+msgid "Telegram"
+msgstr ""
+
+#: includes/settings.php:67
+msgid "Skype"
+msgstr ""
+
+#: includes/settings.php:70
+msgid "Website Description"
+msgstr ""
+
+#: includes/settings.php:71
+msgid "Allow search engines to index"
+msgstr ""
+
+#: includes/settings.php:72
+msgid "Google Analytics ID"
+msgstr ""
+
+#: includes/settings.php:73
+msgid "Google Tag Manager ID"
+msgstr ""
+
+#: includes/settings.php:187
+msgid "Remove"
+msgstr ""
+
+#: includes/settings.php:191
+msgid "Add"
+msgstr ""
+
+#: includes/settings.php:263
+msgid "Theme Settings"
+msgstr ""
+
+#: includes/woocommerce.php:115
+#: includes/woocommerce.php:135
+msgid "Category Content"
+msgstr ""
+
+#: includes/woocommerce.php:125
+#: includes/woocommerce.php:146
+msgid "Enter the content for this category."
+msgstr ""
+
+#: includes/woocommerce.php:195
+msgid "Product page columns"
+msgstr ""
+
+#: includes/woocommerce.php:196
+msgid "Product page rows"
+msgstr ""
+
+#: includes/woocommerce.php:197
+msgid "Shop page display"
+msgstr ""
+
+#: includes/woocommerce.php:198
+#: includes/woocommerce.php:203
+msgid "Show products"
+msgstr ""
+
+#: includes/woocommerce.php:199
+#: includes/woocommerce.php:204
+msgid "Show categories"
+msgstr ""
+
+#: includes/woocommerce.php:200
+#: includes/woocommerce.php:205
+msgid "Show categories & products"
+msgstr ""
+
+#: includes/woocommerce.php:202
+msgid "Category archive display"
+msgstr ""
+
+#: includes/woocommerce.php:212
+msgid "Products"
+msgstr ""
+
+#: searchform.php:46
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:48
+msgid "Search …"
+msgstr ""
+
+#: searchform.php:49
+msgid "Submit search"
+msgstr ""
+
+#: template-parts/404.php:16
+msgid "404"
+msgstr ""
+
+#: template-parts/404.php:17
+msgid "Page Not Find"
+msgstr ""
+
+#: template-parts/404.php:18
+msgid "Sorry, the page you are looking for does not exist."
+msgstr ""
+
+#: template-parts/archive.php:31
+msgid "Sorry, there is no content you are looking for."
+msgstr ""
+
+#: template-parts/footer.php:47
+msgid "Copyright © "
+msgstr ""
+
+#: template-parts/footer.php:50
+msgid " All Rights Reserved."
+msgstr ""
+
+#: template-parts/header.php:13
+msgid "Skip to content"
+msgstr ""
+
+#: widgets/article/post-categories.php:19
+msgid "Categories"
+msgstr ""
+
+#: widgets/article/post-categories.php:36
+msgid "No categories found."
+msgstr ""
+
+#: widgets/article/post-meta.php:18
+#: widgets/article/post-meta.php:20
+msgid "Release date"
+msgstr ""
+
+#: widgets/article/post-meta.php:23
+#: widgets/article/post-meta.php:25
+msgid "Reading time"
+msgstr ""
+
+#: widgets/article/post-meta.php:28
+msgid " minutes"
+msgstr ""
+
+#: widgets/article/post-related.php:21
+msgid "Related Posts"
+msgstr ""
+
+#: widgets/article/post-related.php:41
+msgid "You Might Also Like"
+msgstr ""
+
+#: widgets/article/post-tags.php:14
+msgid "Tagged "
+msgstr ""
+
+#: widgets/float/contact-buttons.php:29
+msgid "Customer Support"
+msgstr ""
+
+#: widgets/float/contact-buttons.php:38
+#, php-format
+msgid "Email to %s"
+msgstr ""
+
+#: widgets/float/contact-buttons.php:54
+#, php-format
+msgid "Call to %s"
+msgstr ""
+
+#: widgets/float/contact-buttons.php:70
+msgid "Chat via WhatsApp"
+msgstr ""
+
+#: widgets/float/contact-buttons.php:82
+msgid "Collapse"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:13
+msgid "Cookie Consent Banner"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:16
+msgid "We value your privacy"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:19
+msgid "We use cookies to enhance your browsing experience, serve personalised ads or content, and analyse our traffic. By clicking \"Accept All\", you consent to our use of cookies."
+msgstr ""
+
+#: widgets/float/cookie-banner.php:23
+msgid "Reject all cookies"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:24
+msgid "Reject All"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:26
+msgid "Accept all cookies"
+msgstr ""
+
+#: widgets/float/cookie-banner.php:27
+msgid "Accept All"
+msgstr ""
+
+#: widgets/float/totop.php:13
+msgid "Scroll to Top"
+msgstr ""
+
+#: widgets/inquiry-form.php:17
+msgid "Get a Free Quote"
+msgstr ""
+
+#: widgets/loop-card.php:32
+msgid "By"
+msgstr ""
+
+#: widgets/popup-button.php:19
+msgid "Get A Quote"
+msgstr ""
+
+#: widgets/primary-menu.php:19
+msgid "Menu"
+msgstr ""
+
+#: widgets/primary-menu.php:22
+msgid "Close menu"
+msgstr ""
+
+#: widgets/primary-menu.php:34
+msgid "Toggle menu"
+msgstr ""
+
+#: widgets/share-buttons.php:14
+msgid "Share:"
+msgstr ""
+
+#: widgets/share-buttons.php:17
+msgid "Share on Twitter"
+msgstr ""
+
+#: widgets/share-buttons.php:21
+msgid "Share on Facebook"
+msgstr ""
+
+#: widgets/share-buttons.php:25
+msgid "Share on LinkedIn"
+msgstr ""

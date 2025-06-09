@@ -1,72 +1,35 @@
 <?php
 
 /**
- * includes\theme.php
+ * includes\basis.php
  * 
- * Author  : Jelly Dai
- * Email   : d@jellydai.com
- * Created : 2025.04.26 09:59
+ * @see: https://jellydai.com
+ * @author: Jelly Dai <d@jellydai.com>
+ * @created: 2025.06.07 10:54
  */
+
+namespace Jelly_Frame;
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame
+/**
+ * 完成主题的基础配置
+ * 
+ * 主题的配置
+ * 加载样式和脚本
+ * GA 与 GTM 安装
+ */
+class Basis
 {
-
-    /**
-     * 实例接口变量
-     * 
-     * @since  1.2.2
-     * @return void
-     */
-    public static $instance;
-
-    /**
-     * 构造函数
-     * 
-     * @since  1.2.2
-     */
-    private function __construct()
+    public function __construct()
     {
         add_action('after_setup_theme', array($this, 'setup'));
         add_action('wp_enqueue_scripts', array($this, 'remove_wp_css'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-        add_action('admin_menu', array($this, 'replace_menu'));
-        add_action('customize_register', array($this, 'customize_register'));
-        add_action('wp_head', array($this, 'add_page_banner_style'));
         add_filter('nav_menu_css_class', array($this, 'clean_nav_menu_classes'), 10, 4);
         add_action('wp_head', array($this, 'insert_ga_gtm_code'), 9);
         add_action('wp_body_open', array($this, 'insert_gtm_body'));
-        add_filter('wp_img_tag_add_auto_sizes', '__return_false');
-
-    }
-
-    /**
-     * 防止克隆
-     * 
-     * @since  1.2.2
-     */
-    private function __clone() {}
-
-    /**
-     * 防止反序列化
-     * 
-     * @since  1.2.2
-     */
-    public function __wakeup() {}
-
-    /**
-     * 实例接口
-     * 
-     * @since  1.2.2
-     */
-    public static function instance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
     }
 
     /**
@@ -169,7 +132,7 @@ class Jelly_Frame
      */
     public function remove_wp_css()
     {
-        if (!is_singular('post') && !is_singular('news')) {
+        if (!is_singular('post')) {
             // 移除 WordPress 块 CSS
             // wp_dequeue_style('wp-block-library');
             wp_dequeue_style('wp-block-library-theme');
@@ -178,72 +141,6 @@ class Jelly_Frame
             wp_deregister_style('classic-theme-styles');
             wp_dequeue_style('classic-theme-styles');
         }
-    }
-
-    /**
-     * 替换后台菜单
-     * 
-     * @since  1.0.0
-     */
-    public function replace_menu()
-    {
-        remove_submenu_page('themes.php', 'site-editor.php?p=/pattern');
-        $menus = remove_submenu_page('themes.php', 'nav-menus.php');
-        if (!empty($menus)) {
-            add_menu_page(
-                __('Menus', 'jelly-frame'),
-                __('Menus', 'jelly-frame'),
-                'edit_theme_options',
-                'nav-menus.php',
-                '',
-                'dashicons-menu-alt',
-                69
-            );
-        }
-    }
-
-    /**
-     * 在 customize_register 钩子中注册新设置
-     * 
-     * @since 1.2.3
-     */
-    public function customize_register($wp_customize)
-    {
-        // 添加新的图片设置到 Site Identity
-        $wp_customize->add_setting('page_banner', array(
-            'default'           => '',
-            'sanitize_callback' => 'esc_url_raw',
-        ));
-
-        // 添加控制项
-        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'page_banner', array(
-            'label'    => __('Page Banner', 'jelly-frame'),
-            'section'  => 'title_tagline', // Site Identity 所在的 section
-            'settings' => 'page_banner',
-            'priority' => 8, // 控制显示位置
-        )));
-    }
-    /**
-     * 输出 page-banner 样式到头部
-     * 
-     * @return bool
-     * 
-     * @since 1.2.3
-     * 
-     */
-    public function add_page_banner_style()
-    {
-        $page_banner = get_theme_mod('page_banner');
-        if (is_page() && has_post_thumbnail()) {
-            $featured_image_url = get_the_post_thumbnail_url(null, '2048x2048');
-            echo '<style type="text/css">.page-banner {background-image: url("' . esc_url($featured_image_url) . '");}</style>';
-            return true;
-        }
-        if (!empty($page_banner)) {
-            echo '<style type="text/css">.page-banner {background-image: url("' . esc_url($page_banner) . '");}</style>';
-            return true;
-        }
-        return false;
     }
 
     /**
@@ -280,13 +177,26 @@ class Jelly_Frame
             $ga_code  = apply_filters('jelly_google_code', '', 'ga');
             $gtm_code = apply_filters('jelly_google_code', '', 'gtm');
 
+            $option = get_option('jelly_frame_seo');
+
+            if (isset($option['ga_id']) && !empty($option['ga_id'])) {
+                $ga_code = $option['ga_id'];
+            }
+            if (isset($option['gtm_id']) && !empty($option['gtm_id'])) {
+                $gtm_code = $option['gtm_id'];
+            }
+
             if (!empty($ga_code)) {
+                echo '<!-- Google Analytics -->';
                 echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_attr($ga_code) . '"></script>';
                 echo "<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '" . esc_attr($ga_code) . "');</script>";
+                echo '<!-- End Google Analytics -->';
             }
 
             if (!empty($gtm_code)) {
+                echo '<!-- Google Tag Manager -->';
                 echo "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" . esc_attr($gtm_code) . "');</script>";
+                echo '<!-- End Google Tag Manager -->';
             }
         }
     }
@@ -302,11 +212,18 @@ class Jelly_Frame
     {
         if (!is_user_logged_in()) {
             $gtm_code = apply_filters('jelly_google_code', '', 'gtm');
+
+            $option = get_option('jelly_frame_seo');
+
+            if (isset($option['gtm_id']) && !empty($option['gtm_id'])) {
+                $gtm_code = $option['gtm_id'];
+            }
+
             if (!empty($gtm_code)) {
+                echo '<!-- Google Tag Manager (noscript) -->';
                 echo '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' . esc_attr($gtm_code) . '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
+                echo '<!-- End Google Tag Manager (noscript) -->';
             }
         }
     }
-
 }
-Jelly_Frame::instance();

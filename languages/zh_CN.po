@@ -1,0 +1,473 @@
+# Copyright (C) 2025 JellyDai
+# This file is distributed under the GNU General Public License v3 or later..
+msgid ""
+msgstr ""
+"Project-Id-Version: Jelly Frame 1.2.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/jelly-frame\n"
+"POT-Creation-Date: 2025-06-09T10:34:10+08:00\n"
+"PO-Revision-Date: 2025-06-09 10:45+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: jelly-frame\n"
+
+#. Theme Name of the theme
+#: style.css includes/elementor.php:333
+msgid "Jelly Frame"
+msgstr "果冻框架"
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://jellydai.com/jelly-frame/"
+msgstr "https://jellydai.com/jelly-frame/"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"As a theme deeply integrated with the Elementor page builder, \"Jelly "
+"Frame\" takes full advantage of the powerful drag-and-drop editing, allowing "
+"you to easily customize every detail without writing any code."
+msgstr ""
+"作为一款深度集成 Elementor 页面构建器 的主题，“Jelly Frame”充分发挥了拖放式编"
+"辑的强大优势，让您可以轻松自定义每一个细节，而无需编写任何代码。"
+
+#. Author of the theme
+#: style.css
+msgid "JellyDai"
+msgstr "JellyDai"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://jellydai.com/"
+msgstr "https://jellydai.com/"
+
+#: elementor/widgets/breadcrumb.php:22
+msgid "breadcrumb"
+msgstr "面包屑"
+
+#: elementor/widgets/breadcrumb.php:49 elementor/widgets/contact-list.php:49
+#: elementor/widgets/content-article.php:48
+#: elementor/widgets/content-single-product.php:49
+#: elementor/widgets/loop-card.php:49 elementor/widgets/page-banner.php:75
+#: elementor/widgets/primary-menu.php:49 elementor/widgets/search.php:49
+#: elementor/widgets/share-buttons.php:49
+msgid "Style"
+msgstr "样式"
+
+#: elementor/widgets/breadcrumb.php:60 elementor/widgets/contact-list.php:60
+#: elementor/widgets/content-article.php:59
+#: elementor/widgets/content-single-product.php:60
+#: elementor/widgets/loop-card.php:60 elementor/widgets/page-banner.php:86
+#: elementor/widgets/primary-menu.php:60 elementor/widgets/search.php:60
+#: elementor/widgets/share-buttons.php:60
+msgid "Custom Notice"
+msgstr "自定义通知"
+
+#: elementor/widgets/breadcrumb.php:61 elementor/widgets/contact-list.php:61
+#: elementor/widgets/content-article.php:60
+#: elementor/widgets/content-single-product.php:61
+#: elementor/widgets/loop-card.php:61 elementor/widgets/page-banner.php:87
+#: elementor/widgets/primary-menu.php:61 elementor/widgets/search.php:61
+#: elementor/widgets/share-buttons.php:61
+msgid "This widget belongs to the Jelly Frame theme."
+msgstr "该小部件属于 Jelly Frame 主题。"
+
+#: elementor/widgets/contact-list.php:22
+msgid "Contact List"
+msgstr "联系列表"
+
+#: elementor/widgets/content-article.php:21
+msgid "Article Content"
+msgstr "文章内容"
+
+#: elementor/widgets/content-single-product.php:22
+msgid "Single Product Content"
+msgstr "单个产品内容"
+
+#: elementor/widgets/loop-card.php:22
+msgid "Loop Card"
+msgstr "循环卡片"
+
+#: elementor/widgets/page-banner.php:22
+msgid "Page Banner"
+msgstr "页面 Banner"
+
+#: elementor/widgets/page-banner.php:51
+msgid "Content"
+msgstr "内容"
+
+#: elementor/widgets/page-banner.php:59
+msgid "Backgorun Image"
+msgstr "背景图片"
+
+#: elementor/widgets/primary-menu.php:22
+msgid "Primary Menu"
+msgstr "主要菜单"
+
+#: elementor/widgets/search.php:22
+msgid "Search"
+msgstr "搜索"
+
+#: elementor/widgets/share-buttons.php:22
+msgid "Share Buttons"
+msgstr "分享按钮"
+
+#: includes/common.php:47
+#, php-format
+msgid "Search Results for: %s"
+msgstr "搜索结果：%s"
+
+#: includes/common.php:55 includes/common.php:58
+msgid "Blog"
+msgstr "博客"
+
+#: includes/common.php:226
+msgid "Home"
+msgstr "首页"
+
+#: includes/common.php:255
+msgid "Search Results:"
+msgstr "搜索结果："
+
+#: includes/common.php:257
+msgid "Page Not Found"
+msgstr "无法找到页面"
+
+#: includes/elementor.php:163
+msgid "Elementor Settings"
+msgstr "Elementor 设置"
+
+#: includes/elementor.php:179 includes/elementor.php:341
+msgid "Global Form ID"
+msgstr "全局表单 ID"
+
+#: includes/elementor.php:192 includes/elementor.php:342
+msgid "Popup ID"
+msgstr "弹窗 ID"
+
+#: includes/elementor.php:292
+msgid "Jelly Frame (Theme)"
+msgstr "果冻框架 (主题)"
+
+#: includes/elementor.php:348
+msgid "Elementor"
+msgstr "Elementor"
+
+#: includes/settings.php:30 includes/settings.php:31
+msgid "Theme"
+msgstr "主题"
+
+#: includes/settings.php:43
+msgid "General"
+msgstr "常规"
+
+#: includes/settings.php:44
+msgid "Contact"
+msgstr "联系"
+
+#: includes/settings.php:45
+msgid "SEO"
+msgstr "SEO"
+
+#: includes/settings.php:50
+msgid "Site Title"
+msgstr "站点标题"
+
+#: includes/settings.php:51
+msgid "Posts per page"
+msgstr "每页帖子数"
+
+#: includes/settings.php:54
+msgid "Organization Name"
+msgstr "组织名称"
+
+#: includes/settings.php:55
+msgid "Phone Number"
+msgstr "电话"
+
+#: includes/settings.php:56
+msgid "Email Address"
+msgstr "电子邮箱"
+
+#: includes/settings.php:57
+msgid "Mailing Address"
+msgstr "地址"
+
+#: includes/settings.php:59
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: includes/settings.php:60
+msgid "Instagram"
+msgstr "Instagram"
+
+#: includes/settings.php:61
+msgid "Facebook"
+msgstr "脸书"
+
+#: includes/settings.php:62
+msgid "Twitter/X"
+msgstr "推特/X"
+
+#: includes/settings.php:63
+msgid "LinkedIn"
+msgstr "领英"
+
+#: includes/settings.php:64
+msgid "YouTube Channel"
+msgstr "油管频道"
+
+#: includes/settings.php:65
+msgid "TikTok"
+msgstr "TikTok"
+
+#: includes/settings.php:66
+msgid "Telegram"
+msgstr "Telegram"
+
+#: includes/settings.php:67
+msgid "Skype"
+msgstr "Skype"
+
+#: includes/settings.php:70
+msgid "Website Description"
+msgstr "网站描述"
+
+#: includes/settings.php:71
+msgid "Allow search engines to index"
+msgstr "允许搜索引擎索引"
+
+#: includes/settings.php:72
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#: includes/settings.php:73
+msgid "Google Tag Manager ID"
+msgstr "Google Tag Manager ID"
+
+#: includes/settings.php:187
+msgid "Remove"
+msgstr "移除"
+
+#: includes/settings.php:191
+msgid "Add"
+msgstr "添加"
+
+#: includes/settings.php:263
+msgid "Theme Settings"
+msgstr "主题设置"
+
+#: includes/woocommerce.php:115 includes/woocommerce.php:135
+msgid "Category Content"
+msgstr "分类内容"
+
+#: includes/woocommerce.php:125 includes/woocommerce.php:146
+msgid "Enter the content for this category."
+msgstr "输入此分类的内容。"
+
+#: includes/woocommerce.php:195
+msgid "Product page columns"
+msgstr "产品页面列数"
+
+#: includes/woocommerce.php:196
+msgid "Product page rows"
+msgstr "产品页面行数"
+
+#: includes/woocommerce.php:197
+msgid "Shop page display"
+msgstr "产品页面展示"
+
+#: includes/woocommerce.php:198 includes/woocommerce.php:203
+msgid "Show products"
+msgstr "显示产品"
+
+#: includes/woocommerce.php:199 includes/woocommerce.php:204
+msgid "Show categories"
+msgstr "显示产品分类"
+
+#: includes/woocommerce.php:200 includes/woocommerce.php:205
+msgid "Show categories & products"
+msgstr "显示分类和产品"
+
+#: includes/woocommerce.php:202
+msgid "Category archive display"
+msgstr "产品分类归档页显示"
+
+#: includes/woocommerce.php:212
+msgid "Products"
+msgstr "产品"
+
+#: searchform.php:46
+msgid "Search for:"
+msgstr "搜索："
+
+#: searchform.php:48
+msgid "Search …"
+msgstr "搜索 ..."
+
+#: searchform.php:49
+msgid "Submit search"
+msgstr "提交搜索"
+
+#: template-parts/404.php:16
+msgid "404"
+msgstr "404"
+
+#: template-parts/404.php:17
+msgid "Page Not Find"
+msgstr "无法找到页面"
+
+#: template-parts/404.php:18
+msgid "Sorry, the page you are looking for does not exist."
+msgstr "抱歉，您要查找的页面不存在。"
+
+#: template-parts/archive.php:31
+msgid "Sorry, there is no content you are looking for."
+msgstr "抱歉，没有您要查找的内容。"
+
+#: template-parts/footer.php:47
+msgid "Copyright © "
+msgstr "版权 ©"
+
+#: template-parts/footer.php:50
+msgid " All Rights Reserved."
+msgstr "版权所有。"
+
+#: template-parts/header.php:13
+msgid "Skip to content"
+msgstr "跳至内容"
+
+#: widgets/article/post-categories.php:19
+msgid "Categories"
+msgstr "分类"
+
+#: widgets/article/post-categories.php:36
+msgid "No categories found."
+msgstr "没有找到分类"
+
+#: widgets/article/post-meta.php:18 widgets/article/post-meta.php:20
+msgid "Release date"
+msgstr "发布日期"
+
+#: widgets/article/post-meta.php:23 widgets/article/post-meta.php:25
+msgid "Reading time"
+msgstr "阅读时间"
+
+#: widgets/article/post-meta.php:28
+msgid " minutes"
+msgstr "名字"
+
+#: widgets/article/post-related.php:21
+msgid "Related Posts"
+msgstr "相关帖子"
+
+#: widgets/article/post-related.php:41
+msgid "You Might Also Like"
+msgstr "你可能还喜欢"
+
+#: widgets/article/post-tags.php:14
+msgid "Tagged "
+msgstr "标签 "
+
+#: widgets/float/contact-buttons.php:29
+msgid "Customer Support"
+msgstr "客户支持"
+
+#: widgets/float/contact-buttons.php:38
+#, php-format
+msgid "Email to %s"
+msgstr "发送电子邮件至 %s"
+
+#: widgets/float/contact-buttons.php:54
+#, php-format
+msgid "Call to %s"
+msgstr "致电 %s"
+
+#: widgets/float/contact-buttons.php:70
+msgid "Chat via WhatsApp"
+msgstr "通过 WhatsApp 聊天"
+
+#: widgets/float/contact-buttons.php:82
+msgid "Collapse"
+msgstr "折叠"
+
+#: widgets/float/cookie-banner.php:13
+msgid "Cookie Consent Banner"
+msgstr "Cookie 同意横幅"
+
+#: widgets/float/cookie-banner.php:16
+msgid "We value your privacy"
+msgstr "我们重视您的隐私"
+
+#: widgets/float/cookie-banner.php:19
+msgid ""
+"We use cookies to enhance your browsing experience, serve personalised ads "
+"or content, and analyse our traffic. By clicking \"Accept All\", you consent "
+"to our use of cookies."
+msgstr ""
+"我们使用 Cookie 来提升您的浏览体验、投放个性化广告或内容，以及分析我们的流"
+"量。点击“全部接受”即表示您同意我们使用 Cookie。"
+
+#: widgets/float/cookie-banner.php:23
+msgid "Reject all cookies"
+msgstr "拒绝所有 Cookie"
+
+#: widgets/float/cookie-banner.php:24
+msgid "Reject All"
+msgstr "全部拒绝"
+
+#: widgets/float/cookie-banner.php:26
+msgid "Accept all cookies"
+msgstr "接受所有 cookies"
+
+#: widgets/float/cookie-banner.php:27
+msgid "Accept All"
+msgstr "全部接受"
+
+#: widgets/float/totop.php:13
+msgid "Scroll to Top"
+msgstr "滚动到顶部"
+
+#: widgets/inquiry-form.php:17
+msgid "Get a Free Quote"
+msgstr "获取免费报价"
+
+#: widgets/loop-card.php:32
+msgid "By"
+msgstr "By"
+
+#: widgets/popup-button.php:19
+msgid "Get A Quote"
+msgstr "获取报价"
+
+#: widgets/primary-menu.php:19
+msgid "Menu"
+msgstr "菜单"
+
+#: widgets/primary-menu.php:22
+msgid "Close menu"
+msgstr "关闭菜单"
+
+#: widgets/primary-menu.php:34
+msgid "Toggle menu"
+msgstr "切换菜单"
+
+#: widgets/share-buttons.php:14
+msgid "Share:"
+msgstr "分享："
+
+#: widgets/share-buttons.php:17
+msgid "Share on Twitter"
+msgstr "分享到推特"
+
+#: widgets/share-buttons.php:21
+msgid "Share on Facebook"
+msgstr "分享到脸书"
+
+#: widgets/share-buttons.php:25
+msgid "Share on LinkedIn"
+msgstr "分享到领英"

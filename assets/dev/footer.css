@@ -1,7 +1,7 @@
 .site-footer {
   background-color: #0a0d14;
-  color: #cccccc;
-  padding: 0 var(--jelly-side-width, 16px);
+  color: #a3a3a3;
+  padding: 32px var(--jelly-side-width, 16px) 0;
 }
 .site-footer .site-name {
   font-weight: 600;
@@ -14,16 +14,17 @@
 .site-footer .footer-logo {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 64px 0 24px 0;
-  border-bottom: 1px solid #2d323f;
 }
 .site-footer .footer-logo a {
   display: block;
 }
 .site-footer .footer-logo img {
-  height: 64px;
+  height: 48px;
   width: 100%;
+}
+.site-footer .footer-logo-text {
+  margin-top: 30px;
+  color: #fff;
 }
 .site-footer .footer-content {
   display: flex;
@@ -35,9 +36,10 @@
   margin: 24px 0;
 }
 .site-footer .footer-content .footer-item-title {
-  font-size: 22px;
+  font-size: 18px;
   color: #fff;
   font-weight: 600;
+  text-transform: uppercase;
 }
 .site-footer .footer-content ul {
   padding: 0;
@@ -47,6 +49,7 @@
 .site-footer .footer-content ul .current-menu-item a {
   color: var(--jelly-color-primary);
   font-weight: 600;
+  font-size: 14px;
 }
 .site-footer .footer-content ul a {
   color: inherit;
@@ -54,15 +57,11 @@
 .site-footer .footer-content ul a:hover {
   color: var(--jelly-color-primary);
 }
-.site-footer .copyright {
-  background-color: #141414;
-  border-radius: 6px;
-}
 .site-footer .copyright .copyright-text {
   color: #fff;
   font-size: 14px;
   margin: 0;
-  padding: 16px;
+  padding: 16px 0;
 }
 
 @media screen and (max-width: 767px) {

@@ -24,7 +24,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             ]
         );
     }
-    Jelly_Frame_Widgets::render('inquiry-form');
+    jelly_frame_render_widget('inquiry-form');
     ?>
 
 </aside>

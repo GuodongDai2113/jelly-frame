@@ -13,13 +13,14 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <footer class="site-footer">
     <div class="container">
-        <div class="footer-logo">
-            <?php Jelly_Frame_Widgets::render('site-logo') ?>
-        </div>
         <div class="footer-content">
             <div class="footer-item">
-                <span class="footer-item-title">Contact</span>
-                <?php Jelly_Frame_Widgets::render('contact-list') ?>
+                <div class="footer-logo">
+                    <?php jelly_frame_render_widget('site-logo') ?>
+                </div>
+                <p class="footer-logo-text">
+                    <?php echo  get_bloginfo('description') ?>
+                </p>
             </div>
             <div class="footer-item">
                 <span class="footer-item-title">Product</span>
@@ -36,6 +37,10 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                         'theme_location' => 'footer_about'
                     ]
                 ) ?>
+            </div>
+            <div class="footer-item">
+                <span class="footer-item-title">Contact</span>
+                <?php jelly_frame_render_widget('contact-list') ?>
             </div>
         </div>
     </div>

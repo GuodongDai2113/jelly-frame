@@ -43,6 +43,8 @@ class Jelly_Frame_Woocommerce
         add_action('created_term', array($this, 'save_category_content_fields'), 10, 3);
         add_action('edit_term', array($this, 'save_category_content_fields'), 10, 3);
 
+        add_filter('jelly_frame_register_fields', array($this, 'add_theme_fields'));
+        add_filter('jelly_frame_register_tabs', array($this, 'add_theme_tabs'));
 
         remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
         remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
@@ -185,6 +187,30 @@ class Jelly_Frame_Woocommerce
     function remove_noscript()
     {
         remove_action('wp_head', 'wc_gallery_noscript');
+    }
+
+    function add_theme_fields($fields)
+    {
+        $fields['woocommerce'] = [
+            ['id' => 'woocommerce_catalog_columns', 'label' => __('Product page columns', 'jelly-frame'), 'type' => 'number', 'wp_sync' => 'woocommerce_catalog_columns'],
+            ['id' => 'woocommerce_catalog_rows', 'label' => __('Product page rows', 'jelly-frame'), 'type' => 'number', 'wp_sync' => 'woocommerce_catalog_rows'],
+            ['id' => 'woocommerce_shop_page_display', 'label' => __('Shop page display', 'jelly-frame'), 'type' => 'select', 'options' => [
+                '' => __('Show products', 'jelly-frame'),
+                'subcategories' => __('Show categories', 'jelly-frame'),
+                'both' => __('Show categories & products', 'jelly-frame'),
+            ], 'wp_sync' => 'woocommerce_shop_page_display'],
+            ['id' => 'woocommerce_category_archive_display', 'label' => __('Category archive display', 'jelly-frame'), 'type' => 'select', 'options' => [
+                '' => __('Show products', 'jelly-frame'),
+                'subcategories' => __('Show categories', 'jelly-frame'),
+                'both' => __('Show categories & products', 'jelly-frame'),
+            ], 'wp_sync' => 'woocommerce_category_archive_display'],
+        ];
+        return $fields;
+    }
+    function add_theme_tabs($tabs)
+    {
+        $tabs['woocommerce'] = __('Products', 'jelly-frame');
+        return $tabs;
     }
 }
 
