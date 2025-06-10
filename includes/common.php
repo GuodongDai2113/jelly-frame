@@ -263,5 +263,6 @@ function jelly_frame_build_breadcrumbs() {
 }
 
 function jelly_frame_render_widget($widget_name){
-    Jelly_Frame::$instance->widgets->render($widget_name);
+    get_template_part('widgets/' . $widget_name);
+    // Jelly_Frame::$instance->widgets->render($widget_name);
 }

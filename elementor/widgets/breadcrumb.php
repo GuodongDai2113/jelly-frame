@@ -67,6 +67,6 @@ class Jelly_Frame_Breadcrumb_Widget extends \Elementor\Widget_Base
 	}
 
     protected function render(): void {
-        get_template_part('widgets/breadcrumb');
+        jelly_frame_render_widget('global\breadcrumb');
     }
 }
