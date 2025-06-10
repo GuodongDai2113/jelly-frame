@@ -10,10 +10,10 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-$popup_id = Jelly_Frame_Elementor::$instance->get_popup_id();
+$popup_id = Jelly_Frame::$instance->elementor->get_popup_id();
 
 if (!empty($popup_id)) {
-    $link = Jelly_Frame_Elementor::$instance->create_action_hash('popup:open', ['id' => $popup_id, 'toggle' => false,]);
+    $link = Jelly_Frame::$instance->elementor->create_action_hash('popup:open', ['id' => $popup_id, 'toggle' => false,]);
     echo '<a class="button elementor-button" href="' . esc_attr($link) . '">';
     echo '<i class="ri-question-answer-line ri-icon"></i>';
     esc_html_e('Get A Quote', 'jelly-frame');

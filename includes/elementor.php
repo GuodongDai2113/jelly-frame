@@ -8,6 +8,8 @@
  * Created : 2025.04.24 10:02
  */
 
+namespace Jelly_Frame;
+
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
 /**
@@ -15,29 +17,13 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
  * 
  * @since  1.2.2
  */
-class Jelly_Frame_Elementor
+class Elementor
 {
-
-    /**
-     * 实例接口变量
-     * 
-     * @since  1.2.2
-     * @return void
-     */
-    public static $instance;
 
     public $is_active = false;
 
-    /**
-     * 构造函数
-     * 
-     * @since  1.2.2
-     */
-    private function __construct()
+    public function register()
     {
-        // add_action('wp_body_open', array($this, 'site_header'));
-        // add_action('wp_footer', array($this, 'site_footer'), 8);
-
         if (class_exists('Elementor\Plugin')) {
             $this->is_active = true;
         } else {
@@ -47,41 +33,10 @@ class Jelly_Frame_Elementor
         add_action('elementor/editor/before_enqueue_styles', array($this, 'enqueue_editor_style'));
         add_action('elementor/theme/register_locations', array($this, 'register_elementor_locations'));
         add_action('elementor/elements/categories_registered', array($this, 'add_elementor_widget_categories'));
-        // add_action('customize_register', array($this, 'customize_register'));
+        add_action('elementor/widgets/register', array($this, 'register_elementor_widgets'));
         add_filter('jelly_frame_register_fields', array($this, 'add_theme_fields'));
         add_filter('jelly_frame_register_tabs', array($this, 'add_theme_tabs'));
-
-        // add_filter('the_content', array($this, 'custom_page_template_by_slug'));
-        // add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
     }
-
-    /**
-     * 防止克隆
-     * 
-     * @since  1.2.2
-     */
-    private function __clone() {}
-
-    /**
-     * 防止反序列化
-     * 
-     * @since  1.2.2
-     */
-    public function __wakeup() {}
-
-    /**
-     * 实例接口
-     * 
-     * @since  1.2.2
-     */
-    public static function instance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
 
     /**
      * 加载Elementor主题样式
@@ -92,7 +47,7 @@ class Jelly_Frame_Elementor
      */
     public function enqueue_style()
     {
-        wp_enqueue_style('jelly-frame-elementor-front-end', JELLY_FRAME_URI . '/elementor/css/e-front-end' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
+        wp_enqueue_style('jelly-frame-elementor-front-end', JELLY_FRAME_ASSETS_URI . 'css/e-front' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
     }
 
     /**
@@ -105,7 +60,7 @@ class Jelly_Frame_Elementor
     public function enqueue_editor_style()
     {
         wp_enqueue_style('remixicon', JELLY_FRAME_ASSETS_URI . 'fonts/remixicon/remixicon' . JELLY_FRAME_SUFFIX . '.css', [], '2.0.0');
-        wp_enqueue_style('jelly-frame-elementor-editor', JELLY_FRAME_URI . '/elementor/css/editor' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
+        wp_enqueue_style('jelly-frame-elementor-editor', JELLY_FRAME_ASSETS_URI . 'css/e-editor' . JELLY_FRAME_SUFFIX . '.css', [], JELLY_FRAME_VERSION);
     }
 
     /**
@@ -136,67 +91,6 @@ class Jelly_Frame_Elementor
         }
     }
 
-    /**
-     * 注册自定义设置
-     * 
-     * 选项如下：
-     * 
-     * jelly_frame_elementor_global_form_id
-     * 
-     * jelly_frame_elementor_popup_id
-     * 
-     * @param  WP_Customize_Manager $wp_customize
-     * @return void
-     * 
-     * @since  1.2.2
-     */
-    public function customize_register($wp_customize)
-    {
-        if (!$this->is_active) {
-            return;
-        }
-        $section = 'jelly_frame_elementor_section';
-
-        $wp_customize->add_section(
-            $section,
-            array(
-                'title'    => esc_html__('Elementor Settings', 'jelly-frame'),
-            )
-        );
-
-        $wp_customize->add_setting('jelly_frame_elementor_global_form_id', array(
-            'sanitize_callback' => 'absint',
-        ));
-        $wp_customize->add_setting('jelly_frame_elementor_popup_id', array(
-            'sanitize_callback' => 'absint',
-        ));
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize,
-                'jelly_frame_elementor_global_form_id',
-                array(
-                    'label'       => __('Global Form ID', 'jelly-frame'),
-                    'section'     => $section,
-                    'settings'    => 'jelly_frame_elementor_global_form_id',
-                    'type'        => 'number',
-                )
-            )
-        );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize,
-                'jelly_frame_elementor_popup_id',
-                array(
-                    'label'       => __('Popup ID', 'jelly-frame'),
-                    'section'     => $section,
-                    'settings'    => 'jelly_frame_elementor_popup_id',
-                    'type'        => 'number',
-                )
-            )
-        );
-    }
 
     /**
      * 输出 Elementor 模板
@@ -216,8 +110,8 @@ class Jelly_Frame_Elementor
             if ('publish' !== get_post_status($template_id)) {
                 return '';
             }
-            if (!empty(Elementor\Plugin::$instance)) {
-                return Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
+            if (!empty(\Elementor\Plugin::$instance)) {
+                return \Elementor\Plugin::$instance->frontend->get_builder_content_for_display($template_id);
             }
         } else {
             return '';
@@ -306,11 +200,10 @@ class Jelly_Frame_Elementor
     function create_action_hash($action, array $settings = [])
     {
         if ($this->is_active) {
-            return Elementor\Plugin::$instance->frontend->create_action_hash($action, $settings);
+            return \Elementor\Plugin::$instance->frontend->create_action_hash($action, $settings);
         }
         return 'contact-us/';
     }
-
 
     function custom_page_template_by_slug($template)
     {
@@ -319,8 +212,8 @@ class Jelly_Frame_Elementor
             $page_template_slug = get_page_template_slug($post->ID);
             if ($page_template_slug === 'jelly-frame') {
                 $page_slug = $post->post_name;
-                if (!empty(Elementor\Plugin::$instance)) {
-                    return Elementor\Plugin::$instance->frontend->get_builder_content(18277);
+                if (!empty(\Elementor\Plugin::$instance)) {
+                    return \Elementor\Plugin::$instance->frontend->get_builder_content(18277);
                 }
             }
         }
@@ -335,6 +228,13 @@ class Jelly_Frame_Elementor
         return $page_templates;
     }
 
+    /**
+     * 添加 Elementor 主题选项
+     * 
+     * @param array $fields 配置项
+     * 
+     * @since 1.2.7
+     */
     function add_theme_fields($fields)
     {
         $fields['elementor'] = [
@@ -343,11 +243,57 @@ class Jelly_Frame_Elementor
         ];
         return $fields;
     }
+
+    /**
+     * 添加 Elementor 主题选项
+     * 
+     * @param Settings $tabs 切换栏
+     * 
+     * @since 1.2.3
+     */
     function add_theme_tabs($tabs)
     {
         $tabs['elementor'] = esc_html__('Elementor', 'jelly-frame');
         return $tabs;
     }
-}
 
-Jelly_Frame_Elementor::instance();
+    /**
+     * 注册 Elementor 小部件
+     * 
+     * @param Elementor\Widgets_Manager $widgets_manager
+     * 
+     * @since 1.2.3
+     */
+    public function register_elementor_widgets($widgets_manager)
+    {
+        $widget_list = array(
+            'share-buttons'             => 'Jelly_Frame_Share_Buttons_Widget',
+            'breadcrumb'                => 'Jelly_Frame_Breadcrumb_Widget',
+            'search'                    => 'Jelly_Frame_Search_Widget',
+            'contact-list'              => 'Jelly_Frame_Contact_List_Widget',
+            'page-banner'               => 'Jelly_Frame_Page_Banner_Widget',
+            'primary-menu'              => 'Jelly_Frame_Primary_Menu_Widget',
+            'loop-card'                 => 'Jelly_Frame_Loop_Card_Widget',
+            'content-article'           => 'Jelly_Frame_Content_Article_Widget',
+            'content-single-product'    => 'Jelly_Frame_Content_Single_Product_Widget',
+        );
+
+        $base_dir = get_stylesheet_directory() . '/elementor/widgets/';
+
+        foreach ($widget_list as $file => $class) {
+            $path = $base_dir . $file . '.php';
+
+            if (file_exists($path)) {
+                include_once $path;
+
+                if (class_exists($class)) {
+                    $widgets_manager->register(new $class());
+                } else {
+                    error_log("Elementor Widget class '{$class}' not found in {$file}.php");
+                }
+            } else {
+                error_log("Elementor Widget file missing: {$file}.php");
+            }
+        }
+    }
+}

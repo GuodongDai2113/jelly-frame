@@ -9,7 +9,7 @@
 
   Description: As a theme deeply integrated with the Elementor page builder, "Jelly Frame" takes full advantage of the powerful drag-and-drop editing, allowing you to easily customize every detail without writing any code.
 
-  Version: 1.2.6
+  Version: 1.2.7
 
   Stable tag: 1.2.2
 
@@ -72,8 +72,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--jelly-color-text);
 }
-
-
 
 h1,
 h2,

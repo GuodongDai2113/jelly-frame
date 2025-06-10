@@ -8,24 +8,17 @@
  * Created : 2025.04.24 09:56
  */
 
+namespace Jelly_frame;
+
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-class Jelly_Frame_Woocommerce
+class Woocommerce
 {
-
-    /**
-     * 实例接口变量
-     * 
-     * @since  1.2.2
-     * @return void
-     */
-    public static $instance;
 
     public $is_active = false;
 
-    private function __construct()
+    public function register()
     {
-
         if (class_exists('Woocommerce')) {
             $this->is_active = true;
         } else {
@@ -61,34 +54,6 @@ class Jelly_Frame_Woocommerce
     }
 
     /**
-     * 防止克隆
-     * 
-     * @since  1.2.2
-     */
-    private function __clone() {}
-
-    /**
-     * 防止反序列化
-     * 
-     * @since  1.2.2
-     */
-    public function __wakeup() {}
-
-    /**
-     * 实例接口
-     * 
-     * @since  1.2.2
-     */
-    public static function instance()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-
-    /**
      * 加载 自定义的 Woocommerce 样式
      * 
      * @return void
@@ -98,7 +63,7 @@ class Jelly_Frame_Woocommerce
     public function enqueue_style($styles)
     {
         $styles['jelly-frame-woocommerce'] = array(
-            'src'     => JELLY_FRAME_URI . '/woocommerce/css/w-front-end' . JELLY_FRAME_SUFFIX . '.css',
+            'src'     => JELLY_FRAME_ASSETS_URI . 'css/w-front' . JELLY_FRAME_SUFFIX . '.css',
             'deps'    => [], // 依赖项
             'version' => JELLY_FRAME_VERSION,
             'media'   => 'all',
@@ -169,13 +134,13 @@ class Jelly_Frame_Woocommerce
         }
 
         // 移除 WooCommerce 样式和脚本
-        remove_action('wp_enqueue_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
-        remove_action('wp_print_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
-        remove_action('wp_print_footer_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_enqueue_scripts', [\WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_print_scripts', [\WC_Frontend_Scripts::class, 'load_scripts']);
+        remove_action('wp_print_footer_scripts', [\WC_Frontend_Scripts::class, 'load_scripts']);
         remove_action('wp_enqueue_scripts', 'wc_enqueue_styles', 99);
 
         // 移除 WooCommerce 相关的头部元信息
-        remove_action('wp_head', [WC_Template_Loader::class, 'generator'], 1);
+        remove_action('wp_head', [\WC_Template_Loader::class, 'generator'], 1);
 
         // 移除 WooCommerce 的 body class
         remove_filter('body_class', 'wc_body_class');
@@ -213,5 +178,3 @@ class Jelly_Frame_Woocommerce
         return $tabs;
     }
 }
-
-Jelly_Frame_Woocommerce::instance();

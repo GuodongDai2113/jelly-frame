@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
  * 加载样式和脚本
  * GA 与 GTM 安装
  */
-class Basis
+class Setup
 {
     public function __construct()
     {
@@ -30,6 +30,8 @@ class Basis
         add_filter('nav_menu_css_class', array($this, 'clean_nav_menu_classes'), 10, 4);
         add_action('wp_head', array($this, 'insert_ga_gtm_code'), 9);
         add_action('wp_body_open', array($this, 'insert_gtm_body'));
+        add_action('wp_footer', array($this, 'set_float_widget'), 9);
+        add_filter('block_editor_settings_all', array($this, 'theme_rank_math_setting'));
     }
 
     /**
@@ -79,6 +81,8 @@ class Basis
             ]
         );
         add_theme_support('align-wide');
+
+        add_theme_support('elementor');
 
         // 添加WooCommerce支持
         add_theme_support('woocommerce');
@@ -225,5 +229,36 @@ class Basis
                 echo '<!-- End Google Tag Manager (noscript) -->';
             }
         }
+    }
+
+    /**
+     * 设置浮动小部件   
+     * 
+     * @since 1.2.4
+     * @since 1.2.6 在 Elementor 维护模式 不显示浮动元素
+     */
+    public function set_float_widget()
+    {
+
+        // 如果存在 'elementor-maintenance-mode' 类，则退出函数
+        if (in_array('elementor-maintenance-mode', get_body_class())) {
+            return;
+        }
+
+        get_template_part('widgets/float/totop');
+        get_template_part('widgets/float/contact-buttons');
+        get_template_part('widgets/float/cookie-banner');
+    }
+
+    /**
+     * 在使用块编辑器时，为标题增加 id 锚文本
+     * 
+     * @param array $settings block_editor_settings
+     * @return array $settings block_editor_settings
+     */
+    function heading_id_setting($settings)
+    {
+        $settings['generateAnchors'] = true;
+        return $settings;
     }
 }

@@ -74,23 +74,24 @@ class Jelly_Frame
     {
         $includes_path = get_template_directory() . '/includes/';
         require $includes_path . 'common.php';
-        require $includes_path . 'basis.php';
+        require $includes_path . 'setup.php';
         require $includes_path . 'settings.php';
-        require $includes_path . 'widgets.php';
         require $includes_path . 'elementor.php';
-        require $includes_path . 'rank-math.php';
         require $includes_path . 'woocommerce.php';
     }
 
     public function init_components() {
-        $this->basis        = new Jelly_frame\Basis();
-        $this->settings     = new Jelly_frame\Settings();
-        $this->widgets       = new Jelly_frame\Widgets();
-        // $this->elementor    = new Jelly_frame\Elementor();
-        // $this->rank_math    = new Jelly_frame\Rank_Math();
-        // $this->woocommerce  = new Jelly_frame\WooCommerce();
-    }
 
+        // 主题基础
+        $this->basis        = new Jelly_frame\Setup();
+        $this->settings     = new Jelly_frame\Settings();
+
+        // 插件拓展
+        $this->elementor    = new Jelly_frame\Elementor();
+        $this->elementor->register();
+        $this->woocommerce  = new Jelly_frame\WooCommerce();
+        $this->woocommerce->register();
+    }
 
     public function init()
     {

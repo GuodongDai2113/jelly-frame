@@ -36,16 +36,21 @@
 .container .sidebar h4 {
   font-size: 20px !important;
   text-transform: capitalize;
+  padding: 6px 12px 6px 16px;
   box-sizing: border-box;
+  position: relative;
+  background: #fafafa;
 }
-.container .sidebar h2::after,
-.container .sidebar h3::after,
-.container .sidebar h4::after {
+.container .sidebar h2::before,
+.container .sidebar h3::before,
+.container .sidebar h4::before {
   content: "";
   display: block;
-  height: 3px;
-  width: 30%;
-  margin-top: 12px;
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  top: 0;
+  left: 0;
   background-color: var(--jelly-color-primary);
 }
 

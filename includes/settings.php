@@ -24,6 +24,11 @@ class Settings
         add_action('admin_init', [$this, 'register_settings']);
     }
 
+    /**
+     * 向 admin_menu 钩子注册菜单项。
+     * 
+     * @since 1.2.6
+     */
     public function add_admin_menu()
     {
         add_menu_page(
@@ -37,6 +42,11 @@ class Settings
         );
     }
 
+    /**
+     * 在 admin_init 钩子中注册设置字段和选项组。
+     * 
+     * @since 1.2.6
+     */
     public function register_settings()
     {
         $this->tabs = apply_filters('jelly_frame_register_tabs', [
@@ -109,6 +119,15 @@ class Settings
         }
     }
 
+    /**
+     * 设置 sanitize_callback 回调函数，用于清理和保存表单输入。
+     *
+     * @param string $tab 当前选项卡名称
+     * @param array $input 表单输入数据
+     * @return array 清理后的数据
+     * 
+     * @since 1.2.6
+     */
     public function sanitize_options($tab, $input)
     {
         if (!isset($this->fields[$tab])) return $input;
@@ -134,7 +153,13 @@ class Settings
         return $input;
     }
 
-
+    /**
+     * 渲染设置页面上的每个字段。
+     *
+     * @param array $args 字段参数
+     * 
+     * @since 1.2.6
+     */
     public function render_field($args)
     {
         $field = $args['field'];
@@ -224,6 +249,16 @@ class Settings
         }
     }
 
+    /**
+     * 获取字段的当前值，并考虑与 WordPress 原生选项同步的情况。
+     *
+     * @param array $field 字段信息
+     * @param array &$options 选项数组
+     * @param string $option_name 选项名称
+     * @return mixed 字段值
+     * 
+     * @since 1.2.6
+     */
     private function get_field_value($field, &$options, $option_name)
     {
         $id = $field['id'];
@@ -252,7 +287,11 @@ class Settings
         return $val;
     }
 
-
+    /**
+     * 显示主题设置页面的 HTML 输出。
+     * 
+     * @since 1.2.6
+     */
     public function settings_page()
     {
         $active_tab = $_GET['tab'] ?? 'general';

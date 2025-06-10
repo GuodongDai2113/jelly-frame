@@ -39,14 +39,19 @@
         h4 {
             font-size: 20px !important;
             text-transform: capitalize;
-            // padding: 8px 12px;
+            padding: 6px 12px 6px 16px;
             box-sizing: border-box;
-            &::after {
+            position: relative;
+            // color: var(--jelly-color-white);
+            background: #fafafa;
+            &::before {
                 content: "";
                 display: block;
-                height: 3px;
-                width: 30%;
-                margin-top: 12px;
+                position: absolute;
+                height: 100%;
+                width: 4px;
+                top: 0;
+                left: 0;
                 background-color: var(--jelly-color-primary);
             }
         }

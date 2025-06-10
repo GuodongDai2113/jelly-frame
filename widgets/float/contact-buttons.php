@@ -13,13 +13,13 @@ if (!defined('ABSPATH')) {
 }
 
 $contact = jelly_frame_get_contact_options();
-$popup_id = Jelly_Frame_Elementor::$instance->get_popup_id();
+$popup_id = Jelly_Frame::$instance->elementor->get_popup_id();
 ?>
 
 <div class="float-buttons" id="floatButtons">
     <?php if (!empty($popup_id)) : ?>
         <?php 
-            $link = Jelly_Frame_Elementor::$instance->create_action_hash('popup:open', [
+            $link = Jelly_Frame::$instance->elementor->create_action_hash('popup:open', [
                 'id' => $popup_id,
                 'toggle' => false,
             ]);

@@ -10,7 +10,7 @@
 
 if (! defined('ABSPATH')) exit; // 禁止直接访问
 
-$form = Jelly_Frame_Elementor::$instance->get_global_form();
+$form = Jelly_Frame::$instance->elementor->get_global_form();
 ?>
 <?php if (!empty($form)): ?>
     <div class="inquiry-form">
