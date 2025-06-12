@@ -27,6 +27,13 @@ class Jelly_Frame
 
     public $widgets;
 
+    /**
+     * 插件拓展
+     * 
+     * @var Jelly_frame\Elementor
+     * @since  1.2.2
+     * @return void
+     */
     public $elementor;
 
     public $rank_math;

@@ -58,6 +58,26 @@
   margin-bottom: 64px;
 }
 
+.contact-us-page {
+  background-color: #f8f8f8;
+  align-items: center;
+}
+.contact-us-page .container {
+  margin: 0 auto;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.contact-us-page .contact-info, .contact-us-page .contact-form {
+  width: 100%;
+}
+.contact-us-page .contact-form {
+  box-sizing: border-box;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+}
+
 /* 移动端 */
 @media screen and (max-width: 767px) {
   .error-page {

@@ -58,6 +58,7 @@ class Settings
         $this->fields = apply_filters('jelly_frame_register_fields', [
             'general' => [
                 ['id' => 'site_title', 'label' => __('Site Title', 'jelly-frame'), 'type' => 'text', 'wp_sync' => 'blogname'],
+                ['id' => 'meta_description', 'label' => __('Website Description', 'jelly-frame'), 'type' => 'textarea', 'wp_sync' => 'blogdescription'],
                 ['id' => 'posts_per_page', 'label' => __('Posts per page', 'jelly-frame'), 'type' => 'number', 'wp_sync' => 'posts_per_page'],
             ],
             'contact' => [
@@ -77,7 +78,6 @@ class Settings
                 ['id' => 'skype',    'label' => __('Skype', 'jelly-frame'), 'type' => 'text'],
             ],
             'seo' => [
-                ['id' => 'meta_description', 'label' => __('Website Description', 'jelly-frame'), 'type' => 'textarea', 'wp_sync' => 'blogdescription'],
                 ['id' => 'enable_indexing', 'label' => __('Allow search engines to index', 'jelly-frame'), 'type' => 'checkbox', 'wp_sync' => 'blog_public'],
                 ['id' => 'ga_id', 'label' => __('Google Analytics ID', 'jelly-frame'), 'type' => 'text'],
                 ['id' => 'gtm_id', 'label' => __('Google Tag Manager ID', 'jelly-frame'), 'type' => 'text'],

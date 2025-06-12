@@ -2,21 +2,21 @@
 # This file is distributed under the GNU General Public License v3 or later..
 msgid ""
 msgstr ""
-"Project-Id-Version: Jelly Frame 1.2.6\n"
+"Project-Id-Version: Jelly Frame 1.2.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/jelly-frame\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-09T10:34:10+08:00\n"
+"POT-Creation-Date: 2025-06-11T13:35:13+08:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: jelly-frame\n"
 
 #. Theme Name of the theme
 #: style.css
-#: includes/elementor.php:333
+#: includes/elementor.php:226
 msgid "Jelly Frame"
 msgstr ""
 
@@ -142,175 +142,170 @@ msgstr ""
 msgid "Page Not Found"
 msgstr ""
 
-#: includes/elementor.php:163
-msgid "Elementor Settings"
-msgstr ""
-
-#: includes/elementor.php:179
-#: includes/elementor.php:341
-msgid "Global Form ID"
-msgstr ""
-
-#: includes/elementor.php:192
-#: includes/elementor.php:342
-msgid "Popup ID"
-msgstr ""
-
-#: includes/elementor.php:292
+#: includes/elementor.php:186
 msgid "Jelly Frame (Theme)"
 msgstr ""
 
-#: includes/elementor.php:348
+#: includes/elementor.php:241
+msgid "Global Form ID"
+msgstr ""
+
+#: includes/elementor.php:242
+msgid "Popup ID"
+msgstr ""
+
+#: includes/elementor.php:256
 msgid "Elementor"
 msgstr ""
 
-#: includes/settings.php:30
-#: includes/settings.php:31
+#: includes/settings.php:35
+#: includes/settings.php:36
 msgid "Theme"
 msgstr ""
 
-#: includes/settings.php:43
+#: includes/settings.php:53
 msgid "General"
 msgstr ""
 
-#: includes/settings.php:44
+#: includes/settings.php:54
+#: template-parts/footer.php:42
 msgid "Contact"
 msgstr ""
 
-#: includes/settings.php:45
+#: includes/settings.php:55
 msgid "SEO"
 msgstr ""
 
-#: includes/settings.php:50
+#: includes/settings.php:60
 msgid "Site Title"
 msgstr ""
 
-#: includes/settings.php:51
+#: includes/settings.php:61
 msgid "Posts per page"
 msgstr ""
 
-#: includes/settings.php:54
+#: includes/settings.php:64
 msgid "Organization Name"
 msgstr ""
 
-#: includes/settings.php:55
+#: includes/settings.php:65
 msgid "Phone Number"
 msgstr ""
 
-#: includes/settings.php:56
+#: includes/settings.php:66
 msgid "Email Address"
 msgstr ""
 
-#: includes/settings.php:57
+#: includes/settings.php:67
 msgid "Mailing Address"
 msgstr ""
 
-#: includes/settings.php:59
+#: includes/settings.php:69
 msgid "WhatsApp"
 msgstr ""
 
-#: includes/settings.php:60
+#: includes/settings.php:70
 msgid "Instagram"
 msgstr ""
 
-#: includes/settings.php:61
+#: includes/settings.php:71
 msgid "Facebook"
 msgstr ""
 
-#: includes/settings.php:62
+#: includes/settings.php:72
 msgid "Twitter/X"
 msgstr ""
 
-#: includes/settings.php:63
+#: includes/settings.php:73
 msgid "LinkedIn"
 msgstr ""
 
-#: includes/settings.php:64
+#: includes/settings.php:74
 msgid "YouTube Channel"
 msgstr ""
 
-#: includes/settings.php:65
+#: includes/settings.php:75
 msgid "TikTok"
 msgstr ""
 
-#: includes/settings.php:66
+#: includes/settings.php:76
 msgid "Telegram"
 msgstr ""
 
-#: includes/settings.php:67
+#: includes/settings.php:77
 msgid "Skype"
 msgstr ""
 
-#: includes/settings.php:70
+#: includes/settings.php:80
 msgid "Website Description"
 msgstr ""
 
-#: includes/settings.php:71
+#: includes/settings.php:81
 msgid "Allow search engines to index"
 msgstr ""
 
-#: includes/settings.php:72
+#: includes/settings.php:82
 msgid "Google Analytics ID"
 msgstr ""
 
-#: includes/settings.php:73
+#: includes/settings.php:83
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: includes/settings.php:187
+#: includes/settings.php:212
 msgid "Remove"
 msgstr ""
 
-#: includes/settings.php:191
+#: includes/settings.php:216
 msgid "Add"
 msgstr ""
 
-#: includes/settings.php:263
+#: includes/settings.php:302
 msgid "Theme Settings"
 msgstr ""
 
-#: includes/woocommerce.php:115
-#: includes/woocommerce.php:135
+#: includes/woocommerce.php:80
+#: includes/woocommerce.php:100
 msgid "Category Content"
 msgstr ""
 
-#: includes/woocommerce.php:125
-#: includes/woocommerce.php:146
+#: includes/woocommerce.php:90
+#: includes/woocommerce.php:111
 msgid "Enter the content for this category."
 msgstr ""
 
-#: includes/woocommerce.php:195
+#: includes/woocommerce.php:160
 msgid "Product page columns"
 msgstr ""
 
-#: includes/woocommerce.php:196
+#: includes/woocommerce.php:161
 msgid "Product page rows"
 msgstr ""
 
-#: includes/woocommerce.php:197
+#: includes/woocommerce.php:162
 msgid "Shop page display"
 msgstr ""
 
-#: includes/woocommerce.php:198
-#: includes/woocommerce.php:203
+#: includes/woocommerce.php:163
+#: includes/woocommerce.php:168
 msgid "Show products"
 msgstr ""
 
-#: includes/woocommerce.php:199
-#: includes/woocommerce.php:204
+#: includes/woocommerce.php:164
+#: includes/woocommerce.php:169
 msgid "Show categories"
 msgstr ""
 
-#: includes/woocommerce.php:200
-#: includes/woocommerce.php:205
+#: includes/woocommerce.php:165
+#: includes/woocommerce.php:170
 msgid "Show categories & products"
 msgstr ""
 
-#: includes/woocommerce.php:202
+#: includes/woocommerce.php:167
 msgid "Category archive display"
 msgstr ""
 
-#: includes/woocommerce.php:212
+#: includes/woocommerce.php:177
 msgid "Products"
 msgstr ""
 
@@ -342,11 +337,19 @@ msgstr ""
 msgid "Sorry, there is no content you are looking for."
 msgstr ""
 
-#: template-parts/footer.php:47
-msgid "Copyright © "
+#: template-parts/footer.php:26
+msgid "Product"
+msgstr ""
+
+#: template-parts/footer.php:34
+msgid "About"
 msgstr ""
 
 #: template-parts/footer.php:50
+msgid "Copyright © "
+msgstr ""
+
+#: template-parts/footer.php:53
 msgid " All Rights Reserved."
 msgstr ""
 

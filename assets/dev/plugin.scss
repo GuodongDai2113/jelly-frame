@@ -45,11 +45,10 @@
         .gt-selected .gt-current-lang {
             padding: 0;
             font-size: 14px;
-            span.gt_float_switcher-arrow
-            {
+            span.gt_float_switcher-arrow {
                 transform: rotate(0deg);
             }
-            span.gt_float_switcher-arrow.gt_arrow_rotate{
+            span.gt_float_switcher-arrow.gt_arrow_rotate {
                 transform: rotate(180deg);
             }
         }
@@ -83,6 +82,25 @@
             }
         }
     }
+}
+
+.trp-language-switcher {
+    width: 150px;
+    > div {
+        padding: 0;
+        width: 100% !important;
+        background-position:
+            calc(100% - 10px) calc(1em - 2px),
+            calc(100% - 3px) calc(1em + 0px);
+        > a {
+            background: transparent;
+        }
+    }
+}
+
+.trp-language-switcher:focus .trp-ls-shortcode-language,
+.trp-language-switcher:hover .trp-ls-shortcode-language {
+    padding: 0;
 }
 
 html[dir="rtl"] .gtranslate_wrapper .gt_float_switcher .gt_options {

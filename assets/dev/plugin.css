@@ -74,6 +74,23 @@
   background-color: var(--jelly-color-item-bg);
 }
 
+.trp-language-switcher {
+  width: 150px;
+}
+.trp-language-switcher > div {
+  padding: 0;
+  width: 100% !important;
+  background-position: calc(100% - 10px) calc(1em - 2px), calc(100% - 3px) calc(1em + 0px);
+}
+.trp-language-switcher > div > a {
+  background: transparent;
+}
+
+.trp-language-switcher:focus .trp-ls-shortcode-language,
+.trp-language-switcher:hover .trp-ls-shortcode-language {
+  padding: 0;
+}
+
 html[dir=rtl] .gtranslate_wrapper .gt_float_switcher .gt_options {
   right: unset;
   left: 0;

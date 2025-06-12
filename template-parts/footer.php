@@ -19,11 +19,11 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                     <?php jelly_frame_render_widget('site-logo') ?>
                 </div>
                 <p class="footer-logo-text">
-                    <?php echo  get_bloginfo('description') ?>
+                    <?php echo get_bloginfo('description') ?>
                 </p>
             </div>
             <div class="footer-item">
-                <span class="footer-item-title">Product</span>
+                <span class="footer-item-title"><?php esc_html_e('Product', 'jelly-frame') ?></span>
                 <?php wp_nav_menu(
                     [
                         'theme_location' => 'footer_product'
@@ -31,7 +31,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 ) ?>
             </div>
             <div class="footer-item">
-                <span class="footer-item-title">Company</span>
+                <span class="footer-item-title"><?php esc_html_e('About', 'jelly-frame') ?></span>
                 <?php wp_nav_menu(
                     [
                         'theme_location' => 'footer_about'
@@ -39,19 +39,14 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 ) ?>
             </div>
             <div class="footer-item">
-                <span class="footer-item-title">Contact</span>
+                <span class="footer-item-title"><?php esc_html_e('Contact', 'jelly-frame') ?></span>
                 <?php jelly_frame_render_widget('contact-list') ?>
             </div>
         </div>
     </div>
     <div class="container copyright">
         <p class="copyright-text">
-            <?php
-            esc_html_e('Copyright © ', 'jelly-frame');
-            echo date('Y') . ' ';
-            echo bloginfo('name');
-            echo esc_html__(' All Rights Reserved.', 'jelly-frame');
-            ?>
+            <?php the_jelly_copyright_info(); ?>
         </p>
     </div>
 </footer>

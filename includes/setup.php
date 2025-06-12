@@ -31,7 +31,7 @@ class Setup
         add_action('wp_head', array($this, 'insert_ga_gtm_code'), 9);
         add_action('wp_body_open', array($this, 'insert_gtm_body'));
         add_action('wp_footer', array($this, 'set_float_widget'), 9);
-        add_filter('block_editor_settings_all', array($this, 'theme_rank_math_setting'));
+        add_filter('block_editor_settings_all', array($this, 'heading_id_setting'));
     }
 
     /**

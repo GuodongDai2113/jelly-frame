@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jelly Frame 1.2.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/jelly-frame\n"
-"POT-Creation-Date: 2025-06-09T10:34:10+08:00\n"
-"PO-Revision-Date: 2025-06-09 10:45+0800\n"
+"POT-Creation-Date: 2025-06-11T13:35:13+08:00\n"
+"PO-Revision-Date: 2025-06-11 15:01+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Domain: jelly-frame\n"
 
 #. Theme Name of the theme
-#: style.css includes/elementor.php:333
+#: style.css includes/elementor.php:226
 msgid "Jelly Frame"
 msgstr "果冻框架"
 
@@ -137,167 +137,163 @@ msgstr "搜索结果："
 msgid "Page Not Found"
 msgstr "无法找到页面"
 
-#: includes/elementor.php:163
-msgid "Elementor Settings"
-msgstr "Elementor 设置"
-
-#: includes/elementor.php:179 includes/elementor.php:341
-msgid "Global Form ID"
-msgstr "全局表单 ID"
-
-#: includes/elementor.php:192 includes/elementor.php:342
-msgid "Popup ID"
-msgstr "弹窗 ID"
-
-#: includes/elementor.php:292
+#: includes/elementor.php:186
 msgid "Jelly Frame (Theme)"
 msgstr "果冻框架 (主题)"
 
-#: includes/elementor.php:348
+#: includes/elementor.php:241
+msgid "Global Form ID"
+msgstr "全局表单 ID"
+
+#: includes/elementor.php:242
+msgid "Popup ID"
+msgstr "弹窗 ID"
+
+#: includes/elementor.php:256
 msgid "Elementor"
 msgstr "Elementor"
 
-#: includes/settings.php:30 includes/settings.php:31
+#: includes/settings.php:35 includes/settings.php:36
 msgid "Theme"
 msgstr "主题"
 
-#: includes/settings.php:43
+#: includes/settings.php:53
 msgid "General"
 msgstr "常规"
 
-#: includes/settings.php:44
+#: includes/settings.php:54 template-parts/footer.php:42
 msgid "Contact"
 msgstr "联系"
 
-#: includes/settings.php:45
+#: includes/settings.php:55
 msgid "SEO"
 msgstr "SEO"
 
-#: includes/settings.php:50
+#: includes/settings.php:60
 msgid "Site Title"
 msgstr "站点标题"
 
-#: includes/settings.php:51
+#: includes/settings.php:61
 msgid "Posts per page"
 msgstr "每页帖子数"
 
-#: includes/settings.php:54
+#: includes/settings.php:64
 msgid "Organization Name"
 msgstr "组织名称"
 
-#: includes/settings.php:55
+#: includes/settings.php:65
 msgid "Phone Number"
 msgstr "电话"
 
-#: includes/settings.php:56
+#: includes/settings.php:66
 msgid "Email Address"
 msgstr "电子邮箱"
 
-#: includes/settings.php:57
+#: includes/settings.php:67
 msgid "Mailing Address"
 msgstr "地址"
 
-#: includes/settings.php:59
+#: includes/settings.php:69
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: includes/settings.php:60
+#: includes/settings.php:70
 msgid "Instagram"
 msgstr "Instagram"
 
-#: includes/settings.php:61
+#: includes/settings.php:71
 msgid "Facebook"
 msgstr "脸书"
 
-#: includes/settings.php:62
+#: includes/settings.php:72
 msgid "Twitter/X"
 msgstr "推特/X"
 
-#: includes/settings.php:63
+#: includes/settings.php:73
 msgid "LinkedIn"
 msgstr "领英"
 
-#: includes/settings.php:64
+#: includes/settings.php:74
 msgid "YouTube Channel"
 msgstr "油管频道"
 
-#: includes/settings.php:65
+#: includes/settings.php:75
 msgid "TikTok"
 msgstr "TikTok"
 
-#: includes/settings.php:66
+#: includes/settings.php:76
 msgid "Telegram"
 msgstr "Telegram"
 
-#: includes/settings.php:67
+#: includes/settings.php:77
 msgid "Skype"
 msgstr "Skype"
 
-#: includes/settings.php:70
+#: includes/settings.php:80
 msgid "Website Description"
 msgstr "网站描述"
 
-#: includes/settings.php:71
+#: includes/settings.php:81
 msgid "Allow search engines to index"
 msgstr "允许搜索引擎索引"
 
-#: includes/settings.php:72
+#: includes/settings.php:82
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
-#: includes/settings.php:73
+#: includes/settings.php:83
 msgid "Google Tag Manager ID"
 msgstr "Google Tag Manager ID"
 
-#: includes/settings.php:187
+#: includes/settings.php:212
 msgid "Remove"
 msgstr "移除"
 
-#: includes/settings.php:191
+#: includes/settings.php:216
 msgid "Add"
 msgstr "添加"
 
-#: includes/settings.php:263
+#: includes/settings.php:302
 msgid "Theme Settings"
 msgstr "主题设置"
 
-#: includes/woocommerce.php:115 includes/woocommerce.php:135
+#: includes/woocommerce.php:80 includes/woocommerce.php:100
 msgid "Category Content"
 msgstr "分类内容"
 
-#: includes/woocommerce.php:125 includes/woocommerce.php:146
+#: includes/woocommerce.php:90 includes/woocommerce.php:111
 msgid "Enter the content for this category."
 msgstr "输入此分类的内容。"
 
-#: includes/woocommerce.php:195
+#: includes/woocommerce.php:160
 msgid "Product page columns"
 msgstr "产品页面列数"
 
-#: includes/woocommerce.php:196
+#: includes/woocommerce.php:161
 msgid "Product page rows"
 msgstr "产品页面行数"
 
-#: includes/woocommerce.php:197
+#: includes/woocommerce.php:162
 msgid "Shop page display"
 msgstr "产品页面展示"
 
-#: includes/woocommerce.php:198 includes/woocommerce.php:203
+#: includes/woocommerce.php:163 includes/woocommerce.php:168
 msgid "Show products"
 msgstr "显示产品"
 
-#: includes/woocommerce.php:199 includes/woocommerce.php:204
+#: includes/woocommerce.php:164 includes/woocommerce.php:169
 msgid "Show categories"
 msgstr "显示产品分类"
 
-#: includes/woocommerce.php:200 includes/woocommerce.php:205
+#: includes/woocommerce.php:165 includes/woocommerce.php:170
 msgid "Show categories & products"
 msgstr "显示分类和产品"
 
-#: includes/woocommerce.php:202
+#: includes/woocommerce.php:167
 msgid "Category archive display"
 msgstr "产品分类归档页显示"
 
-#: includes/woocommerce.php:212
+#: includes/woocommerce.php:177
 msgid "Products"
 msgstr "产品"
 
@@ -307,7 +303,7 @@ msgstr "搜索："
 
 #: searchform.php:48
 msgid "Search …"
-msgstr "搜索 ..."
+msgstr "搜索 …"
 
 #: searchform.php:49
 msgid "Submit search"
@@ -329,13 +325,21 @@ msgstr "抱歉，您要查找的页面不存在。"
 msgid "Sorry, there is no content you are looking for."
 msgstr "抱歉，没有您要查找的内容。"
 
-#: template-parts/footer.php:47
+#: template-parts/footer.php:26
+msgid "Product"
+msgstr "产品"
+
+#: template-parts/footer.php:34
+msgid "About"
+msgstr "关于"
+
+#: template-parts/footer.php:50
 msgid "Copyright © "
 msgstr "版权 ©"
 
-#: template-parts/footer.php:50
+#: template-parts/footer.php:53
 msgid " All Rights Reserved."
-msgstr "版权所有。"
+msgstr " 版权所有。"
 
 #: template-parts/header.php:13
 msgid "Skip to content"
@@ -347,7 +351,7 @@ msgstr "分类"
 
 #: widgets/article/post-categories.php:36
 msgid "No categories found."
-msgstr "没有找到分类"
+msgstr "没有找到分类。"
 
 #: widgets/article/post-meta.php:18 widgets/article/post-meta.php:20
 msgid "Release date"
@@ -471,3 +475,6 @@ msgstr "分享到脸书"
 #: widgets/share-buttons.php:25
 msgid "Share on LinkedIn"
 msgstr "分享到领英"
+
+#~ msgid "Elementor Settings"
+#~ msgstr "Elementor 设置"

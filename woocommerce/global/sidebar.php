@@ -20,11 +20,9 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
             [
                 'hide_empty' => '1',
                 'orderby'    => 'order',
-                'order'      => 'ASC',
             ]
         );
     }
     jelly_frame_render_widget('inquiry-form');
     ?>
-
 </aside>

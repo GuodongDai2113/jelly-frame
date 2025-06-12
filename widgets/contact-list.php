@@ -12,33 +12,37 @@ if (!defined('ABSPATH')) exit;
 
 $contact = jelly_frame_get_contact_options();
 
-/**
- * 输出联系人项
- */
-function render_contact_items($items, $type, $icon_class, $is_link = true, $prefix = '')
-{
-    foreach ((array)$items as $item) {
-        if (empty($item)) continue;
 
-        echo '<div class="contact-item">';
-        echo '<div class="contact-icon">';
-        echo '<i class="' . esc_attr($icon_class) . ' ri-icon" aria-hidden="true"></i>';
-        echo '</div>';
+if (!function_exists('render_contact_items')) {
+    /**
+     * 输出联系人项
+     */
+    function render_contact_items($items, $type, $icon_class, $is_link = true, $prefix = '')
+    {
+        foreach ((array)$items as $item) {
+            if (empty($item)) continue;
 
-        if ($is_link) {
-            $href = $prefix . esc_attr($item);
-            echo '<a class="contact-link" href="' . esc_url($href) . '"';
-            echo ' aria-label="' . ucfirst($type) . ' to ' . esc_attr($item) . '"';
-            echo ' title="' . ucfirst($type) . ' to ' . esc_attr($item) . '">';
-            echo esc_html($item);
-            echo '</a>';
-        } else {
-            echo '<p class="contact-text">' . esc_html($item) . '</p>';
+            echo '<div class="contact-item">';
+            echo '<div class="contact-icon">';
+            echo '<i class="' . esc_attr($icon_class) . ' ri-icon" aria-hidden="true"></i>';
+            echo '</div>';
+
+            if ($is_link) {
+                $href = $prefix . esc_attr($item);
+                echo '<a class="contact-link" href="' . esc_url($href) . '"';
+                echo ' aria-label="' . ucfirst($type) . ' to ' . esc_attr($item) . '"';
+                echo ' title="' . ucfirst($type) . ' to ' . esc_attr($item) . '">';
+                echo esc_html($item);
+                echo '</a>';
+            } else {
+                echo '<p class="contact-text">' . esc_html($item) . '</p>';
+            }
+
+            echo '</div>';
         }
-
-        echo '</div>';
     }
 }
+
 ?>
 
 <?php if (!empty($contact)): ?>

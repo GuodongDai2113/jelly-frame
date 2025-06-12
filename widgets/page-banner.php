@@ -36,6 +36,6 @@ if (!is_archive() && is_singular()) {
             <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
         <?php endif; ?>
 
-        <?php jelly_frame_render_widget('global\breadcrumb'); ?>
+        <?php jelly_frame_the_breadcrumbs(); ?>
     </div>
 </div>

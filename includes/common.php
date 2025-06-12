@@ -199,7 +199,6 @@ function jelly_frame_get_contact_field($key, $default = null) {
 */
 function jelly_frame_the_breadcrumbs() {
    echo '<nav aria-label="breadcrumb" class="breadcrumb"><p class="container">';
-
    if (function_exists('rank_math_the_breadcrumbs')) {
        rank_math_the_breadcrumbs(['wrap_before' => '', 'wrap_after' => '']);
    } elseif (function_exists('yoast_breadcrumb')) {
@@ -265,4 +264,12 @@ function jelly_frame_build_breadcrumbs() {
 function jelly_frame_render_widget($widget_name){
     get_template_part('widgets/' . $widget_name);
     // Jelly_Frame::$instance->widgets->render($widget_name);
+}
+
+
+function the_jelly_copyright_info(){
+    esc_html_e('Copyright © ', 'jelly-frame');
+    echo date('Y') . ' ';
+    echo jelly_frame_get_contact_field('name');
+    esc_html_e(' All Rights Reserved.', 'jelly-frame');
 }
