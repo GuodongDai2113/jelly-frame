@@ -277,19 +277,19 @@
 
       // 搜索按钮
       $(".menu-actions #searchsubmit").on("click", function (e) {
-        const $form = $(this).closest('form');
-        const $input = $form.find('.search-input');
-    
+        const $form = $(this).closest("form");
+        const $input = $form.find(".search-input");
+
         if (isSearchClick) {
-            e.preventDefault(); // 阻止第一次提交
-            $input.addClass('active'); // 添加 active 类
-            isSearchClick = false; // 更新状态
+          e.preventDefault(); // 阻止第一次提交
+          $input.addClass("active"); // 添加 active 类
+          isSearchClick = false; // 更新状态
         } else {
-            // 第二次点击：移除类并允许提交
-            // $input.removeClass('active');
-            // isSearchClick = true;
-            // 可选：手动触发提交
-            // $form.get(0).submit();
+          // 第二次点击：移除类并允许提交
+          // $input.removeClass('active');
+          // isSearchClick = true;
+          // 可选：手动触发提交
+          // $form.get(0).submit();
         }
       });
 
@@ -396,5 +396,9 @@
     console.log("Developer:JellyDai");
     console.log("Email:d@jellydai.com");
   });
-  
+  $(window).on('elementor/frontend/init', function () {
+    // elementorFrontend.waypoint(document.querySelectorAll('.elementor-invisible'));
+    elementorFrontend.elements.runReadyTriggers(jQuery('.elementor-invisible'));
+
+  });
 })(jQuery);

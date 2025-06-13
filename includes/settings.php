@@ -60,6 +60,7 @@ class Settings
                 ['id' => 'site_title', 'label' => __('Site Title', 'jelly-frame'), 'type' => 'text', 'wp_sync' => 'blogname'],
                 ['id' => 'meta_description', 'label' => __('Website Description', 'jelly-frame'), 'type' => 'textarea', 'wp_sync' => 'blogdescription'],
                 ['id' => 'posts_per_page', 'label' => __('Posts per page', 'jelly-frame'), 'type' => 'number', 'wp_sync' => 'posts_per_page'],
+                ['id' => 'page_banner', 'label' => __('Page Banner', 'jelly-frame'), 'type' => 'media'],
             ],
             'contact' => [
                 ['id' => 'name',     'label' => __('Organization Name', 'jelly-frame'), 'type' => 'text'],
@@ -203,6 +204,61 @@ class Settings
                 }
                 break;
 
+            case 'media':
+                $button_text = esc_html__('Select Image', 'jelly-frame');
+                echo "<div class='media-field-wrapper'>";
+                echo "<input type='hidden' name='$name' class='media-id' value='" . esc_attr($val) . "'>";
+                echo "<div class='media-preview'>";
+                if (!empty($val)) {
+                    $image_url = wp_get_attachment_url($val);
+                    echo "<img src='" . esc_url($image_url) . "' style='max-width:260px; margin-top:10px;' />";
+                }
+                echo "</div>";
+                echo "<button type='button' class='button media-select-button'>$button_text</button>";
+                echo "<button type='button' class='button media-remove-button'>" . esc_html__('Remove', 'jelly-frame') . "</button>";
+                echo "</div>";
+                // 插入媒体库脚本（仅一次）
+                static $injected_media_js = false;
+                if (!$injected_media_js) {
+                    $injected_media_js = true;
+                    echo <<<EOD
+                    <script>
+                        (function($) {
+                            $(document).on('click', '.media-select-button', function(e) {
+                                e.preventDefault();
+
+                                const button = $(this);
+                                const inputField = button.siblings('.media-id');
+                                const preview = button.parent().find('.media-preview');
+
+                                const frame = wp.media({
+                                    title: 'Select Image',
+                                    button: { text: 'Use this image' },
+                                    multiple: false
+                                });
+
+                                frame.on('select', function() {
+                                    const attachment = frame.state().get('selection').first().toJSON();
+                                    inputField.val(attachment.id); // ✅ 保存 ID
+                                    preview.html('<img src="' + attachment.url + '" style="max-width:260px; margin-top:10px;" />');
+                                });
+
+                                frame.open();
+                            });
+
+                            // 移除图片按钮功能
+                            $(document).on('click', '.media-remove-button', function(e) {
+                                e.preventDefault();
+                                const container = $(this).closest('.media-field-wrapper');
+                                container.find('.media-id').val('');
+                                container.find('.media-preview').empty();
+                            });
+                        })(jQuery);
+                    </script>
+                    EOD;
+                }
+                break;
+
             case 'repeater':
                 $values = is_array($val) ? $val : [''];
                 echo "<div class='repeater-wrapper' data-name='$name'>";
@@ -313,6 +369,9 @@ class Settings
         submit_button();
         echo '</form>';
 
+        // 加载媒体库脚本
+        wp_enqueue_media(); // 确保加载 WordPress 媒体库
+        wp_enqueue_script('jquery'); // 确保 jQuery 已加载
         // Debug 输出当前选项值
         // echo '<pre style="background:#fff; padding:1em; border:1px solid #ccc;">';
         // var_dump(get_option($option_name));

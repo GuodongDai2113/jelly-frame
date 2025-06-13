@@ -32,6 +32,10 @@ class Setup
         add_action('wp_body_open', array($this, 'insert_gtm_body'));
         add_action('wp_footer', array($this, 'set_float_widget'), 9);
         add_filter('block_editor_settings_all', array($this, 'heading_id_setting'));
+
+        add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
+        add_filter('display_post_states', array($this, 'add_jelly_frame_post_state'), 10, 2);
+        add_filter('the_content', array($this, 'override_the_content'), 10);
     }
 
     /**
@@ -109,7 +113,7 @@ class Setup
 
         if (JELLY_FRAME_DEBUG) {
             // 开发模式，直接加载源文件
-            $styles = ['layout', 'footer', 'page', 'wordpress', 'widget', 'plugin'];
+            $styles = ['layout', 'page', 'wordpress', 'widget', 'plugin'];
             foreach ($styles as $style) {
                 wp_enqueue_style('jelly-frame-' . $style, JELLY_FRAME_ASSETS_URI . 'dev/' . $style . '.css', [], JELLY_FRAME_VERSION);
             }
@@ -260,5 +264,67 @@ class Setup
     {
         $settings['generateAnchors'] = true;
         return $settings;
+    }
+
+    /**
+     * 添加 页面模板 选项
+     * 
+     */
+    function add_page_templates($page_templates, $wp_theme, $post)
+    {
+        $page_templates = [
+            'jelly-frame' => esc_html__('Jelly Frame', 'jelly-frame'),
+        ] + $page_templates;
+        return $page_templates;
+    }
+
+    /**
+     * 添加页面状态
+     * 
+     * 
+     */
+    function add_jelly_frame_post_state($post_states, $post)
+    {
+        // 获取当前页面使用的模板
+        $template = get_page_template_slug($post->ID);
+
+        if ('jelly-frame' === $template) {
+            $post_states['jelly-frame'] = esc_html__('Jelly Frame', 'jelly-frame');
+        }
+
+        return $post_states;
+    }
+
+    public function override_the_content($content)
+    {
+        global $post;
+
+        // 确保是在主循环内且是页面类型
+        if (!is_singular('page') || !in_the_loop() || empty($post)) {
+            return $content;
+        }
+
+        $template = get_page_template_slug($post->ID);
+
+        // 只作用于 jelly-frame 模板
+        if ('jelly-frame' !== $template) {
+            return $content;
+        }
+
+        $page_slug = $post->post_name;
+        $custom_template = get_stylesheet_directory() . "/templates/pages/{$page_slug}.php";
+
+        // 如果存在自定义模板文件，则加载它并替换内容
+        if (file_exists($custom_template)) {
+            ob_start();
+            include $custom_template;
+            $custom_content = ob_get_clean();
+
+            // 追加页面原本的内容
+            $custom_content .= $content;
+            return $custom_content;
+        }
+
+        return $content;
     }
 }

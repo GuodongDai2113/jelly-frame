@@ -1,4 +1,4 @@
-#main{
+#main {
     padding: 0 var(--jelly-side-width, 16px);
     min-height: 480px;
 }
@@ -22,7 +22,7 @@
         line-height: 1;
     }
     .error-description {
-        margin: 0;        
+        margin: 0;
     }
 }
 
@@ -61,28 +61,87 @@
     }
 }
 
-.archive-page >.container{
-    margin-top: 64px;
-    margin-bottom: 64px;
-}
-
-.contact-us-page{
+.contact-us-page {
     background-color: #f8f8f8;
     align-items: center;
-    .container{
-        margin: 0 auto;
-        padding-top: 64px;
-        padding-bottom: 64px;
-    }
-    .contact-info,.contact-form{
+
+    .contact-info,
+    .contact-form {
         width: 100%;
     }
-    .contact-form{
+    .contact-form {
         box-sizing: border-box;
         padding: 24px;
         border-radius: 6px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        h3 {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        input,
+        textarea {
+            padding: 1rem;
+            border-radius: 0;
+        }
+    }
+    .contact-item-tile {
+        display: block;
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    .contact-link {
+        display: block;
+        margin-bottom: 8px;
+    }
+    a.contact-link {
+        text-decoration: underline;
+    }
+    .contact-list .contact-item {
+        // display: block;
+        margin-top: 12px;
+        background-color: #fff;
+        padding: 16px;
+    }
+    .ri-icon {
+        font-size: 64px;
+        padding: 12px;
+        border-radius: 50%;
+        background-color: #f8f8f8;
+        margin-right: 16px;
+        color: var(--jelly-color-primary);
+        line-height: 1;
+    }
+}
+
+.about-us-page {
+}
+
+.thanks-page {
+    background-color: #f8f8f8;
+    .container.primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .thanks-box {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 24px;
+        border-radius: 6px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background-color: #fff;
+    }
+}
+
+.product-page{
+    .container.primary {
+        padding-top: 32px;
     }
 }
 
@@ -92,6 +151,11 @@
         width: 100%;
         .error-title {
             font-size: 8rem;
+        }
+    }
+    .thanks-page {
+        .thanks-box {
+            width: 100%;
         }
     }
 }

@@ -7,6 +7,12 @@ a.button .ri-icon {
   margin-right: 6px;
 }
 
+.subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--jelly-color-primary);
+}
+
 /**************************************************/
 /* 站点图标  widgets/site-logo.php */
 /**************************************************/
@@ -795,6 +801,18 @@ nav.breadcrumb .separator {
 .cookie-banner .button-group .reject-button {
   background-color: #fff;
   border: 1px solid var(--jelly-color-primary);
+  color: var(--jelly-color-primary);
+}
+
+.social-media-list {
+  display: flex;
+  gap: 12px;
+}
+.social-media-list .social-icon {
+  font-size: 22px;
+  color: #a3a3a3;
+}
+.social-media-list .social-icon:hover {
   color: var(--jelly-color-primary);
 }
 

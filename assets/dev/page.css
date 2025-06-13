@@ -53,21 +53,12 @@
   margin: 24px 0;
 }
 
-.archive-page > .container {
-  margin-top: 64px;
-  margin-bottom: 64px;
-}
-
 .contact-us-page {
   background-color: #f8f8f8;
   align-items: center;
 }
-.contact-us-page .container {
-  margin: 0 auto;
-  padding-top: 64px;
-  padding-bottom: 64px;
-}
-.contact-us-page .contact-info, .contact-us-page .contact-form {
+.contact-us-page .contact-info,
+.contact-us-page .contact-form {
   width: 100%;
 }
 .contact-us-page .contact-form {
@@ -76,6 +67,67 @@
   border-radius: 6px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.contact-us-page .contact-form h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.contact-us-page .contact-form input,
+.contact-us-page .contact-form textarea {
+  padding: 1rem;
+  border-radius: 0;
+}
+.contact-us-page .contact-item-tile {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.contact-us-page .contact-link {
+  display: block;
+  margin-bottom: 8px;
+}
+.contact-us-page a.contact-link {
+  text-decoration: underline;
+}
+.contact-us-page .contact-list .contact-item {
+  margin-top: 12px;
+  background-color: #fff;
+  padding: 16px;
+}
+.contact-us-page .ri-icon {
+  font-size: 64px;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  margin-right: 16px;
+  color: var(--jelly-color-primary);
+  line-height: 1;
+}
+
+.thanks-page {
+  background-color: #f8f8f8;
+}
+.thanks-page .container.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thanks-page .thanks-box {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+}
+
+.product-page .container.primary {
+  padding-top: 32px;
 }
 
 /* 移动端 */
@@ -85,6 +137,9 @@
   }
   .error-page .error-title {
     font-size: 8rem;
+  }
+  .thanks-page .thanks-box {
+    width: 100%;
   }
 }
 /* 更小的移动端 */

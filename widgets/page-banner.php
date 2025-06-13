@@ -19,7 +19,12 @@ if (is_front_page()) {
 
 // 获取特色图
 $thumbnail_url = '';
-if (!is_archive() && is_singular()) {
+$option = get_option('jelly_frame_general', ['page_banner' => 0]);
+if (isset($option['page_banner']) && $option['page_banner']) {
+    $thumbnail_url = wp_get_attachment_url($option['page_banner']);
+}
+
+if (is_singular() && !is_archive()) {
     $post_id = get_the_ID();
     if ($post_id && has_post_thumbnail($post_id)) {
         $thumbnail_url = get_the_post_thumbnail_url($post_id, 'full');

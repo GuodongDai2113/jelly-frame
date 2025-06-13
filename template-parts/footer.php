@@ -21,6 +21,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
                 <p class="footer-logo-text">
                     <?php echo get_bloginfo('description') ?>
                 </p>
+                <?php jelly_frame_render_widget('social-media-list') ?>
             </div>
             <div class="footer-item">
                 <span class="footer-item-title"><?php esc_html_e('Product', 'jelly-frame') ?></span>

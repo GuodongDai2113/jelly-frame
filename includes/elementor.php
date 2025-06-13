@@ -36,11 +36,6 @@ class Elementor
         add_action('elementor/widgets/register', array($this, 'register_elementor_widgets'));
         add_filter('jelly_frame_register_fields', array($this, 'add_theme_fields'));
         add_filter('jelly_frame_register_tabs', array($this, 'add_theme_tabs'));
-        add_filter("theme_page_templates", array($this, 'add_page_templates'), 10, 4);
-        add_filter('display_post_states', array($this, 'add_jelly_frame_post_state'), 10, 2);
-
-        add_filter('the_content', array($this, 'override_the_content'), 10);
-
     }
 
     /**
@@ -207,59 +202,9 @@ class Elementor
         if ($this->is_active) {
             return \Elementor\Plugin::$instance->frontend->create_action_hash($action, $settings);
         }
-        return 'contact-us/';
+        return home_url('contact-us/');
     }
 
-
-
-    function add_page_templates($page_templates, $wp_theme, $post)
-    {
-        $page_templates = [
-            'jelly-frame' => esc_html__('Jelly Frame', 'jelly-frame'),
-        ] + $page_templates;
-        return $page_templates;
-    }
-
-    function add_jelly_frame_post_state($post_states, $post)
-    {
-        // 获取当前页面使用的模板
-        $template = get_page_template_slug($post->ID);
-
-        if ('jelly-frame' === $template) {
-            $post_states['jelly-frame'] = esc_html__('Jelly Frame', 'jelly-frame');
-        }
-
-        return $post_states;
-    }
-
-    public function override_the_content($content)
-    {
-        global $post;
-    
-        // 确保是在主循环内且是页面类型
-        if (!is_singular('page') || !in_the_loop() || empty($post)) {
-            return $content;
-        }
-    
-        $template = get_page_template_slug($post->ID);
-    
-        // 只作用于 jelly-frame 模板
-        if ('jelly-frame' !== $template) {
-            return $content;
-        }
-    
-        $page_slug = $post->post_name;
-        $custom_template = get_stylesheet_directory() . "/templates/pages/{$page_slug}.php";
-    
-        // 如果存在自定义模板文件，则加载它并替换内容
-        if (file_exists($custom_template)) {
-            ob_start();
-            include $custom_template;
-            return ob_get_clean();
-        }
-    
-        return $content;
-    }
 
     /**
      * 添加 Elementor 主题选项

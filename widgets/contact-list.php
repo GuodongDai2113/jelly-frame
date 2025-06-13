@@ -46,7 +46,7 @@ if (!function_exists('render_contact_items')) {
 ?>
 
 <?php if (!empty($contact)): ?>
-    <address class="contact-list">
+    <div class="contact-list">
         <?php
         if (!empty($contact['email'])) {
             render_contact_items($contact['email'], 'email', 'ri-mail-send-line', true, 'mailto:');
@@ -60,5 +60,5 @@ if (!function_exists('render_contact_items')) {
             render_contact_items($contact['address'], 'address', 'ri-earth-fill', false);
         }
         ?>
-    </address>
+    </div>
 <?php endif; ?>

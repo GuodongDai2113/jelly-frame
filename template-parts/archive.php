@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) exit; // 禁止直接访问
 ?>
 <main id="main" role="main" class="archive-page">
     <?php jelly_frame_render_widget('page-banner'); ?>
-    <div class="container flex reverse">
+    <div class="container flex reverse primary">
         <div class="content">
             <div class="archive-description">
                 <?php if (is_category() && category_description()) {
